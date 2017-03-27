@@ -39,11 +39,9 @@ class Database
 			
 			if($conn->connect_error)
 				throw new Exception ('connection failed :'.$conn->connect_error);
-                        else
-                        { 
-                           echo "OK";
+                        
                           $this->conn = $conn; 
-                        }  
+                         
 		}
 		public function close()
 		{
