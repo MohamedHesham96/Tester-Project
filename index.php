@@ -1,5 +1,6 @@
 <?php
-    include 'models/Tester.php';
+ //test Database   
+/*include 'models/Tester.php';
     include 'models/Database.php';
     
     try {
@@ -8,7 +9,7 @@
         {
             echo $exc->getMessage();
         }
-    
+  */  
 ?>
 <html>
     <head>
