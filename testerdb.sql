@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2017 at 07:17 PM
+-- Generation Time: Apr 09, 2017 at 11:42 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -100,14 +100,14 @@ CREATE TABLE `quizzes` (
   `quiz_name` varchar(100) NOT NULL,
   `doctor_id` int(11) NOT NULL,
   `password` int(11) DEFAULT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quizzes`
 --
 
-INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `time`) VALUES
+INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `date`) VALUES
 (0, 'test#1', 1, 2222, '2017-04-09 14:19:37'),
 (1, 'test#2', 2, 5555, '2017-04-09 17:01:51');
 
@@ -131,8 +131,8 @@ CREATE TABLE `submits` (
 
 INSERT INTO `submits` (`id`, `student_id`, `quiz_id`, `mark`, `time`) VALUES
 (1, 3, 0, 30, '00:08:18'),
-(2, 4, 1, 25, '00:10:10'),
-(3, 3, 0, 25, '00:08:18'),
+(2, 3, 1, 25, '00:10:10'),
+(3, 4, 0, 25, '00:08:18'),
 (4, 4, 1, 22, '00:10:07');
 
 -- --------------------------------------------------------
