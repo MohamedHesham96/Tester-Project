@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2017 at 09:53 PM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Generation Time: Apr 09, 2017 at 02:17 PM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `testerdb`
@@ -26,9 +26,10 @@ SET time_zone = "+00:00";
 -- Table structure for table `following`
 --
 
-CREATE TABLE IF NOT EXISTS `following` (
+CREATE TABLE `following` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `doctor_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -37,9 +38,9 @@ CREATE TABLE IF NOT EXISTS `following` (
 -- Table structure for table `history`
 --
 
-CREATE TABLE IF NOT EXISTS `history` (
+CREATE TABLE `history` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
   `quiz_id` int(11) NOT NULL,
   `submit_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `history` (
 -- Table structure for table `questions`
 --
 
-CREATE TABLE IF NOT EXISTS `questions` (
+CREATE TABLE `questions` (
   `id` int(11) NOT NULL,
   `quiz_id` int(11) NOT NULL,
   `header` text NOT NULL,
@@ -67,12 +68,13 @@ CREATE TABLE IF NOT EXISTS `questions` (
 -- Table structure for table `quizzes`
 --
 
-CREATE TABLE IF NOT EXISTS `quizzes` (
+CREATE TABLE `quizzes` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `user_id` int(11) NOT NULL,
   `password` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `code` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -81,10 +83,10 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
 -- Table structure for table `submits`
 --
 
-CREATE TABLE IF NOT EXISTS `submits` (
+CREATE TABLE `submits` (
   `id` int(11) NOT NULL,
   `mark` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
   `time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -94,19 +96,27 @@ CREATE TABLE IF NOT EXISTS `submits` (
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(64) NOT NULL,
   `email` varchar(255) NOT NULL,
   `type` varchar(10) NOT NULL,
   `age` int(3) NOT NULL,
-  `job` varchar(40) NOT NULL,
   `country` varchar(50) NOT NULL,
   `gender` varchar(5) NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `age`, `country`, `gender`, `phone`, `image`) VALUES
+(0, 'ahmed\r\n', '213', 'hany@gmail.com', 'doctor', 35, 'egypt', 'male', '011000066666', ''),
+(1, 'hany', '213', 'mr@gmail.com', 'doctor', 35, 'egypt', 'male', '011000066666', ''),
+(2, 'maged', '213', 'medo@mal.com', 'admin', 21, 'egypt', 'male', '220001111000', '');
 
 --
 -- Indexes for dumped tables
@@ -116,103 +126,57 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Indexes for table `following`
 --
 ALTER TABLE `following`
-  ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`doctor_id`);
 
 --
 -- Indexes for table `history`
 --
 ALTER TABLE `history`
-  ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`), ADD KEY `quiz_id` (`quiz_id`), ADD KEY `submit_id` (`submit_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`student_id`),
+  ADD KEY `quiz_id` (`quiz_id`),
+  ADD KEY `submit_id` (`submit_id`);
 
 --
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`), ADD KEY `quiz_id` (`quiz_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quiz_id` (`quiz_id`);
 
 --
 -- Indexes for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `code` (`code`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `submits`
 --
 ALTER TABLE `submits`
-  ADD PRIMARY KEY (`id`), ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`student_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`), ADD UNIQUE KEY `email` (`email`), ADD FULLTEXT KEY `username_2` (`username`), ADD FULLTEXT KEY `username_3` (`username`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `following`
---
-ALTER TABLE `following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `history`
---
-ALTER TABLE `history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `following`
---
-ALTER TABLE `following`
-ADD CONSTRAINT `following_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `history`
---
-ALTER TABLE `history`
-ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-ADD CONSTRAINT `history_ibfk_2` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`),
-ADD CONSTRAINT `history_ibfk_3` FOREIGN KEY (`submit_id`) REFERENCES `submits` (`id`);
-
---
--- Constraints for table `questions`
---
-ALTER TABLE `questions`
-ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`);
-
---
--- Constraints for table `quizzes`
---
-ALTER TABLE `quizzes`
-ADD CONSTRAINT `quizzes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
--- Constraints for table `submits`
---
-ALTER TABLE `submits`
-ADD CONSTRAINT `submits_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
+  MODIFY `code` int(10) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
