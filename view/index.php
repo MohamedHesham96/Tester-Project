@@ -10,7 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
+        <?phphintsh
         // put your code here
         ?>
     </body>
