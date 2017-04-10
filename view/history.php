@@ -32,14 +32,15 @@
                             <td>Quiz code</td>
                             <td>Quiz Name</td>
                             <td>Doctor name</td>
-                            <td>Password</td>
                             <td>Mark</td>
+                            <td>Time</td>
+                            <td>Password</td>
                         </tr>
 
 
                         <?php
-                        include '../controller/historyOperations.php';
-                        $reult = historyOperations::viewAllQuizzes();
+                        include '../controller/HistoryOperations.php';
+                        $reult = HistoryOperations::viewAllQuizzes();
 
 // check if the statment is true
 
@@ -51,8 +52,13 @@
                                 echo "<td>" . $row[0] . "</td>";
                                 echo "<td>" . $row[1] . "</td>";
                                 echo "<td>" . $row[2] . "</td>";
-                                echo "<td>" . $row[3] . "</td>";
+                                echo "<td>" . $row[3] . " / " . $row[6] . "</td>";
                                 echo "<td>" . $row[4] . "</td>";
+                                if ($row[5]) {
+                                    echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
+                                } else {
+                                    echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
+                                }
                                 echo "</tr>";
                             }
                         }

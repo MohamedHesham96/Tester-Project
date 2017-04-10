@@ -1,6 +1,6 @@
 <html>
     <head>
-      <link href="../cources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../cources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/style/style1.css" rel="stylesheet" type="text/css"/>
 
 
@@ -22,21 +22,40 @@
         </div>
 
 
-       
-            <h1> following <h1>
-                    <div class="container">
-                        <table class="table-striped"> 
 
-                            <td>doctor name</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>marwa</td>
+        <h1> following <h1>
+                <div class="container">
+
+                    <table class="table-striped"> 
+
+                        <tr>
+                            <td>Doctor Photo</td>
+                            <td>Doctor name</td>
+                            <td>Doctor E-Mail</td>
+                        </tr>
 
 
-                            </tr>
-                        </table>
-                    </div>
-                    <link href="js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
-                    </body>
-                    </html>
+                        <?php
+                        include '../controller/SubscribesOperations.php';
+                        $reult = SubscribesOperations::viewAllSubscribes();
+
+// check if the statment is true
+
+                        if (!$reult) {
+                            echo 'error2';
+                        } else {
+                            while ($row = mysqli_fetch_array($reult, 2)) {
+                                echo "<tr>";
+                                echo "<td>" . $row[0] . "</td>";
+                                echo "<td>" . $row[1] . "</td>";
+                                echo "<td>" . $row[2] . "</td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
+
+                    </table>
+                </div>
+                <link href="js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+                </body>
+                </html>
