@@ -1,6 +1,5 @@
 <?php
 
-include ('../include/vars.php');
 
 class historyOperations {
 
@@ -10,6 +9,7 @@ class historyOperations {
         $username = "root";
         $password = "";
         $dbname = "testerdb";
+        
         $conn = new mysqli($host, $username, $password, $dbname);
         $query = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, submits.mark, submits.time, quizzes.password, quizzes.full_mark from history "
                 . "JOIN quizzes on history.doctor_id = quizzes.doctor_id "
