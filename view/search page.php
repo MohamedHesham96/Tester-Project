@@ -12,10 +12,10 @@
         <div class="nav">
             <div class="container">
                 <ul>
-                    <li><a href="home.html" >HOME</a></li>
-                    <li><a href="history.html" >History</a></li>
-                    <li><a href="subscribes.html">Subscribes</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="home.php" >HOME</a></li>
+                    <li><a href="history.php" >History</a></li>
+                    <li><a href="subscribes.php">Subscribes</a></li>
+                    <li><a href="about.php">About</a></li>
                 </ul>
 
             </div>

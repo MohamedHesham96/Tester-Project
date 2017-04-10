@@ -1,4 +1,3 @@
-
 <html>
     <head>
         <link href="../cources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -6,11 +5,6 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-
-        <?
-        include './controller/historyOperations.php';
-        ?>
-
         <div class="log"> <button onclick="">log out</button></div>
         <h4> welcome ** </h4>
 
@@ -19,18 +13,20 @@
             <div class="container">
 
                 <ul>
-                    <li><a href="home.html" >HOME</a></li>
-                    <li><a href="history.html" class="active">History</a></li>
-                    <li><a href="subscribes.html">Subscribes</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="home.php" >HOME</a></li>
+                    <li><a href="history.php" class="active">History</a></li>
+                    <li><a href="subscribes.php">Subscribes</a></li>
+                    <li><a href="about.php">About</a></li>
 
                 </ul>
             </div>
         </div>
 
 
+
         <h1> Your Exams <h1>
                 <div class="container">
+
                     <table class="table-striped"> 
                         <tr>	
                             <td>Quiz code</td>
@@ -41,24 +37,28 @@
                         </tr>
 
 
-                        <?php 
+                        <?php
+                        include '../controller/historyOperations.php';
                         $reult = historyOperations::viewAllQuizzes();
 
-                        // check if the statment is true
+// check if the statment is true
 
-                        <?php  while ($row = mysqli_fetch_array($reult, 2)) ?>    
-                        <tr>
-                            <td>  <?php echo 'ame'; ?>  </td>
-                        <td>  <?php echo $row[1]; ?>  </td>
-                        <td>  <?php echo $row[2]; ?>  </td>
-                        <td>  <?php echo $row[3]; ?>  </td>
-                        <td>  <?php echo $row[4]; ?>  </td>
-                        </tr>
-                        <? endwhile?>
-
+                        if (!$reult) {
+                            echo 'error2';
+                        } else {
+                            while ($row = mysqli_fetch_array($reult, 2)) {
+                                echo "<tr>";
+                                echo "<td>" . $row[0] . "</td>";
+                                echo "<td>" . $row[1] . "</td>";
+                                echo "<td>" . $row[2] . "</td>";
+                                echo "<td>" . $row[3] . "</td>";
+                                echo "<td>" . $row[4] . "</td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </table>
                 </div>
                 <link href="js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
                 </body>
                 </html>
-
