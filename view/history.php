@@ -1,7 +1,7 @@
 <html>
     <head>
-        <link href="../cources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/style/style1.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/scss/style1.css" rel="stylesheet" type="text/css"/>
         <meta charset="utf-8"/>
     </head>
     <body >
@@ -39,7 +39,7 @@
 
 
                         <?php
-                        include '../controller/HistoryOperations.php';
+                        include '../controller/historyOperations.php';
                         $reult = HistoryOperations::viewAllQuizzes();
 
 // check if the statment is true
