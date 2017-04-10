@@ -33,7 +33,7 @@
         <div class="container">
         <?php 
             //connect to data base and create table for result
-                include 'include/vars.php';
+                include '../include/vars.php';
                 $conn = mysqli_connect($host, $username, $password, $dbname);
                 if($conn->error)
                     die("connection lost");
@@ -54,10 +54,10 @@
                             $maker   = $row['username'];    
                           echo '<tr><td>'.$name.'</td><td>'.$id.'</td><td>'.$maker.'</td>';  
                           if(empty($password)){
-                              echo '<td><img src="recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>' ;
+                              echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>' ;
                           }
                           else {
-                              echo '<td><img src="recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>' ;
+                              echo '<td><img src="../recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>' ;
                           }
                           echo '</tr>';
                         }
