@@ -32,7 +32,7 @@
         <br>
         <div class="container">
         <?php 
-            //connect to data base and create table forresult
+            //connect to data base and create table for result
                 include 'include/vars.php';
                 $conn = mysqli_connect($host, $username, $password, $dbname);
                 if($conn->error)
@@ -41,6 +41,7 @@
                 $result = $conn->query($sql);
                 if(!$result)
                     die ($conn->error);
+                //display result in table
                 if ($result->num_rows > 0)
                 {
                  echo '<style>table{width:100%;border-collapse:collapse;} td,th{height:50px; text-align:left;border-bottom:1px #ddd solid ;padding:15px;}th{background-color:#4CAF50 ;color:white; } tr:hover {background-color: #4CAF50; color:white;} tr:nth-child(even){background-color:#f2f2f2;}tr:nth-child(even):hover{background-color:#4CAF50;} </style>' ;   
