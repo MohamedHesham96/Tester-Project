@@ -13,7 +13,7 @@
                 <ul>
                     <li><a href="home.php" >HOME</a></li>
                     <li><a href="history.php" >History</a></li>
-                    <li><a href="subscribs.php">Subscribes</a></li>
+                    <li><a href="subscribes.php">Subscribes</a></li>
                     <li><a href="about.php" >About</a></li>
                 </ul>
 
@@ -22,7 +22,7 @@
 
 
         <div>
-            <h1> quiz **** <h1>
+            <h1> Quiz Name <h1>
                     <table> 
 
                         <td>Name</td>
