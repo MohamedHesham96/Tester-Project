@@ -11,7 +11,7 @@ class historyOperations {
                 . "JOIN quizzes on history.doctor_id = quizzes.doctor_id "
                 // mohamed have to change here >> get the vale from the session
                 . "JOIN submits on submit_id = submits.id and history.student_name = 'mohamed' "
-                . "JOIN users on users.id = history.doctor_id and quizzes.quiz_id = history.quiz_id GROUP BY quizzes.quiz_name";
+                . "JOIN users on users.id = history.doctor_id and quizzes.quiz_id = history.quiz_id ";
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
