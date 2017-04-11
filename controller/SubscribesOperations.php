@@ -4,10 +4,8 @@ class SubscribesOperations {
 
     public static function viewAllSubscribes() {
 
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "testerdb";
+                       include '../include/vars.php';
+
 
         $conn = new mysqli($host, $username, $password, $dbname);
 
