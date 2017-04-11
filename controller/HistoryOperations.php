@@ -1,6 +1,6 @@
 <?php
 
-class historyOperations {
+class HistoryOperations {
 
     public static function viewAllQuizzes() {
 
