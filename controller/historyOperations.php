@@ -1,15 +1,11 @@
 <?php
 
-
 class historyOperations {
 
     public static function viewAllQuizzes() {
 
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "testerdb";
-        
+        include '../include/vars.php';
+
         $conn = new mysqli($host, $username, $password, $dbname);
         $query = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, submits.mark, submits.time, quizzes.password, quizzes.full_mark from history "
                 . "JOIN quizzes on history.doctor_id = quizzes.doctor_id "
