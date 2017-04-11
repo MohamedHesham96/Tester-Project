@@ -40,6 +40,6 @@
                     </table>
                     </div>
 
-                <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+                    <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
                     </body>
                     </html>

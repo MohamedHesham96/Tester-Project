@@ -25,7 +25,6 @@
                 </ul>
             </div>
         </div>
-        <p> <p>
 
                 <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
