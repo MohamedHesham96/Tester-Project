@@ -39,7 +39,7 @@
 
 
                         <?php
-                        include '../controller/historyOperations.php';
+                        include '../controller/HistoryOperations.php';
                         $reult = HistoryOperations::viewAllQuizzes();
 
 // check if the statment is true

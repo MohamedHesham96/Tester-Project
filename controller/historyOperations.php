@@ -7,8 +7,8 @@ class historyOperations {
 
         $host = "localhost";
         $username = "root";
-        $password = "31560";
-        $dbname = "Testerdb";
+        $password = "";
+        $dbname = "testerdb";
         
         $conn = new mysqli($host, $username, $password, $dbname);
         $query = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, submits.mark, submits.time, quizzes.password, quizzes.full_mark from history "
