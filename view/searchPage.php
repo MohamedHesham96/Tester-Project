@@ -7,7 +7,10 @@
         <meta charset="utf-8"/>
     </head>
     <body >
+
         <div class="log"> <button onclick="">log out</button></div>
+
+
         <h4> welcome ** </h4>
         <div class="nav">
             <div class="container">
@@ -23,26 +26,32 @@
 
 
         <div>
-            <h1> Results <h1>
+
+            <br><br>
+
+            <h1 class="has-error"> Results <h1>
 
                     <table> 
 
+                        <td>Quiz Code</td>
                         <td>Quiz Name</td>
                         <td>Doctor Name</td>
                         <td>Doctor E-Mail</td>
                         <td>Password</td>
+
                         </tr>
 
                         <tr>
-                            <td>marwa</td>
-                            <td>20</td>
-                            <td></td>
-                            <td></td>
+                            <td>1005</td>
+                            <td>Test#5</td>
+                            <td>Dr.Ahmed</td>
+                            <td>ahmed@gmail.com</td>
+                            <td><img src="../recources/images/lock.png" height="20"></td>
 
                         </tr>
                     </table>
                     </div>
 
-                <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+                    <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
                     </body>
                     </html>
