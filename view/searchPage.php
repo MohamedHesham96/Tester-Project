@@ -25,14 +25,13 @@
         </div>
 
 
-        <div>
+           <div class="container">
 
-            <br><br>
-
+            
             <h1 class="has-error"> Results <h1>
 
-                    <table> 
-
+                    <table class="table-striped"> 
+           
                         <td>Quiz Code</td>
                         <td>Quiz Name</td>
                         <td>Doctor Name</td>
