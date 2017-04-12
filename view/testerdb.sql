@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2017 at 02:15 AM
+-- Generation Time: Apr 13, 2017 at 12:39 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -113,18 +113,19 @@ CREATE TABLE `quizzes` (
   `doctor_id` int(11) NOT NULL,
   `password` int(11) DEFAULT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `full_mark` int(11) NOT NULL
+  `full_mark` int(11) NOT NULL,
+  `doctor_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quizzes`
 --
 
-INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `date`, `full_mark`) VALUES
-(1001, 'test#1', 1, 2222, '2017-04-09 23:30:28', 30),
-(1002, 'test#2', 1, NULL, '2017-04-10 18:11:26', 25),
-(1003, 'test#3', 2, 5555, '2017-04-10 18:11:30', 40),
-(1004, 'test#4', 2, NULL, '2017-04-10 16:00:47', 50);
+INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `date`, `full_mark`, `doctor_name`) VALUES
+(1001, 'test#1', 1, 2222, '2017-04-12 21:17:15', 30, 'dr.ahmed'),
+(1002, 'test#2', 1, NULL, '2017-04-12 21:17:25', 25, 'dr.ahmed'),
+(1003, 'test#3', 2, 5555, '2017-04-12 21:17:31', 40, 'dr.hazem'),
+(1004, 'test#4', 2, NULL, '2017-04-12 21:17:38', 50, 'dr.hazem');
 
 -- --------------------------------------------------------
 
@@ -164,9 +165,9 @@ INSERT INTO `submits` (`id`, `student_id`, `quiz_id`, `mark`, `time`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `password` varchar(64) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `type` varchar(10) NOT NULL,
   `age` int(3) NOT NULL,
   `country` varchar(50) NOT NULL,
