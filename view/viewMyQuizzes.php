@@ -28,7 +28,7 @@
         <div class="container">
 
 
-            <h1> Results <h1>
+            <h1> My Quizzes <h1>
 
                     <table class="table-striped"> 
 
