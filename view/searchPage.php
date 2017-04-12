@@ -41,14 +41,31 @@
 
                         </tr>
 
-                        <tr>
-                            <td>1005</td>
-                            <td>Test#5</td>
-                            <td>Dr.Ahmed</td>
-                            <td>ahmed@gmail.com</td>
-                            <td><img src="../recources/images/lock.png" height="20"></td>
+                        <?php
+                        include '../controller/SearchOperations.php';
+                        $reult = SearchOperations::viewAllQuizzes();
 
-                        </tr>
+// check if the statment is true
+
+                        if (!$reult) {
+                            echo 'error2';
+                        } else {
+                            while ($row = mysqli_fetch_array($reult, 2)) {
+                                echo "<tr>";
+                                echo "<td>" . $row[0] . "</td>";
+                                echo "<td>" . $row[1] . "</td>";
+                                echo "<td>" . $row[2] . "</td>";
+                                echo "<td>" . $row[3] . " / " . $row[6] . "</td>";
+                                echo "<td>" . $row[4] . "</td>";
+                                if ($row[5]) {
+                                    echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
+                                } else {
+                                    echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
+                                }
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </table>
                     </div>
 
