@@ -25,13 +25,13 @@
         </div>
 
 
-           <div class="container">
+        <div class="container">
 
-            
-            <h1 class="has-error"> Results <h1>
+
+            <h1> Results <h1>
 
                     <table class="table-striped"> 
-           
+
                         <td>Quiz Code</td>
                         <td>Quiz Name</td>
                         <td>Doctor Name</td>
@@ -54,7 +54,7 @@
                                 echo "<td>" . $row['quiz_id'] . "</td>";
                                 echo "<td>" . $row['quiz_name'] . "</td>";
                                 echo "<td>" . $row['username'] . "</td>";
-                               
+
                                 if ($row['password']) {
                                     echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
                                 } else {
