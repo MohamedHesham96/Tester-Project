@@ -36,7 +36,6 @@
                         <td>Quiz Code</td>
                         <td>Quiz Name</td>
                         <td>Doctor Name</td>
-                        <td>Doctor E-Mail</td>
                         <td>Password</td>
 
                         </tr>
@@ -50,13 +49,14 @@
                         if (!$reult) {
                             echo 'error2';
                         } else {
-                            while ($row = mysqli_fetch_array($reult, 2)) {
+                            while ($row = mysqli_fetch_array($reult, 1)) {
+
                                 echo "<tr>";
-                                echo "<td>" . $row[0] . "</td>";
-                                echo "<td>" . $row[1] . "</td>";
-                                echo "<td>" . $row[2] . "</td>";
-                                echo "<td>" . $row[3] . "</td>";
-                                if ($row[3]) {
+                                echo "<td>" . $row['quiz_id'] . "</td>";
+                                echo "<td>" . $row['quiz_name'] . "</td>";
+                                echo "<td>" . $row['username'] . "</td>";
+                               
+                                if ($row['password']) {
                                     echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
                                 } else {
                                     echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
