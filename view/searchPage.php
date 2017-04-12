@@ -43,7 +43,7 @@
 
                         <?php
                         include '../controller/SearchOperations.php';
-                        $reult = SearchOperations::viewAllQuizzes();
+                        $reult = SearchOperations::getSearchResult();
 
 // check if the statment is true
 
@@ -55,9 +55,8 @@
                                 echo "<td>" . $row[0] . "</td>";
                                 echo "<td>" . $row[1] . "</td>";
                                 echo "<td>" . $row[2] . "</td>";
-                                echo "<td>" . $row[3] . " / " . $row[6] . "</td>";
-                                echo "<td>" . $row[4] . "</td>";
-                                if ($row[5]) {
+                                echo "<td>" . $row[3] . "</td>";
+                                if ($row[3]) {
                                     echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
                                 } else {
                                     echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
