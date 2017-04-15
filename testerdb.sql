@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2017 at 06:29 PM
+-- Generation Time: Apr 15, 2017 at 07:18 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -96,7 +96,7 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`questio_id`, `quiz_id`, `header`, `answer_1`, `answer_2`, `answer_3`, `answer_4`, `correct_answer`) VALUES
-(1, 1002, 'are you a gril ??', 'yes', 'no', NULL, NULL, ''),
+(1, 1002, 'are you a gril ??', 'yes', 'no', NULL, NULL, 'yes\r\n'),
 (2, 1001, 'are you human ? ', 'yes', 'very yes', 'no', 'sure no', 'yes'),
 (3, 1003, 'Are You Carzy ? ', 'yes', 'sure', 'nop', 'sorry !', 'yes'),
 (4, 1001, 'how are you ? ', 'fine ', 'thank you', 'good', 'so good', 'so good');
@@ -126,6 +126,27 @@ INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `date`, 
 (1002, 'test2', 1, NULL, '2017-04-15 16:28:43', 25, 'dr.ahmed'),
 (1003, 'test3', 2, 5555, '2017-04-15 16:28:45', 40, 'dr.hazem'),
 (1004, 'test4', 2, NULL, '2017-04-15 16:28:49', 50, 'dr.hazem');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `results`
+--
+
+CREATE TABLE `results` (
+  `student_name` varchar(100) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
+  `student_anwser` varchar(100) NOT NULL,
+  `question_header` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`student_name`, `quiz_id`, `student_anwser`, `question_header`) VALUES
+('mohamed', 1001, 'yes', 'are you human ?'),
+('mohamed', 1001, 'fine', 'how are you ? ');
 
 -- --------------------------------------------------------
 
