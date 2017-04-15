@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2017 at 12:39 AM
+-- Generation Time: Apr 15, 2017 at 06:29 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -122,10 +122,10 @@ CREATE TABLE `quizzes` (
 --
 
 INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `date`, `full_mark`, `doctor_name`) VALUES
-(1001, 'test#1', 1, 2222, '2017-04-12 21:17:15', 30, 'dr.ahmed'),
-(1002, 'test#2', 1, NULL, '2017-04-12 21:17:25', 25, 'dr.ahmed'),
-(1003, 'test#3', 2, 5555, '2017-04-12 21:17:31', 40, 'dr.hazem'),
-(1004, 'test#4', 2, NULL, '2017-04-12 21:17:38', 50, 'dr.hazem');
+(1001, 'test1', 1, 2222, '2017-04-15 16:28:32', 30, 'dr.ahmed'),
+(1002, 'test2', 1, NULL, '2017-04-15 16:28:43', 25, 'dr.ahmed'),
+(1003, 'test3', 2, 5555, '2017-04-15 16:28:45', 40, 'dr.hazem'),
+(1004, 'test4', 2, NULL, '2017-04-15 16:28:49', 50, 'dr.hazem');
 
 -- --------------------------------------------------------
 
