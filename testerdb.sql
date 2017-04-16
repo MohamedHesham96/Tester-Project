@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2017 at 07:18 PM
+-- Generation Time: Apr 16, 2017 at 10:32 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -96,7 +96,7 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`questio_id`, `quiz_id`, `header`, `answer_1`, `answer_2`, `answer_3`, `answer_4`, `correct_answer`) VALUES
-(1, 1002, 'are you a gril ??', 'yes', 'no', NULL, NULL, 'yes\r\n'),
+(1, 1002, 'are you a gril ?', 'yes', 'no', NULL, NULL, 'yes\r\n'),
 (2, 1001, 'are you human ? ', 'yes', 'very yes', 'no', 'sure no', 'yes'),
 (3, 1003, 'Are You Carzy ? ', 'yes', 'sure', 'nop', 'sorry !', 'yes'),
 (4, 1001, 'how are you ? ', 'fine ', 'thank you', 'good', 'so good', 'so good');
@@ -146,7 +146,8 @@ CREATE TABLE `results` (
 
 INSERT INTO `results` (`student_name`, `quiz_id`, `student_anwser`, `question_header`) VALUES
 ('mohamed', 1001, 'yes', 'are you human ?'),
-('mohamed', 1001, 'fine', 'how are you ? ');
+('mohamed', 1001, 'fine', 'how are you ? '),
+('mona', 1002, 'yes', 'are you a gril ?');
 
 -- --------------------------------------------------------
 
@@ -190,25 +191,27 @@ CREATE TABLE `users` (
   `password` varchar(64) NOT NULL,
   `email` varchar(100) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `age` int(3) NOT NULL,
+  `birth_date` date NOT NULL,
   `country` varchar(50) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` blob NOT NULL,
+  `university` varchar(100) NOT NULL,
+  `faculty` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `age`, `country`, `gender`, `phone`, `image`) VALUES
-(1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', 35, 'egypt', 'male', '011000066666', ''),
-(2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', 35, 'egypt', 'male', '021515151', ''),
-(3, 'mohamed', '213', 'medo@gmail.com', 'student', 20, 'egypt', 'male', '012022255', ''),
-(4, 'mona', '213', 'mona@gmail.com', 'student', 20, 'egypt', 'femal', '012000000', ''),
-(5, 'samir', '21311', 'sam@gmail.com', 'student', 25, 'egypt', 'male', '012000000', ''),
-(6, 'abouzaid', '55221', 'zaid@gmail.com', 'student', 25, 'egypt', 'male', '01255221222', ''),
-(10, 'maged', '213', 'medo@mal.com', 'admin', 21, 'egypt', 'male', '220001111000', '');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `birth_date`, `country`, `gender`, `phone`, `image`, `university`, `faculty`) VALUES
+(1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', '0000-00-00', 'egypt', 'male', '011000066666', '', '', ''),
+(2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', '0000-00-00', 'egypt', 'male', '021515151', '', '', ''),
+(3, 'mohamed', '213', 'medo@gmail.com', 'student', '0000-00-00', 'egypt', 'male', '012022255', '', '', ''),
+(4, 'mona', '213', 'mona@gmail.com', 'student', '0000-00-00', 'egypt', 'femal', '012000000', '', '', ''),
+(5, 'samir', '21311', 'sam@gmail.com', 'student', '0000-00-00', 'egypt', 'male', '012000000', '', '', ''),
+(6, 'abouzaid', '55221', 'zaid@gmail.com', 'student', '0000-00-00', 'egypt', 'male', '01255221222', '', '', ''),
+(10, 'maged', '213', 'medo@mal.com', 'admin', '0000-00-00', 'egypt', 'male', '220001111000', '', '', '');
 
 --
 -- Indexes for dumped tables
