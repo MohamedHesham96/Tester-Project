@@ -48,6 +48,8 @@
                             echo 'error2';
                         } else {
                             while ($row = mysqli_fetch_array($reult, 1)) {
+
+
                                 echo "<tr>";
                                 echo "<td>" . $row['quiz_id'] . "</td>";
                                 echo "<td>" . $row['quiz_name'] . "</td>";
@@ -55,9 +57,9 @@
                                 echo "<td>" . $row['mark'] . " / " . $row['full_mark'] . "</td>";
                                 echo "<td>" . $row['time'] . "</td>";
                                 if ($row['password']) {
-                                    echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
+                                    echo "<td>" . '<img src=" . ./recources/images/lock.png"  height="20" width="20">' . " < /td>";
                                 } else {
-                                    echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
+                                    echo "<td>" . '<img src=" . ./recources/images/unlock.png"  height="22" width="22">' . " < /td>";
                                 }
                                 echo "</tr>";
                             }
