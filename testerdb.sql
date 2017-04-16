@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2017 at 10:32 PM
+-- Generation Time: Apr 16, 2017 at 10:44 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -205,13 +205,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `birth_date`, `country`, `gender`, `phone`, `image`, `university`, `faculty`) VALUES
-(1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', '0000-00-00', 'egypt', 'male', '011000066666', '', '', ''),
-(2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', '0000-00-00', 'egypt', 'male', '021515151', '', '', ''),
-(3, 'mohamed', '213', 'medo@gmail.com', 'student', '0000-00-00', 'egypt', 'male', '012022255', '', '', ''),
-(4, 'mona', '213', 'mona@gmail.com', 'student', '0000-00-00', 'egypt', 'femal', '012000000', '', '', ''),
-(5, 'samir', '21311', 'sam@gmail.com', 'student', '0000-00-00', 'egypt', 'male', '012000000', '', '', ''),
-(6, 'abouzaid', '55221', 'zaid@gmail.com', 'student', '0000-00-00', 'egypt', 'male', '01255221222', '', '', ''),
-(10, 'maged', '213', 'medo@mal.com', 'admin', '0000-00-00', 'egypt', 'male', '220001111000', '', '', '');
+(1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', '1980-04-06', 'egypt', 'male', '011000066666', '', 'scu', 'fci'),
+(2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', '1975-04-06', 'egypt', 'male', '021515151', '', 'scu', 'fci'),
+(3, 'mohamed', '213', 'medo@gmail.com', 'student', '1996-08-18', 'egypt', 'male', '012022255', '', 'scu', 'fci'),
+(4, 'mona', '213', 'mona@gmail.com', 'student', '1996-10-20', 'egypt', 'femal', '012000000', '', 'scu', 'fci'),
+(5, 'samir', '21311', 'sam@gmail.com', 'student', '1996-04-08', 'egypt', 'male', '012000000', '', 'scu', 'fci'),
+(6, 'abouzaid', '55221', 'zaid@gmail.com', 'student', '1996-02-10', 'egypt', 'male', '01255221222', '', 'scu', 'fci'),
+(10, 'maged', '213', 'medo@mal.com', 'admin', '1978-05-25', 'egypt', 'male', '220001111000', '', '', '');
 
 --
 -- Indexes for dumped tables
