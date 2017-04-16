@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2017 at 12:39 AM
+-- Generation Time: Apr 16, 2017 at 10:44 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -96,7 +96,7 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`questio_id`, `quiz_id`, `header`, `answer_1`, `answer_2`, `answer_3`, `answer_4`, `correct_answer`) VALUES
-(1, 1002, 'are you a gril ??', 'yes', 'no', NULL, NULL, ''),
+(1, 1002, 'are you a gril ?', 'yes', 'no', NULL, NULL, 'yes\r\n'),
 (2, 1001, 'are you human ? ', 'yes', 'very yes', 'no', 'sure no', 'yes'),
 (3, 1003, 'Are You Carzy ? ', 'yes', 'sure', 'nop', 'sorry !', 'yes'),
 (4, 1001, 'how are you ? ', 'fine ', 'thank you', 'good', 'so good', 'so good');
@@ -122,10 +122,32 @@ CREATE TABLE `quizzes` (
 --
 
 INSERT INTO `quizzes` (`quiz_id`, `quiz_name`, `doctor_id`, `password`, `date`, `full_mark`, `doctor_name`) VALUES
-(1001, 'test#1', 1, 2222, '2017-04-12 21:17:15', 30, 'dr.ahmed'),
-(1002, 'test#2', 1, NULL, '2017-04-12 21:17:25', 25, 'dr.ahmed'),
-(1003, 'test#3', 2, 5555, '2017-04-12 21:17:31', 40, 'dr.hazem'),
-(1004, 'test#4', 2, NULL, '2017-04-12 21:17:38', 50, 'dr.hazem');
+(1001, 'test1', 1, 2222, '2017-04-15 16:28:32', 30, 'dr.ahmed'),
+(1002, 'test2', 1, NULL, '2017-04-15 16:28:43', 25, 'dr.ahmed'),
+(1003, 'test3', 2, 5555, '2017-04-15 16:28:45', 40, 'dr.hazem'),
+(1004, 'test4', 2, NULL, '2017-04-15 16:28:49', 50, 'dr.hazem');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `results`
+--
+
+CREATE TABLE `results` (
+  `student_name` varchar(100) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
+  `student_anwser` varchar(100) NOT NULL,
+  `question_header` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`student_name`, `quiz_id`, `student_anwser`, `question_header`) VALUES
+('mohamed', 1001, 'yes', 'are you human ?'),
+('mohamed', 1001, 'fine', 'how are you ? '),
+('mona', 1002, 'yes', 'are you a gril ?');
 
 -- --------------------------------------------------------
 
@@ -169,25 +191,27 @@ CREATE TABLE `users` (
   `password` varchar(64) NOT NULL,
   `email` varchar(100) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `age` int(3) NOT NULL,
+  `birth_date` date NOT NULL,
   `country` varchar(50) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` blob NOT NULL,
+  `university` varchar(100) NOT NULL,
+  `faculty` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `age`, `country`, `gender`, `phone`, `image`) VALUES
-(1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', 35, 'egypt', 'male', '011000066666', ''),
-(2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', 35, 'egypt', 'male', '021515151', ''),
-(3, 'mohamed', '213', 'medo@gmail.com', 'student', 20, 'egypt', 'male', '012022255', ''),
-(4, 'mona', '213', 'mona@gmail.com', 'student', 20, 'egypt', 'femal', '012000000', ''),
-(5, 'samir', '21311', 'sam@gmail.com', 'student', 25, 'egypt', 'male', '012000000', ''),
-(6, 'abouzaid', '55221', 'zaid@gmail.com', 'student', 25, 'egypt', 'male', '01255221222', ''),
-(10, 'maged', '213', 'medo@mal.com', 'admin', 21, 'egypt', 'male', '220001111000', '');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `birth_date`, `country`, `gender`, `phone`, `image`, `university`, `faculty`) VALUES
+(1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', '1980-04-06', 'egypt', 'male', '011000066666', '', 'scu', 'fci'),
+(2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', '1975-04-06', 'egypt', 'male', '021515151', '', 'scu', 'fci'),
+(3, 'mohamed', '213', 'medo@gmail.com', 'student', '1996-08-18', 'egypt', 'male', '012022255', '', 'scu', 'fci'),
+(4, 'mona', '213', 'mona@gmail.com', 'student', '1996-10-20', 'egypt', 'femal', '012000000', '', 'scu', 'fci'),
+(5, 'samir', '21311', 'sam@gmail.com', 'student', '1996-04-08', 'egypt', 'male', '012000000', '', 'scu', 'fci'),
+(6, 'abouzaid', '55221', 'zaid@gmail.com', 'student', '1996-02-10', 'egypt', 'male', '01255221222', '', 'scu', 'fci'),
+(10, 'maged', '213', 'medo@mal.com', 'admin', '1978-05-25', 'egypt', 'male', '220001111000', '', '', '');
 
 --
 -- Indexes for dumped tables
