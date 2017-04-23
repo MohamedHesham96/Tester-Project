@@ -137,7 +137,7 @@
                                                     <br>
                                                     <br>
                                                     <label>Birth Day<small></small></label>
-                                                    <input class="form-control" type="date" placeholder="Enter Your Birth Date"  name="bday" required>
+                                                    <input class="form-control" type="date" placeholder="Enter Your Birth Date"  name="birth_day">
                                                     <br>
                                                     <label>Phone <small></small></label>
                                                     <input class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone">
