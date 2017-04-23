@@ -31,14 +31,14 @@
 
                         <?php
                         include '../controller/HistoryOperations.php';
-                        $reult = HistoryOperations::viewAllQuizzes($studentName);
+                        $result = HistoryOperations::viewAllQuizzes($studentName);
 
 // check if the statment is true
 
-                        if (!$reult) {
+                        if (!$result) {
                             echo 'error2';
                         } else {
-                            while ($row = mysqli_fetch_array($reult, 1)) {
+                            while ($row = mysqli_fetch_array($result, 1)) {
 
 
                                 echo "<tr>";

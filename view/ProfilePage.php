@@ -20,10 +20,19 @@
 
     <body>
 
+        <?php
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $username = $_SESSION['username'];
+        echo $username;
 
-        <div class="image-container set-full-height" style="background-image: url('img/wizard.jpg')">
+        include '../controller/MyProfileOperations.php';
 
-            <!--   Big container   -->
+        $result = MyProfileOperations::getMyData($username);
+        while ($row = mysqli_fetch_array($result, 1)) {
+            ?>
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
@@ -32,80 +41,69 @@
                         <div class="wizard-container">
 
                             <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                                <form action="" method="">
-                                    <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
+                                <div class="row">
+                                    <br>    <div class="col-sm-4 col-sm-offset-1">
+                                        <div class="picture-container">
 
-
-
-                                    <div class="tab-pane" id="about">
-                                        <div class="row">
-                                            <br>    <div class="col-sm-4 col-sm-offset-1">
-                                                <div class="picture-container">
-
-                                                    <br>
-                                                    <div class="picture">
-                                                        <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                        <input type="file" id="image">
-                                                    </div>
-                                                    <h6>Choose Picture</h6>
-                                                </div>
+                                            <br>
+                                            <div class="picture">
+                                                <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Username </label>
-                                                    <input name="username"  value="ahmed@sd"  type="text" class="form-control" >
-                                                </div>
-
-
-                                                <label>Email </label>
-                                                <input class="form-control" class="form-control" name="email" />
-
-
-                                                <br>
-                                                <label>Birth Day</label>
-                                                <input class="form-control" type="text" name="birth_day">
-                                                <br>
-                                                <label>Phone </label>
-                                                <input class="form-control"  name="phone">
-                                                <br>
-
-                                                <label>University </label>
-                                                <input class="form-control" name="university">
-                                                <br>
-
-                                                <label>Faculty </label>
-                                                <input class="form-control" name="faculty">
-                                                <br>
-                                                <label>Country</label>
-                                                <input class="form-control" name="phone">
-                                                <br>
-
-                                            </div>
+                                            <h6><?php echo $row['username']; ?></h6>
                                         </div>
+                                    </div>
+                                    <div class="col-sm-6">
+
+
+                                        <label>Email </label>
+                                        <input class="form-control" value="<?php echo $row['email']; ?>" class="form-control" name="email" readonly>
+
+
+                                        <br>
+                                        <label>Birth Day</label>
+                                        <input class="form-control" value="<?php echo $row['birth_day']; ?>" type="text" name="birth_day" readonly>
+                                        <br>
+                                        <label>Phone </label>
+                                        <input class="form-control" value="<?php echo $row['phone']; ?>" name="phone" readonly>
+                                        <br>
+
+                                        <label>University </label>
+                                        <input class="form-control" value="<?php echo $row['university']; ?>" name="university" readonly>
+                                        <br>
+
+                                        <label>Faculty </label>
+                                        <input class="form-control" value="<?php echo $row['faculty']; ?>" name="faculty" readonly>
+                                        <br>
+                                        <label>Country</label>
+                                        <input class="form-control" value="<?php echo $row['country']; ?>" name="country" readonly>
+                                        <br>
 
                                     </div>
+                                </div>
+
                             </div>
-
                         </div>
+
                     </div>
-
-
-
-
                 </div>
 
-                </body>
 
-                <!--   Core JS Files   -->
-                <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-                <script src="../recources/js/bootstrap.min.js" type="text/javascript"></script>
-                <script src="../recources/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+            <?php } ?>
 
-                <!--  Plugin for the Wizard -->
-                <script src="../recources/js/gsdk-bootstrap-wizard.js"></script>
+        </div>
 
-                <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
-                <script src="../recources/js/jquery.validate.min.js"></script>
+    </body>
 
-                </html>
+    <!--   Core JS Files   -->
+    <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="../recources/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../recources/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
+
+    <!--  Plugin for the Wizard -->
+    <script src="../recources/js/gsdk-bootstrap-wizard.js"></script>
+
+    <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
+    <script src="../recources/js/jquery.validate.min.js"></script>
+
+</html>
