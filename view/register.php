@@ -426,11 +426,13 @@
                     </div>
                 </div> <!-- wizard container -->
             </div>
+   
         </div><!-- end row -->
+   
     </div> <!--  big container -->
 
 
-</div>
+    </div>
 
 </body>
 
