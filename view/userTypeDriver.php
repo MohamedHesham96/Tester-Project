@@ -4,9 +4,11 @@ session_start();
 
 $_SESSION['userid'] = "1";
 $_SESSION['username'] = "dr.ahmed";
-//$_SESSION['usertype'] = "doctor";
-$_SESSION['usertype'] = "student";
-
+$_SESSION['usertype'] = "doctor";
+/* $_SESSION['usertype'] = "student";
+  $_SESSION['userid'] = "3";
+  $_SESSION['username'] = "samir";
+ */
 switch ($_SESSION['usertype']) {
 
     case "admin":

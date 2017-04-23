@@ -5,6 +5,14 @@
         <meta charset="utf-8"/>
     </head>
     <body >
+
+
+        <?php
+        session_start();
+
+        $studentName = $_SESSION['username'];
+        ?>
+        
         <?php include './header.php'; ?>
 
         <h1> Your Exams <h1>
@@ -23,7 +31,7 @@
 
                         <?php
                         include '../controller/HistoryOperations.php';
-                        $reult = HistoryOperations::viewAllQuizzes();
+                        $reult = HistoryOperations::viewAllQuizzes($studentName);
 
 // check if the statment is true
 

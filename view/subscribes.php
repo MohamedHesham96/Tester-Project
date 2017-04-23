@@ -6,6 +6,12 @@
         <meta charset="utf-8"/>
     </head>
     <body >
+        <?php
+        session_start();
+
+        $studentName = $_SESSION['username'];
+        ?>
+
         <?php include './header.php'; ?>
 
 
@@ -25,7 +31,7 @@
 
                         <?php
                         include '../controller/SubscribesOperations.php';
-                        $reult = SubscribesOperations::viewAllSubscribes();
+                        $reult = SubscribesOperations::viewAllSubscribes($studentName);
 
 // check if the statment is true
 
