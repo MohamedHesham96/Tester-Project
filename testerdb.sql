@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2017 at 10:44 PM
+-- Generation Time: Apr 23, 2017 at 02:47 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -171,7 +171,7 @@ INSERT INTO `submits` (`id`, `student_id`, `quiz_id`, `mark`, `time`) VALUES
 (1, 3, 1001, 30, '00:08:18'),
 (2, 3, 1002, 25, '00:10:10'),
 (3, 3, 1003, 20, '00:08:10'),
-(4, 4, 1001, 25, '00:08:18'),
+(4, 4, 1001, 25, '00:10:00'),
 (5, 4, 1002, 22, '00:10:07'),
 (6, 5, 1002, 23, '00:06:06'),
 (7, 5, 1003, 24, '00:14:16'),
@@ -191,7 +191,7 @@ CREATE TABLE `users` (
   `password` varchar(64) NOT NULL,
   `email` varchar(100) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `birth_date` date NOT NULL,
+  `birth_day` date NOT NULL,
   `country` varchar(50) NOT NULL,
   `gender` varchar(6) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -204,7 +204,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `birth_date`, `country`, `gender`, `phone`, `image`, `university`, `faculty`) VALUES
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `type`, `birth_day`, `country`, `gender`, `phone`, `image`, `university`, `faculty`) VALUES
 (1, 'dr.ahmed\n', '213', 'hany@gmail.com', 'doctor', '1980-04-06', 'egypt', 'male', '011000066666', '', 'scu', 'fci'),
 (2, 'dr.hazem', '252', 'h@gmail.com', 'doctor', '1975-04-06', 'egypt', 'male', '021515151', '', 'scu', 'fci'),
 (3, 'mohamed', '213', 'medo@gmail.com', 'student', '1996-08-18', 'egypt', 'male', '012022255', '', 'scu', 'fci'),
