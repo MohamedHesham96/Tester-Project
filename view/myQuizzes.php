@@ -8,21 +8,15 @@
     </head>
     <body >
 
-        <div class="log"> <button onclick="">log out</button></div>
+        <?php
+        session_start();
 
+        $doctor_name = $_SESSION['username'];
+        ?>
 
-        <h4> welcome ** </h4>
-        <div class="nav">
-            <div class="container">
-                <ul>
-                    <li><a href="home.php" >HOME</a></li>
-                    <li><a href="history.php" >History</a></li>
-                    <li><a href="subscribes.php">Subscribes</a></li>
-                    <li><a href="about.php">About</a></li>
-                </ul>
+     
+       <?php include './header.php';?>
 
-            </div>
-        </div>
 
 
         <div class="container">
@@ -41,8 +35,8 @@
                         </tr>
 
                         <?php
-                        include '../controller/ViewMyQuizzesOperations.php';
-                        $reult = MyQuizzesOperations::getMyQuizzes();
+                        include '../controller/MyQuizzesOperations.php';
+                        $reult = MyQuizzesOperations::getMyQuizzes($doctor_name);
 
 
 // check if the statment is true

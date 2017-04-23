@@ -7,30 +7,8 @@
 
     </head>
     <body>
-        <?php
-        session_start();
-        echo '<h1>' . $_SESSION['usertype'] . '</h1>';
-        if ($_SESSION['usertype'] == 'doctor') {
-            $secondTab = 'myQuizzes';
-        }
-        
-        ?>       <div class="log"> <button onclick="">log out</button></div>
-        <h4> welcome ** </h4>
-
-        <div class="nav">
-
-            <div class="container">
-                <ul>
-                    <li><a href="home.php" class="active" >HOME</a></li>
-                    <li><a href="<?php echo $secondTab . '.php'?>" ><?php echo $secondTab?></a></li>
-                    <li><a href="subscribes.php">Subscribes</a></li>
-                    <li><a href="about.php">About</a></li>
-
-                </ul>
-            </div>
-        </div>
-
-        <h1></h1>
+    
+   <?php include './header.php'; ?>
 
         <br>
         <br>

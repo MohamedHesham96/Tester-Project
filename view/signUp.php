@@ -19,6 +19,9 @@
     </head>
 
     <body>
+        
+        <?php include './header.php'; ?>
+
         <div class="image-container set-full-height" style="background-image: url('img/wizard.jpg')">
 
             <!--   Big container   -->
@@ -117,8 +120,8 @@
                                                         </div>
 
                                                     </div>
-                                              
-                                                  
+
+
                                                 </div>
 
                                             </div>

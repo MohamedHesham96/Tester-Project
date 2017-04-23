@@ -8,24 +8,11 @@
     </head>
     <body >
 
-        <div class="log"> <button onclick="">log out</button></div>
-        <h4> welcome ** </h4>
+       
 
+   <?php include './header.php';?>
 
-        <div class="nav">
-
-            <div class="container">
-
-                <ul>
-                    <li><a href="home.php" >HOME</a></li>
-                    <li><a href="history.php" >History</a></li>
-                    <li><a href="subscribes.php">Subscribes</a></li>
-                    <li><a href="about.php" class="active">About</a></li>
-
-                </ul>
-            </div>
-        </div>
-
+    
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>

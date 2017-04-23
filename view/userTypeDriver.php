@@ -4,7 +4,8 @@ session_start();
 
 $_SESSION['userid'] = "1";
 $_SESSION['username'] = "dr.ahmed";
-$_SESSION['usertype'] = "doctor";
+//$_SESSION['usertype'] = "doctor";
+$_SESSION['usertype'] = "student";
 
 switch ($_SESSION['usertype']) {
 

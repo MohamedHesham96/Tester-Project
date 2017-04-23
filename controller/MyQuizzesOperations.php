@@ -2,7 +2,7 @@
 
 class MyQuizzesOperations {
 
-    public static function getMyQuizzes() {
+    public static function getMyQuizzes($doctorName) {
 
         include '../include/vars.php';
 
@@ -11,7 +11,7 @@ class MyQuizzesOperations {
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
         
         $query = "SELECT quiz_id, quiz_name, full_mark, date, password from quizzes "
-                . "where doctor_name = 'dr.ahmed'";
+                . "where doctor_name = '"  . $doctorName. "'";
 
         $result = mysqli_query($conn, $query);
 

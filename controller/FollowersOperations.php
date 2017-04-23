@@ -1,6 +1,6 @@
 <?php
 
-class HistoryOperations {
+class FollowersOperations {
 
     public static function viewAllQuizzes() {
 

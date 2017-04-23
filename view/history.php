@@ -5,24 +5,7 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-        <div class="log"> <button onclick="">log out</button></div>
-        <h4> welcome ** </h4>
-
-        <div class="nav">
-
-            <div class="container">
-
-                <ul>
-                    <li><a href="home.php" >HOME</a></li>
-                    <li><a href="history.php" class="active">History</a></li>
-                    <li><a href="subscribes.php">Subscribes</a></li>
-                    <li><a href="about.php">About</a></li>
-
-                </ul>
-            </div>
-        </div>
-
-
+        <?php include './header.php'; ?>
 
         <h1> Your Exams <h1>
                 <div class="container">
