@@ -2,13 +2,13 @@
 
 session_start();
 
-$_SESSION['userid'] = "2";
-$_SESSION['username'] = "dr.hazem";
-$_SESSION['usertype'] = "doctor";
-/* $_SESSION['usertype'] = "student";
-  $_SESSION['userid'] = "3";
-  $_SESSION['username'] = "samir";
- */
+/* $_SESSION['userid'] = "2";
+  $_SESSION['username'] = "dr.hazem";
+  $_SESSION['usertype'] = "doctor"; */
+$_SESSION['usertype'] = "student";
+$_SESSION['userid'] = "3";
+$_SESSION['username'] = "samir";
+
 switch ($_SESSION['usertype']) {
 
     case "admin":

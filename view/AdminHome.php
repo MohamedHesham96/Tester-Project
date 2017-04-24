@@ -12,7 +12,7 @@
         <h4> welcome ** </h4>
 
 
-               <?php include './header.php'; ?>
+        <?php include './header.php'; ?>
 
         <h1></h1>
 
