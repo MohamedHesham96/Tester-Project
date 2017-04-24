@@ -30,7 +30,7 @@
 
             $username = $_SESSION['username'];
         } else {
-            
+
             $username = $_GET['name'];
         }
 
@@ -65,7 +65,9 @@
 
                                         <label>Email </label>
                                         <input class="form-control" value="<?php echo $row['email']; ?>" class="form-control" name="email" readonly>
-
+                                        <br>
+                                        <label>Gender</label>
+                                        <input class="form-control" value="<?php echo $row['gender']; ?>" name="gender" readonly>
 
                                         <br>
                                         <label>Birth Day</label>

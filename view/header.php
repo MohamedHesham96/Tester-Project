@@ -52,4 +52,3 @@ if ($_SESSION['usertype'] == 'doctor') {
         </ul>
     </div>
 </div>
-<br>
