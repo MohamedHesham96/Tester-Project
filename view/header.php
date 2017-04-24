@@ -28,6 +28,7 @@ if ($_SESSION['usertype'] == 'doctor') {
 
 <div class="log"> <button value="login.html" onclick="location = this.value">log out</button></div> <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4>
 
+<br>
 <div class="nav">
 
     <div class="container">
@@ -40,3 +41,4 @@ if ($_SESSION['usertype'] == 'doctor') {
         </ul>
     </div>
 </div>
+<br>

@@ -29,9 +29,10 @@
         if (!isset($_GET['name'])) {
 
             $username = $_SESSION['username'];
+        } else {
+            
+            $username = $_GET['name'];
         }
-
-        echo $username;
 
         include '../controller/MyProfileOperations.php';
 

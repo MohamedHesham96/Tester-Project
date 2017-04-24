@@ -14,8 +14,7 @@
 
         <?php include './header.php'; ?>
 
-        <h1></h1>
-
+       
         <br>
         <br>
         <br>

@@ -6,12 +6,14 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-        
-      <?php include './header.php'; ?>
+
+        <?php include './header.php'; ?>
 
 
         <div>
-            <h1> My Quizzes <h1>
+            <h1> Students Marks <h1>
+                    <center>    <h2> Quiz Name : Test1 </h2>  </center>
+
                     <?php
                     //connect to data base and create table for result
                     include '../include/vars.php';
@@ -27,16 +29,17 @@
                     if ($result->num_rows > 0) {
                         echo '<style>table{width:100%;border-collapse:collapse;} td,th{height:50px; text-align:left;border-bottom:1px #ddd solid ;padding:15px;}th{background-color:#4CAF50 ;color:white; } tr:hover {background-color: #4CAF50; color:white;} tr:nth-child(even){background-color:#f2f2f2;}tr:nth-child(even):hover{background-color:#4CAF50;} </style>';
                         echo '<table><thead><tr><th>Student Name<th>Student Mark</th><th>Submit Time</th></tr><thead><tbody>';
-           
+
                         while ($row = $result->fetch_assoc()) {
                             $name = $row['username'];
                             $mark = $row['mark'];
                             $fullMark = $row['full_mark'];
                             $time = $row['time'];
-                            echo '<tr><td>' . $name . '</td><td>' . $mark . ' / ' . $fullMark . '</td><td>' . $time . '</td>';
+                            echo '<tr><td><a href="profilepage.php?&&name='  . $name . '">' . $name . '</a> </td><td>' . $mark . ' / ' . $fullMark . '</td><td>' . $time . '</td>';
+                          
                             echo '</tr>';
                         }
-                        
+
                         echo '</tbody></table>';
                     }
                     ?>
