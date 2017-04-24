@@ -2,7 +2,7 @@
 
 class HistoryOperations {
 
-    public static function viewAllQuizzes() {
+    public static function viewAllQuizzes($studentName) {
 
         include '../include/vars.php';
 
@@ -10,7 +10,7 @@ class HistoryOperations {
         $query = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, submits.mark, submits.time, quizzes.password, quizzes.full_mark from history "
                 . "JOIN quizzes on history.doctor_id = quizzes.doctor_id "
                 // mohamed have to change here >> get the vale from the session
-                . "JOIN submits on submit_id = submits.id and history.student_name = 'mohamed' "
+                . "JOIN submits on submit_id = submits.id and history.student_name = '" . $studentName . "'"
                 . "JOIN users on users.id = history.doctor_id and quizzes.quiz_id = history.quiz_id";
         $result = mysqli_query($conn, $query);
 

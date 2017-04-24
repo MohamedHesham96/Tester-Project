@@ -19,117 +19,122 @@
     </head>
 
     <body>
-        <div class="image-container set-full-height" style="background-image: url('../recources/images/wizard.jpg')">
 
+<!-- <?php include './header.php'; ?> >
 
-            <!--   Big container   -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2">
+<div class="image-container set-full-height" style="background-image: url('img/wizard.jpg')">
 
-                        <!--      Wizard container        -->
-                        <div class="wizard-container">
+        <!--   Big container   -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
 
-                            <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                                <form action="" method="">
-                                    <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
+                    <!--      Wizard container        -->
+                    <div class="wizard-container">
 
-                                    <div class="wizard-header">
-                                        <h3>
-                                            <b>BUILD</b> YOUR PROFILE <br>
-                                            <small>This information will let us know more about you.</small>
-                                        </h3>
-                                    </div>
+                        <div class="card wizard-card" data-color="orange" id="wizardProfile">
+                            <form action="" method="">
+                                <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
-                                    <div class="wizard-navigation">
-                                        <ul>
-                                            <li><a href="#about" data-toggle="tab">About</a></li> 
-                                            <li><a href="#account" data-toggle="tab">Account</a></li>
-                                            <li><a href="#address" data-toggle="tab">Address</a></li>
-                                        </ul>
+                                <div class="wizard-header">
+                                    <h3>
+                                        <b>BUILD</b> YOUR PROFILE <br>
+                                        <small>This information will let us know more about you.</small>
+                                    </h3>
+                                </div>
 
-                                    </div>
+                                <div class="wizard-navigation">
+                                    <ul>
+                                        <li><a href="#about" data-toggle="tab">About</a></li> 
+                                        <li><a href="#account" data-toggle="tab">Account</a></li>
+                                        <li><a href="#address" data-toggle="tab">Info</a></li>
+                                    </ul>
 
-                                    <div class="tab-content">
-                                        <div class="tab-pane" id="about">
-                                            <div class="row">
-                                                <br>    <div class="col-sm-4 col-sm-offset-1">
-                                                    <div class="picture-container">
-                                                        
-                                                         <br>
-                                                            <div class="picture">
-                                                            <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                           <input type="file" id="image">
-                                                        </div>
-                                                        <h6>Choose Picture</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label>Username <small>(required)</small></label>
-                                                        <input name="username"  value="ahmed@sd"  type="text" class="form-control" placeholder="Enter Your Username">
-                                                    </div>
+                                </div>
+                                <div class="tab-content">
 
-
-                                                    <div class="form-group">
-                                                        <label>Email <small>(required)</small></label>
-                                                        <input class="form-control" class="form-control" placeholder="Enter Your Email" value="ahmed@sd"  type="email" name="name" required />
-                                                    </div>
-                                               
-                                                    <label>Password <small>(required)</small>  </label> </b><br>
-
-                                                    <input class="form-control" class="form-control"  placeholder="Password" value="ahmed@sd"  type="password" name="password" required />
+                                    <div class="tab-pane" id="about">
+                                        <div class="row">
+                                            <br>    <div class="col-sm-4 col-sm-offset-1">
+                                                <div class="picture-container">
 
                                                     <br>
-                                                    <label>Repeat Password <small>(required)</small>  </label> </b><br>
-                                                    <input class="form-control" type="password" placeholder="Repeat Password "value="ahmed@sd"  name="psw-repeat" required>
-                                                    <br>
+                                                    <div class="picture">
+                                                        <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                        <input type="file" id="image">
+                                                    </div>
+                                                    <h6>Choose Picture</h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>Username <small>(required)</small></label>
+                                                    <input name="username"  value="ahmed@sd"  type="text" class="form-control" placeholder="Enter Your Username">
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label>Email <small>(required)</small></label>
+                                                    <input class="form-control" class="form-control" placeholder="Enter Your Email" value="ahmed@sd"  type="email" name="name" required />
+                                                </div>
+
+                                                <label>Password <small>(required)</small>  </label> </b><br>
+
+                                                <input class="form-control" class="form-control"  placeholder="Password" value="ahmed@sd"  type="password" name="password" required />
+
+                                                <br>
+                                                <label>Repeat Password <small>(required)</small>  </label> </b><br>
+                                                <input class="form-control" type="password" placeholder="Repeat Password "value="ahmed@sd"  name="psw-repeat" required>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div  class="tab-pane" id="account">
+                                        <h4 class="info-text"> What are you doing ? (checkboxes) </h4>
+                                        <div class="row">
+
+                                            <div class="col-sm-10 col-sm-offset-1">
+                                                <div class="col-sm-4">
+                                                    <div class="choice" data-toggle="wizard-checkbox">
+                                                        <input type="radio" name="type" value="solver">
+                                                        <div class="icon">
+                                                            <i class="fa fa-terminal"></i>
+                                                        </div>
+                                                        <h6>Solver</h6>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="choice" data-toggle="wizard-checkbox">
+                                                        <input type="radio" name="type" value="maker">
+                                                        <div class="icon">
+                                                            <i class="fa fa-laptop"></i>
+                                                        </div>
+                                                        <h6>Maker</h6>
+                                                    </div>
 
                                                 </div>
 
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <div  class="tab-pane" id="account">
-                                            <h4 class="info-text"> What are you doing ? (checkboxes) </h4>
-                                            <div class="row">
-
-                                                <div class="col-sm-10 col-sm-offset-1">
-
-                                                    <div class="col-sm-4">
-                                                        <div class="choice" data-toggle="wizard-checkbox">
-                                                            <input type="checkbox" name="type" value="solver">
-                                                            <div class="icon">
-                                                                <i class="fa fa-terminal"></i>
-                                                            </div>
-                                                            <h6>Solver</h6>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="choice" data-toggle="wizard-checkbox">
-                                                            <input type="checkbox" name="type" value="maker">
-                                                            <div class="icon">
-                                                                <i class="fa fa-laptop"></i>
-                                                            </div>
-                                                            <h6>Maker</h6>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
 
                                             </div>
+
                                         </div>
+                                    </div>
 
 
 
 
-                                        <div class="tab-pane" id="address">
-                                            <div class="row">
-                                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="tab-pane" id="address">
+                                        <div class="row">
+                                            <div class="col-sm-10 col-sm-offset-1">
+
+                                                <div class="col-lg-10">
 
                                                     <input  type="radio" name="gender" value="male"> Male
                                                     <input type="radio" name="gender" value="female"> Female
@@ -137,7 +142,7 @@
                                                     <br>
                                                     <br>
                                                     <label>Birth Day<small></small></label>
-                                                    <input class="form-control" type="date" placeholder="Enter Your Birth Date"  name="bday" required>
+                                                    <input class="form-control" type="date" placeholder="Enter Your Birth Date"  name="birth_day">
                                                     <br>
                                                     <label>Phone <small></small></label>
                                                     <input class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone">
@@ -403,36 +408,39 @@
                                                         <option value="ZM">Zambia</option>
                                                         <option value="ZW">Zimbabwe</option>
                                                     </select>
+
+
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
-                            </div>
+                                    <br>                                        <br>
+                                </div>
+                                <div class="wizard-footer height-wizard">
+                                    <div class="pull-right">
+                                        <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' style="font-weight: bold;"name='next' value='Next' />
+                                        <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
+                                    </div>
+
+                                    <div class="pull-left">
+                                        <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </form>
                         </div>
-                        <div class="wizard-footer height-wizard">
-                            <div class="pull-right">
-                                <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' style="font-weight: bold;"name='next' value='Next' />
-                                <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
+                    </div> <!-- wizard container -->
+                </div>
 
-                            </div>
+            </div><!-- end row -->
 
-                            <div class="pull-left">
-                                <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Previous' />
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-
-                        </form>
-                    </div>
-                </div> <!-- wizard container -->
-            </div>
-   
-        </div><!-- end row -->
-   
-    </div> <!--  big container -->
+        </div> <!--  big container -->
 
 
     </div>
+</div>
 
 </body>
 

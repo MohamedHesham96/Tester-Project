@@ -2,7 +2,7 @@
 
 class SubscribesOperations {
 
-    public static function viewAllSubscribes() {
+    public static function viewAllSubscribes($studentName) {
 
                        include '../include/vars.php';
 
@@ -10,7 +10,7 @@ class SubscribesOperations {
         $conn = new mysqli($host, $username, $password, $dbname);
 
         $query = "SELECT  users.image, users.username, users.email FROM following JOIN users on "
-                . "users.id = doctor_id WHERE student_name = 'mohamed'";
+                . "users.id = doctor_id WHERE student_name = '" . $studentName . "'";
 
         $result = mysqli_query($conn, $query);
 

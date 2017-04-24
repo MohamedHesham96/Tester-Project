@@ -8,23 +8,8 @@
     </head>
     <body>
 
-        <div class="log"> <button onclick="">log out</button></div>
-        <h4> welcome ** </h4>
+        <?php include './header.php'; ?>
 
-        <div class="nav">
-
-            <div class="container">
-                <ul>
-                    <li><a href="home.php" class="active" >HOME</a></li>
-                    <li><a href="history.php" >History</a></li>
-                    <li><a href="subscribes.php">Subscribes</a></li>
-                    <li><a href="about.php">About</a></li>
-
-                </ul>
-            </div>
-        </div>
-
-        <h1></h1>
 
         <br>
         <br>
@@ -50,7 +35,7 @@
                     $name = $row['quiz_name'];
                     $password = $row['password'];
                     $maker = $row['username'];
-                    echo '<tr><td><a href="Quize.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td><td>' . $id . '</td><td>' . $maker . '</td>';
+                    echo '<tr><td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td><td>' . $id . '</td><td>' . $maker . '</td>';
                     if (empty($password)) {
                         echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
                     } else {
