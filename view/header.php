@@ -15,31 +15,33 @@ if ($_SESSION['usertype'] == 'doctor') {
 
 <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
-<select   onchange="location = this.value;" class="log selectpicker col-sm-2" data-style="btn-warning btn-success">
+<br>
+<div class="log"> <button value="login.php" class="btn-danger"onclick="location = this.value">log out</button></div> 
+
+<select   onchange="location = this.value;" class="log selectpicker col-lg-pull-8" data-style="btn-warning btn-success">
 
 
-    <option value=""><?php echo $_SESSION['username']; ?></option>
     <option value="profilepage.php">Your profile</option>
+    <option value="login.php">Logout</option>
 
 </select>
 
 
-<div class="log"> <button value="login.html" onclick="location = this.value">log out</button></div> <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4>
+ <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
 
+<center>
+    <div  style="float: left" class="col-lg-4">
+        <form action="searchPage.php" method="GET">
 
-<div class="col-sm-3">
+            <input class="form-control" placeholder="Search..." class="form-control" name="search" >
+            <input class="btm" type="submit" value="Search">
 
-    <form action="searchPage.php" method="GET">
-
-        <input class="form-control" placeholder="Search..." class="form-control" name="search" >
-        <input class="btm" type="submit" value="Submit">
-
-    </form>
-
-</div>
+        </form>
+    </div>
+</center>
 
 <br>
-<br>
+<br><br><br>
 <div class="nav">
 
     <div class="container">

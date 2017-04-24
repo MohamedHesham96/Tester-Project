@@ -36,7 +36,7 @@ if ($row = mysqli_fetch_array($result, 1)) {
     }
 } else {
 
-   // header('Location: login.php');
+   header('Location: login.php?errors=error');
 }
 
 /* $_SESSION['userid'] = "2";
