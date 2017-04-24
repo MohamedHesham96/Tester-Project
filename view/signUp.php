@@ -69,7 +69,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>Username <small>(required)</small></label>
-                                                    <input name="username"  value="ahmed@sd"  type="text" class="form-control" placeholder="Enter Your Username">
+                                                    <input name="username"  value="ahmed hesham"  type="text" class="form-control" placeholder="Enter Your Username">
                                                 </div>
 
 
@@ -80,13 +80,59 @@
 
                                                 <label>Password <small>(required)</small>  </label> </b><br>
 
-                                                <input class="form-control" class="form-control"  placeholder="Password" value="ahmed@sd"  type="password" name="password" required />
+                                                <input id="password" class="form-control" class="form-control"  placeholder="Password" value="123"  type="password" name="password" required onkeyup="checkPass(); return false;">
+                                                <span id="confirmMessage" class="confirmMessage"></span>
+
 
                                                 <br>
                                                 <label>Repeat Password <small>(required)</small>  </label> </b><br>
-                                                <input class="form-control" type="password" placeholder="Repeat Password "value="ahmed@sd"  name="psw-repeat" required>
+                                                <input id="confirm_password" class="form-control" type="password" placeholder="Repeat Password "value="123"  name="repeat_password" required onkeyup="checkPass(); return false;">
+                                                <span id="confirmMessage2" class="confirmMessage"></span>
 
 
+                                                <script type="text/javascript">
+                                                    function checkPass()
+                                                    {
+                                                        //Store the password field objects into variables ...
+                                                        var pass1 = document.getElementById('password');
+                                                        var pass2 = document.getElementById('confirm_password');
+                                                        //Store the Confimation Message Object ...
+                                                        var message = document.getElementById('confirmMessage');
+                                                        var message2 = document.getElementById('confirmMessage2');
+                                                        //Set the colors we will be using ...
+                                                        var goodColor = "#66cc66";
+                                                        var badColor = "#ff6666";
+                                                        //Compare the values in the password field 
+                                                        //and the confirmation field
+                                                        if (pass1.value == "" || pass2.value == "") {
+                                                            message.style.color = badColor;
+                                                            message2.style.color = badColor;
+                                                            message.innerHTML = ""
+                                                            message2.innerHTML = ""
+
+                                                        } else if (pass1.value == pass2.value) {
+                                                            //The passwords match. 
+                                                            //Set the color to the good color and inform
+                                                            //the user that they have entered the correct password 
+                                                            document.getElementById("next").disabled = false;
+                                                            pass2.style.backgroundColor = goodColor;
+                                                            message.style.color = goodColor;
+                                                            message2.style.color = goodColor;
+                                                            message.innerHTML = "Passwords Match!"
+                                                            message2.innerHTML = "Passwords Match!"
+                                                        } else {
+                                                            //The passwords do not match.
+                                                            //Set the color to the bad color and
+                                                            //notify the user.
+                                                            document.getElementById("next").disabled = true;
+                                                            pass2.style.backgroundColor = badColor;
+                                                            message.style.color = badColor;
+                                                            message2.style.color = badColor;
+                                                            message.innerHTML = "Passwords Do Not Match!"
+                                                            message2.innerHTML = "Passwords Do Not Match!"
+                                                        }
+                                                    }
+                                                </script>
                                             </div>
 
                                         </div>
@@ -96,7 +142,7 @@
 
 
                                     <div  class="tab-pane" id="account">
-                                        <h4 class="info-text"> What are you doing ? (checkboxes) </h4>
+                                        <h4 class="info-text"> What are you doing ? </h4>
                                         <div class="row">
 
                                             <div class="col-sm-10 col-sm-offset-1">
@@ -419,7 +465,7 @@
                                 </div>
                                 <div class="wizard-footer height-wizard">
                                     <div class="pull-right">
-                                        <input type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' style="font-weight: bold;"name='next' value='Next' />
+                                        <input  id="next" type='button' class='btn btn-next btn-fill btn-warning btn-wd btn-sm' style="font-weight: bold;"name='next' value='Next' />
                                         <input type='button' class='btn btn-finish btn-fill btn-warning btn-wd btn-sm' name='finish' value='Finish' />
                                     </div>
 

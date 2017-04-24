@@ -27,18 +27,16 @@ if ($_SESSION['usertype'] == 'doctor') {
 </select>
 
 
- <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
+<h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
 
-<center>
-    <div  style="float: left" class="col-lg-4">
-        <form action="searchPage.php" method="GET">
+<div  style="left: 30%" class="col-lg-4">
+    <form action="searchPage.php" method="GET">
 
-            <input class="form-control" placeholder="Search..." class="form-control" name="search" >
-            <input class="btm" type="submit" value="Search">
+        <input  class="form-control" placeholder="Search..." class="form-control" name="search" >
+        <input class="btm" type="submit" value="Search">
 
-        </form>
-    </div>
-</center>
+    </form>
+</div>
 
 <br>
 <br><br><br>

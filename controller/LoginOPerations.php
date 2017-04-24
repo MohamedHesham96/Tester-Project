@@ -1,6 +1,6 @@
 <?php
 
-class LoginOperations {
+class RegisterOperations {
 
     public static function loginChecker($user, $pass) {
 

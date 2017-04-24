@@ -48,8 +48,9 @@
 
                                         <h3>Login to our site</h3>
                                         <?php
+                                        session_destroy();
                                         $massage = "";
-                                        
+
                                         if (isset($_GET['errors'])) {
                                             $massage = "There is Problem in your username ot password to log on:";
                                         } else {
@@ -57,7 +58,6 @@
                                         }
 
                                         echo '<p>' . $massage . '</p>';
-                                       
                                         ?>
                                     </div>
                                     <div class="form-top-right">

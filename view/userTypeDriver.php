@@ -10,7 +10,7 @@ $password = $_GET['password'];
 
 echo $userName . "    " . $password;
 
-$result = LoginOperations::loginChecker($userName, $password);
+$result = RegisterOperations::loginChecker($userName, $password);
 
 
 // check if the statment is true
