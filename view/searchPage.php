@@ -10,6 +10,8 @@
 
         <?php include './header.php'; ?>
 
+        <?php $search = $_GET['search'] ?>
+
         <div class="container">
 
 
@@ -26,7 +28,7 @@
 
                         <?php
                         include '../controller/SearchOperations.php';
-                        $reult = SearchOperations::getSearchResult();
+                        $reult = SearchOperations::getSearchResult($search);
 
 // check if the statment is true
 
