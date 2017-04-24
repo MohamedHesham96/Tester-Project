@@ -16,6 +16,16 @@ if ($_SESSION['usertype'] == 'doctor') {
 <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
 
+
+<select   onchange="location = this.value;" class="log selectpicker col-sm-2" data-style="btn-warning btn-success">
+   
+    <option value=""><?php echo $_SESSION['username']; ?></option>
+    <option value="profilepage.php">profile</option>
+    <option value="B">My Quizzes </option>
+    <option value="-">Other</option>
+</select>
+
+
 <div class="log"> <button onclick="">log out</button></div> <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4>
 
 <div class="nav">

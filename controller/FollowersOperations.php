@@ -2,7 +2,7 @@
 
 class FollowersOperations {
 
-    public static function viewAllQuizzes() {
+    public static function getAllFollowers() {
 
         include '../include/vars.php';
 

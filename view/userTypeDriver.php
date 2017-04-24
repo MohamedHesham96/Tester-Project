@@ -2,8 +2,8 @@
 
 session_start();
 
-$_SESSION['userid'] = "1";
-$_SESSION['username'] = "samir";
+$_SESSION['userid'] = "2";
+$_SESSION['username'] = "dr.hazem";
 $_SESSION['usertype'] = "doctor";
 /* $_SESSION['usertype'] = "student";
   $_SESSION['userid'] = "3";
@@ -15,7 +15,7 @@ switch ($_SESSION['usertype']) {
         header('Location: adminhome.php');
         break;
     case "doctor":
-        header("Location: profilepage.php");
+        header("Location: doctorhome.php");
         break;
     case "student":
         header("Location: home.php");

@@ -19,12 +19,18 @@
     </head>
 
     <body>
+        <?php include './header.php'; ?>
 
         <?php
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        $username = $_SESSION['username'];
+
+        if (!isset($_GET['name'])) {
+
+            $username = $_SESSION['username'];
+        }
+
         echo $username;
 
         include '../controller/MyProfileOperations.php';
