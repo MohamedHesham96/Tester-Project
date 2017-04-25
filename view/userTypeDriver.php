@@ -15,8 +15,8 @@ if (isset($_GET['country'])) {
     $type = $_GET['type'];
     $birthDay = $_GET['birth_day'];
     $country = $_GET['country'];
-    //  $gender = $_GET['gender'];
-    $gender = 'male';
+     $gender = $_GET['gender'];
+  //  $gender = 'male';
     $phone = $_GET['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_GET['university'];

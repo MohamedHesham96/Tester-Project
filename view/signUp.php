@@ -175,12 +175,15 @@
 
                                     <div class="tab-pane" id="address">
                                         <div class="row">
+                                            
+                                              <input type="radio" name="gender" value="male"> Male
+                                                    <input type="radio" name="gender" value="female"> Female
+                                                    
                                             <div class="col-sm-10 col-sm-offset-1">
 
                                                 <div class="col-lg-10">
 
-                                                    <input type="radio" name="gender" value="male"> Male
-                                                    <input type="radio" name="gender" value="female"> Female
+                                                  
 
                                                     <br>
                                                     <br>

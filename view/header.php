@@ -1,4 +1,7 @@
+<header>
+  
 <?php
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -14,8 +17,10 @@ if ($_SESSION['usertype'] == 'doctor') {
 ?>
 
 <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-<link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
+<link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/><header>
+  
 <br>
+  
 <div class="log"> <button  value="login.php" class="btn-danger"onclick="location = this.value">log out</button></div> 
 
 <select   onchange="location = this.value;" class="log selectpicker col-lg-pull-8" data-style="btn-warning btn-success">
@@ -52,3 +57,4 @@ if ($_SESSION['usertype'] == 'doctor') {
         </ul>
     </div>
 </div>
+</header>
