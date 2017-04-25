@@ -10,12 +10,17 @@
 
         <?php
         session_start();
+        if (isset($_GET['name'])) {
 
-        $doctor_name = $_SESSION['username'];
+            $doctorName = $_GET['name'];
+        } else {
+
+            $doctorName = $_SESSION['username'];
+        }
         ?>
 
-     
-       <?php include './header.php';?>
+
+        <?php include './header.php'; ?>
 
 
 
@@ -36,7 +41,7 @@
 
                         <?php
                         include '../controller/MyQuizzesOperations.php';
-                        $reult = MyQuizzesOperations::getMyQuizzes($doctor_name);
+                        $reult = MyQuizzesOperations::getMyQuizzes($doctorName);
 
 
 // check if the statment is true

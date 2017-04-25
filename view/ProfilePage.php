@@ -19,53 +19,98 @@
     </head>
 
     <body>
-        <?php include './header.php'; ?>
+        <?php
+        include './header.php';
+        include '../controller/MyProfileOperations.php';
+        include '../controller/HistoryOperations.php';
+        include '../controller/MyQuizzesOperations.php';
+        ?>
 
         <?php
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
+        $followButtonstate = "";
+
+
+
+
         if (!isset($_GET['name'])) {
 
             $username = $_SESSION['username'];
         } else {
-            
+
             $username = $_GET['name'];
         }
 
-        include '../controller/MyProfileOperations.php';
+        $color = "";
+        $followstate = "";
+
+        if (isset($_GET['followstate'])) {
+            if ($_GET['followstate'] == "true") {
+                $followstate = "Unfollow";
+                $color = "btn-danger";
+            } else if ($_GET['followstate'] == "false") {
+                $color = "btn-success";
+                $followstate = "Follow";
+            }
+        }
+
 
         $result = MyProfileOperations::getMyData($username);
-        while ($row = mysqli_fetch_array($result, 1)) {
+
+        if ($row = mysqli_fetch_array($result, 1)) {
+            if ($row['type'] == 'doctor')
+                $quizzesLink = "Available Quizzes : ";
+            else if ($row['type'] == 'student')
+                $quizzesLink = "History Quizzes : ";
             ?>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
 
                         <!--      Wizard container        -->
                         <div class="wizard-container">
 
-                            <div class="card wizard-card" data-color="orange" id="wizardProfile">
-
+                            <div class="card wizard-card " data-color="orange" id="wizardProfile">
+                                <br>
                                 <div class="row">
-                                    <br>    <div class="col-sm-4 col-sm-offset-1">
-                                        <div class="picture-container">
+                                    <br>    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
+                                        <div class="picture-container  ">
 
+                                            <?php
+                                            if ($_GET['name'] != $_SESSION['username'] && $row['type'] != "student") {
+                                                echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$username \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
+                                            } else {
+                                                
+                                            }
+                                            ?>
+                                            <br>
+                                            <br>
                                             <br>
                                             <div class="picture">
                                                 <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
                                             </div>
-                                            <h6><?php echo $row['username']; ?></h6>
+                                            <h4><?php echo $row['username']; ?></h4>
+                                            <h4><u><?php
+                                                    if ($row['type'] == 'doctor')
+                                                        echo "<a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
+
+                                                    if ($row['type'] == 'student')
+                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
+                                                    ?></u></h4>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div style="background: #ccc" class="alert col-lg-5 col-sm-offset-1">
 
 
                                         <label>Email </label>
                                         <input class="form-control" value="<?php echo $row['email']; ?>" class="form-control" name="email" readonly>
-
+                                        <br>
+                                        <label>Gender</label>
+                                        <input class="form-control" value="<?php echo $row['gender']; ?>" name="gender" readonly>
 
                                         <br>
                                         <label>Birth Day</label>

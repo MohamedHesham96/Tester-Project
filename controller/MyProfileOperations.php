@@ -2,7 +2,7 @@
 
 class MyProfileOperations {
 
-    public static function getMyData($userName) {
+    public static function getMyData($user) {
 
         include '../include/vars.php';
 
@@ -10,8 +10,8 @@ class MyProfileOperations {
 
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
-        $query = "SELECT `username`, `email`,`type`, `birth_day`,country, gender, phone, image, university, faculty "
-                . "FROM `users` WHERE username = '" . $userName."'";
+        $query = "SELECT id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
+                . "FROM `users` WHERE username = '$user'";
 
         $result = mysqli_query($conn, $query);
 

@@ -3,7 +3,6 @@
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
 
-
         <meta charset="utf-8"/>
     </head>
     <body >
@@ -18,17 +17,19 @@
             <h1> Results <h1>
 
                     <table class="table-striped"> 
-
-                        <td>Quiz Code</td>
-                        <td>Quiz Name</td>
-                        <td>Doctor Name</td>
-                        <td>Password</td>
+                        <tr>                        <td>Quiz Code</td>
+                            <td>Quiz Name</td>
+                            <td>Doctor Name</td>
+                            <td>Password</td>
 
                         </tr>
 
+                        
                         <?php
                         include '../controller/SearchOperations.php';
                         $reult = SearchOperations::getSearchResult($search);
+
+
 
 // check if the statment is true
 
@@ -37,7 +38,7 @@
                         } else {
                             while ($row = mysqli_fetch_array($reult, 1)) {
 
-                                echo "<tr>";
+                                echo '<tr >';
                                 echo "<td>" . $row['quiz_id'] . "</td>";
                                 echo "<td>" . $row['quiz_name'] . "</td>";
                                 echo "<td>" . $row['username'] . "</td>";
@@ -51,9 +52,9 @@
                             }
                         }
                         ?>
+
                     </table>
                     </div>
-
                     <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
                     </body>
                     </html>

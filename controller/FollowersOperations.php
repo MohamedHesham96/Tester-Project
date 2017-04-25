@@ -2,12 +2,13 @@
 
 class FollowersOperations {
 
-    public static function getAllFollowers() {
+    public static function getAllFollowers($userid) {
+        
 
         include '../include/vars.php';
 
         $conn = new mysqli($host, $username, $password, $dbname);
-        $query = "SELECT student_name FROM following WHERE doctor_id = 1";
+        $query = "SELECT student_name FROM following WHERE doctor_id = '$userid'";
         
         $result = mysqli_query($conn, $query);
 

@@ -19,8 +19,9 @@
 
 
                         <?php
+                        $userid = $_SESSION['userid'];
                         include '../controller/FollowersOperations.php';
-                        $reult = FollowersOperations::getAllFollowers();
+                        $reult = FollowersOperations::getAllFollowers($userid);
 
 // check if the statment is true
 
