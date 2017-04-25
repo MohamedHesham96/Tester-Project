@@ -26,9 +26,9 @@
     $quizId = $_GET['id'];
     $maker = $_GET['maker'];
 
-    $result = MyQuizzesOperations::getQuizQuestionsByID($quizId);
+    $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
-    $result2 = MyQuizzesOperations::getAnsOnly($quizId);
+    $result2 = MyQuizzesOperations::getAnsOnly($quizId); // get the 4 ansers only to able to show randomly 
 
     echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
@@ -58,37 +58,27 @@
                         <?php echo $row['header']; ?> 
                     </label>  <![endif]-->  
                     <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>"/>  
-
-                    <span>
-                        <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>" readonly="readonly"/> 
+                    <p>
+                        <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[0]; ?>" readonly="readonly"/> 
                         <label class="choice" > 
                             <span class="choice__text notranslate"><?php echo $ansRow[0]; ?></span>
                         </label>  
-
-                    </span>
-
-                    <span > 
                         <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>"  readonly="readonly"/>
                         <label class="choice" > 
                             <span class="choice__text notranslate"><?php echo $ansRow[1]; ?></span> 
                         </label>  
-                    </span> 
-
-                    <span>  
-                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $row['answer_3']; ?>"   readonly="readonly" /> 
+                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[2]; ?>"   readonly="readonly" /> 
                         <label class="choice"  >
                             <span class="choice__text notranslate"><?php echo $ansRow[2]; ?></span>
                         </label> 
-                    </span>
-
-                    <span>  
-                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $row['answer_4']; ?>"  readonly="readonly" /> 
+              
+                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[3]; ?>"  readonly="readonly" /> 
                         <label class="choice"  >
                             <span class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
                         </label> 
-                    </span>
+              
 
-
+</p>
 
 
                 <?php } ?>
