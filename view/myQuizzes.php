@@ -7,9 +7,9 @@
         <meta charset="utf-8"/>
     </head>
     <body >
+        <?php include './header.php'; ?>
 
         <?php
-        session_start();
         if (isset($_GET['name'])) {
 
             $doctorName = $_GET['name'];
@@ -19,23 +19,19 @@
         }
         ?>
 
-
-        <?php include './header.php'; ?>
-
-
-
         <div class="container">
 
 
             <h1> My Quizzes <h1>
 
                     <table class="table-striped"> 
+                        <tr>
 
-                        <td>Quiz Code</td>
-                        <td>Quiz Name</td>
-                        <td>Full Mark</td>
-                        <td>Quiz Date</td>
-                        <td>Password</td>
+                            <td>Quiz Code</td>
+                            <td>Quiz Name</td>
+                            <td>Full Mark</td>
+                            <td>Quiz Date</td>
+                            <td>Password</td>
 
                         </tr>
 

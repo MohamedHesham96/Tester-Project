@@ -2,7 +2,7 @@
 
 class ViewMyResultOperations {
 
-    public static function getMyResult() {
+    public static function getMyResult($studentName, $quizId) {
 
         include '../include/vars.php';
 
@@ -11,7 +11,7 @@ class ViewMyResultOperations {
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
         
         $query = "SELECT results.question_header, questions.correct_answer, results.student_anwser FROM results "
-                . "JOIN questions on questions.header = results.question_header WHERE results.student_name = 'mohamed'";
+                . "JOIN questions on questions.header = results.question_header WHERE results.student_name = '$studentName'";
 
         $result = mysqli_query($conn, $query);
 

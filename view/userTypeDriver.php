@@ -15,8 +15,8 @@ if (isset($_GET['country'])) {
     $type = $_GET['type'];
     $birthDay = $_GET['birth_day'];
     $country = $_GET['country'];
-    //  $gender = $_GET['gender'];
-    $gender = 'male';
+     $gender = $_GET['gender'];
+  //  $gender = 'male';
     $phone = $_GET['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_GET['university'];
@@ -42,8 +42,8 @@ if (isset($_GET['country'])) {
     $userName = $_GET['username'];
     $password = $_GET['password'];
 
-  
-  echo $userName . "    " . $password;
+
+    echo $userName . "    " . $password;
 
 
     $result = RegisterOperations::loginChecker($userName, $password);
@@ -52,7 +52,6 @@ if (isset($_GET['country'])) {
     // check if the statment is true
 
     if ($row = mysqli_fetch_array($result, 1)) { // get some data before login to late use
-
         $_SESSION['userid'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['usertype'] = $row['type'];
@@ -72,8 +71,7 @@ if (isset($_GET['country'])) {
         }
     } else {
 
-         header('Location: login.php?errors=error');
+        header('Location: login.php?errors=error');
     }
 }
-
 ?>
