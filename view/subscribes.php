@@ -41,7 +41,7 @@
                             while ($row = mysqli_fetch_array($reult, 2)) {
                                 echo "<tr>";
                                 echo "<td>" . $row[0] . "</td>";
-                                echo '<td><a href="profilepage.php?outprofile=true&followstate=true&followname=' . $row[1] . '">' . $row[1] . '</a></td>';
+                                echo '<td><a href="profilepage.php?outprofile=true&followstate=true&name=' . $row[1] . '">' . $row[1] . '</a></td>';
                                 echo "<td>" . $row[2] . "</td>";
                                 echo "</tr>";
                             }
