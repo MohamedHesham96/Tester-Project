@@ -16,16 +16,17 @@ if ($_SESSION['usertype'] == 'doctor') {
 <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
 <br>
-<div class="log"> <button value="login.php" class="btn-danger"onclick="location = this.value">log out</button></div> 
+<div class="log"> <button  value="login.php" class="btn-danger"onclick="location = this.value">log out</button></div> 
 
 <select   onchange="location = this.value;" class="log selectpicker col-lg-pull-8" data-style="btn-warning btn-success">
 
 
-    <option value="profilepage.php">Your profile</option>
+    <option value='profilepage.php?name=<?php echo $_SESSION['username']; ?>&followstate="false"&fromheader="true"'>Your profile</option>
     <option value="login.php">Logout</option>
 
 </select>
 
+<input  hidden type="" value="<?php echo $_SESSION['username']; ?>"></input>
 
 <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
 

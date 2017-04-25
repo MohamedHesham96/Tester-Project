@@ -31,6 +31,11 @@
             session_start();
         }
 
+        $followButtonstate = "";
+
+
+
+
         if (!isset($_GET['name'])) {
 
             $username = $_SESSION['username'];
@@ -38,6 +43,10 @@
 
             $username = $_GET['name'];
         }
+
+        $color = "";
+        $followstate = "";
+
         if (isset($_GET['followstate'])) {
             if ($_GET['followstate'] == "true") {
                 $followstate = "Unfollow";
@@ -47,6 +56,8 @@
                 $followstate = "Follow";
             }
         }
+
+
         $result = MyProfileOperations::getMyData($username);
 
         if ($row = mysqli_fetch_array($result, 1)) {
@@ -69,7 +80,13 @@
                                     <br>    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
                                         <div class="picture-container  ">
 
-                                            <button value="../controller/FollowingManager.php?outprofile=false&followname=<?php echo $username; ?> " onclick="location = this.value" class="form-control col-sm-9 <?php echo $color; ?>"> <?php echo $followstate; ?> </button>
+                                            <?php
+                                            if ($_GET['name'] != $_SESSION['username'] && $row['type'] != "student") {
+                                                echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$username \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
+                                            } else {
+                                                
+                                            }
+                                            ?>
                                             <br>
                                             <br>
                                             <br>
