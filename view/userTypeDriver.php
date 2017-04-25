@@ -22,7 +22,7 @@ if (isset($_GET['country'])) {
     $univers = $_GET['university'];
     $faculty = $_GET['faculty'];
 
-    echo $user . "    " . $pass . "    " . $email . "   .     " . $birthDay . "    " . "  .   " . $phone . "   .     " . $univers . "    " . $faculty . "    " . $country;
+    //echo $user . "    " . $pass . "    " . $email . "   .     " . $birthDay . "    " . "  .   " . $phone . "   .     " . $univers . "    " . $faculty . "    " . $country;
     //RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $gender, $phone, $image, $univers, $faculty);
     RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender);
 
@@ -72,15 +72,8 @@ if (isset($_GET['country'])) {
         }
     } else {
 
-        // header('Location: login.php?errors=error');
+         header('Location: login.php?errors=error');
     }
 }
-/* $_SESSION['userid'] = "2";
-  $_SESSION['username'] = "dr.hazem";
-  $_SESSION['usertype'] = "doctor";
- */
 
-/* $_SESSION['usertype'] = "student";
-  $_SESSION['userid'] = "3";
-  $_SESSION['username'] = "samir"; */
 ?>

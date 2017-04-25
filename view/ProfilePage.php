@@ -19,7 +19,12 @@
     </head>
 
     <body>
-        <?php include './header.php'; ?>
+        <?php
+        include './header.php';
+        include '../controller/MyProfileOperations.php';
+        include '../controller/HistoryOperations.php';
+        include '../controller/MyQuizzesOperations.php';
+        ?>
 
         <?php
         if (session_status() == PHP_SESSION_NONE) {
@@ -33,34 +38,49 @@
 
             $username = $_GET['name'];
         }
+        echo $username;
 
-        include '../controller/MyProfileOperations.php';
 
         $result = MyProfileOperations::getMyData($username);
+
         while ($row = mysqli_fetch_array($result, 1)) {
+            if ($row['type'] == 'doctor')
+                $quizzesLink = "Available Quizzes : ";
+            else if ($row['type'] == 'student')
+                $quizzesLink = "History Quizzes : ";
             ?>
 
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2">
 
                         <!--      Wizard container        -->
                         <div class="wizard-container">
 
-                            <div class="card wizard-card" data-color="orange" id="wizardProfile">
-
+                            <div class="card wizard-card " data-color="orange" id="wizardProfile">
+                                <br>
                                 <div class="row">
-                                    <br>    <div class="col-sm-4 col-sm-offset-1">
-                                        <div class="picture-container">
+                                    <br>    <div class=" btn btn-success  col-sm-4 col-sm-offset-1">
+                                        <div class="picture-container  ">
 
+                                            <button value="../controller/FollowingManager.php?followname=<?php echo $username; ?> " onclick="location = this.value" class="form-control col-sm-9"> Follow </button>
+                                            <br>
+                                            <br>
                                             <br>
                                             <div class="picture">
                                                 <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
                                             </div>
-                                            <h6><?php echo $row['username']; ?></h6>
+                                            <h4><?php echo $row['username']; ?></h4>
+                                            <h4><u><?php
+                                                    if ($row['type'] == 'doctor')
+                                                        echo "<a class=\"btn btn-primary\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
+
+                                                    if ($row['type'] == 'student')
+                                                        echo "<a href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
+                                                    ?></u></h4>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-lg-5 col-sm-offset-1">
 
 
                                         <label>Email </label>
