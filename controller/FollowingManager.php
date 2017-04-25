@@ -2,25 +2,14 @@
 
 include '../controller/MyProfileOperations.php';
 
-$doctorName = $_GET['followname'];
-
-$result = MyProfileOperations::getMyData($doctorName);
-$doctorId = "";
-if ($row = mysqli_fetch_assoc($result)) {
-
-    $doctorId = $row['id'];
-}
-session_start();
-
-$studentName = $_SESSION['username'];
-
-FollowingManager::insertNewFollow($doctorId, $studentName);
+FollowingManager::followChecker();
 
 class FollowingManager {
 
     public static function insertNewFollow($doctorId, $studentName) {
 
         include '../include/vars.php';
+        $doctorName = $_GET['followname'];
 
         $conn = new mysqli($host, $username, $password, $dbname);
 
@@ -30,12 +19,59 @@ class FollowingManager {
 
         $result = mysqli_query($conn, $query);
 
-        if (mysqli_error($conn)) {
-            echo 'FollowingManger Error !!';
+        header("location: ../view/profilepage.php?name=$doctorName&followstate=true");
+    }
 
-            return NULL;
-        } else {
-            return $result;
+    public static function followChecker() {
+
+        include '../include/vars.php';
+
+        $doctorName = $_GET['followname'];
+
+        $result = MyProfileOperations::getMyData($doctorName);
+        $doctorId = "";
+        if ($row = mysqli_fetch_assoc($result)) {
+
+            $doctorId = $row['id'];
+        }
+        session_start();
+
+        $studentName = $_SESSION['username'];
+
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        $query = "SELECT * FROM `following` WHERE doctor_id = '$doctorId' and student_name = '$studentName'";
+
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_error($conn)) {
+
+            echo 'Following Manager  Error !!';
+            
+        } else if ($_GET['outprofile'] == "true") {
+
+            $query = "SELECT * FROM `following` WHERE doctor_id = '$doctorId' and student_name = '$studentName'";
+
+            $result = mysqli_query($conn, $query);
+
+            if ($row = mysqli_fetch_assoc($result)) {
+                header("location: ../view/profilepage.php?name=$doctorName&followstate=true");
+            } else {
+
+                header("location: ../view/profilepage.php?name=$doctorName&followstate=false");
+            }
+        } else if ($_GET['outprofile'] == "false") {
+
+            if ($row = mysqli_fetch_array($result, 1)) {
+
+                $query = "delete FROM `following` WHERE doctor_id = '$doctorId' and student_name = '$studentName'";
+
+                $result = mysqli_query($conn, $query);
+
+       header("location: ../view/profilepage.php?name=$doctorName&followstate=false");
+            } else {
+                FollowingManager::insertNewFollow($doctorId, $studentName);
+            }
         }
     }
 

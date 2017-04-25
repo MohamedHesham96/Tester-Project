@@ -20,7 +20,7 @@
         ?>
 
 
-<?php include './header.php'; ?>
+        <?php include './header.php'; ?>
 
 
 
@@ -39,33 +39,33 @@
 
                         </tr>
 
-<?php
-include '../controller/MyQuizzesOperations.php';
-$reult = MyQuizzesOperations::getMyQuizzes($doctorName);
+                        <?php
+                        include '../controller/MyQuizzesOperations.php';
+                        $reult = MyQuizzesOperations::getMyQuizzes($doctorName);
 
 
 // check if the statment is true
 
-if (!$reult) {
-    echo 'error2';
-} else {
-    while ($row = mysqli_fetch_array($reult, 1)) {
+                        if (!$reult) {
+                            echo 'error2';
+                        } else {
+                            while ($row = mysqli_fetch_array($reult, 1)) {
 
-        echo "<tr>";
-        echo "<td>" . $row['quiz_id'] . "</td>";
-        echo "<td>" . $row['quiz_name'] . "</td>";
-        echo "<td>" . $row['full_mark'] . "</td>";
-        echo "<td>" . $row['date'] . "</td>";
+                                echo "<tr>";
+                                echo "<td>" . $row['quiz_id'] . "</td>";
+                                echo "<td>" . $row['quiz_name'] . "</td>";
+                                echo "<td>" . $row['full_mark'] . "</td>";
+                                echo "<td>" . $row['date'] . "</td>";
 
-        if ($row['password']) {
-            echo "<td>" . $row['password'] . "</td>";
-        } else {
-            echo "<td>" . 'No Password' . "</td>";
-        }
-        echo "</tr>";
-    }
-}
-?>
+                                if ($row['password']) {
+                                    echo "<td>" . $row['password'] . "</td>";
+                                } else {
+                                    echo "<td>" . 'No Password' . "</td>";
+                                }
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
                     </table>
                     </div>
 
