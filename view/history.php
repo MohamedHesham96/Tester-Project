@@ -10,7 +10,6 @@
         <?php
         session_start();
 
-
         if (isset($_GET['name'])) {
             $studentName = $_GET['name'];
         } else {
@@ -44,14 +43,19 @@
                             echo 'error2';
                         } else {
                             while ($row = mysqli_fetch_array($result, 1)) {
-
+                                $quizId = $row["quiz_id"];
+                                $quizname = $row['quiz_name'];
+                                $quizMaker = $row['username'];
+                                $mark = $row['mark'];
+                                $fullmakr = $row['full_mark'];
 
                                 echo "<tr>";
-                                echo "<td>" . $row['quiz_id'] . "</td>";
+                                echo "<td><a href = 'viewmyresult.php?quizid=$quizId&maker=$quizMaker&name=$quizname&mark=$mark&fulmark=$fullmakr'>" . $row["quiz_id"] . "</a></td>";
                                 echo "<td>" . $row['quiz_name'] . "</td>";
                                 echo "<td>" . $row['username'] . "</td>";
                                 echo "<td>" . $row['mark'] . " / " . $row['full_mark'] . "</td>";
                                 echo "<td>" . $row['time'] . "</td>";
+
                                 if ($row['password']) {
                                     echo "<td>" . '<img src=" ../recources/images/lock.png"  height="20" width="20">' . " </td>";
                                 } else {

@@ -27,6 +27,9 @@
     $maker = $_GET['maker'];
 
     $result = MyQuizzesOperations::getQuizQuestionsByID($quizId);
+
+    $result2 = MyQuizzesOperations::getAnsOnly($quizId);
+
     echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
     echo "Quiz id    : $quizId <br><br>"; // display quiz id
@@ -38,7 +41,11 @@
     if (!$result) {
         echo 'Quiz Page Error !!';
     } else {
+
         while ($row = mysqli_fetch_array($result, 1)) {
+
+            if ($ansRow = mysqli_fetch_array($result2, 2))
+                shuffle($ansRow);
 
             //get information from prevoius page which clicked by the user
             ?>
@@ -50,34 +57,34 @@
                     <label  id="title5" class="form-control">  
                         <?php echo $row['header']; ?> 
                     </label>  <![endif]-->  
-                    <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>" />  
+                    <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>"/>  
 
                     <span>
-                        <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $row['answer_1']; ?>" readonly="readonly"/> 
+                        <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>" readonly="readonly"/> 
                         <label class="choice" > 
-                            <span class="choice__text notranslate"><?php echo $row['answer_1']; ?></span>
+                            <span class="choice__text notranslate"><?php echo $ansRow[0]; ?></span>
                         </label>  
 
                     </span>
 
                     <span > 
-                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $row['answer_2']; ?>"  readonly="readonly" />
+                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>"  readonly="readonly"/>
                         <label class="choice" > 
-                            <span class="choice__text notranslate"><?php echo $row['answer_2']; ?></span> 
+                            <span class="choice__text notranslate"><?php echo $ansRow[1]; ?></span> 
                         </label>  
                     </span> 
 
                     <span>  
                         <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $row['answer_3']; ?>"   readonly="readonly" /> 
                         <label class="choice"  >
-                            <span class="choice__text notranslate"><?php echo $row['answer_3']; ?></span>
+                            <span class="choice__text notranslate"><?php echo $ansRow[2]; ?></span>
                         </label> 
                     </span>
 
                     <span>  
                         <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $row['answer_4']; ?>"  readonly="readonly" /> 
                         <label class="choice"  >
-                            <span class="choice__text notranslate"><?php echo $row['answer_4']; ?></span>
+                            <span class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
                         </label> 
                     </span>
 
@@ -86,7 +93,8 @@
 
                 <?php } ?>
 
-            <?php } ?>
+            <?php }
+            ?>
 
             <br>    <br>
 

@@ -8,7 +8,6 @@
         <?php include './header.php'; ?>
 
 
-
         <?php
         for ($i = 0; $i <= 10; $i++) {
 
@@ -25,7 +24,7 @@
         }
         ?>  
 
-        <h1> Your Exams <h1>
+        <h1> Your Result </h1>
                 <div class="container">
 
                     <table class="table-striped"> 
@@ -35,26 +34,27 @@
                             <td>Your Answer</td>
                         </tr>
 
-                        <?php
-                        for ($i = 0; $i <= 10; $i++) {
-                            if (isset($_GET['correct_ans' . $i])) {
+<?php
+for ($i = 0; $i <= 30; $i++) {
 
-                                if ($_GET['correct_ans' . $i] == $_GET[$i]) {
+    if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
 
-                                    echo "<tr style='background: #00ff00'>";
-                                } else if (($_GET['correct_ans' . $i] != $_GET[$i]) || $_GET[$i] == "") {
+        if ($_GET['correct_ans' . $i] == $_GET[$i]) {
 
-                                    echo "<tr style='background: #ff0033'>";
-                                }
+            echo "<tr style='background: #00ff00'>";
+        } else if (($_GET['correct_ans' . $i] != $_GET[$i]) || !isset($_GET[$i])) {
 
-                                echo "<td>" . "Header" ."</td>";
-                                echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
-                                echo "<td>" . $_GET[$i] . "</td>";
+            echo "<tr style='background: #ff0033'>";
+        }
 
-                                echo "</tr>";
-                            }
-                        }
-                        ?>
+        echo "<td>" . "Header" . "</td>";
+        echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+        echo "<td>" . $_GET[$i] . "</td>";
+
+        echo "</tr>";
+    }
+}
+?>
                     </table>
                 </div>
                 <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
