@@ -10,7 +10,6 @@
         <?php include './header.php'; ?>
 
         <?php
-        session_start();
         if (isset($_GET['name'])) {
 
             $doctorName = $_GET['name'];
@@ -20,7 +19,6 @@
         }
         ?>
 
-
         <div class="container">
 
 
@@ -28,12 +26,12 @@
 
                     <table class="table-striped"> 
                         <tr>
-                        
-                        <td>Quiz Code</td>
-                        <td>Quiz Name</td>
-                        <td>Full Mark</td>
-                        <td>Quiz Date</td>
-                        <td>Password</td>
+
+                            <td>Quiz Code</td>
+                            <td>Quiz Name</td>
+                            <td>Full Mark</td>
+                            <td>Quiz Date</td>
+                            <td>Password</td>
 
                         </tr>
 
