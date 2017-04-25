@@ -19,6 +19,8 @@
     </head>
 
     <body>
+
+
         <?php
         include './header.php';
         include '../controller/MyProfileOperations.php';

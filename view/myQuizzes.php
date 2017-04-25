@@ -7,6 +7,7 @@
         <meta charset="utf-8"/>
     </head>
     <body >
+        <?php include './header.php'; ?>
 
         <?php
         session_start();
@@ -20,17 +21,14 @@
         ?>
 
 
-        <?php include './header.php'; ?>
-
-
-
         <div class="container">
 
 
             <h1> My Quizzes <h1>
 
                     <table class="table-striped"> 
-
+                        <tr>
+                        
                         <td>Quiz Code</td>
                         <td>Quiz Name</td>
                         <td>Full Mark</td>
