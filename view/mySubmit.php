@@ -14,14 +14,12 @@
 
             if (isset($_GET['correct_ans' . $i])) {
 
-                if ($_GET['correct_ans' .  $i] == $_GET[$i]) {
+                if ($_GET['correct_ans' . $i] == $_GET[$i]) {
 
-                    echo "yes Ture : " . "   " . $_GET['correct_ans' .  $i]  . "  =  " .$_GET[$i] . "<Br>" ;
-                }
-      
-                else if ($_GET['correct_ans' .  $i] != $_GET[$i]) {
+                    echo "yes Ture : " . "   " . $_GET['correct_ans' . $i] . "  =  " . $_GET[$i] . "<Br>";
+                } else if ($_GET['correct_ans' . $i] != $_GET[$i]) {
 
-                    echo "No False : " . "   " . $_GET['correct_ans' .  $i]  . "  ///  " .$_GET[$i] . "<Br>" ;
+                    echo "No False : " . "   " . $_GET['correct_ans' . $i] . "  ///  " . $_GET[$i] . "<Br>";
                 }
             }
         }
@@ -38,25 +36,20 @@
                         </tr>
 
                         <?php
-                        include '../controller/viewMyResultOperations.php';
-                        $reult = ViewMyResultOperations::getMyResult();
+                        for ($i = 0; $i <= 10; $i++) {
+                            if (isset($_GET['correct_ans' . $i])) {
 
-// check if the statment is true
+                                if ($_GET['correct_ans' . $i] == $_GET[$i]) {
 
-                        if (!$reult) {
-                            echo 'error2';
-                        } else {
-                            while ($row = mysqli_fetch_array($reult, 1)) {
-
-                                if ($row['correct_answer'] == $row['student_anwser']) {
                                     echo "<tr style='background: #00ff00'>";
-                                } else {
+                                } else if (($_GET['correct_ans' . $i] != $_GET[$i]) || $_GET[$i] == "") {
+
                                     echo "<tr style='background: #ff0033'>";
                                 }
 
-                                echo "<td>" . $row['question_header'] . "</td>";
-                                echo "<td>" . $row['correct_answer'] . "</td>";
-                                echo "<td>" . $row['student_anwser'] . "</td>";
+                                echo "<td>" . "Header" ."</td>";
+                                echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+                                echo "<td>" . $_GET[$i] . "</td>";
 
                                 echo "</tr>";
                             }
