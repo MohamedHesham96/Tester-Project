@@ -36,8 +36,6 @@
         $followButtonstate = "";
 
 
-
-
         if (!isset($_GET['name'])) {
 
             $username = $_SESSION['username'];
@@ -83,7 +81,7 @@
                                         <div class="picture-container  ">
 
                                             <?php
-                                            if ($_GET['name'] != $_SESSION['username'] && $row['type'] != "student") {
+                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student") {
                                                 echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$username \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
                                             } else {
                                                 

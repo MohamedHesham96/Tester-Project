@@ -26,7 +26,6 @@ if ($_SESSION['usertype'] == 'doctor') {
 
 </select>
 
-<input  hidden type="" value="<?php echo $_SESSION['username']; ?>"></input>
 
 <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
 

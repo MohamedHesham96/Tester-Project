@@ -34,7 +34,7 @@
                     $name = $row['quiz_name'];
                     $password = $row['password'];
                     $maker = $row['username'];
-                    echo '<tr><td>' . $name . '</td><td>' . $id . '</td><td>' . $maker . '</td>';
+                    echo '<tr><td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td><td>' . $id . '</td><td>' . $maker . '</td>';
                     if (empty($password)) {
                         echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
                     } else {
