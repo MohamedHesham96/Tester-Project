@@ -32,7 +32,6 @@
             <table class="table-striped"> 
                 <tr>
                     <td>Image</td>
-
                     <td>Id</td>
                     <td>Name</td>
                     <td>Email</td>

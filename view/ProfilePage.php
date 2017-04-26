@@ -68,7 +68,7 @@
                 $quizzesLink = "History Quizzes : ";
             else if ($row['type'] == 'admin')
                 $quizzesLink = "";
-                $quizState = "hidden"; 
+            $quizState = "hidden";
             ?>
 
             <div class="container-fluid">
@@ -99,12 +99,12 @@
                                             </div>
                                             <h4><?php echo $row['username']; ?></h4>
                                             <h4><u><?php
-                                        if ($row['type'] == 'doctor')
-                                            echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
+                                                    if ($row['type'] == 'doctor')
+                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
 
-                                        if ($row['type'] == 'student')
-                                            echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
-                                            ?></u></h4>
+                                                    if ($row['type'] == 'student')
+                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
+                                                    ?></u></h4>
                                         </div>
                                     </div>
                                     <div style="background: #ccc" class="alert col-lg-5 col-sm-offset-1">

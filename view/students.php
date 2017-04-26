@@ -55,10 +55,7 @@
                 } else {
                     while ($row = mysqli_fetch_array($result, 1)) {
 
-                        $studentId = $row["id"];
                         $studentName = $row['username'];
-
-                        $studentEmail = $row['email'];
 
                         echo "<tr>";
                         echo " <td><img src = '../recources/images/default-avatar.png' height = '40'></td>";
@@ -71,7 +68,7 @@
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['phone'] . "</td>";
                         echo "<td>" . $row['university'] . "</td>";
-                        echo "<td>" . $row['faculty'] . "</td>";
+                        echo "<td>" . $row['faculty'] .  "</td>";
 
                         echo "<td><a href = 'profilepage.php?&name=$studentName'\"> $editIcon </a></td>";
                         echo "<td><a href = 'students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";

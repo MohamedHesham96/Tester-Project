@@ -36,7 +36,7 @@ if ($_SESSION['usertype'] == 'doctor') {
     </select>
 
 
-    <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
+    <h4> welcome :: <a href="profilepage.php?name=<?php echo $_SESSION['username']?>">  <?php echo $_SESSION['username'] ?> </a></h4> 
 
     <div  style="left: 30%" class="col-lg-4">
         <form action="searchPage.php" method="GET">
