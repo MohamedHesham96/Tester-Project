@@ -8,71 +8,77 @@
 
 
         <?php
-        session_start();
+        include './header.php';
+        include '../controller/AdminOperations.php';
 
-        if (isset($_GET['name'])) {
-            $studentName = $_GET['name'];
-        } else {
-            $studentName = $_SESSION['username'];
+        // to ensure the user is admin only
+        // check the name of doctor that we wnat delete it                                          
+
+        if (isset($_SESSION['usertype']) && isset($_GET['deleteuser'])) {
+            $userName = $_GET['deleteuser'];
+            AdminOperations::deleteUser($userName);
         }
         ?>
 
-        <?php include './header.php'; ?>
+        <br>
+        <h1> Docotr List  </h1>
+        <br>
+        <div class="container">
 
-        <h1> Your Exams <h1>
-                <div class="container">
+            <table class="table-striped"> 
+                <tr>
+                    <td>Image</td>
 
-                    <table class="table-striped"> 
-                        <tr>
-                            <td>Image</td>
-
-                            <td>Id</td>
-                            <td>Name</td>
-                            <td>Email</td>
-                            <td>Birth Day</td>
-                            <td>Gender</td>
-                            <td>Country</td>
-                            <td>Phone</td>
-                            <td>University</td>
-                            <td>Faculty</td>
-                        </tr>
-
-
-                        <?php
-                        include '../controller/AdminOperations.php';
-                        $result = AdminOperations::getAllDoctors();
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Birth_Day</td>
+                    <td>Gender</td>
+                    <td>Country</td>
+                    <td>Phone</td>
+                    <td>University</td>
+                    <td>Faculty</td>
+                </tr>
 
 
-// check if the statment is true
+                <?php
+                $result = AdminOperations::getAllDoctors();
 
-                        if (!$result) {
-                            echo 'error2';
-                        } else {
-                            while ($row = mysqli_fetch_array($result, 1)) {
+                $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
 
-                                $doctorId = $row["id"];
-                                $doctorname = $row['username'];
-                                $doctoremail = $row['email'];
+                $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
 
-                                echo "<tr>";
-                                echo " <td><img src = '../recources/images/default-avatar.png' height = '40'></td>";
+                if (!$result) {
+                    echo 'error2';
+                } else {
+                    while ($row = mysqli_fetch_array($result, 1)) {
 
-                                echo "<td>" . $row['id'] . "</td>";
-                                echo "<td><a href = 'viewmyresult.php?&name=$doctorname'>" . $row['username'] . "</a></td>";
-                                echo "<td>" . $row['email'] . "</td>";
-                                echo "<td>" . $row['birth_day'] . "</td>";
-                                echo "<td>" . $row['gender'] . "</td>";
-                                echo "<td>" . $row['country'] . "</td>";
-                                echo "<td>" . $row['phone'] . "</td>";
-                                echo "<td>" . $row['university'] . "</td>";
-                                echo "<td>" . $row['faculty'] . "</td>";
+                        $doctorId = $row["id"];
+                        $doctorname = $row['username'];
+                        $doctoremail = $row['email'];
 
-                                echo "</tr>";
-                            }
-                        }
-                        ?>
-                    </table>
-                </div>
-                <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
-                </body>
-                </html>
+                        echo "<tr>";
+                        echo " <td><img src = '../recources/images/default-avatar.png' height = '40'></td>";
+
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td><a href = 'viewmyresult.php?&name=$doctorname'>" . $row['username'] . "</a></td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['birth_day'] . "</td>";
+                        echo "<td>" . $row['gender'] . "</td>";
+                        echo "<td>" . $row['country'] . "</td>";
+                        echo "<td>" . $row['phone'] . "</td>";
+                        echo "<td>" . $row['university'] . "</td>";
+                        echo "<td>" . $row['faculty'] . "</td>";
+
+                        echo "<td><a href = 'doctors.php?&name=$doctorname'>" . $editIcon . "</a></td>";
+                        echo "<td><a href = 'doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
+
+                        echo "</tr>";
+                    }
+                }
+                ?>
+            </table>
+        </div>
+        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+    </body>
+</html>
