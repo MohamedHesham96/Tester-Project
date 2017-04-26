@@ -16,8 +16,12 @@
 
         if (isset($_SESSION['usertype']) && isset($_GET['deleteuser'])) {
             $userName = $_GET['deleteuser'];
-            AdminOperations::deleteUser($userName);
+            echo $userName;
+           // AdminOperations::deleteUser($userName);
         }
+        
+         // echo $userName;
+          //  AdminOperations::deleteUser($userName);
         ?>
 
         <br>
@@ -61,7 +65,7 @@
                         echo " <td><img src = '../recources/images/default-avatar.png' height = '40'></td>";
 
                         echo "<td>" . $row['id'] . "</td>";
-                        echo "<td><a href = 'viewmyresult.php?&name=$doctorname'>" . $row['username'] . "</a></td>";
+                        echo "<td>" . $row['username'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
                         echo "<td>" . $row['birth_day'] . "</td>";
                         echo "<td>" . $row['gender'] . "</td>";
@@ -70,7 +74,7 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td><a href = 'doctors.php?&name=$doctorname'>" . $editIcon . "</a></td>";
+                        echo "<td><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
                         echo "<td><a href = 'doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
 
                         echo "</tr>";

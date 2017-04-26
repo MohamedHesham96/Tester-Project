@@ -37,7 +37,6 @@
 
 
         if (!isset($_GET['name'])) { // get sername from url 
-
             $username = $_SESSION['username'];
         } else {
 
@@ -58,13 +57,18 @@
         }
 
 
-        $result = MyProfileOperations::getMyData($username); // Get al user data to display
+        $result = MyProfileOperations::getMyData($username); // Get all user data to display
+        $quizState = ""; // button under the picture
+        $quizzesLink = ""; // Title on the button that under the picture 
 
-        if ($row = mysqli_fetch_array($result, 1)) {
+        if ($row = mysqli_fetch_array($result, 1)) { // Check the type of the user
             if ($row['type'] == 'doctor')
                 $quizzesLink = "Available Quizzes : ";
             else if ($row['type'] == 'student')
                 $quizzesLink = "History Quizzes : ";
+            else if ($row['type'] == 'admin')
+                $quizzesLink = "";
+                $quizState = "hidden"; 
             ?>
 
             <div class="container-fluid">
@@ -81,7 +85,7 @@
                                         <div class="picture-container  ">
 
                                             <?php
-                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student") {
+                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
                                                 echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$username \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
                                             } else {
                                                 
@@ -95,12 +99,12 @@
                                             </div>
                                             <h4><?php echo $row['username']; ?></h4>
                                             <h4><u><?php
-                                                    if ($row['type'] == 'doctor')
-                                                        echo "<a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
+                                        if ($row['type'] == 'doctor')
+                                            echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
 
-                                                    if ($row['type'] == 'student')
-                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
-                                                    ?></u></h4>
+                                        if ($row['type'] == 'student')
+                                            echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
+                                            ?></u></h4>
                                         </div>
                                     </div>
                                     <div style="background: #ccc" class="alert col-lg-5 col-sm-offset-1">
