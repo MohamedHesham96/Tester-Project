@@ -1,9 +1,12 @@
 <?php
 
+// this page >> Respons on take the user to the correct page on his type
+
 session_start();
 
 
 include '../controller/RegisterOPerations.php';
+
 if (isset($_GET['country'])) {
 
     $_SESSION['usertype'] = $_GET['type'];
@@ -15,41 +18,56 @@ if (isset($_GET['country'])) {
     $type = $_GET['type'];
     $birthDay = $_GET['birth_day'];
     $country = $_GET['country'];
-     $gender = $_GET['gender'];
-  //  $gender = 'male';
+    $gender = $_GET['gender'];
+    //  $gender = 'male';
     $phone = $_GET['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_GET['university'];
     $faculty = $_GET['faculty'];
 
-    //echo $user . "    " . $pass . "    " . $email . "   .     " . $birthDay . "    " . "  .   " . $phone . "   .     " . $univers . "    " . $faculty . "    " . $country;
-    //RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $gender, $phone, $image, $univers, $faculty);
-    RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender);
+    echo $user . "    " . $email;
 
-    switch ($_GET['type']) {
+    $resultForUsername = RegisterOperations::usernameChecker($user);
+    $resultForEmail = RegisterOperations::emailChecker($email);
 
-        case "admin":
-            header('Location: adminhome.php');
-            break;
-        case "doctor":
-            header("Location: doctorhome.php");
-            break;
-        case "student":
-            header("Location: home.php");
-            break;
+    if ($row = mysqli_fetch_array($resultForUsername, 1)) {
+
+        header('Location: signup.php?errors=usernameerror');
+    }
+
+    else if ($row2 = mysqli_fetch_array($resultForEmail, 1)) {
+
+        header('Location: signup.php?errors=emailerror');
+    } 
+    
+    
+    else {
+        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender);
+
+        switch ($_GET['type']) {
+
+            case "admin":
+                header('Location: adminhome.php');
+                break;
+            case "doctor":
+                header("Location: doctorhome.php");
+                break;
+            case "student":
+                header("Location: home.php");
+                break;
+        }
     }
 } else {
     $userName = $_GET['username'];
     $password = $_GET['password'];
 
-
     echo $userName . "    " . $password;
-
 
     $result = RegisterOperations::loginChecker($userName, $password);
 
 
     // check if the statment is true
+    // check if the username of password is correct
 
     if ($row = mysqli_fetch_array($result, 1)) { // get some data before login to late use
         $_SESSION['userid'] = $row['id'];

@@ -22,10 +22,27 @@
 
 <!-- <?php include './header.php'; ?> >
 
+        <?php
+        //     session_destroy();
+        $massage = ""; // for username hint
+        $massage2 = ""; // for emai  hint
+
+        if (isset($_GET['errors'])) {
+
+            if ($_GET['errors'] == "usernameerror")
+                $massage = "This Username is Already Exist !";
+
+            else if ($_GET['errors'] == "emailerror") {
+                $massage2 = "This Email is Already Exist !";
+            }
+        }
+        ?>
+                           
 <div class="image-container set-full-height" style="background-image: url('img/wizard.jpg')">
 
         <!--   Big container   -->
         <div class="container">
+
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
 
@@ -52,7 +69,7 @@
 
                                 </div>
                                 <div class="tab-content">
- 
+
                                     <div class="tab-pane" id="about">
                                         <div class="row">
                                             <br>    <div class="col-sm-4 col-sm-offset-1">
@@ -68,14 +85,18 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <label>Username <small>(required)</small></label>
+                                                    <label>Username  <small>(required)</small>
+                                                    </label>
                                                     <input name="username"  value="ahmed hesham"  type="text" class="form-control" placeholder="Enter Your Username">
+
+                                                    <small style="color: #ff0000">  <?php echo '   ' . $massage; ?>   </small>
                                                 </div>
 
 
                                                 <div class="form-group">
                                                     <label>Email <small>(required)</small></label>
                                                     <input class="form-control" class="form-control" placeholder="Enter Your Email" value="ahmed@sd"  type="email" name="email" required />
+                                                <small class="" style="color: #ff0000">  <?php echo '   ' . $massage2; ?>   </small>
                                                 </div>
 
                                                 <label>Password <small>(required)</small>  </label> </b><br>
@@ -147,7 +168,6 @@
 
 
 
-
                                     <div  class="tab-pane" id="account">
                                         <h4 class="info-text"> What are you doing ? </h4>
                                         <div class="row">
@@ -170,20 +190,16 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="tab-pane" id="address">
                                         <div class="row">
-                                            
-                                              <input type="radio" name="gender" value="male"> Male
-                                                    <input type="radio" name="gender" value="female"> Female
-                                                    
+
+                                            <input type="radio" name="gender" value="male"> Male
+                                            <input type="radio" name="gender" value="female"> Female
+
                                             <div class="col-sm-10 col-sm-offset-1">
 
                                                 <div class="col-lg-10">
 
-                                                  
 
                                                     <br>
                                                     <br>
