@@ -12,6 +12,7 @@ if (isset($_GET['country'])) {
     $_SESSION['usertype'] = $_GET['type'];
     $_SESSION['username'] = $_GET['username'];
 
+    
     $user = $_GET['username'];
     $pass = $_GET['password'];
     $email = $_GET['email'];

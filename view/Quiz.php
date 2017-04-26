@@ -1,21 +1,7 @@
 <!--make information displayed in center of page -->
 <html>  
     <head>
-        <meta charset="utf-8" />
-        <link rel="apple-touch-icon" sizes="76x76" href="../recources/images/apple-icon.png">
-        <link rel="icon" type="image/png" href="../recources/images/favicon.png">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
 
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <meta name="viewport" content="width=device-width" />
-
-        <!-- CSS Files -->
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
-
-        <!-- CSS Just for demo purpose, don't include it in your project -->
-        <link href= "../recources/css/demo.css" rel="stylesheet" />
     </head>
 
 
@@ -39,68 +25,68 @@
 
 
     if (!$result) {
-    echo 'Quiz Page Error !!';
+        echo 'Quiz Page Error !!';
     } else {
 
-    $ans3state = "";  // to show the third answer of not 
-    $ans4state = "";  // to show the fourht answer of not 
+        $ans3state = "";  // to show the third answer of not 
+        $ans4state = "";  // to show the fourht answer of not 
 
-    while ($row = mysqli_fetch_array($result, 1)) {
+        while ($row = mysqli_fetch_array($result, 1)) {
 
-    if ($ansRow = mysqli_fetch_array($result2, 1)) {
+            if ($ansRow = mysqli_fetch_array($result2, 1)) {
 
-    /*   if (!$ansRow['answer_3']) {
-      $ans3state = "hidden";
-      $ansRow = array_rand($ansRow, 2);
-      } else if (!$ansRow['answer_4']) {
-      $ans4state = "hidden";
-      $ansRow = array_rand($ansRow, 3);
-      } else { */
+                /*   if (!$ansRow['answer_3']) {
+                  $ans3state = "hidden";
+                  $ansRow = array_rand($ansRow, 2);
+                  } else if (!$ansRow['answer_4']) {
+                  $ans4state = "hidden";
+                  $ansRow = array_rand($ansRow, 3);
+                  } else { */
 
-    shuffle($ansRow);
-    }
-    
-    //get information from prevoius page which clicked by the user
-    ?>
+                shuffle($ansRow);
+            }
 
-    <form action="mySubmit.php" method="GET">
+            //get information from prevoius page which clicked by the user
+            ?>
 
-        <div class="form-group">
+            <form action="mySubmit.php" method="GET">
 
-            <label  id="title5" class="form-control">  
-                <?php echo $row['header']; ?> 
-            </label>  <![endif]-->  
-            <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>"/>  
-            <p>
-                <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[0]; ?>" readonly="readonly"/> 
+                <div class="form-group">
 
-                <label class="choice" > 
-                    <span class="choice__text notranslate"><?php echo $ansRow[0]; ?></span>
-                </label>  
+                    <label  id="title5" class="form-control">  
+                        <?php echo $row['header']; ?> 
+                    </label>  <![endif]-->  
+                    <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>"/>  
+                    <p>
+                        <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[0]; ?>" readonly="readonly"/> 
 
-                <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>"  readonly="readonly"/>
+                        <label class="choice" > 
+                            <span class="choice__text notranslate"><?php echo $ansRow[0]; ?></span>
+                        </label>  
 
-                <label class="choice" > 
-                    <span class="choice__text notranslate"><?php echo $ansRow[1]; ?></span> 
-                </label>  
+                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>"  readonly="readonly"/>
 
-                <input <?php echo $ans3state; ?> name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[2]; ?>"   readonly="readonly" /> 
+                        <label class="choice" > 
+                            <span class="choice__text notranslate"><?php echo $ansRow[1]; ?></span> 
+                        </label>  
 
-                <label <?php echo $ans3state; ?> class="choice"  >
-                    <span class="choice__text notranslate"><?php echo $ansRow[2]; ?></span>
-                </label> 
+                        <input <?php echo $ans3state; ?> name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[2]; ?>"   readonly="readonly" /> 
 
-                <input <?php echo $ans4state; ?> name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[3]; ?>"  readonly="readonly" /> 
+                        <label <?php echo $ans3state; ?> class="choice"  >
+                            <span class="choice__text notranslate"><?php echo $ansRow[2]; ?></span>
+                        </label> 
 
-                <label <?php echo $ans4state; ?> class="choice"  >
-                    <span class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
-                </label> 
+                        <input <?php echo $ans4state; ?> name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[3]; ?>"  readonly="readonly" /> 
 
-
-            </p>
+                        <label <?php echo $ans4state; ?> class="choice"  >
+                            <span class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
+                        </label> 
 
 
-            <?php } ?>
+                    </p>
+
+
+                <?php } ?>
 
             <?php }
             ?>

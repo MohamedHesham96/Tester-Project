@@ -12,6 +12,7 @@
 
     width:750px;
     margin:20px;
+    
 
 }
 
@@ -21,18 +22,17 @@
     text-shadow:1px 1px;
     font-weight:bold;
     padding: 7px;
-    font-size:25px;
+        font-size: 10px;
     text-decoration:none;
 }
 
 
 .nav ul{
     display:inline;
-
 }
+
 .nav li{
     display:inline;
-
 }
 
 li :hover{background-color:red;
@@ -72,8 +72,10 @@ h1{
 
 }
 
+
+
 table {
-    background-color:gray;
+    background-color: gray;
 
     text-align:center;
     font-weight:bold;
@@ -90,7 +92,9 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-tr:hover{background-color:green;}
+tr:hover{background-color:green;
+}
+
 
 
 
