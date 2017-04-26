@@ -1,22 +1,6 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="apple-touch-icon" sizes="76x76" href="../recources/images/apple-icon.png">
-        <link rel="icon" type="image/png" href="../recources/images/favicon.png">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
-
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <meta name="viewport" content="width=device-width" />
-
-        <!-- CSS Files -->
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
-
-        <!-- CSS Just for demo purpose, don't include it in your project -->
-        <link href= "../recources/css/demo.css" rel="stylesheet" />
-    </head>
+   
 
     <body>
 
@@ -36,8 +20,7 @@
         $followButtonstate = "";
 
 
-        if (!isset($_GET['name'])) {
-
+        if (!isset($_GET['name'])) { // get sername from url 
             $username = $_SESSION['username'];
         } else {
 
@@ -58,13 +41,18 @@
         }
 
 
-        $result = MyProfileOperations::getMyData($username);
+        $result = MyProfileOperations::getMyData($username); // Get all user data to display
+        $quizState = ""; // button under the picture
+        $quizzesLink = ""; // Title on the button that under the picture 
 
-        if ($row = mysqli_fetch_array($result, 1)) {
+        if ($row = mysqli_fetch_array($result, 1)) { // Check the type of the user
             if ($row['type'] == 'doctor')
                 $quizzesLink = "Available Quizzes : ";
             else if ($row['type'] == 'student')
                 $quizzesLink = "History Quizzes : ";
+            else if ($row['type'] == 'admin')
+                $quizzesLink = "";
+            $quizState = "hidden";
             ?>
 
             <div class="container-fluid">
@@ -77,11 +65,12 @@
                             <div class="card wizard-card " data-color="orange" id="wizardProfile">
                                 <br>
                                 <div class="row">
-                                    <br>    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
+                                    <br>   
+                                    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
                                         <div class="picture-container  ">
 
                                             <?php
-                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student") {
+                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
                                                 echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$username \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
                                             } else {
                                                 
@@ -96,7 +85,7 @@
                                             <h4><?php echo $row['username']; ?></h4>
                                             <h4><u><?php
                                                     if ($row['type'] == 'doctor')
-                                                        echo "<a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
+                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
 
                                                     if ($row['type'] == 'student')
                                                         echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";

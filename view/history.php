@@ -19,7 +19,8 @@
 
         <?php include './header.php'; ?>
 
-        <h1> Your Exams <h1>
+        <h1> Your Exams </h1>
+                
                 <div class="container">
 
                     <table class="table-striped"> 
