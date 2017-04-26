@@ -96,7 +96,7 @@
                                                 <div class="form-group">
                                                     <label>Email <small>(required)</small></label>
                                                     <input class="form-control" class="form-control" placeholder="Enter Your Email" value="ahmed@sd"  type="email" name="email" required />
-                                                    <small class="" style="color: #ff0000">  <?php echo '   ' . $massage2; ?>   </small>
+                                                <small class="" style="color: #ff0000">  <?php echo '   ' . $massage2; ?>   </small>
                                                 </div>
 
                                                 <label>Password <small>(required)</small>  </label> </b><br>

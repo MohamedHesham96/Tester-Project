@@ -11,22 +11,7 @@
         <?php
         echo $_SESSION['username'];
         echo $_GET['quizid'];
-
-
-        for ($i = 0; $i <= 10; $i++) {
-
-            if (isset($_GET['correct_ans' . $i])) {
-
-                if ($_GET['correct_ans' . $i] == $_GET[$i]) {
-
-                    echo "yes Ture : " . "   " . $_GET['correct_ans' . $i] . "  =  " . $_GET[$i] . "<Br>";
-                } else if ($_GET['correct_ans' . $i] != $_GET[$i]) {
-
-                    echo "No False : " . "   " . $_GET['correct_ans' . $i] . "  ///  " . $_GET[$i] . "<Br>";
-                }
-            }
-        }
-        ?>  
+       ?>  
 
 
         <h1> Your Exams  </h1>
@@ -48,7 +33,7 @@
                 } else {
                     while ($row = mysqli_fetch_array($reult, 1)) {
 
-                        if ($row['correct_answer'] == $row['student_anwser']) {
+                        if ($row['correct_answer'] == $row['student_answer']) {
                             echo "<tr style='background: #00ff00'>";
                         } else {
                             echo "<tr style='background: #ff0033'>";
@@ -56,7 +41,7 @@
 
                         echo "<td>" . $row['question_header'] . "</td>";
                         echo "<td>" . $row['correct_answer'] . "</td>";
-                        echo "<td>" . $row['student_anwser'] . "</td>";
+                        echo "<td>" . $row['student_answer'] . "</td>";
 
                         echo "</tr>";
                     }
