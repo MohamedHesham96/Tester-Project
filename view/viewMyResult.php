@@ -4,6 +4,7 @@
         <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
         <meta charset="utf-8"/>
     </head>
+    
     <body >
         <?php include './header.php'; ?>
 
@@ -11,7 +12,7 @@
         <?php
         echo $_SESSION['username'];
         echo $_GET['quizid'];
-       ?>  
+        ?>  
 
 
         <h1> Your Exams  </h1>
@@ -46,7 +47,6 @@
                         echo "</tr>";
                     }
                 }
-                
                 ?>
             </table>
         </div>

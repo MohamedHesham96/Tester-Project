@@ -36,7 +36,7 @@
         $followButtonstate = "";
 
 
-        if (!isset($_GET['name'])) {
+        if (!isset($_GET['name'])) { // get sername from url 
 
             $username = $_SESSION['username'];
         } else {
@@ -58,7 +58,7 @@
         }
 
 
-        $result = MyProfileOperations::getMyData($username);
+        $result = MyProfileOperations::getMyData($username); // Get al user data to display
 
         if ($row = mysqli_fetch_array($result, 1)) {
             if ($row['type'] == 'doctor')

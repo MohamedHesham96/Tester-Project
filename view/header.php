@@ -1,10 +1,9 @@
-<header>
-  
-<?php
 
+<?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 if ($_SESSION['usertype'] == 'doctor') {
     $secondTab = 'myQuizzes';
     $thirdTab = 'Followers';
@@ -13,48 +12,52 @@ if ($_SESSION['usertype'] == 'doctor') {
 
     $secondTab = 'History';
     $thirdTab = 'Subscribes';
+    
+} else if ($_SESSION['usertype'] == 'admin') {
+
+    $secondTab = 'Doctors';
+    $thirdTab = 'Students';
 }
 ?>
 
 <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/><header>
-  
-<br>
-  
-<div class="log"> <button  value="login.php" class="btn-danger"onclick="location = this.value">log out</button></div> 
 
-<select   onchange="location = this.value;" class="log selectpicker col-lg-pull-8" data-style="btn-warning btn-success">
+    <br>
 
+    <div class="log"> <button  value="login.php" class="btn-danger"onclick="location = this.value">log out</button></div> 
 
-    <option value='profilepage.php?name=<?php echo $_SESSION['username']; ?>&followstate="false"&fromheader="true"'>Your profile</option>
-    <option value="login.php">Logout</option>
-
-</select>
+    <select   onchange="location = this.value;" class="log selectpicker col-lg-pull-8" data-style="btn-warning btn-success">
 
 
-<h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
+        <option value='profilepage.php?name=<?php echo $_SESSION['username']; ?>&followstate="false"&fromheader="true"'>Your profile</option>
+        <option value="login.php">Logout</option>
 
-<div  style="left: 30%" class="col-lg-4">
-    <form action="searchPage.php" method="GET">
+    </select>
 
-        <input  class="form-control" placeholder="Search..." class="form-control" name="search" >
-        <input class="btm" type="submit" value="Search">
 
-    </form>
-</div>
+    <h4> welcome :: <?php echo $_SESSION['username'] ?> </h4> 
 
-<br>
-<br><br><br>
-<div class="nav">
+    <div  style="left: 30%" class="col-lg-4">
+        <form action="searchPage.php" method="GET">
 
-    <div class="container">
-        <ul>
-            <li><a href="home.php" class="active" >HOME</a></li>
-            <li><a href="<?php echo $secondTab . '.php' ?>" ><?php echo $secondTab ?></a></li>
-            <li><a href="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
-            <li><a href="about.php">About</a></li>
+            <input  class="form-control" placeholder="Search..." class="form-control" name="search" >
+            <input class="btm" type="submit" value="Search">
 
-        </ul>
+        </form>
     </div>
-</div>
-</header>
+
+    <br>
+    <br><br><br>
+    <div class="nav">
+
+        <div class="container">
+            <ul>
+                <li><a href="home.php" class="active" >HOME</a></li>
+                <li><a href="<?php echo $secondTab . '.php' ?>" ><?php echo $secondTab ?></a></li>
+                <li><a href="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
+                <li><a href="about.php">About</a></li>
+
+            </ul>
+        </div>
+    </div>
