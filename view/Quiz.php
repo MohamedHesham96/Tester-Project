@@ -8,6 +8,12 @@
     <?php
     include './header.php';
     include '../controller/MyQuizzesOperations.php';
+    $userType = $_SESSION['usertype'];
+    $submitState = "";
+    if ($userType != "student")    //بتحدد ظهور زرار السابمت على اساس نوع المستخدم لو ادمن مش هيظهر
+        $submitState = "hidden";
+
+
     $name = $_GET['name'];
     $quizId = $_GET['id'];
     $maker = $_GET['maker'];
@@ -93,7 +99,7 @@
 
             <br>    <br>
 
-            <input class="btn-success btn col-lg-2" type="submit" value="SUBMIT"> 
+            <input  style="visibility: <?php echo $submitState ?>" class="btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
         </div> 
 
         <input  name="quizname" type="text" value="<?php echo $_GET['name']; ?>"  readonly="readonly" hidden/> 

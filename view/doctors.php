@@ -15,13 +15,12 @@
         // check the name of doctor that we wnat delete it                                          
 
         if (isset($_SESSION['usertype']) && isset($_GET['deleteuser'])) {
-            $userName = $_GET['deleteuser'];
-            echo $userName;
-           // AdminOperations::deleteUser($userName);
+            if ($_SESSION['usertype'] == "admin") {
+                $userName = $_GET['deleteuser'];
+                echo $userName;
+                AdminOperations::deleteUser($userName);
+            }
         }
-        
-         // echo $userName;
-          //  AdminOperations::deleteUser($userName);
         ?>
 
         <br>

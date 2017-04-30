@@ -8,38 +8,9 @@
 }
 
 
-.nav{
-
-    width:750px;
-    margin:20px;
-    
-
-}
 
 
-.nav a{
-    color:black;
-    text-shadow:1px 1px;
-    font-weight:bold;
-    padding: 7px;
-        font-size: 10px;
-    text-decoration:none;
-}
 
-
-.nav ul{
-    display:inline;
-}
-
-.nav li{
-    display:inline;
-}
-
-li :hover{background-color:red;
-          border-radius: 10px;
-          color: white;
-          text-decoration:underline;
-}
 
 .nav .active{
     background-color:red;
