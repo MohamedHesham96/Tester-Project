@@ -20,7 +20,6 @@
 
     $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
-    $result2 = MyQuizzesOperations::getAnsOnly($quizId); // get the 4 ansers only to able to show randomly 
 
     echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
@@ -43,6 +42,7 @@
         while ($row = mysqli_fetch_array($result, 1)) {
 
             $tempRow = array();
+            $result2 = MyQuizzesOperations::getAnsOnly($row['header']); // get the 4 ansers only to able to show randomly 
 
             if ($ansRow = mysqli_fetch_array($result2, 1)) {
 
@@ -55,7 +55,6 @@
                     $tempRow[1] = $ansRow['answer_2'];
                     $ansRow = $tempRow;
 
-                    echo $ansRow[0] . "   :  " . $ansRow[1];
                     shuffle($ansRow);
                 } else if (!$ansRow['answer_4']) {
 
