@@ -29,7 +29,8 @@
     echo "Quiz maker : <a href='../controller/followingmanager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
     echo ' </div>';
 
-
+    echo '    <div style="margin-right: 200; padding-left: 200"> 
+';
     if (!$result) {
         echo 'Quiz Page Error !!';
     } else {
@@ -37,77 +38,110 @@
         $ans3state = "";  // to show the third answer of not 
         $ans4state = "";  // to show the fourht answer of not 
 
+        $qnum = 1;
+
         while ($row = mysqli_fetch_array($result, 1)) {
+
+            $tempRow = array();
 
             if ($ansRow = mysqli_fetch_array($result2, 1)) {
 
-                /*   if (!$ansRow['answer_3']) {
-                  $ans3state = "hidden";
-                  $ansRow = array_rand($ansRow, 2);
-                  } else if (!$ansRow['answer_4']) {
-                  $ans4state = "hidden";
-                  $ansRow = array_rand($ansRow, 3);
-                  } else { */
+                if (!$ansRow['answer_3']) {
 
-                shuffle($ansRow);
+                    $ans3state = "hidden";
+                    $ans4state = "hidden";
+
+                    $tempRow[0] = $ansRow['answer_1'];
+                    $tempRow[1] = $ansRow['answer_2'];
+                    $ansRow = $tempRow;
+
+                    echo $ansRow[0] . "   :  " . $ansRow[1];
+                    shuffle($ansRow);
+                } else if (!$ansRow['answer_4']) {
+
+                    $ans3state = "hidden";
+                    $ans4state = "hidden";
+
+                    $tempRow[0] = $ansRow['answer_1'];
+                    $tempRow[1] = $ansRow['answer_2'];
+                    $tempRow[2] = $ansRow['answer_3'];
+                    $ansRow = $tempRow;
+                } else {
+
+                    shuffle($ansRow);
+                }
             }
-
             //get information from prevoius page which clicked by the user
             ?>
 
             <form action="mySubmit.php" method="GET">
 
-                <div class="form-group">
 
-                    <label  id="title5" class="form-control">  
-                        <?php echo $row['header']; ?> 
-                    </label>  <![endif]-->  
-                    <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>"/>  
-                    <p>
-                        <input  name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[0]; ?>" readonly="readonly"/> 
+                <div style="color: #00f; display: block; font-size: 20; height: 40; margin-bottom: 10" class="form-control col-lg-2 btn-block" >
+                    <label  id="" class="">  
+                        <?php echo $qnum++ . ". " . $row['header']; ?> 
+                    </label>    
+                </div>
+                <br>
+                <br>
 
-                        <label class="choice" > 
-                            <span class="choice__text notranslate"><?php echo $ansRow[0]; ?></span>
-                        </label>  
-
-                        <input name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[1]; ?>"  readonly="readonly"/>
-
-                        <label class="choice" > 
-                            <span class="choice__text notranslate"><?php echo $ansRow[1]; ?></span> 
-                        </label>  
-
-                        <input <?php echo $ans3state; ?> name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[2]; ?>"   readonly="readonly" /> 
-
-                        <label <?php echo $ans3state; ?> class="choice"  >
-                            <span class="choice__text notranslate"><?php echo $ansRow[2]; ?></span>
-                        </label> 
-
-                        <input <?php echo $ans4state; ?> name="<?php echo $row['question_id']; ?>" type="radio" class="field radio" value="<?php echo $ansRow[3]; ?>"  readonly="readonly" /> 
-
-                        <label <?php echo $ans4state; ?> class="choice"  >
-                            <span class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
-                        </label> 
+                <input  name="<?php echo 'correct_ans' . $row['question_id']; ?>" type="hidden" value="<?php echo $row['correct_answer']; ?>"/>  
 
 
-                    </p>
+                <div style="display: block; background: #eee" class=" col-md-2  btn-block " >
+
+                    <input   name="<?php echo $row['question_id']; ?>" type="radio"  value="<?php echo $ansRow[0]; ?>" readonly="readonly"/> 
+
+                    <label class="choice" > 
+                        <span style="font-size: 20; font-family: cursive" class="choice__text notranslate"><?php echo $ansRow[0]; ?></span>
+                    </label>  
+                </div>
+
+                <div style="display: block; background: #eee" class="col-md-2 btn-block " >
+                    <input  name="<?php echo $row['question_id']; ?>" type="radio" class="" value="<?php echo $ansRow[1]; ?>"  readonly="readonly"/>
+
+                    <label class="choice" > 
+                        <span style="font-size: 20; font-family: cursive" class="choice__text notranslate"><?php echo $ansRow[1]; ?></span> 
+                    </label>  
+                </div>
 
 
-                <?php } ?>
+                <div style="visibility: <?php echo $ans4state; ?>; display: block; background: #eee" class="col-md-2 btn-block " >
+                    <input <?php echo $ans3state; ?> name="<?php echo $row['question_id']; ?>" type="radio" value="<?php echo $ansRow[2]; ?>"   readonly="readonly" /> 
 
-            <?php }
-            ?>
+                    <label <?php echo $ans3state; ?> class=""  >
+                        <span style="font-size: 20; font-family: cursive" class="choice__text notranslate"><?php echo $ansRow[2]; ?></span>
+                    </label> 
+                </div>
 
-            <br>    <br>
+                <div  style="visibility: <?php echo $ans4state; ?>;display: block; background: #eee" class="col-md-2 btn-block" >
 
-            <input  style="visibility: <?php echo $submitState ?>" class="btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
-        </div> 
+                    <input name="<?php echo $row['question_id']; ?>" type="radio"  value="<?php echo $ansRow[3]; ?>"  readonly="readonly" /> 
+
+                    <label class=""  >
+                        <span style="font-size: 20; font-family: cursive" class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
+                    </label> 
+                </div>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br>
+                <br>    <br>
+                <br>  
+            <?php } ?>
+
+
+        <?php } ?>
+
+
+        <input  style="visibility: <?php echo $submitState ?>" class="btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
 
         <input  name="quizname" type="text" value="<?php echo $_GET['name']; ?>"  readonly="readonly" hidden/> 
         <input  name="quizid" type="text" value="<?php echo $_GET['id']; ?>"  readonly="readonly" hidden/> 
         <input  name="quizdoctor" type="text" value="<?php echo $_GET['maker']; ?>"  readonly="readonly" hidden/> 
 
     </form>        
-
+</div>
 </body>
 
 <!--   Core JS Files   -->
