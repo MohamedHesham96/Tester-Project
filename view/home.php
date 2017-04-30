@@ -26,7 +26,8 @@
         $result = $conn->query($sql);
 
         //display result in table
-
+        echo '<div class="container">';
+        
         echo '<table class="table-striped">'
         . '<tr><th>Test Name</th>'
         . '<th>Test Code</th>'
@@ -61,6 +62,7 @@
         }
 
         echo '</table>';
+        echo '</div>';
         ?>
     </body>
 </html>

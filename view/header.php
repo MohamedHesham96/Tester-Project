@@ -3,6 +3,7 @@
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style3.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/styletable.css" rel="stylesheet" type="text/css"/>
     </head>
 
@@ -17,15 +18,16 @@
             $firstTab = 'doctorhome';
             $secondTab = 'myQuizzes';
             $thirdTab = 'Followers';
+
             //      echo '<div class="btn-primary log"> <button onclick=""><a href="createQuiz.php">Create New Quiz</a></button></div>';
         } else if ($_SESSION['usertype'] == 'student') {
-            $firstTab = 'home';
 
+            $firstTab = 'home';
             $secondTab = 'History';
             $thirdTab = 'Subscribes';
         } else if ($_SESSION['usertype'] == 'admin') {
-            $firstTab = 'adminhome';
 
+            $firstTab = 'adminhome';
             $secondTab = 'Doctors';
             $thirdTab = 'Students';
         }
@@ -34,30 +36,34 @@
 
         <div style="background: #eee; height: 60;" class=" col-lg-12">
 
-            <div  class="">
+            <div style="" class="">
 
-                <button style="height: 40; margin-top: -3; font-size: 18"  value="login.php" class="btn-danger col-lg-1  btn log" onclick="location = this.value">log out</button> 
+                <button style="height: 25; width: 75; font-size: 13"  value="login.php" class="btn-danger col-lg-1 log" onclick="location = this.value">log out</button> 
 
-                <div style="background: #eee; margin-top: -3; margin-right: 40"  class="log">
-                    <h4 style="display: inline; margin-right: 10; font-size: 21">
-                        <a href="profilepage.php?name=<?php echo $_SESSION['username'] ?>"> <?php echo $_SESSION['username'] ?> </a>
-                    </h4>
-
-                    <img  style=" display: inline" src = '../recources/images/default-avatars.png' height = '45'>
+                    <div style="background: #eee; margin-top: -3 ; margin-right: 20"  class="log">
+                    <img  style="border-radius: 60% ; display: inline" src = '../recources/images/default-avatar.png' height = '45'>
 
                 </div>
 
 
+                    
+                <h4 class="log" style="display: inline; margin-right: 5;font-size: 21; margin-bottom :10px">
+                        <a href="profilepage.php?name=<?php echo $_SESSION['username'] ?>"> <?php echo $_SESSION['username'] ?> </a>
+                    </h4>
+
+                
+            
                 <form action="searchPage.php" method="GET">
 
-                    <input  style="height: 40; font-size: 18" class="col-lg-2  btn-lg" placeholder="Search..." class="form-control" name="search" >
-                    <input  style="height: 37; font-size: 18" class="col-lg-1 btn btn-success" type="submit" value="Search">
-
+                    <input  style="height: 30; margin-left: 50;font-size: 16" class="col-lg-offset-1 col-lg-3  btn-lg" placeholder="Search..." class="form-control" name="search" >
+                    <input  style="height: 28.5 ; width: 75; font-size: 14; margin-left: -75" class="col-lg-1 btn-success" type="submit" value="Search">
 
                 </form>
+            
             </div>
 
-            <div  class="col-lg-offset-3">
+            
+            <div  class="col-lg-offset-4">
                 <div  class="nav">
                     <div class="container">
                         <ul>
@@ -68,25 +74,25 @@
 
                         </ul>
                     </div>
-                    </div>
                 </div>
-
             </div>
 
+        </div>
 
 
-            <br>  
-            <br>
-            <br><br>
-            </body>
-            <!--   Core JS Files   -->
-            <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-            <script src="../recources/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="../recources/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
 
-            <!--  Plugin for the Wizard -->
-            <script src="../recources/js/gsdk-bootstrap-wizard.js"></script>
+        <br>  
+        <br>
+        <br><br>
+    </body>
+    <!--   Core JS Files   -->
+    <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+    <script src="../recources/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../recources/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
 
-            <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
-            <script src="../recources/js/jquery.validate.min.js"></script>
+    <!--  Plugin for the Wizard -->
+    <script src="../recources/js/gsdk-bootstrap-wizard.js"></script>
+
+    <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
+    <script src="../recources/js/jquery.validate.min.js"></script>
 </html> 

@@ -25,12 +25,13 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
+                echo '<div class="container">';
                 echo '<table><thead>'
                 . '<tr><th>Quiz Code</th>'
-                        . '<th>Quiz Name</th>'
-                        . '<th>Doctor name</th>'
-                        . '<th>Secure</th>'
-                        . '</tr><thead><tbody>';
+                . '<th>Quiz Name</th>'
+                . '<th>Doctor name</th>'
+                . '<th>Secure</th>'
+                . '</tr><thead><tbody>';
                 while ($row = $result->fetch_assoc()) {
                     $id = $row['quiz_id'];
                     $name = $row['quiz_name'];
@@ -55,7 +56,7 @@
                     }
                     echo '</tr>';
                 }
-                echo '</tbody></table>';
+                echo '</tbody></table></div>';
             }
             ?>
         </div>
