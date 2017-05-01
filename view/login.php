@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm-6 col-sm-offset-3 social-login">
                                 <div class="">
-                                    <a class="btn-link-2" href="signuUp.php">
+                                    <a class="btn-link-2" href="signUp.php">
                                         Creat New Acount
                                     </a>
 
