@@ -25,7 +25,7 @@ if (isset($_POST['finish'])) {
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
-
+    $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
     echo $user . "    " . $email;
 
     $resultForUsername = RegisterOperations::usernameChecker($user);
@@ -43,7 +43,7 @@ if (isset($_POST['finish'])) {
     
     
     else {
-        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender);
+        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone,$image, $univers, $faculty, $gender);
 
         switch ($_POST['type']) {
 

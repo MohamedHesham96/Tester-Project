@@ -66,7 +66,7 @@ class RegisterOperations {
     }
     
     
-    public static function signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender) {
+    public static function signUp($user, $pass, $email, $type, $birthDay, $country, $phone,$image, $univers, $faculty, $gender) {
 
         include '../include/vars.php';
 
@@ -74,8 +74,8 @@ class RegisterOperations {
 
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
         $query = "INSERT INTO `users`(`username`, `password`, `email`, `type`, `birth_day`, "
-                . "`country`, `phone`, `university`, `faculty`, `gender`) "
-                . "VALUES ('$user', '$pass', '$email', '$type', '$birthDay', '$country', '$phone', '$univers', '$faculty', '$gender')";
+                . "`country`, `phone`,`image`, `university`, `faculty`, `gender`) "
+                . "VALUES ('$user', '$pass', '$email', '$type', '$birthDay', '$country', '$phone','$image', '$univers', '$faculty', '$gender')";
 
         $result = mysqli_query($conn, $query);
 
