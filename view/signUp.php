@@ -47,7 +47,7 @@
                     <div class="wizard-container">
 
                         <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                            <form action="userTypeDriver.php" method="GET">
+                            <form action="userTypeDriver.php" method="POST">
                                 <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                                 <div class="wizard-header">
@@ -162,10 +162,20 @@
 
                                         </div>
                                     </div>
-
-
-
-                                    <div  class="tab-pane" id="account">
+                                    <?php
+                                            include '../include/vars.php';
+                                            $conn = mysqli_connect($host, $username, $password, $dbname);
+                                            if($conn->error)
+                                            {
+                                                die("Connection Failed :( ");
+                                            }
+                                            else 
+                                            {
+                                                
+                                            }
+                                    
+                                    ?>
+                                        <div  class="tab-pane" id="account">
                                         <h4 class="info-text"> What are you doing ? </h4>
                                         <div class="row">
 
