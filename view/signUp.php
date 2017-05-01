@@ -5,7 +5,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="../recources/images/apple-icon.png">
         <link rel="icon" type="image/png" href="../recources/images/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
+        <title>Sign up</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -19,9 +19,6 @@
     </head>
 
     <body>
-
-<!-- <?php include './header.php'; ?> >
-
         <?php
         //     session_destroy();
         $massage = ""; // for username hint
@@ -50,7 +47,7 @@
                     <div class="wizard-container">
 
                         <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                            <form action="userTypeDriver.php" method="GET">
+                            <form action="userTypeDriver.php" method="POST">
                                 <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                                 <div class="wizard-header">
@@ -87,7 +84,7 @@
                                                 <div class="form-group">
                                                     <label>Username  <small>(required)</small>
                                                     </label>
-                                                    <input name="username"  value="ahmed hesham"  type="text" class="form-control" placeholder="Enter Your Username">
+                                                    <input name="username"    type="text" class="form-control" placeholder="Enter Your Username" required="required">
 
                                                     <small style="color: #ff0000">  <?php echo '   ' . $massage; ?>   </small>
                                                 </div>
@@ -95,19 +92,19 @@
 
                                                 <div class="form-group">
                                                     <label>Email <small>(required)</small></label>
-                                                    <input class="form-control" class="form-control" placeholder="Enter Your Email" value="ahmed@sd"  type="email" name="email" required />
+                                                    <input class="form-control" class="form-control" placeholder="Example@example"   type="email" name="email" required />
                                                 <small class="" style="color: #ff0000">  <?php echo '   ' . $massage2; ?>   </small>
                                                 </div>
 
                                                 <label>Password <small>(required)</small>  </label> </b><br>
 
-                                                <input id="password" class="form-control" class="form-control"  placeholder="Password" value="123"  type="password" name="password" required onkeyup="checkPass(); return false;">
+                                                <input id="password" class="form-control" class="form-control"  placeholder="Password"   type="password" name="password" required onkeyup="checkPass(); return false;">
                                                 <span id="confirmMessage" class="confirmMessage"></span>
 
 
                                                 <br>
                                                 <label>Repeat Password <small>(required)</small>  </label> </b><br>
-                                                <input id="confirm_password" class="form-control" type="password" placeholder="Repeat Password "value="123"  name="repeat_password" required onkeyup="checkPass(); return false;">
+                                                <input id="confirm_password" class="form-control" type="password" placeholder="Repeat Password "  name="repeat_password" required onkeyup="checkPass(); return false;">
                                                 <span id="confirmMessage2" class="confirmMessage"></span>
 
 
@@ -164,10 +161,7 @@
                                             </div>
 
                                         </div>
-                                    </div>
-
-
-
+                                    </div> 
                                     <div  class="tab-pane" id="account">
                                         <h4 class="info-text"> What are you doing ? </h4>
                                         <div class="row">
@@ -192,30 +186,27 @@
 
                                     <div class="tab-pane" id="address">
                                         <div class="row">
-
-                                            <input type="radio" name="gender" value="male"> Male
-                                            <input type="radio" name="gender" value="female"> Female
-
                                             <div class="col-sm-10 col-sm-offset-1">
 
                                                 <div class="col-lg-10">
-
-
+                                                    
+                                                    <input type="radio" name="gender" value="male"> Male
+                                                    <input type="radio" name="gender" value="female"> Female
                                                     <br>
                                                     <br>
                                                     <label>Birth Day<small></small></label>
                                                     <input class="form-control" type="date" placeholder="Enter Your Birth Date"  name="birth_day">
                                                     <br>
                                                     <label>Phone <small></small></label>
-                                                    <input value="1233" class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone" >
+                                                    <input  class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone" >
                                                     <br>
 
                                                     <label>University <small></small></label>
-                                                    <input value="1233" class="form-control" type="text" placeholder="Enter Your University" name="university">
+                                                    <input  class="form-control" type="text" placeholder="Enter Your University" name="university">
                                                     <br>
 
                                                     <label>Faculty <small></small></label>
-                                                    <input  value="1233"  class="form-control" type="text" placeholder="Enter Your Faculty" name="faculty">
+                                                    <input   class="form-control" type="text" placeholder="Enter Your Faculty" name="faculty">
                                                     <br>
                                                     <label>Country</label>
 
