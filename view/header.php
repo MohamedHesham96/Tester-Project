@@ -34,36 +34,38 @@
         ?>
 
 
-        <div style="background: #eee; height: 60;" class=" col-lg-12">
+        <div style="background: #eee; height: 55;" class=" col-lg-12">
 
+                <h4 class="log"  style="margin-left: 8;margin-right: 35; margin-top: 20; display: inline; font-size: 14">
+                    <a style=" color: #f00;" href="login.php"> <?php echo 'Log out'; ?> </a>
+                </h4>
+              <h4 class="log" style="margin-right: 0; margin-top: 8; display: inline; font-size: 35">
+                    <a style=" color: #aaa;" href="login.php"> <?php echo '|'; ?> </a>
+                </h4>
+            
             <div style="" class="">
 
-                <button style="height: 25; width: 75; font-size: 13"  value="login.php" class="btn-danger col-lg-1 log" onclick="location = this.value">log out</button> 
 
-                    <div style="background: #eee; margin-top: -3 ; margin-right: 20"  class="log">
-                    <img  style="border-radius: 60% ; display: inline" src = '../recources/images/default-avatar.png' height = '45'>
 
+                <div style="background: #eee; margin-top: -7 ; margin-right: 3"  class="log">
+                    <img  style="border-radius: 60% ; display: inline" src = '../recources/images/default-avatar.png' height = '44'>
                 </div>
 
+                <h4 class="log" style="display: inline; margin-right: 5; margin-top: 2; font-size: 20">
+                    <a style=" color: #44f;" href="profilepage.php?name=<?php echo $_SESSION['username']  ?>"> <?php echo ucwords($_SESSION['username'])?> </a>
+                </h4>
 
-                    
-                <h4 class="log" style="display: inline; margin-right: 5;font-size: 21; margin-bottom :10px">
-                        <a href="profilepage.php?name=<?php echo $_SESSION['username'] ?>"> <?php echo $_SESSION['username'] ?> </a>
-                    </h4>
-
-                
-            
                 <form action="searchPage.php" method="GET">
 
-                    <input  style="height: 30; margin-left: 50;font-size: 16" class="col-lg-offset-1 col-lg-3  btn-lg" placeholder="Search..." class="form-control" name="search" >
+                    <input  style="height: 30; margin-left: 50;font-size: 14" class="col-lg-offset-1 col-lg-3  btn-lg" placeholder="Quiz Name or Code..." class="form-control" name="search" >
                     <input  style="height: 28.5 ; width: 75; font-size: 14; margin-left: -75" class="col-lg-1 btn-success" type="submit" value="Search">
 
                 </form>
-            
+
             </div>
 
-            
-            <div  class="col-lg-offset-4">
+
+            <div   class="col-lg-offset-4">
                 <div  class="nav">
                     <div class="container">
                         <ul>

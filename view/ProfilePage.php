@@ -88,7 +88,7 @@
                                             <div class="picture">
                                                 <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
                                             </div>
-                                            <h4><?php echo $row['username']; ?></h4>
+                                            <h4><?php echo ucwords($_SESSION['username'])?></h4>
                                             <h4><u><?php
                                                     if ($row['type'] == 'doctor')
                                                         echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";

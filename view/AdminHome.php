@@ -69,7 +69,7 @@
                     } else {
                         echo '<td><img src="../recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>';
                     }
-                    echo "<td><a onClick=\"javascript:$( '#dialog' ).dialog();\"> $removeIcon  </a></td>";
+                    echo "<td><a onClick=\"\"> $removeIcon  </a></td>";
 
                     echo '</tr>';
                 }
@@ -78,18 +78,7 @@
             ?>
         </div>
 
-        <div id="dialog" title="Basic dialog">
-            <input name="foo" type="password" size="25" />
-        </div>
-
-
-
-        <script type="text/javascript">
-            // var foo = prompt('something');
-            // $('form#the-form input[name=foo]').val(foo);
-
-        </script>
-
+    
     </body>
 
 
