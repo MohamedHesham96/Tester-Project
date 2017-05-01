@@ -7,24 +7,24 @@ session_start();
 
 include '../controller/RegisterOPerations.php';
 
-if (isset($_GET['country'])) {
+if (isset($_POST['finish'])) {
 
-    $_SESSION['usertype'] = $_GET['type'];
-    $_SESSION['username'] = $_GET['username'];
+    $_SESSION['usertype'] = $_POST['type'];
+    $_SESSION['username'] = $_POST['username'];
 
-    
-    $user = $_GET['username'];
-    $pass = $_GET['password'];
-    $email = $_GET['email'];
-    $type = $_GET['type'];
-    $birthDay = $_GET['birth_day'];
-    $country = $_GET['country'];
-    $gender = $_GET['gender'];
-    //  $gender = 'male';
-    $phone = $_GET['phone'];
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $email = $_POST['email'];
+    $type = $_POST['type'];
+    $birthDay = $_POST['birth_day'];
+    $country = $_POST['country'];
+    $gender = $_POST['gender'];
+
+  //  $gender = 'male';
+    $phone = $_POST['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-    $univers = $_GET['university'];
-    $faculty = $_GET['faculty'];
+    $univers = $_POST['university'];
+    $faculty = $_POST['faculty'];
 
     echo $user . "    " . $email;
 
@@ -45,7 +45,7 @@ if (isset($_GET['country'])) {
     else {
         RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender);
 
-        switch ($_GET['type']) {
+        switch ($_POST['type']) {
 
             case "admin":
                 header('Location: adminhome.php');
@@ -59,8 +59,8 @@ if (isset($_GET['country'])) {
         }
     }
 } else {
-    $userName = $_GET['username'];
-    $password = $_GET['password'];
+    $userName = $_POST['username'];
+    $password = $_POST['password'];
 
     echo $userName . "    " . $password;
 
