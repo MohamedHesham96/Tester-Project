@@ -45,10 +45,10 @@ if (isset($_POST['finish'])) {
         switch ($_POST['type']) {
 
             case "admin":
-                header('Location: adminhome.php');
+                header('Location: Adminhome.php');
                 break;
             case "doctor":
-                header("Location: doctorhome.php");
+                header("Location: Doctorhome.php");
                 break;
             case "student":
                 header("Location: home.php");
