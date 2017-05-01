@@ -1,7 +1,5 @@
 <html>
     <head>
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
         <meta charset="utf-8"/>
     </head>
     <body >
@@ -15,17 +13,26 @@
         // check the name of doctor that we wnat delete it                                          
 
         if (isset($_SESSION['usertype']) && isset($_GET['deleteuser'])) {
-            $userName = $_GET['deleteuser'];
-            echo $userName;
-           // AdminOperations::deleteUser($userName);
+            if ($_SESSION['usertype'] == "admin") {
+                $userName = $_GET['deleteuser'];
+                echo $userName;
+                AdminOperations::deleteUser($userName);
+            }
         }
-        
-         // echo $userName;
-          //  AdminOperations::deleteUser($userName);
         ?>
 
         <br>
-        <h1> Docotr List  </h1>
+
+        <h1> Docotr List </h1>
+
+
+        <div class="container">
+            <form action="doctors.php" method="GET">
+                <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="Doctor Name or ID..." class="form-control" name="doctorNameSearch" >
+                <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">
+            </form>
+        </div>
+        
         <br>
         <div class="container">
 
@@ -61,7 +68,7 @@
                         $doctoremail = $row['email'];
 
                         echo "<tr>";
-                        echo " <td><img src = '../recources/images/default-avatar.png' height = '40'></td>";
+                        echo " <td><img style=\"border-radius: 60%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
 
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['username'] . "</td>";

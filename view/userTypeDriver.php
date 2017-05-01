@@ -19,7 +19,8 @@ if (isset($_POST['finish'])) {
     $birthDay = $_POST['birth_day'];
     $country = $_POST['country'];
     $gender = $_POST['gender'];
-    //  $gender = 'male';
+
+  //  $gender = 'male';
     $phone = $_POST['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_POST['university'];
