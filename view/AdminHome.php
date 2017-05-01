@@ -1,5 +1,23 @@
-<?php include 'header.php'; ?>
 <html>
+    <head>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <meta charset="utf-8"/>
+
+    </head>
+    <body>
+
+        <?php include './header.php'; ?>
+        <?php
+        //print the foo value
+        //    echo ($_POST['foo'] ? $_POST['foo'] : 'none');
+        ?>
+
+        <br>
+        <br>
+        <br>
+
         <div class="container">
             <?php
             include '../controller/AdminOperations.php';

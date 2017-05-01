@@ -1,4 +1,3 @@
-<?php include './header.php';?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -9,8 +8,13 @@
     </head>
     <body >
         <?php
-            $studentName = $_SESSION['username'];
+        session_start();
+
+        $studentName = $_SESSION['username'];
         ?>
+
+        <?php include './header.php'; ?>
+
 
 
 

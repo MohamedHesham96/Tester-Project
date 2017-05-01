@@ -1,4 +1,3 @@
-<?php include './header.php'; ?>
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -6,6 +5,7 @@
     <body >
 
 
+        <?php include './header.php'; ?>
 
         <h1> Your Followers <h1>
                 <div class="container">

@@ -1,10 +1,11 @@
-<?php include './header.php';?>
 <html>
     <head>
     </head>
     
     <body >
-        
+        <?php include './header.php'; ?>
+
+
         <?php
         echo $_SESSION['username'];
         echo $_GET['quizid'];
