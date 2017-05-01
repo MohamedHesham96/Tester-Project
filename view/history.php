@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -16,9 +17,6 @@
             $studentName = $_SESSION['username'];
         }
         ?>
-
-        <?php include './header.php'; ?>
-
         <h1> Your Exams </h1>
                 
                 <div class="container">

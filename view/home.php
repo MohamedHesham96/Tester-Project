@@ -1,3 +1,4 @@
+<?php include 'header.php'; ?>
 <html>
     <head>
 
@@ -7,11 +8,7 @@
 
     </head>
     <body>
-
-        <?php include './header.php'; ?>
-
-
-        <br>
+    <br>
         <br>
         <br>
 

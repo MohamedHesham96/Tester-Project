@@ -1,24 +1,7 @@
+<?php include 'header.php'; ?>
 <html>
-    <head>
-
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
-        <meta charset="utf-8"/>
-
     </head>
     <body>
-
-        <div class="log"> <button onclick="">log out</button></div>
-        <h4> welcome ** </h4>
-
-
-        <?php include './header.php'; ?>
-
-       
-        <br>
-        <br>
-        <br>
-
         <div class="container">
             <?php
             //connect to data base and create table for result

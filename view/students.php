@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -8,7 +9,7 @@
 
 
         <?php
-        include './header.php';
+        
         include '../controller/AdminOperations.php';
 
         // to ensure the user is admin only

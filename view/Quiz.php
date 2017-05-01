@@ -1,4 +1,5 @@
 <!--make information displayed in center of page -->
+<?php include './header.php';?>
 <html>  
     <head>
         <meta charset="utf-8" />
@@ -20,7 +21,7 @@
 
 
     <?php
-    include './header.php';
+    
     include '../controller/MyQuizzesOperations.php';
     $name = $_GET['name'];
     $quizId = $_GET['id'];

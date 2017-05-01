@@ -1,3 +1,11 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username']))
+    {
+       include 'login.php';
+       die();
+    }
+?>
 <html>
 
     <head>
@@ -5,7 +13,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="../recources/images/apple-icon.png">
         <link rel="icon" type="image/png" href="../recources/images/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Get Shit Done Bootstrap Wizard by Creative Tim</title>
+        <title>Quizzer.com</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -20,22 +28,20 @@
 
     <body>
         <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        
 
         if ($_SESSION['usertype'] == 'doctor') {
             $secondTab = 'myQuizzes';
             $thirdTab = 'Followers';
-            echo '<div class="btn-primary log"> <button onclick=""><a href="createQuiz.php">Create New Quiz</a></button></div>';
+            echo '<div class="btn-primary lg"> <button onclick=""><a href="createQuiz.php">Create New Quiz</a></button></div>';
         } else if ($_SESSION['usertype'] == 'student') {
 
-            $secondTab = 'History';
-            $thirdTab = 'Subscribes';
+            $secondTab = 'history';
+            $thirdTab = 'subscribes';
         } else if ($_SESSION['usertype'] == 'admin') {
 
-            $secondTab = 'Doctors';
-            $thirdTab = 'Students';
+            $secondTab = 'doctors';
+            $thirdTab = 'students';
         }
         ?>
 
@@ -46,8 +52,15 @@
             <div   style="background: #eee" class=" col-lg-12">
 
 
-                <div class="log"> <button  value="login.php" class="btn-danger btn-lg"onclick="location = this.value">log out</button></div> 
-
+                <div class="log btn-danger btn-lg"><a href="?page=logout.php">log out</a></div> 
+                <!--to log out-->
+                <?php
+                    if(isset($_GET['page']))
+                    {
+                        $page = $_GET['page'];
+                        include '../models/'.$page;
+                    }
+                ?>
               <!--  <select   onchange="location = this.value;" class="log col-xs-2 btn-lg" data-style="btn-warning btn-success">
 
                     <option value='profilepage.php?name=<?php echo $_SESSION['username']; ?>&followstate="false"&fromheader="true"'>Your profile</option>
@@ -63,8 +76,23 @@
                         <div class="picture-container">
                             <div class="picture">
 
-                                <img class="col-lg-push-3" src = '../recources/images/default-avatar.png' height = '50'>
-                                <a   href="profilepage.php?name=<?php echo $_SESSION['username'] ?>">         <?php echo $_SESSION['username'] ?> </a>
+                                <a   href="ProfilePage.php?name=<?php echo $user = $_SESSION['username'] ?>"><?php
+                                    include '../include/vars.php';
+                                    $conn = new mysqli($host, $username, $password, $dbname);
+                                    $connect = mysqli_connect("localhost","root","31560","Testerdb");
+                                    $query = "SELECT  *FROM users WHERE username = '$user'";  
+                                    $result = mysqli_query($connect, $query);  
+                                    $row = mysqli_fetch_array($result) ;
+
+                                     if(empty($row['image']))
+                                         echo '<img class="col-lg-push-3" src="../recources/images/default-avatar.png" class="picture-src" hight="50" width="50" id="wizardPicturePreview" title=""/>';
+                                     else 
+                                     {
+                                        echo '<img class="col-lg-push-3" src="data:image/jpeg;base64,'.base64_encode($row['image'] ).'" height="50" width="50" class="img-thumnail" />';
+                                     }
+                                    ?>
+                                </a>
+                                                        <a   href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>">         <?php echo $_SESSION['username'] ?> </a>
 
 
                             </div>          

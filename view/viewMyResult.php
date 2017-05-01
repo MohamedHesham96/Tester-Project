@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -6,9 +7,7 @@
     </head>
     
     <body >
-        <?php include './header.php'; ?>
-
-
+        
         <?php
         echo $_SESSION['username'];
         echo $_GET['quizid'];

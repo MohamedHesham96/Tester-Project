@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -6,10 +7,6 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-
-        <?php include './header.php'; ?>
-
-
         <div>
             <h1> Students Marks <h1>
                     <center>    <h2> Quiz Name : Test1 </h2>  </center>

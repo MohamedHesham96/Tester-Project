@@ -7,8 +7,10 @@ session_start();
 
 include '../controller/RegisterOPerations.php';
 
-if (isset($_POST['finish'])) {
-
+if (isset($_POST['finish'])) 
+   
+ {
+    session_start();
     $_SESSION['usertype'] = $_POST['type'];
     $_SESSION['username'] = $_POST['username'];
 
@@ -19,9 +21,7 @@ if (isset($_POST['finish'])) {
     $birthDay = $_POST['birth_day'];
     $country = $_POST['country'];
     $gender = $_POST['gender'];
-    //  $gender = 'male';
     $phone = $_POST['phone'];
-    //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
     $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
@@ -71,10 +71,10 @@ if (isset($_POST['finish'])) {
         switch ($_SESSION['usertype']) {
 
             case "admin":
-                header('Location: adminhome.php');
+                header('Location: AdminHome.php');
                 break;
             case "doctor":
-                header("Location: doctorhome.php");
+                header("Location: DoctorHome.php");
                 break;
             case "student":
                 header("Location: home.php");
