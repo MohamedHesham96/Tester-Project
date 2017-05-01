@@ -1,4 +1,5 @@
 <!--make information displayed in center of page -->
+<?php include './header.php';?>
 <html>  
     <head>
 
@@ -6,7 +7,7 @@
 
 
     <?php
-    include './header.php';
+    
     include '../controller/MyQuizzesOperations.php';
     $userType = $_SESSION['usertype'];
     $submitState = "";

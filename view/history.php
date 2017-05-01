@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         
@@ -14,9 +15,6 @@
             $studentName = $_SESSION['username'];
         }
         ?>
-
-        <?php include './header.php'; ?>
-
         <h1> Your Exams </h1>
 
         <div class="container">

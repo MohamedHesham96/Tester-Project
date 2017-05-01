@@ -1,3 +1,10 @@
+<?php
+if($_SESSION['username'])
+{
+    session_start();
+    header("Location: userTypeDriver.php");
+} 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +55,7 @@
 
                                         <h3>Login to our site</h3>
                                         <?php
-                                   //     session_destroy();
+                                        //     session_destroy();
                                         $massage = "";
 
                                         if (isset($_GET['errors'])) {
@@ -66,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="form-bottom">
-                                    <form action="userTypeDriver.php" method="GET" >
+                                    <form action="userTypeDriver.php" method="POST" >
                                         <div class="form-group">
                                             <label class="sr-only" for="form-username">Username</label>
                                             <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">

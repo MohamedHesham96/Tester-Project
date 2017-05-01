@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -6,7 +7,6 @@
 
 
         <?php
-        include './header.php';
         include '../controller/AdminOperations.php';
 
         // to ensure the user is admin only

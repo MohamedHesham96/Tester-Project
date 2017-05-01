@@ -1,3 +1,8 @@
+
+<?php include './header.php';?>
+<!doctype html>
+<html lang="en">
+
 <html>
     <head>
 
@@ -9,24 +14,18 @@
 
     </head>
 
+
     <body>
 
 
         <?php
-        include './header.php';
+        
         include '../controller/MyProfileOperations.php';
         include '../controller/HistoryOperations.php';
         include '../controller/MyQuizzesOperations.php';
-        ?>
-
-        <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
         $followButtonstate = "";
 
-
+        
         if (!isset($_GET['name'])) { // get sername from url 
             $username = $_SESSION['username'];
         } else {
@@ -86,10 +85,14 @@
                                             <br>
                                             <br>
                                             <div class="picture">
-                                                <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                <?php
+                                                  MyProileOperations::viewMyPhoto($username);
+                                               ?>
+                                                
                                             </div>
                                             <h4><?php echo ucwords($_SESSION['username'])?></h4>
                                             <h4><u><?php
+                                                    
                                                     if ($row['type'] == 'doctor')
                                                         echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
 
@@ -125,7 +128,7 @@
                                         <label>Country</label>
                                         <input class="form-control" value="<?php echo $row['country']; ?>" name="country" readonly>
                                         <br>
-
+                                   
                                     </div>
                                 </div>
 
@@ -135,6 +138,12 @@
                     </div>
                 </div>
 
+
+            <?php } 
+            
+         
+                ?>  
+                
 
 
             </div>

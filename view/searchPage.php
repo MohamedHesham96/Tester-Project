@@ -1,3 +1,4 @@
+<?php include './header.php';?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -6,8 +7,6 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-
-        <?php include './header.php'; ?>
 
         <?php $search = $_GET['search'] ?>
 
