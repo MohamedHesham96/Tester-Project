@@ -23,10 +23,7 @@ class MyProfileOperations {
             return $result;
         }
     }
-    public static function viewMyPhoto($user)
-        {
-            
-        }
 
 }
 
+?>

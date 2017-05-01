@@ -1,4 +1,3 @@
-<?php include './header.php'; ?>
 <html>
     <head>
 
@@ -6,9 +5,13 @@
 
     </head>
     <body>
+
+        <?php include './header.php'; ?>
+
         <br>
         <br>
         <br>
+
         <div class="container">
             <?php
             //connect to data base and create table for result
