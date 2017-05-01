@@ -26,19 +26,17 @@ if (isset($_POST['finish'])) {
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
     $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-    echo $user . "    " . $email;
-
     $resultForUsername = RegisterOperations::usernameChecker($user);
     $resultForEmail = RegisterOperations::emailChecker($email);
-
+    
     if ($row = mysqli_fetch_array($resultForUsername, 1)) {
 
-        header('Location: signup.php?errors=usernameerror');
+        header('Location: signUp.php?errors=usernameerror');
     }
 
     else if ($row2 = mysqli_fetch_array($resultForEmail, 1)) {
 
-        header('Location: signup.php?errors=emailerror');
+        header('Location: signUp.php?errors=emailerror');
     } 
     
     
@@ -48,10 +46,10 @@ if (isset($_POST['finish'])) {
         switch ($_POST['type']) {
 
             case "admin":
-                header('Location: adminhome.php');
+                header('Location: Adminhome.php');
                 break;
             case "doctor":
-                header("Location: doctorhome.php");
+                header("Location: Doctorhome.php");
                 break;
             case "student":
                 header("Location: home.php");
@@ -61,12 +59,7 @@ if (isset($_POST['finish'])) {
 } else {
     $userName = $_POST['username'];
     $password = $_POST['password'];
-
-    echo $userName . "    " . $password;
-
     $result = RegisterOperations::loginChecker($userName, $password);
-
-
     // check if the statment is true
     // check if the username of password is correct
 

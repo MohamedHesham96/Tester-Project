@@ -173,12 +173,12 @@
                                                 <div class="icon">
                                                     <i class="fa fa-terminal"></i>
                                                 </div>
-                                                <h6>Solver</h6>
+                                                <h6>Maker</h6>
                                                 <input type="radio" name="type" value="student" >
                                                 <div class="icon">
                                                     <i class="fa fa-laptop"></i>
                                                 </div>
-                                                <h6>Maker</h6>
+                                                <h6>Solver</h6>
 
 
                                             </div>
