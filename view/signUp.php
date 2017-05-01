@@ -19,9 +19,6 @@
     </head>
 
     <body>
-
-<!-- <?php include './header.php'; ?> >
-
         <?php
         //     session_destroy();
         $massage = ""; // for username hint
