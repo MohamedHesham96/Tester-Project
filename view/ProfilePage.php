@@ -1,7 +1,19 @@
+
 <?php include './header.php';?>
 <!doctype html>
 <html lang="en">
-   
+
+<html>
+    <head>
+
+
+
+        <!-- CSS Files -->
+        <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+
 
     <body>
 
@@ -59,8 +71,7 @@
                             <div class="card wizard-card " data-color="orange" id="wizardProfile">
                                 <br>
                                 <div class="row">
-                                    <br>   
-                                    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
+                                    <br>    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
                                         <div class="picture-container  ">
 
                                             <?php
@@ -75,11 +86,11 @@
                                             <br>
                                             <div class="picture">
                                                 <?php
-                                                  MyProfileOperations::viewMyPhoto($username);
+                                                  MyProileOperations::viewMyPhoto($username);
                                                ?>
                                                 
                                             </div>
-                                            <h4><?php echo $row['username']; ?></h4>
+                                            <h4><?php echo ucwords($_SESSION['username'])?></h4>
                                             <h4><u><?php
                                                     
                                                     if ($row['type'] == 'doctor')
@@ -134,19 +145,11 @@
                 ?>  
                 
 
-        </div>
+
+            </div>
+        <?php } ?>
+
 
     </body>
-
-    <!--   Core JS Files   -->
-    <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-    <script src="../recources/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../recources/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
-
-    <!--  Plugin for the Wizard -->
-    <script src="../recources/js/gsdk-bootstrap-wizard.js"></script>
-
-    <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
-    <script src="../recources/js/jquery.validate.min.js"></script>
 
 </html>

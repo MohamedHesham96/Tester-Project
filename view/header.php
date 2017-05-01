@@ -19,11 +19,11 @@
         <meta name="viewport" content="width=device-width" />
 
         <!-- CSS Files -->
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
 
-        <!-- CSS Just for demo purpose, don't include it in your project -->
-        <link href= "../recources/css/demo.css" rel="stylesheet" />
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style3.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/styletable.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -31,8 +31,11 @@
         
 
         if ($_SESSION['usertype'] == 'doctor') {
+
+            $firstTab = 'doctorhome';
             $secondTab = 'myQuizzes';
             $thirdTab = 'Followers';
+
             echo '<div class="btn-primary lg"> <button onclick=""><a href="createQuiz.php">Create New Quiz</a></button></div>';
         } else if ($_SESSION['usertype'] == 'student') {
 
@@ -69,12 +72,34 @@
                 </select>
 !-->
 
-                <h4>    
 
-                    <div style="background: #eee" class=" col-sm-2 col-lg-push-1">
+            //      echo '<div class="btn-primary log"> <button onclick=""><a href="createQuiz.php">Create New Quiz</a></button></div>';
+        } else if ($_SESSION['usertype'] == 'student') {
 
-                        <div class="picture-container">
-                            <div class="picture">
+            $firstTab = 'home';
+            $secondTab = 'History';
+            $thirdTab = 'Subscribes';
+        } else if ($_SESSION['usertype'] == 'admin') {
+
+            $firstTab = 'adminhome';
+            $secondTab = 'Doctors';
+            $thirdTab = 'Students';
+        }
+        ?>
+
+
+        <div style="background: #eee; height: 55;" class=" col-lg-12">
+
+                <h4 class="log"  style="margin-left: 8;margin-right: 35; margin-top: 20; display: inline; font-size: 14">
+                    <a style=" color: #f00;" href="login.php"> <?php echo 'Log out'; ?> </a>
+                </h4>
+              <h4 class="log" style="margin-right: 0; margin-top: 8; display: inline; font-size: 35">
+                    <a style=" color: #aaa;" href="login.php"> <?php echo '|'; ?> </a>
+                </h4>
+            
+            <div style="" class="">
+
+
 
                                 <a   href="ProfilePage.php?name=<?php echo $user = $_SESSION['username'] ?>"><?php
                                     include '../include/vars.php';
@@ -95,36 +120,29 @@
                                                         <a   href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>">         <?php echo $_SESSION['username'] ?> </a>
 
 
-                            </div>          
-                        </div>
-
-                    </div>
-                </h4> 
-
-                <div  class="col-lg-6">
-                    <form action="searchPage.php" method="GET">
-
-                        <input  class="col-lg-10 col-lg-push-3 btn-lg" placeholder="Search..." class="form-control" name="search" >
-                        <input  class="col-lg-2 col-lg-push-3 btn-lg btn btn-success" type="submit" value="Search">
-
-
-                    </form>
+                <div style="background: #eee; margin-top: -7 ; margin-right: 3"  class="log">
+                    <img  style="border-radius: 60% ; display: inline" src = '../recources/images/default-avatar.png' height = '44'>
                 </div>
 
+                <h4 class="log" style="display: inline; margin-right: 5; margin-top: 2; font-size: 20">
+                    <a style=" color: #44f;" href="profilepage.php?name=<?php echo $_SESSION['username']  ?>"> <?php echo ucwords($_SESSION['username'])?> </a>
+                </h4>
+
+                <form action="searchPage.php" method="GET">
+
+                    <input  style="height: 30; margin-left: 50;font-size: 14" class="col-lg-offset-1 col-lg-3  btn-lg" placeholder="Quiz Name or Code..." class="form-control" name="search" >
+                    <input  style="height: 28.5 ; width: 75; font-size: 14; margin-left: -75" class="col-lg-1 btn-success" type="submit" value="Search">
+
+                </form>
 
             </div>
 
-            <br>
-            <br><br><br>
 
-            <br>  
-            <div style="background: #eee" class=" col-lg-12">
-
-                <div class="nav">
-
+            <div   class="col-lg-offset-4">
+                <div  class="nav">
                     <div class="container">
                         <ul>
-                            <li ><a href="home.php" class="active" >Home</a></li>
+                            <li><a href="<?php echo $firstTab ?>.php" class="active" >Home</a></li>
                             <li><a href="<?php echo $secondTab . '.php' ?>" ><?php echo $secondTab ?></a></li>
                             <li><a href="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
                             <li><a href="about.php">About</a></li>
@@ -133,8 +151,14 @@
                     </div>
                 </div>
             </div>
-             <br>
-            <br><br>
+
+        </div>
+
+
+
+        <br>  
+        <br>
+        <br><br>
     </body>
     <!--   Core JS Files   -->
     <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>

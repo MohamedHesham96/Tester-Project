@@ -3,6 +3,7 @@
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/styletable.css" rel="stylesheet" type="text/css"/>
 
         <meta charset="utf-8"/>
     </head>
@@ -13,15 +14,15 @@
 
 
 
-        <h1> following <h1>
+        <h1> following </h1>
                 <div class="container">
 
                     <table class="table-striped"> 
 
                         <tr>
-                            <td>Doctor Photo</td>
-                            <td>Doctor name</td>
-                            <td>Doctor E-Mail</td>
+                            <th>Doctor Photo</th>
+                            <th>Doctor name</th>
+                            <th>Doctor E-Mail</th>
                         </tr>
 
 

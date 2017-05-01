@@ -1,9 +1,19 @@
 <?php include 'header.php'; ?>
 <html>
-    </head>
-    <body>
         <div class="container">
             <?php
+            include '../controller/AdminOperations.php';
+            if (isset($_SESSION['usertype']) && isset($_GET['deletequizid'])) {
+                $quizId = $_GET['deletequizid'];
+                //    AdminOperations::deleteQuiz($quizId);
+            }
+
+
+
+
+            $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
+            $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
+
             //connect to data base and create table for result
             include '../include/vars.php';
             $conn = mysqli_connect($host, $username, $password, $dbname);
@@ -15,25 +25,46 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<style>table{width:100%;border-collapse:collapse;} td,th{height:50px; text-align:left;border-bottom:1px #ddd solid ;padding:15px;}th{background-color:#4CAF50 ;color:white; } tr:hover {background-color: #4CAF50; color:white;} tr:nth-child(even){background-color:#f2f2f2;}tr:nth-child(even):hover{background-color:#4CAF50;} </style>';
-                echo '<table><thead><tr><th>Test Name<th>Test Code</th><th>Marker name</th><th>Secure</th></tr><thead><tbody>';
+                echo '<table class="table-striped"><thead><tr><th>Test Name<th>Test Code</th><th>Marker name</th><th>Secure</th></tr><thead><tbody>';
                 while ($row = $result->fetch_assoc()) {
+
                     $id = $row['quiz_id'];
                     $name = $row['quiz_name'];
                     $password = $row['password'];
                     $maker = $row['username'];
-                    echo '<tr><td>' . $name . '</td><td>' . $id . '</td><td>' . $maker . '</td>';
+
+                    if ($_SESSION['usertype'] != "doctor") {
+
+                        echo '<tr>'
+                        . '<td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td>'
+                        . '<td>' . $id . '</td><td>' . $maker . '</td>';
+                    } else {
+
+                        echo '<tr>'
+                        . '<td>' . $name . '</td>'
+                        . '<td>' . $id . '</td><td>' . $maker . '</td>';
+                    }
+
+
                     if (empty($password)) {
                         echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
                     } else {
                         echo '<td><img src="../recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>';
                     }
+                    echo "<td><a onClick=\"\"> $removeIcon  </a></td>";
+
                     echo '</tr>';
                 }
                 echo '</tbody></table>';
             }
             ?>
         </div>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+
+    
     </body>
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </html>
