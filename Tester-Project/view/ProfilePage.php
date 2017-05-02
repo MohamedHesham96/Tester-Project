@@ -1,7 +1,12 @@
+<?php
+include './header.php';
+include '../controller/MyProfileOperations.php';
+include '../controller/HistoryOperations.php';
+include '../controller/MyQuizzesOperations.php';
+?>
+
 <html>
     <head>
-
-
 
         <!-- CSS Files -->
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
@@ -13,19 +18,13 @@
 
 
         <?php
-        include './header.php';
-        include '../controller/MyProfileOperations.php';
-        include '../controller/HistoryOperations.php';
-        include '../controller/MyQuizzesOperations.php';
-        ?>
-
-        <?php
         $followButtonstate = "";
+
         if (!isset($_GET['name'])) { // get sername from url 
-            $username = $_SESSION['username'];
+            $user = $_SESSION['username'];
         } else {
 
-            $username = $_GET['name'];
+            $user = $_GET['name'];
         }
 
         $color = "";
@@ -42,7 +41,7 @@
         }
 
 
-        $result = MyProfileOperations::getMyData($username); // Get all user data to display
+        $result = MyProfileOperations::getMyData($user); // Get all user data to display
         $quizState = ""; // button under the picture
         $quizzesLink = ""; // Title on the button that under the picture 
 
@@ -71,7 +70,7 @@
 
                                             <?php
                                             if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
-                                                echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$username \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
+                                                echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$user \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
                                             } else {
                                                 
                                             }
@@ -82,13 +81,15 @@
                                             <div class="picture">
                                                 <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
                                             </div>
-                                            <h4><?php echo ucwords($_SESSION['username'])?></h4>
+                                            
+                                            <h4><?php echo ucwords($user) ?></h4>
+                                           
                                             <h4><u><?php
                                                     if ($row['type'] == 'doctor')
-                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $username . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($username) . "</a></u></h4>";
+                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"myquizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
 
                                                     if ($row['type'] == 'student')
-                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $username . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($username) . "</a>";
+                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"history.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
                                                     ?></u></h4>
                                         </div>
                                     </div>
