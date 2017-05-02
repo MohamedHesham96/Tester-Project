@@ -1,6 +1,8 @@
 <html>
     <head>
 
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
         <meta charset="utf-8"/>
 
     </head>
@@ -25,30 +27,14 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<div class="container">';
-                echo '<table><thead>'
-                . '<tr><th>Quiz Code</th>'
-                . '<th>Quiz Name</th>'
-                . '<th>Doctor name</th>'
-                . '<th>Secure</th>'
-                . '</tr><thead><tbody>';
+                echo '<style>table{width:100%;border-collapse:collapse;} td,th{height:50px; text-align:left;border-bottom:1px #ddd solid ;padding:15px;}th{background-color:#4CAF50 ;color:white; } tr:hover {background-color: #4CAF50; color:white;} tr:nth-child(even){background-color:#f2f2f2;}tr:nth-child(even):hover{background-color:#4CAF50;} </style>';
+                echo '<table><thead><tr><th>Test Name<th>Test Code</th><th>Marker name</th><th>Secure</th></tr><thead><tbody>';
                 while ($row = $result->fetch_assoc()) {
                     $id = $row['quiz_id'];
                     $name = $row['quiz_name'];
                     $password = $row['password'];
                     $maker = $row['username'];
-
-                    if ($_SESSION['usertype'] == "student") {
-
-                        echo '<tr>'
-                        . '<td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td>'
-                        . '<td>' . $id . '</td><td>' . $maker . '</td>';
-                    } else {
-
-                        echo '<tr>'
-                        . '<td>' . $name . '</td>'
-                        . '<td>' . $id . '</td><td>' . $maker . '</td>';
-                    }
+                    echo '<tr><td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td><td>' . $id . '</td><td>' . $maker . '</td>';
                     if (empty($password)) {
                         echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
                     } else {
@@ -56,7 +42,7 @@
                     }
                     echo '</tr>';
                 }
-                echo '</tbody></table></div>';
+                echo '</tbody></table>';
             }
             ?>
         </div>
