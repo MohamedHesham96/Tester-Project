@@ -1,5 +1,8 @@
 <html>
     <head>
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
+        <meta charset="utf-8"/>
     </head>
     <body >
 
@@ -55,7 +58,7 @@
                         $studentName = $row['username'];
 
                         echo "<tr>";
-                        echo " <td><img style=\"border-radius: 30%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
+                        echo " <td><img src = '../recources/images/default-avatar.png' height = '40'></td>";
 
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['username'] . "</td>";
@@ -65,7 +68,7 @@
                         echo "<td>" . $row['country'] . "</td>";
                         echo "<td>" . $row['phone'] . "</td>";
                         echo "<td>" . $row['university'] . "</td>";
-                        echo "<td>" . $row['faculty'] . "</td>";
+                        echo "<td>" . $row['faculty'] .  "</td>";
 
                         echo "<td><a href = 'profilepage.php?&name=$studentName'\"> $editIcon </a></td>";
                         echo "<td><a href = 'students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
