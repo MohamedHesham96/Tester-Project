@@ -48,7 +48,7 @@
 
                                         <h3>Login to our site</h3>
                                         <?php
-                                   //     session_destroy();
+                                       //session_destroy();
                                         $massage = "";
 
                                         if (isset($_GET['errors'])) {

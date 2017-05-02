@@ -37,7 +37,15 @@
         <div style="background: #eee; height: 55;" class=" col-lg-12">
 
                 <h4 class="log"  style="margin-left: 8;margin-right: 35; margin-top: 20; display: inline; font-size: 14">
-                    <a style=" color: #f00;" href="login.php"> <?php echo 'Log out'; ?> </a>
+                    <a style=" color: #f00;" href="?page=Logout.php"> Log out </a>
+                    <?php
+                        if(isset($_GET['page']))
+                        {
+                            $page = $_GET['page']; 
+                            $url  = "../models/".$page;
+                            include $url;
+                        }   
+                    ?>
                 </h4>
               <h4 class="log" style="margin-right: 0; margin-top: 8; display: inline; font-size: 35">
                     <a style=" color: #aaa;" href="login.php"> <?php echo '|'; ?> </a>
