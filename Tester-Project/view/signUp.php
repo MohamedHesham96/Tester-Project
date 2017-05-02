@@ -35,7 +35,7 @@
         }
         ?>
                            
-<div class="image-container set-full-height" style="background-image: url('img/wizard.jpg')">
+<div class="image-container set-full-height" style="background-image: url('../recources/images/')">
 
         <!--   Big container   -->
         <div class="container">

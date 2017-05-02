@@ -6,17 +6,13 @@
 
 
         <?php
-        session_start();
-
+        include './header.php'; 
         if (isset($_GET['name'])) {
             $studentName = $_GET['name'];
         } else {
             $studentName = $_SESSION['username'];
         }
         ?>
-
-        <?php include './header.php'; ?>
-
         <h1> Your Exams </h1>
 
         <div class="container">

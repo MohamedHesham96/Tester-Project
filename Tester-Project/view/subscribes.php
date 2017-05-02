@@ -8,16 +8,9 @@
     </head>
     <body >
         <?php
-        session_start();
-
+        include './header.php';
         $studentName = $_SESSION['username'];
         ?>
-
-        <?php include './header.php'; ?>
-
-
-
-
         <h1> following </h1>
                 <div class="container">
 

@@ -1,3 +1,13 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])){
+        
+        echo '<script>alert("You must login in to continue :( ");</script>';
+        include 'login.php';
+        die();
+    }
+    
+?>
 <html>
 
     <head>
@@ -9,13 +19,9 @@
 
     <body>
         <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
         if ($_SESSION['usertype'] == 'doctor') {
 
-            $firstTab = 'doctorhome';
+            $firstTab = 'DoctorHome';
             $secondTab = 'myQuizzes';
             $thirdTab = 'Followers';
 
@@ -23,11 +29,11 @@
         } else if ($_SESSION['usertype'] == 'student') {
 
             $firstTab = 'home';
-            $secondTab = 'History';
+            $secondTab = 'history';
             $thirdTab = 'Subscribes';
         } else if ($_SESSION['usertype'] == 'admin') {
 
-            $firstTab = 'adminhome';
+            $firstTab = 'AdminHome';
             $secondTab = 'Doctors';
             $thirdTab = 'Students';
         }
@@ -60,7 +66,7 @@
                 </div>
 
                 <h4 class="log" style="display: inline; margin-right: 5; margin-top: 2; font-size: 20">
-                    <a style=" color: #44f;" href="profilepage.php?name=<?php echo $_SESSION['username']  ?>"> <?php echo ucwords($_SESSION['username'])?> </a>
+                    <a style=" color: #44f;" href="ProfilePage.php?name=<?php echo $_SESSION['username']  ?>"> <?php echo ucwords($_SESSION['username'])?> </a>
                 </h4>
 
                 <form action="searchPage.php" method="GET">

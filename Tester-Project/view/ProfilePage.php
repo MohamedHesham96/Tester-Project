@@ -20,13 +20,7 @@
         ?>
 
         <?php
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
         $followButtonstate = "";
-
-
         if (!isset($_GET['name'])) { // get sername from url 
             $username = $_SESSION['username'];
         } else {

@@ -4,27 +4,26 @@
 
 session_start();
 
-
 include '../controller/RegisterOPerations.php';
 
-if (isset($_GET['finish'])) {
+if (isset($_POST['finish'])) {
 
-    $_SESSION['usertype'] = $_GET['type'];
-    $_SESSION['username'] = $_GET['username'];
+    $_SESSION['usertype'] = $_POST['type'];
+    $_SESSION['username'] = $_POST['username'];
 
-    $user = $_GET['username'];
-    $pass = $_GET['password'];
-    $email = $_GET['email'];
-    $type = $_GET['type'];
-    $birthDay = $_GET['birth_day'];
-    $country = $_GET['country'];
-    $gender = $_GET['gender'];
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $email = $_POST['email'];
+    $type = $_POST['type'];
+    $birthDay = $_POST['birth_day'];
+    $country = $_POST['country'];
+    $gender = $_POST['gender'];
 
   //  $gender = 'male';
-    $phone = $_GET['phone'];
+    $phone = $_POST['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-    $univers = $_GET['university'];
-    $faculty = $_GET['faculty'];
+    $univers = $_POST['university'];
+    $faculty = $_POST['faculty'];
     $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
     $resultForUsername = RegisterOperations::usernameChecker($user);
     $resultForEmail = RegisterOperations::emailChecker($email);
@@ -43,22 +42,27 @@ if (isset($_GET['finish'])) {
     else {
         RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone,$image, $univers, $faculty, $gender);
 
-        switch ($_GET['type']) {
+        switch ($_POST['type']) {
 
             case "admin":
-                header('Location: Adminhome.php');
+                header('Location: AdminHome.php');
                 break;
             case "doctor":
-                header("Location: Doctorhome.php");
+                header("Location: DoctorHome.php");
                 break;
             case "student":
                 header("Location: home.php");
                 break;
         }
     }
-} else {
-    $userName = $_GET['username'];
-    $password = $_GET['password'];
+} 
+
+
+
+
+else {
+    $userName = $_POST['username'];
+    $password = $_POST['password'];
     $result = RegisterOperations::loginChecker($userName, $password);
     // check if the statment is true
     // check if the username of password is correct
@@ -72,10 +76,10 @@ if (isset($_GET['finish'])) {
         switch ($_SESSION['usertype']) {
 
             case "admin":
-                header('Location: adminhome.php');
+                header('Location: AdminHome.php');
                 break;
             case "doctor":
-                header("Location: doctorhome.php");
+                header("Location: DoctorHome.php");
                 break;
             case "student":
                 header("Location: home.php");
