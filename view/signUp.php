@@ -47,7 +47,7 @@
                     <div class="wizard-container">
 
                         <div class="card wizard-card" data-color="orange" id="wizardProfile">
-                            <form action="userTypeDriver.php" method="POST">
+                            <form action="userTypeDriver.php" method="POST" enctype="multipart/form-data">
                                 <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                                 <div class="wizard-header">
@@ -75,7 +75,7 @@
                                                     <br>
                                                     <div class="picture">
                                                         <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                        <input type="file" name="image">
+                                                        <input type="file" name="image" id="image">
                                                     </div>
                                                     <h6>Choose Picture</h6>
                                                 </div>
@@ -135,6 +135,7 @@
                                                             //Set the color to the good color and inform
                                                             //the user that they have entered the correct password 
                                                             document.getElementById("next").disabled = false;
+                                                            pass1.style.backgroundColor = goodColor;
                                                             pass2.style.backgroundColor = goodColor;
                                                             message.style.color = goodColor;
                                                             message2.style.color = goodColor;
@@ -150,6 +151,7 @@
                                                             document.getElementById("next").disabled = true;
                                                             document.getElementById("link2").disabled = true;
                                                             document.getElementById("link3").disabled = true;
+                                                            pass1.style.backgroundColor = badColor;
                                                             pass2.style.backgroundColor = badColor;
                                                             message.style.color = badColor;
                                                             message2.style.color = badColor;
@@ -171,12 +173,12 @@
                                                 <div class="icon">
                                                     <i class="fa fa-terminal"></i>
                                                 </div>
-                                                <h6>Solver</h6>
+                                                <h6>Maker</h6>
                                                 <input type="radio" name="type" value="student" >
                                                 <div class="icon">
                                                     <i class="fa fa-laptop"></i>
                                                 </div>
-                                                <h6>Maker</h6>
+                                                <h6>Solver</h6>
 
 
                                             </div>
@@ -190,27 +192,27 @@
 
                                                 <div class="col-lg-10">
                                                     
-                                                    <input type="radio" name="gender" value="male"> Male
+                                                    <input type="radio" name="gender" value="male" > Male
                                                     <input type="radio" name="gender" value="female"> Female
                                                     <br>
                                                     <br>
                                                     <label>Birth Day<small></small></label>
-                                                    <input class="form-control" type="date" placeholder="Enter Your Birth Date"  name="birth_day">
+                                                    <input class="form-control" type="date" placeholder="Enter Your Birth Date"  required name="birth_day">
                                                     <br>
                                                     <label>Phone <small></small></label>
-                                                    <input  class="form-control" type="tel" placeholder="Enter Your Phone Number" name="phone" >
+                                                    <input  class="form-control" type="tel"  required placeholder="Enter Your Phone Number" name="phone" >
                                                     <br>
 
                                                     <label>University <small></small></label>
-                                                    <input  class="form-control" type="text" placeholder="Enter Your University" name="university">
+                                                    <input  class="form-control" type="text" placeholder="Enter Your University" name="university" required>
                                                     <br>
 
                                                     <label>Faculty <small></small></label>
-                                                    <input   class="form-control" type="text" placeholder="Enter Your Faculty" name="faculty">
+                                                    <input   class="form-control" type="text" placeholder="Enter Your Faculty" name="faculty" required="">
                                                     <br>
                                                     <label>Country</label>
 
-                                                    <select  class="form-control" name="country" class="form-control">
+                                                    <select  class="form-control" name="country" class="form-control" required="">
 
                                                         <option value="Afghanistan">Afghanistan</option>
                                                         <option value="Albania">Albania</option>

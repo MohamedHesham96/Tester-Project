@@ -19,39 +19,36 @@ if (isset($_POST['finish'])) {
     $birthDay = $_POST['birth_day'];
     $country = $_POST['country'];
     $gender = $_POST['gender'];
-
-  //  $gender = 'male';
+    //  $gender = 'male';
     $phone = $_POST['phone'];
     //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
-
-    echo $user . "    " . $email;
-
+    $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
     $resultForUsername = RegisterOperations::usernameChecker($user);
     $resultForEmail = RegisterOperations::emailChecker($email);
-
+    
     if ($row = mysqli_fetch_array($resultForUsername, 1)) {
 
-        header('Location: signup.php?errors=usernameerror');
+        header('Location: signUp.php?errors=usernameerror');
     }
 
     else if ($row2 = mysqli_fetch_array($resultForEmail, 1)) {
 
-        header('Location: signup.php?errors=emailerror');
+        header('Location: signUp.php?errors=emailerror');
     } 
     
     
     else {
-        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $univers, $faculty, $gender);
+        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone,$image, $univers, $faculty, $gender);
 
         switch ($_POST['type']) {
 
             case "admin":
-                header('Location: adminhome.php');
+                header('Location: Adminhome.php');
                 break;
             case "doctor":
-                header("Location: doctorhome.php");
+                header("Location: Doctorhome.php");
                 break;
             case "student":
                 header("Location: home.php");
@@ -61,12 +58,7 @@ if (isset($_POST['finish'])) {
 } else {
     $userName = $_POST['username'];
     $password = $_POST['password'];
-
-    echo $userName . "    " . $password;
-
     $result = RegisterOperations::loginChecker($userName, $password);
-
-
     // check if the statment is true
     // check if the username of password is correct
 

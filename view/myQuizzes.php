@@ -1,5 +1,9 @@
 <html>
     <head>
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
+
+
         <meta charset="utf-8"/>
     </head>
     <body >
@@ -21,13 +25,15 @@
             <h1> My Quizzes <h1>
 
                     <table class="table-striped"> 
+                        <tr>
 
-                            <th>Quiz Code</th>
-                            <th>Quiz Name</th>
-                            <th>Full Mark</t>
-                            <th>Quiz Date</th>
-                            <th>Password</th>
+                            <td>Quiz Code</td>
+                            <td>Quiz Name</td>
+                            <td>Full Mark</td>
+                            <td>Quiz Date</td>
+                            <td>Password</td>
 
+                        </tr>
 
                         <?php
                         include '../controller/MyQuizzesOperations.php';
