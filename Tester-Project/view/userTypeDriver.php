@@ -19,48 +19,57 @@ if (isset($_POST['finish'])) {
     $country = $_POST['country'];
     $gender = $_POST['gender'];
 
-  //  $gender = 'male';
+    //  $gender = 'male';
     $phone = $_POST['phone'];
-    //$image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+    $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
-    $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    // $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+
     $resultForUsername = RegisterOperations::usernameChecker($user);
     $resultForEmail = RegisterOperations::emailChecker($email);
-    
+
     if ($row = mysqli_fetch_array($resultForUsername, 1)) {
 
         header('Location: signUp.php?errors=usernameerror');
-    }
-
-    else if ($row2 = mysqli_fetch_array($resultForEmail, 1)) {
+    } else if ($row2 = mysqli_fetch_array($resultForEmail, 1)) {
 
         header('Location: signUp.php?errors=emailerror');
-    } 
-    
-    
-    else {
-        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone,$image, $univers, $faculty, $gender);
+    } else {
 
-        switch ($_POST['type']) {
+//        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $image, $univers, $faculty, $gender);
+        RegisterOperations::signUp($user, $pass, $email, $type, $birthDay, $country, $phone, $image, $univers, $faculty, $gender);
 
-            case "admin":
-                header('Location: AdminHome.php');
-                break;
-            case "doctor":
-                header("Location: DoctorHome.php");
-                break;
-            case "student":
-                header("Location: home.php");
-                break;
+        $result = RegisterOperations::getSomeData($user);
+
+        if ($row3 = mysqli_fetch_array($result, 1)) {
+
+            $_SESSION['userid'] = $row3['id'];
+            $_SESSION['username'] = $row3['username'];
+            $_SESSION['usertype'] = $row3['type'];
+            $_SESSION['userimage'] = $row3['image'];
         }
+
+        echo "User ID : " . $row3['id'];
+        echo "id Session : " . $_SESSION['userid'];
+        echo "username Session : " . $_SESSION['username'];
+
+
+        
+          switch ($_POST['type']) {
+
+          case "admin":
+          header('Location: AdminHome.php');
+          break;
+          case "doctor":
+          header("Location: DoctorHome.php");
+          break;
+          case "student":
+          header("Location: home.php");
+          break;
+          } 
     }
-} 
-
-
-
-
-else {
+} else {
     $userName = $_POST['username'];
     $password = $_POST['password'];
     $result = RegisterOperations::loginChecker($userName, $password);

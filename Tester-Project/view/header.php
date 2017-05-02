@@ -31,6 +31,7 @@
             $firstTab = 'home';
             $secondTab = 'history';
             $thirdTab = 'Subscribes';
+            
         } else if ($_SESSION['usertype'] == 'admin') {
 
             $firstTab = 'AdminHome';
