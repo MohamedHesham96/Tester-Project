@@ -6,6 +6,8 @@
         include 'Login.php';
         die();
     }
+    include  '../controller/MyProfileOperations.php';
+
 ?>
 <html>
     <head>
@@ -59,7 +61,23 @@
 
 
                 <div style="background: #eee; margin-top: -7 ; margin-right: 3"  class="log">
-                    <img  style="border-radius: 60% ; display: inline" src = '../recources/images/default-avatar.png' height = '44'>
+                    <a href="ProfilePage.php?name=<?php echo $_SESSION['username']  ?>">
+                        <?php    
+                            $user = $_SESSION['username'];
+                            $result = MyProfileOperations::getMyData($user);
+                            $row = mysqli_fetch_array($result);
+                            $profilephoto = $row['image'];
+                            if(empty($profilephoto))
+                            {
+                                echo '<img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>';
+
+                            }
+                            else
+                            {    
+                                echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height = "44"  class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>'; 
+                            }
+                        ?>
+                    </a>
                 </div>
 
                 <h4 class="log" style="display: inline; margin-right: 5; margin-top: 2; font-size: 20">
