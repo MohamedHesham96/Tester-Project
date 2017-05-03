@@ -67,7 +67,7 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td><a href = 'profilepage.php?&name=$studentName'\"> $editIcon </a></td>";
+                        echo "<td><a href = 'ProfilePage.php?&name=$studentName'\"> $editIcon </a></td>";
                         echo "<td><a href = 'students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
 
                         echo "</tr>";
