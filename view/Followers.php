@@ -26,7 +26,7 @@
                             
                             while ($row = mysqli_fetch_array($reult, 1)) {
                                 echo "<tr>";
-                                echo '<td><a href="profilepage.php?&&name=' . $row['student_name'] . '">' . $row['student_name'] . '</a></td>';
+                                echo '<td><a href="ProfilePage.php?&&name=' . $row['student_name'] . '">' . $row['student_name'] . '</a></td>';
                                 echo "</tr>";
                             }
                         }

@@ -54,9 +54,9 @@
                 <?php
                 $result = AdminOperations::getAllDoctors();
 
-                $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
+                $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
 
-                $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
+                $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
 
                 if (!$result) {
                     echo 'error2';
@@ -66,10 +66,18 @@
                         $doctorId = $row["id"];
                         $doctorname = $row['username'];
                         $doctoremail = $row['email'];
-
+                        $profilephoto = $row['image'];
                         echo "<tr>";
-                        echo " <td><img style=\"border-radius: 60%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
+                        //display profile photos
+                        if(empty($profilephoto))
+                        {
+                            echo '<td><img style="border-radius: 60%" src="../recources/images/default-avatar.png" height="40" class="picture-src" id="wizardPicturePreview" title=""/></td>';
 
+                        }
+                        else
+                        {    
+                            echo '<td><img style="border-radius: 60%" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height="40"  class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></td>'; 
+                        }
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['username'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
@@ -80,7 +88,7 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
+                        echo "<td><a href = 'ProfilePage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
                         echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
 
                         echo "</tr>";

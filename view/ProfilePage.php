@@ -1,6 +1,5 @@
 <?php
 include './Header.php';
-include '../controller/MyProfileOperations.php';
 include '../controller/HistoryOperations.php';
 include '../controller/MyQuizzesOperations.php';
 ?>
@@ -78,7 +77,18 @@ include '../controller/MyQuizzesOperations.php';
                                             <br>
                                             <br>
                                             <div class="picture">
-                                                <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
+                                            <?php    
+                                                $profilephoto = $row['image'];
+                                                    if(empty($profilephoto))
+                                                    {
+                                                        echo '<img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>';
+
+                                                    }
+                                                    else
+                                                    {    
+                                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height="100" width="100" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>'; 
+                                                    }
+                                            ?>
                                             </div>
                                             
                                             <h4><?php echo ucwords($user) ?></h4>
