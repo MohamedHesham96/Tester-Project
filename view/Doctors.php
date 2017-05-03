@@ -54,9 +54,9 @@
                 <?php
                 $result = AdminOperations::getAllDoctors();
 
-                $editIcon = "<img src = '../recources/images/Edit_user.png' height = '32'>";
+                $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
 
-                $removeIcon = "<img src = '../recources/images/Remove_user.png' height = '32'>";
+                $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
 
                 if (!$result) {
                     echo 'error2';
