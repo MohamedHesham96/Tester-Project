@@ -54,9 +54,9 @@
                 <?php
                 $result = AdminOperations::getAllDoctors();
 
-                $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
+                $editIcon = "<img src = '../recources/images/Edit_user.png' height = '32'>";
 
-                $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
+                $removeIcon = "<img src = '../recources/images/Remove_user.png' height = '32'>";
 
                 if (!$result) {
                     echo 'error2';
@@ -80,7 +80,7 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
+                        echo "<td><a href = 'ProfilePage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
                         echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
 
                         echo "</tr>";
