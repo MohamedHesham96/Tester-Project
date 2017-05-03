@@ -66,10 +66,18 @@
                         $doctorId = $row["id"];
                         $doctorname = $row['username'];
                         $doctoremail = $row['email'];
-
+                        $profilephoto = $row['image'];
                         echo "<tr>";
-                        echo " <td><img style=\"border-radius: 60%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
+                        //display profile photos
+                        if(empty($profilephoto))
+                        {
+                            echo '<td><img style="border-radius: 60%" src="../recources/images/default-avatar.png" height="40" class="picture-src" id="wizardPicturePreview" title=""/></td>';
 
+                        }
+                        else
+                        {    
+                            echo '<td><img style="border-radius: 60%" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height="40"  class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></td>'; 
+                        }
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['username'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";

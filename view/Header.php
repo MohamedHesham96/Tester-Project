@@ -69,12 +69,12 @@
                             $profilephoto = $row['image'];
                             if(empty($profilephoto))
                             {
-                                echo '<img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>';
+                                echo '<img src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
 
                             }
                             else
                             {    
-                                echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height = "44"  class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>'; 
+                                echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>'; 
                             }
                         ?>
                     </a>
