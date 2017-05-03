@@ -1,0 +1,61 @@
+
+.log  {
+
+    float: right;
+    margin: 5px;
+
+}
+
+
+.nav{
+
+    width:750px;
+    margin:20px;
+
+}
+
+
+.nav a{
+    color:black;
+    text-shadow:1px 1px;
+    font-weight:bold;
+    font-family: cursive;
+    text-decoration:none;
+}
+
+
+.nav ul{
+    display:inline;
+    font-size:15px;
+
+}
+.nav li{
+    display:inline;
+
+}
+
+.nav .active{
+    background-color:red;
+    border-radius: 10px;
+    color: white;
+    text-decoration:underline;
+}
+
+
+
+.jumbotron{
+    height:100%;
+}
+.nav .container{
+
+    text-align: left;
+}
+
+.jumbotron{
+    height:500px;
+    background-image:url("../imgs/Web_Submitted_shutterstock_434614015.jpg");
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size:100%;
+
+}

@@ -1,0 +1,71 @@
+
+.log  {
+
+    float: right;
+    margin: 5px;
+
+}
+
+
+
+
+
+
+.nav .active{
+    background-color:red;
+    border-radius: 10px;
+    color: white;
+    text-decoration:underline;
+}
+
+
+
+.jumbotron{
+    height:100%;
+
+
+
+}
+.nav .container{
+
+    text-align: left;
+}
+
+h1{
+    font-size: 40px;
+    color:green;
+    text-transform:uppercase;
+    text-align:center;
+    font-weight:bold;
+    text-shadow:1px 1px;
+
+
+}
+
+
+
+table {
+    background-color: gray;
+
+    text-align:center;
+    font-weight:bold;
+    text-shadow:1px 1px;
+    width: 100%;
+}
+
+td, th {
+
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+tr:hover{background-color:green;
+}
+
+
+
+
+
