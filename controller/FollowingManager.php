@@ -19,7 +19,7 @@ class FollowingManager {
 
         $result = mysqli_query($conn, $query);
 
-        Header("location: ../view/profilepage.php?name=$doctorName&followstate=true");
+        Header("location: ../view/ProfilePage.php?name=$doctorName&followstate=true");
     }
 
     public static function followChecker() {
@@ -55,10 +55,10 @@ class FollowingManager {
             $result = mysqli_query($conn, $query);
 
             if ($row = mysqli_fetch_assoc($result)) {
-                Header("location: ../view/profilepage.php?name=$doctorName&followstate=true");
+                Header("location: ../view/ProfilePage.php?name=$doctorName&followstate=true");
             } else {
 
-                Header("location: ../view/profilepage.php?name=$doctorName&followstate=false");
+                Header("location: ../view/ProfilePage.php?name=$doctorName&followstate=false");
             }
         } else if ($_GET['outprofile'] == "false") {
 
@@ -68,7 +68,7 @@ class FollowingManager {
 
                 $result = mysqli_query($conn, $query);
 
-       Header("location: ../view/profilepage.php?name=$doctorName&followstate=false");
+       Header("location: ../view/ProfilePage.php?name=$doctorName&followstate=false");
             } else {
                 FollowingManager::insertNewFollow($doctorId, $studentName);
             }

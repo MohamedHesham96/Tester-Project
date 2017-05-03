@@ -23,7 +23,7 @@
 
     echo "Quiz id    : $quizId <br><br>"; // display quiz id
     echo "Quiz name  : $name <br><br>"; // display quiz name
-    echo "Quiz maker : <a href='../controller/followingmanager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
+    echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
     echo ' </div>';
 
     echo '    <div style="margin-right: 200; padding-left: 200"> 
