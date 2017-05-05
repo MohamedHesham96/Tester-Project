@@ -1,11 +1,13 @@
-<?php include './Header.php'; ?>
+<?php
+include './Header.php';
+include '../controller/MyQuizzesOperations.php';
+?>
 <!--make information displayed in center of page -->
 <html>  
     <head>
 
     </head>
     <?php
-    include '../controller/MyQuizzesOperations.php';
     $userType = $_SESSION['usertype'];
     $submitState = "";
     if ($userType != "student")    //بتحدد ظهور زرار السابمت على اساس نوع المستخدم لو ادمن مش هيظهر
@@ -16,6 +18,9 @@
     $quizId = $_GET['id'];
     $maker = $_GET['maker'];
     $fullMark = $_GET['fullmark'];
+    $makerId = $_GET['makerid'];
+    $fullMark = $_GET['fullmark'];
+    $makerId = $_GET['makerid'];
 
     $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
@@ -25,6 +30,7 @@
     echo "Quiz id    : $quizId <br><br>"; // display quiz id
     echo "Quiz name  : $name <br><br>"; // display quiz name
     echo "Full Mark  : $fullMark <br><br>"; // display quiz name
+    echo "Maker ID  : $makerId <br><br>"; // display quiz name
 
     echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
     echo ' </div>';
@@ -136,6 +142,7 @@
         <input  name="quizid" type="text" value="<?php echo $_GET['id']; ?>"  readonly="readonly" hidden/> 
         <input  name="quizdoctor" type="text" value="<?php echo $_GET['maker']; ?>"  readonly="readonly" hidden/> 
         <input  name="quizfullmark" type="text" value="<?php echo $_GET['fullmark']; ?>"  readonly="readonly" hidden/> 
+       <input  name="makerid" type="text" value="<?php echo $_GET['makerid']; ?>"  readonly="readonly" hidden/> 
 
     </form>        
 </div>

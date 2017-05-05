@@ -1,4 +1,5 @@
-<?php include './Header.php';
+<?php
+include './Header.php';
 include '../controller/MySubmitOperations.php';
 ?>
 <html>
@@ -13,6 +14,7 @@ include '../controller/MySubmitOperations.php';
         $quizId = $_GET['quizid'];
         $maker = $_GET['quizdoctor'];
         $fullMark = $_GET['quizfullmark'];
+        $makerid = $_GET['makerid'];
 
 
 
@@ -21,7 +23,6 @@ include '../controller/MySubmitOperations.php';
         echo "Quiz id    : $quizId <br><br>"; // display quiz id
         echo "Quiz name  : $name <br><br>"; // display quiz name
         echo "Full Mark  : $fullMark <br><br>"; // display quiz name
-
         echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
         echo ' </div>';
         ?>  
@@ -60,10 +61,11 @@ include '../controller/MySubmitOperations.php';
                         echo "</tr>";
                     }
                 }
+                
                 $result = $successCount * $fullMark / $count;
                 echo $result;
-                
-                MySubmitOperations::submit($_SESSION['userid'], $quizId, $result);
+
+                MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
                 ?>
             </table>
         </div>
