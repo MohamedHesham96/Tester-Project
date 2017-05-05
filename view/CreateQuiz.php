@@ -77,7 +77,7 @@
                                 <input class="form-control" type="text" value="How Are You ?"  placeholder="" name="question" >
                             </div>
 
-                            <div class="col-lg-7">
+                            <div class="col-lg-8">
 
                                 <br>
                                 <input class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans1').value)"  placeholder="" name="ansradio" > 
@@ -102,7 +102,7 @@
                                     <button  class="btn btn-fill btn-info" id="newans" type="button" onclick="Add()">Add New Answer</button>
                                 </div>
                                 <div style="margin-left: 10" class="col-lg-1 col-lg-offset-3">
-                                    <button  class="btn btn-fill btn-primary" id="newans" type="button" onclick=""> Next  </button>
+                                    <button  class="btn btn-fill btn-primary" id="newans" type="button" onclick=""> Next </button>
                                 </div>
 
 
