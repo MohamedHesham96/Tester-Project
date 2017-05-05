@@ -1,5 +1,7 @@
 <?php
+
 class MyProfileOperations {
+
     public static function getMyData($user) {
         include '../include/vars.php';
         $conn = new mysqli($host, $username, $password, $dbname);
@@ -14,5 +16,7 @@ class MyProfileOperations {
             return $result;
         }
     }
+
 }
+
 ?>

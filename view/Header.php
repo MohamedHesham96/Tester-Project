@@ -1,13 +1,12 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['username'])){
-        
-        echo '<script>alert("You must login in to continue :( ");</script>';
-        include 'Login.php';
-        die();
-    }
-    include  '../controller/MyProfileOperations.php';
+session_start();
+if (!isset($_SESSION['username'])) {
 
+    echo '<script>alert("You must login in to continue :( ");</script>';
+    include 'Login.php';
+    die();
+}
+include '../controller/MyProfileOperations.php';
 ?>
 <html>
     <head>
@@ -31,7 +30,6 @@
             $firstTab = 'Home';
             $secondTab = 'History';
             $thirdTab = 'Subscribes';
-            
         } else if ($_SESSION['usertype'] == 'admin') {
 
             $firstTab = 'AdminHome';
@@ -39,50 +37,56 @@
             $thirdTab = 'Students';
         }
         ?>
-        <div style="background: #eee; height: 55;" class=" col-lg-12">
+        <div style="background: #ddd; height: 55;" class=" col-lg-12">
 
-                <h4 class="log"  style="margin-left: 8;margin-right: 35; margin-top: 20; display: inline; font-size: 14">
-                    <a style=" color: #f00;" href="?page=Logout.php"> Log out </a>
-                    <?php
-                        if(isset($_GET['page']))
-                        {
-                            $page = $_GET['page']; 
-                            $url  = "../models/".$page;
-                            include $url;
-                        }   
-                    ?>
-                </h4>
-              <h4 class="log" style="margin-right: 0; margin-top: 8; display: inline; font-size: 35">
-                    <a style=" color: #aaa;" href="Header"> <?php echo '|'; ?> </a>
-                </h4>
-            
+            <h4 class="log"  style="margin-left: 8;margin-right: 35; margin-top: 20; display: inline; font-size: 14">
+                <a style=" color: #f00;" href="?page=Logout.php"> Log out </a>
+                <?php
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                    $url = "../models/" . $page;
+                    include $url;
+                }
+                ?>
+            </h4>
+            <h4 class="log" style="margin-right: 0; margin-top: 8; display: inline; font-size: 35">
+                <a style=" color: #aaa;" href="Header"> <?php echo '|'; ?> </a>
+            </h4>
+
             <div style="" class="">
 
 
 
                 <div style="background: #eee; margin-top: -7 ; margin-right: 3"  class="log">
-                    <a href="ProfilePage.php?name=<?php echo $_SESSION['username']  ?>">
-                        <?php    
-                            $user = $_SESSION['username'];
-                            $result = MyProfileOperations::getMyData($user);
-                            $row = mysqli_fetch_array($result);
-                            $profilephoto = $row['image'];
-                            if(empty($profilephoto))
-                            {
-                                echo '<img src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
-
-                            }
-                            else
-                            {    
-                                echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>'; 
-                            }
+                    <a href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>">
+                        <?php
+                        $user = $_SESSION['username'];
+                        $result = MyProfileOperations::getMyData($user);
+                        $row = mysqli_fetch_array($result);
+                        $profilephoto = $row['image'];
+                        if (empty($profilephoto)) {
+                            echo '<img  style="border-radius: 60%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
+                        } else {
+                            echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
+                        }
                         ?>
                     </a>
+
                 </div>
 
                 <h4 class="log" style="display: inline; margin-right: 5; margin-top: 2; font-size: 20">
-                    <a style=" color: #44f;" href="ProfilePage.php?name=<?php echo $_SESSION['username']  ?>"> <?php echo ucwords($_SESSION['username'])?> </a>
+                    <a style=" color: #44f;" href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>"> <?php echo ucwords($_SESSION['username']) ?> </a>
                 </h4>
+
+                <?php
+                if ($_SESSION['usertype'] == 'doctor') { // create quiz button
+                    
+                    echo '<button style=" margin-right: 75; height: 35 ; width: 130; ;margin-top: -2" '
+                    . 'class="col-lg-2 btn btn-danger log" >'
+                    . '<a href="CreateQuiz.php" style="color: #fff;font-size: 16">Create Quiz</a></button>';
+                }
+                ?>
+
 
                 <form action="SearchPage.php" method="GET">
 
@@ -94,23 +98,28 @@
             </div>
 
 
-            <div   class="col-lg-offset-4">
+            <div   class="col-lg-offset-3">
                 <div  class="nav">
                     <div class="container">
                         <ul>
-                            <li><a href="<?php echo $firstTab ?>.php" class="active" >Home</a></li>
-                            <li><a href="<?php echo $secondTab . '.php' ?>" ><?php echo $secondTab ?></a></li>
-                            <li><a href="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
-                            <li><a href="About.php">About</a></li>
-
-                        </ul>
+                            <li><a id="tab1"  onclick="active('#tab1')" href="<?php echo $firstTab ?>.php">Home</a></li>
+                            <li><a id="tab2" onclick="active('#tab2')" href ="<?php echo $secondTab . '.php' ?>" ><?php echo $secondTab ?></a></li>
+                            <li><a id="tab3" onclick="active('#tab3')" href ="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
+                            <li><a id="tab4" onclick="active('#tab4')" href ="About.php"> About </a></li></ul>
                     </div>
                 </div>
             </div>
 
+            <script type="text/javascript">
+
+                function active($id) {
+
+                    $($id).addClass("active");
+
+                }
+
+            </script>
         </div>
-
-
 
         <br>  
         <br>
