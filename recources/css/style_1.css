@@ -123,6 +123,8 @@ a:focus {
     text-decoration: none;
 }
 
+
+        	
 blockquote {
   padding: 10px 20px;
   margin: 0 0 20px;
@@ -430,7 +432,7 @@ hr.bold {
 --- Intro
 ============================ */
 
-.hero { background: url(../img/hero-bg.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
+.hero { background: url(../images/hero-bg.jpg) no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 200px 0 200px 0; height: auto; }
 .hero h1 { font-size: 40px; letter-spacing: 12px; margin: 40px 0 10px; font-weight: 900; color: #fff;}
 .hero h1 span { color: #a1a9b0; display: inline-block; }
 .hero p { font-size: 24px; font-weight: 400; color: #fefefe; }
@@ -943,6 +945,7 @@ a.btn:focus{
   background-color: #c83539;
   border-color: #c83539;
 }
+
 .btn-red:hover,
 .btn-red:focus,
 .btn-red:active,
