@@ -143,7 +143,7 @@ include '../controller/MyQuizzesOperations.php';
                 <br>
                 <br>
 
-            <?php } ?>
+    <?php } ?>
 
         <?php } ?>
 
