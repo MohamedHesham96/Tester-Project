@@ -7,7 +7,16 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-        <?php $search = $_GET['search'] ?>
+        <?php
+            if(isset($_GET['SearchSub']))
+            {    
+                $search = $_GET['Search'];
+            } 
+            else 
+            {
+                die('<h3 style="text-align:center;">No search reuslt found</h2>');
+            }
+        ?>
 
         <div class="container">
 
@@ -15,12 +24,7 @@
             <h1> Results </h1>
 
             <table class="table-striped"> 
-                <tr>                        <td>Quiz Code</td>
-                    <td>Quiz Name</td>
-                    <td>Doctor Name</td>
-                    <td>Password</td>
-
-                </tr>
+                
 
 
                 <?php
@@ -29,33 +33,45 @@
 
 
 
-// check if the statment is true
+                // check if the statment is true
 
                 if (!$reult) {
                     echo 'error2';
                 } else {
-                    while ($row = mysqli_fetch_array($reult, 1)) {
-                      
-                        $quizid = $row['quiz_id'];
-                        $quizName = $row['quiz_name'];
-                        $doctorName = $row['username'];
+                        if( $reult->num_rows > 0)
+                        {    
+                        echo  '  <tr>
+                                    <td>Quiz Code</td>
+                                    <td>Quiz Name</td>
+                                    <td>Doctor Name</td>
+                                    <td>Password</td>
 
-                        echo '<tr >';
-                        if ($_SESSION['usertype'] != "doctor")
-                            echo "<td><a href='Quiz.php?id=$quizid&name=$quizName&maker=$doctorName'>" . $quizid . "</a></td>";
-                        else
-                            echo "<td>" . $quizid . "</td>";
+                              </tr>';
+                            while ($row = mysqli_fetch_array($reult, 1)) {
+                            $quizid = $row['quiz_id'];
+                            $quizName = $row['quiz_name'];
+                            $doctorName = $row['username'];
 
-                        echo "<td>" . $quizName . "</td>";
-                        echo "<td>" . $doctorName . "</td>";
+                            echo '<tr >';
+                            if ($_SESSION['usertype'] != "doctor")
+                                echo "<td><a href='Quiz.php?id=$quizid&name=$quizName&maker=$doctorName'>" . $quizid . "</a></td>";
+                            else
+                                echo "<td>" . $quizid . "</td>";
 
-                        if ($row['password']) {
-                            echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
-                        } else {
-                            echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
+                            echo "<td>" . $quizName . "</td>";
+                            echo "<td>" . $doctorName . "</td>";
+
+                            if ($row['password']) {
+                                echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
+                            } else {
+                                echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
+                            }
+                            echo "</tr>";
+                            }
                         }
-                        echo "</tr>";
-                    }
+                        else {
+                            die('<h3 style="text-align:center;">No seffarch reuslt found</h2>');
+                        }
                 }
                 ?>
 
