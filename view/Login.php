@@ -1,3 +1,11 @@
+<!--check if user is already login or not -->
+<?php
+    session_start();
+    if(isset($_SESSION['username']))
+    {
+        header("Location: Home.php"); // if yes go to home page
+    }   
+?>
 <!DOCTYPE html>
 <html lang="en">
 
