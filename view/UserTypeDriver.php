@@ -22,13 +22,14 @@ if (isset($_POST['finish'])) {
     //  $gender = 'male';
     $phone = $_POST['phone'];
     $file = $_FILES['image']['tmp_name'];
+    //handle if photo is empty or not 
     if(!empty($file))
     {    
         $image = addslashes(file_get_contents($file));
     }
     else
     {
-        $image = NULL;
+        $image = NULL; //make it NULL 
     }    
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
