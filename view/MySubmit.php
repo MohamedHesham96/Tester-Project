@@ -1,4 +1,6 @@
-<?php include './Header.php'; ?>
+<?php include './Header.php';
+include '../controller/MySubmitOperations.php';
+?>
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -34,26 +36,35 @@
                     <td>Your Answer</td>
                 </tr>
 
-<?php
-for ($i = 0; $i <= 50; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
-    if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
+                <?php
+                $count = 0; // count the number of questions
+                $successCount = 0; // count the number of corect answers 
 
-        if ($_GET['correct_ans' . $i] == $_GET[$i]) {
+                for ($i = 0; $i <= 50; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
+                    if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
 
-            echo "<tr style='background: #00ff00'>";
-        } else if (($_GET['correct_ans' . $i] != $_GET[$i]) || !isset($_GET[$i])) {
+                        $count++;
 
-            echo "<tr style='background: #ff0033'>";
-        }
+                        if ($_GET['correct_ans' . $i] == $_GET[$i]) {
+                            $successCount++;
+                            echo "<tr style='background: #00ff00'>";
+                        } else if (($_GET['correct_ans' . $i] != $_GET[$i])) {
 
-        echo "<td>" . "Header" . "</td>";
-        echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
-        echo "<td>" . $_GET[$i] . "</td>";
+                            echo "<tr style='background: #ff0033'>";
+                        }
 
-        echo "</tr>";
-    }
-}
-?>
+                        echo "<td>" . "Header" . "</td>";
+                        echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+                        echo "<td>" . $_GET[$i] . "</td>";
+
+                        echo "</tr>";
+                    }
+                }
+                $result = $successCount * $fullMark / $count;
+                echo $result;
+                
+                MySubmitOperations::submit($_SESSION['userid'], $quizId, $result);
+                ?>
             </table>
         </div>
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
