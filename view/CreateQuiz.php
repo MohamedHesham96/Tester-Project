@@ -1,5 +1,5 @@
 <?php
-//include './Header.php';
+include './Header.php';
 include '../controller/CreateQuizOperations.php';
 ?>
 
@@ -10,7 +10,11 @@ include '../controller/CreateQuizOperations.php';
 
     <body>
 
-        <?php //CreateQuizOperations::addQuiz() ?>
+        <?php
+        if (isset($_GET['submitstate']) != "true") {
+            CreateQuizOperations::addQuiz();
+        }
+        ?>
 
         <div class="col-lg-12"> 
 

@@ -32,7 +32,7 @@
             <br>
 
             <div class="wizard-header">
-                <form  id="Form" action="signUp.php" method="GET">
+                <form  id="Form" method="GET">
                     <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
                     <div id="div1q1" style="background: #eee; border-radius: 3%; margin-left: 15"  class="col-lg-8">
 
@@ -47,15 +47,15 @@
 
                             <br>
                             <input class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans1').value)"  placeholder="" name="ansradio" > 
-                            <label>Answer (A)<small style="color: #999"> (required)</small></label>
+                            <label>Answer (A)</label>
                             <br>
-                            <input id="ans1" class="form-control"  type="text"  placeholder="" name="ans1" value="Good" required> 
+                            <input id="ans1" class="form-control"  type="text"  placeholder="" name="ans1" value="" required> 
 
                             <br>
                             <input  class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans2').value)"  placeholder="" name="ansradio" > 
-                            <label>Answer (B)<small style="color: #999"> (required)</small></label>
+                            <label>Answer (B)</label>
                             <br>
-                            <input id="ans2" class="form-control" type="text"  placeholder="" name="ans2" value="Bad" required>
+                            <input id="ans2" class="form-control" type="text"  placeholder="" name="ans2" value="" required>
                             <br>
 
                             <div id="container"></div>
@@ -72,7 +72,7 @@
                             </div>
 
                             <div style="margin-left: 35" class="col-lg-offset-1 col-lg-4">
-                                <input  type="submit" class="btn btn-fill btn-danger" id="newquestion" onclick="AddQuestion()" value="Finish">
+                                <input  type="submit" class="btn btn-fill btn-danger" id="newquestion" onclick="submitForm('FinishQuiz.php')" value="Finish">
                                 <br>
                                 <br>
                             </div>
@@ -86,17 +86,39 @@
                     <input hidden name="" value="<?php $_GET['quizfullmark'] ?>">
                     <input hidden name="" value="<?php $_GET['quizpassword'] ?>">
 
+                    <input hidden name="submitstate" value="true">
+
+
+
                 </form>
             </div>
         </div>
         <br>
 
         <script type="text/javascript">
-
             function submitForm(action) {
 
-                document.getElementById('Form').action = action;
-                document.getElementById('Form').submit();
+                $value = document.getElementById('correctans').value; // check if the correct asnwer is not empty before submit
+                $value1 = document.getElementById('ans1').value;
+                $value2 = document.getElementById('ans2').value;
+                $value3 = "3";
+                $value4 = "4";
+                if ($("#container").is(":visible")) {
+                    $value3 = document.getElementById('ans3').value;
+                }
+                if ($("#container2").is(":visible")) {
+                    $value4 = document.getElementById('ans4').value;
+                }
+                if (!$value1 || !$value2 || !$value3 || !$value4) {
+                    $("#form").submit();
+                } else if ($value) {
+
+                    document.getElementById('Form').action = action;
+                    document.getElementById('Form').submit();
+
+                } else {
+                    alert("Please Choice Correct Answer !!");
+                }
             }
 
             $aNum = 2; // form condetion 3 for ans3 and 4 for ans4 بعد كده مش مهم لانه بعد كده هيعتمد على الظهور بتاع كل واحدة 
@@ -109,13 +131,13 @@
 
                     $("#container").append('<input type="radio" onclick="getCorrectAnswer(document.getElementById(\'ans3\').value)" name = "ansradio" > <label>Answer (C)\n\
                 </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans3()"> X </button>\n\
-                <input id="ans3" class="form-control" name="ans3" ><br></div><div id="container2">');
+                <input id="ans3" class="form-control" name="ans3" required><br></div><div id="container2">');
 
                 } else if ($aNum == 4) { // add answer 4 input 
 
                     $("#container2").append('<input id="radio4" type="radio" onclick="getCorrectAnswer(document.getElementById(\'ans4\').value)"  name = "ansradio" > <label>Answer (D)\n\
                     </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans4()"> X </button>\n\
-                    <input id="ans4" class="form-control" name="ans4" ><br>');
+                    <input id="ans4" class="form-control" name="ans4" required><br>');
                     $("#newans").attr("disabled", "disabled");
 
                 } else if (!$("#container").is(":visible")) { // show answer 3 input
