@@ -10,7 +10,11 @@ include '../controller/MySubmitOperations.php';
     </head>
     <body >
 
+
         <?php
+        $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+
+        echo 'No thing To do !!';
         $name = $_GET['quizname'];
         $quizId = $_GET['quizid'];
         $maker = $_GET['quizdoctor'];
@@ -46,7 +50,9 @@ include '../controller/MySubmitOperations.php';
                 for ($i = 0; $i <= 50; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
                     if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
 
-                        MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
+                        if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                            MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
+                        }
 
                         $count++;
 
@@ -70,7 +76,10 @@ include '../controller/MySubmitOperations.php';
                 $result = $successCount * $fullMark / $count;
                 echo $result;
 
-                MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
+                if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                    MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
+                }
+                
                 ?>
             </table>
         </div>
