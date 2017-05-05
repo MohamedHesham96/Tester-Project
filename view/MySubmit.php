@@ -41,9 +41,12 @@ include '../controller/MySubmitOperations.php';
                 <?php
                 $count = 0; // count the number of questions
                 $successCount = 0; // count the number of corect answers 
+                $user = $_SESSION['username'];
 
                 for ($i = 0; $i <= 50; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
                     if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
+
+                        MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
 
                         $count++;
 
@@ -55,7 +58,8 @@ include '../controller/MySubmitOperations.php';
                             echo "<tr style='background: #ff0033'>";
                         }
 
-                        echo "<td>" . "Header" . "</td>";
+                        echo "<td>" . "Header" . "
+                            /td>";
                         echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
                         echo "<td>" . $_GET[$i] . "</td>";
 
