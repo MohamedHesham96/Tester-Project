@@ -170,7 +170,7 @@
                                                             <div class="choice" data-toggle="wizard-checkbox"> 
                                                                <div class="icon">
                                                                    <label>  
-                                                                    <input type="radio" name="type" value="doctor">
+                                                                       <input type="radio" name="type" value="doctor" >
                                                                 
                                                                     <img src="../recources/images/doctor.png" width="110" value="doctor">
                                                                    </label>
@@ -181,8 +181,8 @@
 
                                                         <div class="col-sm-6 ">
                                                             <div class="choice" data-toggle="wizard-checkbox">
-                                                                <label>
-                                                                    <input type="radio" name="type" value="student" >
+                                                                <label required>
+                                                                    <input type="radio" name="type" value="student" required>
                                                                     <div class="icon">
                                                                         <img src="../recources/images/student.png" width="111">
                                                                     </div>

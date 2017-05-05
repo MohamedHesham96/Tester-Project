@@ -24,7 +24,7 @@ if (isset($_POST['finish'])) {
     $file = $_FILES['image']['tmp_name'];
     if(!empty($file))
     {    
-        $image = addslashes(file_get_contents());
+        $image = addslashes(file_get_contents($file));
     }
     else
     {
