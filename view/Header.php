@@ -68,8 +68,9 @@
                             <ul class="nav navbar-nav navbar-right">
                                 
                                 <li>
-                                    <form class="navbar-search navbar-form" method="get" action="">
-                                        <input style="background:#f5f5f5 " class="form-control" placeholder="Quiz Name or Code..." name="s" type="text" ">
+                                    <form class="navbar-search navbar-form" method="get" action="SearchPage.php">
+                                        <input style="background:#f5f5f5 " class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
+                                        <input style="background:#f5f5f5 " class="form-control" type="submit" value="Search" name="SearchSub">
                                     </form>
                                 </li>
                                 
