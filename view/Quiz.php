@@ -86,7 +86,7 @@ include '../controller/MyQuizzesOperations.php';
             <form action="MySubmit.php" method="GET">
 
 
-                    <input  style="color: #00f; display: block; font-size: 20; height: 40; margin-bottom: 10" id = "" 
+                    <input  style="color: #00f; display: block; font-size: 22; height: 40; margin-bottom: 10" id = "" 
                             class = "form-control col-lg-2 btn-block" value = " <?php echo $qnum++ . ". " . $row['Header']; ?>">  
                 
 
@@ -126,6 +126,16 @@ include '../controller/MyQuizzesOperations.php';
                         <span style="font-size: 20; font-family: cursive" class="choice__text notranslate"><?php echo ' D) ' .  $ansRow[3]; ?></span>
                     </label> 
                 </div>
+                <br> // مش عارف ليه لازم اعمل كده ؟؟ 
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
                 <br>
 
             <?php } ?>
@@ -142,7 +152,7 @@ include '../controller/MyQuizzesOperations.php';
         <input  name="makerid" type="text" value="<?php echo $_GET['makerid']; ?>"  readonly="readonly" hidden/> 
 
     </form>        
-</div>
+
 </body>
 
 <!--   Core JS Files   -->
