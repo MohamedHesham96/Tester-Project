@@ -9,6 +9,7 @@ include '../controller/MySubmitOperations.php';
         <meta charset="utf-8"/>
     </head>
     <body >
+
         <?php
         $name = $_GET['quizname'];
         $quizId = $_GET['quizid'];
@@ -61,7 +62,7 @@ include '../controller/MySubmitOperations.php';
                         echo "</tr>";
                     }
                 }
-                
+
                 $result = $successCount * $fullMark / $count;
                 echo $result;
 
