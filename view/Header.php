@@ -39,7 +39,7 @@
             $thirdTab = 'Students';
         }
         ?>
-        <div style="background: #eee; height: 55;" class=" col-lg-12">
+        <div style="background: #ddd; height: 55;" class=" col-lg-12">
 
                 <h4 class="log"  style="margin-left: 8;margin-right: 35; margin-top: 20; display: inline; font-size: 14">
                     <a style=" color: #f00;" href="?page=Logout.php"> Log out </a>
@@ -69,7 +69,7 @@
                             $profilephoto = $row['image'];
                             if(empty($profilephoto))
                             {
-                                echo '<img src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
+                                echo '<img  style="border-radius: 60%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
 
                             }
                             else
