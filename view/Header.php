@@ -58,8 +58,18 @@
                     <ul class="nav navbar-nav">
                         <li class="menu-item"><a href="<?php echo $secondTab . '.php' ?>" ><?php echo $secondTab ?></a></li>
                         <li class="menu-item"><a href="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
-                        <li class="menu-item "><a href="<?php echo $forthTab . '.php' ?>"><?php echo $forthTab ?></a></li>
+          
+                        
+                            <?php
+                            if ($_SESSION['usertype'] == 'doctor') {
+                                $fourthPag = $forthTab . '.php';
+                                echo "<li class=\"menu-item\">"
+                                . "<a href='$fourthPag'>$forthTab</a>"
+                                . "</li>";
+                            }
+                            ?>
 
+                        
                         <ul class="nav navbar-nav">
 
                             <ul class="nav navbar-nav">
