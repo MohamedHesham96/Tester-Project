@@ -21,7 +21,15 @@ if (isset($_POST['finish'])) {
 
     //  $gender = 'male';
     $phone = $_POST['phone'];
-    $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+    $file = $_FILES['image']['tmp_name'];
+    if(!empty($file))
+    {    
+        $image = addslashes(file_get_contents());
+    }
+    else
+    {
+        $image = NULL;
+    }    
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
     $resultForUsername = RegisterOperations::usernameChecker($user);
