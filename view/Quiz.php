@@ -4,7 +4,7 @@
     <head>
 
     </head>
-  <?php
+    <?php
     include '../controller/MyQuizzesOperations.php';
     $userType = $_SESSION['usertype'];
     $submitState = "";
@@ -44,8 +44,9 @@
 
             if ($ansRow = mysqli_fetch_array($result2, 1)) {
 
+                
                 if (!$ansRow['answer_3']) {
-
+                    
                     $ans3state = "hidden";
                     $ans4state = "hidden";
 
@@ -54,15 +55,19 @@
                     $ansRow = $tempRow;
 
                     shuffle($ansRow);
+                    
                 } else if (!$ansRow['answer_4']) {
-
-                    $ans3state = "hidden";
+              
+                    $ans3state = "";
                     $ans4state = "hidden";
 
                     $tempRow[0] = $ansRow['answer_1'];
                     $tempRow[1] = $ansRow['answer_2'];
                     $tempRow[2] = $ansRow['answer_3'];
+                    
                     $ansRow = $tempRow;
+                                        shuffle($ansRow);
+
                 } else {
 
                     shuffle($ansRow);
@@ -103,7 +108,7 @@
                 </div>
 
 
-                <div style="visibility: <?php echo $ans4state; ?>; display: block; background: #eee" class="col-md-2 btn-block " >
+                <div style="visibility: <?php echo $ans3state; ?>; display: block; background: #eee" class="col-md-2 btn-block " >
                     <input <?php echo $ans3state; ?> name="<?php echo $row['question_id']; ?>" type="radio" value="<?php echo $ansRow[2]; ?>"   readonly="readonly" /> 
 
                     <label <?php echo $ans3state; ?> class=""  >
