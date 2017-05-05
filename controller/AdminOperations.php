@@ -23,27 +23,6 @@ class AdminOperations {
             return $result;
         }
     }
-    public static function searchDoctors($doctorName) {
-
-        include '../include/vars.php';
-
-        $conn = new mysqli($host, $username, $password, $dbname);
-
-        //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
-
-        $query = "SELECT id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                . "FROM `users` where type = 'doctor'AND username='$doctorName'";
-
-        $result = mysqli_query($conn, $query);
-
-        if (mysqli_error($conn)) {
-            echo 'Admin Operations (Get All Doctors ) Error !!';
-
-            return NULL;
-        } else {
-            return $result;
-        }
-    }
 
     public static function getAllStudents() {
 
@@ -66,30 +45,9 @@ class AdminOperations {
             return $result;
         }
     }
-    public static function searchStudents($studentName) {
-
-        include '../include/vars.php';
-
-        $conn = new mysqli($host, $username, $password, $dbname);
-
-        //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
-
-        $query = "SELECT id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                . "FROM `users` where type = 'student' AND username='$studentName'";
-
-        $result = mysqli_query($conn, $query);
-
-        if (mysqli_error($conn)) {
-            echo 'Admin Operations  (search student) Error !!';
-
-            return NULL;
-        } else {
-            return $result;
-        }
-    }
-
-
-
+    
+    
+    
         public static function deleteUser($user) {
 
         include '../include/vars.php';
@@ -110,10 +68,10 @@ class AdminOperations {
             return $result;
         }
     }
-
-
-
-
+    
+    
+    
+    
         public static function deleteQuiz($Quizid) {
 
         include '../include/vars.php';
@@ -134,7 +92,6 @@ class AdminOperations {
             return $result;
         }
     }
-
 
 
 }

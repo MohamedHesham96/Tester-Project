@@ -57,7 +57,7 @@ include '../controller/MyProfileOperations.php';
 
 
 
-                <div style="background: #eee; margin-top: -7 ; margin-right: 3"  class="log">
+                <div style="background: #ddd; margin-top: -7 ; margin-right: 3"  class="log">
                     <a href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>">
                         <?php
                         $user = $_SESSION['username'];
@@ -80,7 +80,6 @@ include '../controller/MyProfileOperations.php';
 
                 <?php
                 if ($_SESSION['usertype'] == 'doctor') { // create quiz button
-                    
                     echo '<button style=" margin-right: 75; height: 35 ; width: 130; ;margin-top: -2" '
                     . 'class="col-lg-2 btn btn-danger log" >'
                     . '<a href="CreateQuiz.php" style="color: #fff;font-size: 16">Create Quiz</a></button>';
