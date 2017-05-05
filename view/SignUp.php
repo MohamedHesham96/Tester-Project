@@ -23,12 +23,9 @@
         //     session_destroy();
         $massage = ""; // for username hint
         $massage2 = ""; // for emai  hint
-
         if (isset($_GET['errors'])) {
-
             if ($_GET['errors'] == "usernameerror")
                 $massage = "This Username is Already Exist !";
-
             else if ($_GET['errors'] == "emailerror") {
                 $massage2 = "This Email is Already Exist !";
             }
@@ -52,8 +49,10 @@
 
                                     <div class="wizard-Header">
                                         <h3>
+                                            <center>
                                             <b>BUILD</b> YOUR PROFILE <br>
                                             <small>This information will let us know more about you.</small>
+                                            </center>
                                         </h3>
                                     </div>
 
@@ -84,7 +83,7 @@
                                                     <div class="form-group">
                                                         <label>Username  <small>(required)</small>
                                                         </label>
-                                                        <input name="username"    type="text" class="form-control" placeholder="Enter Your Username" required="required">
+                                                        <input name="username"    type="text" class="form-control" placeholder="Enter Your Username" required>
 
                                                         <small style="color: #ff0000">  <?php echo '   ' . $massage; ?>   </small>
                                                     </div>
@@ -124,12 +123,10 @@
                                                             //Compare the values in the password field 
                                                             //and the confirmation field
                                                             if (pass1.value == "" || pass2.value == "") {
-
                                                                 message.style.color = white;
                                                                 message2.style.color = white;
                                                                 message.innerHTML = ""
                                                                 message2.innerHTML = ""
-
                                                             } else if (pass1.value == pass2.value) {
                                                                 //The passwords match. 
                                                                 //Set the color to the good color and inform
@@ -168,25 +165,37 @@
                                             <h4 class="info-text"> What are you doing ? </h4>
                                             <div class="row">
 
+                                                <div class="col-sm-10 col-sm-offset-1">
+                                                        <div class="col-sm-6">
+                                                            <div class="choice" data-toggle="wizard-checkbox"> 
+                                                               <div class="icon">
+                                                                   <label>  
+                                                                    <input type="radio" name="type" value="doctor">
+                                                                
+                                                                    <img src="../recources/images/doctor.png" width="110" value="doctor">
+                                                                   </label>
+                                                                    </div>
+                                                                <h6>Maker</h6>
+                                                            </div>
+                                                        </div>
 
-                                                <input type="radio" name="type" value="doctor">
+                                                        <div class="col-sm-6 ">
+                                                            <div class="choice" data-toggle="wizard-checkbox">
+                                                                <label>
+                                                                    <input type="radio" name="type" value="student" >
+                                                                    <div class="icon">
+                                                                        <img src="../recources/images/student.png" width="111">
+                                                                    </div>
+                                                                </label>
+                                                               <h6>Solver</h6>
+                                                            </div>
+                                                        </div>
+                                                        
 
-                                                <div class="icon">
-                                                    <i class="fa fa-terminal"></i>
+                                                </div>
+                                                </div>
                                                 </div>
 
-                                                <h6>Maker</h6>
-
-                                                <input type="radio" name="type" value="student" >
-                                                <div class="icon">
-                                                    <i class="fa fa-laptop"></i>
-                                                </div>
-                                                <h6>Solver</h6>
-
-
-
-                                            </div>
-                                        </div>
 
                                         <div class="tab-pane" id="address">
                                             <div class="row">
