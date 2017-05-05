@@ -71,11 +71,22 @@ include '../controller/MyProfileOperations.php';
                         }
                         ?>
                     </a>
+
                 </div>
 
                 <h4 class="log" style="display: inline; margin-right: 5; margin-top: 2; font-size: 20">
                     <a style=" color: #44f;" href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>"> <?php echo ucwords($_SESSION['username']) ?> </a>
                 </h4>
+
+                <?php
+                if ($_SESSION['usertype'] == 'doctor') { // create quiz button
+                    
+                    echo '<button style=" margin-right: 75; height: 35 ; width: 130; ;margin-top: -2" '
+                    . 'class="col-lg-2 btn btn-danger log" >'
+                    . '<a href="CreateQuiz.php" style="color: #fff;font-size: 16">Create Quiz</a></button>';
+                }
+                ?>
+
 
                 <form action="SearchPage.php" method="GET">
 
@@ -87,7 +98,7 @@ include '../controller/MyProfileOperations.php';
             </div>
 
 
-            <div   class="col-lg-offset-4">
+            <div   class="col-lg-offset-3">
                 <div  class="nav">
                     <div class="container">
                         <ul>
@@ -108,10 +119,7 @@ include '../controller/MyProfileOperations.php';
                 }
 
             </script>
-
         </div>
-
-
 
         <br>  
         <br>
