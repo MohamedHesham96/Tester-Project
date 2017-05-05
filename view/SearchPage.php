@@ -70,7 +70,7 @@
                             }
                         }
                         else {
-                            die('<h3 style="text-align:center;">No seffarch reuslt found</h2>');
+                            die('<h3 style="text-align:center;">No search reuslt found</h2>');
                         }
                 }
                 ?>
