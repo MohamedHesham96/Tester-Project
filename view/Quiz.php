@@ -15,6 +15,7 @@
     $name = $_GET['name'];
     $quizId = $_GET['id'];
     $maker = $_GET['maker'];
+    $fullMark = $_GET['fullmark'];
 
     $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
@@ -23,6 +24,8 @@
 
     echo "Quiz id    : $quizId <br><br>"; // display quiz id
     echo "Quiz name  : $name <br><br>"; // display quiz name
+    echo "Full Mark  : $fullMark <br><br>"; // display quiz name
+
     echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
     echo ' </div>';
 
@@ -44,9 +47,9 @@
 
             if ($ansRow = mysqli_fetch_array($result2, 1)) {
 
-                
+
                 if (!$ansRow['answer_3']) {
-                    
+
                     $ans3state = "hidden";
                     $ans4state = "hidden";
 
@@ -55,19 +58,17 @@
                     $ansRow = $tempRow;
 
                     shuffle($ansRow);
-                    
                 } else if (!$ansRow['answer_4']) {
-              
+
                     $ans3state = "";
                     $ans4state = "hidden";
 
                     $tempRow[0] = $ansRow['answer_1'];
                     $tempRow[1] = $ansRow['answer_2'];
                     $tempRow[2] = $ansRow['answer_3'];
-                    
-                    $ansRow = $tempRow;
-                                        shuffle($ansRow);
 
+                    $ansRow = $tempRow;
+                    shuffle($ansRow);
                 } else {
 
                     shuffle($ansRow);
@@ -124,14 +125,7 @@
                         <span style="font-size: 20; font-family: cursive" class="choice__text notranslate"><?php echo $ansRow[3]; ?></span>
                     </label> 
                 </div>
-                <br><br>
-                <br><br>
-                <br><br>
-                <br>
-                <br>    <br>
-                <br>  
             <?php } ?>
-
 
         <?php } ?>
 
@@ -141,6 +135,7 @@
         <input  name="quizname" type="text" value="<?php echo $_GET['name']; ?>"  readonly="readonly" hidden/> 
         <input  name="quizid" type="text" value="<?php echo $_GET['id']; ?>"  readonly="readonly" hidden/> 
         <input  name="quizdoctor" type="text" value="<?php echo $_GET['maker']; ?>"  readonly="readonly" hidden/> 
+        <input  name="quizfullmark" type="text" value="<?php echo $_GET['fullmark']; ?>"  readonly="readonly" hidden/> 
 
     </form>        
 </div>

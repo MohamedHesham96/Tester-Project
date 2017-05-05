@@ -17,7 +17,7 @@
         if ($conn->error)
             die("connection lost");
 
-        $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id";
+        $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password, quizzes.full_mark from quizzes JOIN users on users.id = quizzes.doctor_id";
         $result = $conn->query($sql);
 
         //display result in table
@@ -35,11 +35,12 @@
             $name = $row['quiz_name'];
             $password = $row['password'];
             $maker = $row['username'];
+            $fullMark = $row['full_mark'];
 
             if ($_SESSION['usertype'] != "doctor") {
 
                 echo '<tr>'
-                . '<td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td>'
+                . '<td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name. '&&fullmark=' . $fullMark .'">' . $name . '</a></td>'
                 . '<td>' . $id . '</td><td>' . $maker . '</td>';
             } else {
 

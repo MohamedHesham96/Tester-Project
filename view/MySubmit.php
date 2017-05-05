@@ -7,34 +7,35 @@
     </head>
     <body >
         <?php
-        for ($i = 0; $i <= 10; $i++) {
+        $name = $_GET['quizname'];
+        $quizId = $_GET['quizid'];
+        $maker = $_GET['quizdoctor'];
+        $fullMark = $_GET['quizfullmark'];
 
-            if (isset($_GET['correct_ans' . $i])) {
 
-                if ($_GET['correct_ans' . $i] == $_GET[$i]) {
 
-                    echo "yes Ture : " . "   " . $_GET['correct_ans' . $i] . "  =  " . $_GET[$i] . "<Br>";
-                } else if ($_GET['correct_ans' . $i] != $_GET[$i]) {
+        echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
-                    echo "No False : " . "   " . $_GET['correct_ans' . $i] . "  ///  " . $_GET[$i] . "<Br>";
-                }
-            }
-        }
+        echo "Quiz id    : $quizId <br><br>"; // display quiz id
+        echo "Quiz name  : $name <br><br>"; // display quiz name
+        echo "Full Mark  : $fullMark <br><br>"; // display quiz name
+
+        echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
+        echo ' </div>';
         ?>  
 
         <h1> Your Result </h1>
-                <div class="container">
+        <div class="container">
 
-                    <table class="table-striped"> 
-                        <tr>	
-                            <td>Question Header</td>
-                            <td>Correct Answer</td>
-                            <td>Your Answer</td>
-                        </tr>
+            <table class="table-striped"> 
+                <tr>	
+                    <td>Question Header</td>
+                    <td>Correct Answer</td>
+                    <td>Your Answer</td>
+                </tr>
 
 <?php
-for ($i = 0; $i <= 30; $i++) {
-
+for ($i = 0; $i <= 50; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
     if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
 
         if ($_GET['correct_ans' . $i] == $_GET[$i]) {
@@ -53,8 +54,8 @@ for ($i = 0; $i <= 30; $i++) {
     }
 }
 ?>
-                    </table>
-                </div>
-                <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
-                </body>
-                </html>
+            </table>
+        </div>
+        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+    </body>
+</html>
