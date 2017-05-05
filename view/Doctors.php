@@ -9,8 +9,25 @@
         <?php
         include '../controller/AdminOperations.php';
 
-        // to ensure the user is admin only
-        // check the name of doctor that we wnat delete it                                          
+        $tableHeader = '<br>
+        <div class="container">
+
+            <table class="table-striped">
+                <tr>
+                    <td>Image</td>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Birth_Day</td>
+                    <td>Gender</td>
+                    <td>Country</td>
+                    <td>Phone</td>
+                    <td>University</td>
+                    <td>Faculty</td>
+                </tr>';
+
+// to ensure the user is admin only
+        // check the name of doctor that we wnat delete it
 
         if (isset($_SESSION['usertype']) && isset($_GET['deleteuser'])) {
             if ($_SESSION['usertype'] == "admin") {
@@ -30,73 +47,110 @@
             <form action="Doctors.php" method="GET">
                 <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="Doctor Name or ID..." class="form-control" name="doctorNameSearch" >
                 <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">
+
             </form>
         </div>
-        
-        <br>
-        <div class="container">
+        <?php
+        if (isset($_GET['doctorNameSearch'])) {
 
-            <table class="table-striped"> 
-                <tr>
-                    <td>Image</td>
-                    <td>Id</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Birth_Day</td>
-                    <td>Gender</td>
-                    <td>Country</td>
-                    <td>Phone</td>
-                    <td>University</td>
-                    <td>Faculty</td>
-                </tr>
+            $doctorName = $_GET['doctorNameSearch'];
+
+            include '../include/vars.php';
+
+            $conn = mysqli_connect($host, $username, $password, $dbname);
+            if ($conn->error)
+                die("connection lost");
+            $sql = "SELECT image,id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
+                    . "FROM `users` where type = 'doctor' AND username= '$doctorName'";
+            $result = $conn->query($sql);
 
 
-                <?php
-                $result = AdminOperations::getAllDoctors();
 
-                $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
+            if (!$result) {
+                die($conn->error);
+            }
 
-                $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
+            if ($result->num_rows > 0) {
 
-                if (!$result) {
-                    echo 'error2';
-                } else {
-                    while ($row = mysqli_fetch_array($result, 1)) {
+                $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
+                $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
 
-                        $doctorId = $row["id"];
-                        $doctorname = $row['username'];
-                        $doctoremail = $row['email'];
-                        $profilephoto = $row['image'];
-                        echo "<tr>";
-                        //display profile photos
-                        if(empty($profilephoto))
-                        {
-                            echo '<td><img style="border-radius: 60%" src="../recources/images/default-avatar.png" height="40" class="picture-src" id="wizardPicturePreview" title=""/></td>';
+                echo $tableHeader;   // ful text up
 
-                        }
-                        else
-                        {    
-                            echo '<td><img style="border-radius: 60%" src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height="40"  class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></td>'; 
-                        }
-                        echo "<td>" . $row['id'] . "</td>";
-                        echo "<td>" . $row['username'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . $row['birth_day'] . "</td>";
-                        echo "<td>" . $row['gender'] . "</td>";
-                        echo "<td>" . $row['country'] . "</td>";
-                        echo "<td>" . $row['phone'] . "</td>";
-                        echo "<td>" . $row['university'] . "</td>";
-                        echo "<td>" . $row['faculty'] . "</td>";
+                while ($row = $result->fetch_assoc()) {
 
-                        echo "<td><a href = 'ProfilePage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
-                        echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
+                    $doctorId = $row["id"];
+                    $doctorname = $row['username'];
+                    $doctoremail = $row['email'];
+                    echo "<tr>";
+                    echo " <td><img style=\"border-radius: 60%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td>" . $row['birth_day'] . "</td>";
+                    echo "<td>" . $row['gender'] . "</td>";
+                    echo "<td>" . $row['country'] . "</td>";
+                    echo "<td>" . $row['phone'] . "</td>";
+                    echo "<td>" . $row['university'] . "</td>";
+                    echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "</tr>";
-                    }
+                    echo "<td><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
+                    echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
+
+                    echo "</tr>";
                 }
-                ?>
-            </table>
-        </div>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
-    </body>
+
+                echo '</tbody></table>';
+            } else {
+                echo'<br> <div class="alert alert-danger" role="alert">
+                              <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                              <span class="sr-only">Error:</span>
+                              NO RESULT </div>';
+            }
+        } else {
+
+            echo $tableHeader;   // ful text up
+
+            $result = AdminOperations::getAllDoctors();
+
+
+            if (!$result) {
+                echo 'error2';
+            } else {
+                $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
+
+                $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
+
+
+                while ($row = mysqli_fetch_array($result, 1)) {
+
+                    $doctorId = $row["id"];
+                    $doctorname = $row['username'];
+                    $doctoremail = $row['email'];
+
+                    echo "<tr>";
+                    echo " <td><img style=\"border-radius: 60%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
+
+                    echo "<td>" . $row['id'] . "</td>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td>" . $row['birth_day'] . "</td>";
+                    echo "<td>" . $row['gender'] . "</td>";
+                    echo "<td>" . $row['country'] . "</td>";
+                    echo "<td>" . $row['phone'] . "</td>";
+                    echo "<td>" . $row['university'] . "</td>";
+                    echo "<td>" . $row['faculty'] . "</td>";
+
+                    echo "<td><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
+                    echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
+
+                    echo "</tr>";
+                }
+            }
+        }
+        ?>
+    </table>
+</div>
+<link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+</body>
 </html>
