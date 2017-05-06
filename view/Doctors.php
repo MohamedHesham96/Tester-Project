@@ -43,7 +43,7 @@
                       if ($conn->error)
                                       die("connection lost");
                       $sql  = "SELECT image,id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                                      . "FROM `users` where type = 'doctor' AND username='$x'";
+                                      . "FROM `users` where type = 'doctor' AND (username='$x' or id='$x')";
                      $result = $conn->query($sql);
                      $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
                      $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
