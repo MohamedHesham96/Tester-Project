@@ -77,7 +77,7 @@ class AdminOperations {
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
         $query = "SELECT image,id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                . "FROM `users` where type = 'doctor' AND (username='$doctor' or id='$doctor')";
+                . "FROM `users` where type = 'doctor' AND (username = '$doctor' or id = '$doctor')";
 
         $result = mysqli_query($conn, $query);
 
