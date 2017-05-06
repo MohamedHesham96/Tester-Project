@@ -23,6 +23,26 @@ class CreateQuizOperations {
         }
     }
 
+    public static function addQuizFullInfo($quizID, $QuizName, $doctorID, $pass, $fullMark, $doctorName) {
+
+        include '../include/vars.php';
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
+
+        $query = "UPDATE `quizzes` SET `quiz_id` = '$quizID',`quiz_name`= '$QuizName',`doctor_id`= '$doctorID',"
+                . "`password`= '$pass', `full_mark`= '$fullMark',`doctor_name`= '$doctorName',`state`= 'available' WHERE `state`= '$doctorName'";
+
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_error($conn)) {
+            echo 'CreateQuizOperations (ADD Quiz Full Info) Error !!';
+            return NULL;
+        } else {
+            
+        }
+    }
+
     public static function getQuizID($doctorName) {
 
         include '../include/vars.php';
