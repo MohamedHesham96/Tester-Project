@@ -24,28 +24,6 @@ class AdminOperations {
         }
     }
 
-    public static function searchDoctors($doctorName) {
-
-        include '../include/vars.php';
-
-        $conn = new mysqli($host, $username, $password, $dbname);
-
-        //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
-
-        $query = "SELECT id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                . "FROM `users` where type = 'doctor'AND username='$doctorName'";
-
-        $result = mysqli_query($conn, $query);
-
-        if (mysqli_error($conn)) {
-            echo 'Admin Operations (Get All Doctors ) Error !!';
-
-            return NULL;
-        } else {
-            return $result;
-        }
-    }
-
     public static function getAllStudents() {
 
         include '../include/vars.php';
@@ -83,6 +61,28 @@ class AdminOperations {
 
         if (mysqli_error($conn)) {
             echo 'Admin Operations  (search student) Error !!';
+
+            return NULL;
+        } else {
+            return $result;
+        }
+    }
+
+    public static function searchDoctors($doctor) {
+
+        include '../include/vars.php';
+
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
+
+        $query = "SELECT image,id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
+                . "FROM `users` where type = 'doctor' AND (username='$doctor' or id='$doctor')";
+
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_error($conn)) {
+            echo 'Admin Operations  (search doctor) Error !!';
 
             return NULL;
         } else {

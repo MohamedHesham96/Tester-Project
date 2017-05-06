@@ -1,4 +1,5 @@
-<?php include './Header.php'; ?>
+<?php include './Header.php'; 
+include '../controller/AdminOperations.php';?>
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -7,7 +8,6 @@
 
 
         <?php
-        include '../controller/AdminOperations.php';
 
         // to ensure the user is admin only
         // check the name of doctor that we wnat delete it
@@ -37,14 +37,14 @@
                 if (isset($_GET['doctorNameSearch']))
                  {
 
-                      $x=$_GET['doctorNameSearch'];
+                      $doctor = $_GET['doctorNameSearch'];
                       include '../include/vars.php';
                       $conn = mysqli_connect($host, $username, $password, $dbname);
                       if ($conn->error)
                                       die("connection lost");
-                      $sql  = "SELECT image,id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                                      . "FROM `users` where type = 'doctor' AND (username='$x' or id='$x')";
-                     $result = $conn->query($sql);
+                    
+                     $result = AdminOperations::searchDoctors($doctor);
+                     
                      $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
                      $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
                      if (!$result)
