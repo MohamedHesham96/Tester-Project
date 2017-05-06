@@ -23,7 +23,7 @@
         //display result in table
         echo '<div class="container">';
 
-        echo '<table class="table-striped">'
+        echo '<table class="containerr">'
         . '<tr><th>Test Name</th>'
         . '<th>Test Code</th>'
         . '<th>Marker name</th>'

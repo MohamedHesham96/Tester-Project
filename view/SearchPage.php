@@ -23,7 +23,7 @@
 
             <h1> Results </h1>
 
-            <table class="table-striped"> 
+            <table class="containerr"> 
                 
 
 

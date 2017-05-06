@@ -14,7 +14,7 @@
         <h1> following </h1>
                 <div class="container">
 
-                    <table class="table-striped"> 
+                    <table class="containerr"> 
 
                         <tr>
                             <th>Doctor Photo</th>

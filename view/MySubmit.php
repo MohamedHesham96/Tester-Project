@@ -35,7 +35,7 @@ include '../controller/MySubmitOperations.php';
         <h1> Your Result </h1>
         <div class="container">
 
-            <table class="table-striped"> 
+            <table class="containerr"> 
                 <tr>	
                     <td>Question Header</td>
                     <td>Correct Answer</td>
