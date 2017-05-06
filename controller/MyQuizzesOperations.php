@@ -10,7 +10,7 @@ class MyQuizzesOperations {
 
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
-        $query = "SELECT quiz_id, quiz_name, full_mark, date, password from quizzes "
+        $query = "SELECT quiz_id, quiz_name, full_mark, date, password ,state from quizzes "
                 . "where doctor_name = '" . $doctorName . "'";
 
         $result = mysqli_query($conn, $query);

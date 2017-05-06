@@ -9,7 +9,7 @@ class HomeStudnetOperations {
         //here search by code and name 
             $query = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username,"
                     . " quizzes.password, quizzes.full_mark, users.id from quizzes JOIN users on users.id = quizzes.doctor_id "
-                    . "WHERE quizzes.quiz_id Not IN (SELECT history.quiz_id FROM history WHERE history.student_name = '$studentName')";
+                    . "WHERE quizzes.quiz_id Not IN (SELECT history.quiz_id FROM history WHERE history.student_name = '$studentName') AND quizzes.state <> 'Expired'";
 
         $result = mysqli_query($conn, $query);
         
