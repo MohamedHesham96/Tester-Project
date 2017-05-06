@@ -18,12 +18,13 @@
                         if (!$reult) {
                             echo 'error2';
                         } else {
-                            
-                            while ($row = mysqli_fetch_array($reult, 1)) {
-                               echo' <table class="table-striped"> 
+                            echo' <table class="table-striped"> 
                                 <tr>	
                                     <th>Student Name</th>
                                 </tr>';
+                            
+                            while ($row = mysqli_fetch_array($reult, 1)) {
+                               
 
 
                                 echo "<tr>";
