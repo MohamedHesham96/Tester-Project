@@ -6,7 +6,7 @@ class CreateQuizOperations {
 
         include '../include/vars.php';
         $conn = new mysqli($host, $username, $password, $dbname);
-
+        
         $user = $_SESSION['username'];
 
         // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين

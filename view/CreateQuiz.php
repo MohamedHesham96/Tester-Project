@@ -1,4 +1,6 @@
 <?php
+        session_start();
+
 include '../controller/CreateQuizOperations.php';
 ?>
 
@@ -12,7 +14,6 @@ include '../controller/CreateQuizOperations.php';
     <body>
 
         <?php
-        session_start();
         if (isset($_GET['submitstate']) != "true") {
             CreateQuizOperations::addQuiz();
         }
