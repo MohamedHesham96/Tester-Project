@@ -6,4 +6,4 @@ $user = $_SESSION['username'];
 $quizID = CreateQuizOperations::getQuizID($user);
 CreateQuizOperations::deleteQuiz($quizID);
 
-echo '<script>document.location.href="DoctorHome.php?submitstate=true&deletequiz=true"</script>';
+echo '<script>document.location.href="DoctorHome.php?"</script>';
