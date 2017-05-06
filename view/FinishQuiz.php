@@ -1,7 +1,8 @@
 <?php
-include '../view/Header.php';
+
 include '../controller/CreateQuizOperations.php';
 
+session_start();
 
 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
 
@@ -24,4 +25,4 @@ $corectAns = $_GET['correctans'];
 
 $quizID = CreateQuizOperations::addQuestion($quizID, $header, $ans1, $ans2, $ans3, $ans4, $corectAns);
 
-    echo '<script>document.location.href="CreateQuiz.php?submitstate=true"</script>';
+echo '<script>document.location.href="CreateQuiz.php?submitstate=true"</script>';

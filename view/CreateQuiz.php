@@ -58,16 +58,33 @@ include '../controller/CreateQuizOperations.php';
 
         <table class="container table-striped"> 
             <tr>	
-                <th>Quiz code</th>
-                <th>Quiz Name</th>
-                <th>Doctor name</th>
-                <th>Mark</th>
-                <th>Time</th>
-                <th>Password</th>
+                <th>Qeustion</th>
+                <th>Answer (A)</th>
+                <th>Answer (B)</th>
+                <th>Answer (C)</th>
+                <th>Answer (D)</th>
+                <th>Correct Answer</th>
             </tr>
 
-        </table>
 
+
+        <?php
+        $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
+        $result = CreateQuizOperations::getQuestions($quizID);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            echo "<tr>";
+            echo "<td>" . $row['header'] . "</td>";
+            echo "<td>" . $row['answer_1'] . "</td>";
+            echo "<td>" . $row['answer_2'] . "</td>";
+            echo "<td>" . $row['answer_3'] . "</td>";
+            echo "<td>" . $row['answer_4'] . "</td>";
+            echo "<td>" . $row['correct_answer'] . "</td>";
+            echo '</tr>';
+        }
+        ?>
+        </table>
 
     </body>
 

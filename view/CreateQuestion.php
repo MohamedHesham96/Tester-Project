@@ -68,11 +68,11 @@
                                 <button  class="btn btn-fill btn-info" id="newans" type="button" onclick="Add()">Add New Answer</button>
                             </div>
                             <div style="margin-left: 10" class="col-lg-1 col-lg-offset-3">
-                                <button  class="btn btn-fill btn-primary" id="newans" type="button" onclick="submitForm('AddNewQuestion.php')"> Next </button>
+                                <button  class="btn btn-fill btn-primary" id="" type="button" onclick="submitForm('AddNewQuestion.php')"> Next </button>
                             </div>
 
                             <div style="margin-left: 35" class="col-lg-offset-1 col-lg-4">
-                                <input  type="submit" class="btn btn-fill btn-danger" id="newquestion" onclick="submitForm('FinishQuiz.php')" value="Finish">
+                                <button  class="btn btn-fill btn-danger" id="" type="button" onclick="submitForm('FinishQuiz.php')"> Finish </button>
                                 <br>
                                 <br>
                             </div>
@@ -105,10 +105,12 @@
                 $value4 = "4";
                 if ($("#container").is(":visible")) {
                     $value3 = document.getElementById('ans3').value;
+                    if ($("#container2").is(":visible")) {
+                        $value4 = document.getElementById('ans4').value;
+                    }
                 }
-                if ($("#container2").is(":visible")) {
-                    $value4 = document.getElementById('ans4').value;
-                }
+
+
                 if (!$value1 || !$value2 || !$value3 || !$value4) {
                     $("#form").submit();
                 } else if ($value) {

@@ -69,6 +69,25 @@ class CreateQuizOperations {
         }
     }
 
+    
+    public static function getQuestions($quizId) {
+
+        include '../include/vars.php';
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
+
+        $query = "SELECT `header`, `answer_1`, `answer_2`, `answer_3`, `answer_4`, `correct_answer` FROM questions WHERE `quiz_id`= '$quizId'";
+
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_error($conn)) {
+            echo 'CreateQuizOperations Error !!';
+            return NULL;
+        } else {
+            return $result;
+        }
+    }
 }
 
 ?>

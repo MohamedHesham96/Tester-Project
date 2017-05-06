@@ -8,8 +8,6 @@
     </head>
     <body >
 
-        <?php include './Header.php'; ?>
-
 
         <div>
             <h1> Students Marks <h1>
