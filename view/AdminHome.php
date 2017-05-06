@@ -1,27 +1,19 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
-
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
         <meta charset="utf-8"/>
-
+        <link href="../recources/css/style.css" rel="stylesheet" /> 
     </head>
     <body>
-        <br>
-        <br>
-        <br>
-
-        <div class="container">
+        <div >
             <?php
             include '../controller/AdminOperations.php';
             if (isset($_SESSION['usertype']) && isset($_GET['deletequizid'])) {
                 $quizId = $_GET['deletequizid'];
                 //    AdminOperations::deleteQuiz($quizId);
             }
-            $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
+            $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
             $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
-
             //connect to data base and create table for result
             include '../include/vars.php';
             $conn = mysqli_connect($host, $username, $password, $dbname);
@@ -33,46 +25,41 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<table class="table-striped"><thead><tr><th>Test Name<th>Test Code</th><th>Marker name</th><th>Secure</th></tr><thead><tbody>';
+                echo '<table class="containerr">
+                         <thead>
+                           <tr>
+                              <th>Test Name</th>
+                              <th>Test Code</th>
+                              <th>Marker name</th>
+                              <th>Secure</th>
+                              <th>Delete</th>
+                           </tr>
+                    </thead><tbody>';
                 while ($row = $result->fetch_assoc()) {
-
                     $id = $row['quiz_id'];
                     $name = $row['quiz_name'];
                     $password = $row['password'];
                     $maker = $row['username'];
-
                     if ($_SESSION['usertype'] != "doctor") {
-
                         echo '<tr>'
-                        . '<td><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '">' . $name . '</a></td>'
+                        . '<td class="bt"><a href="Quiz.php?id=' . $id . '&&maker=' . $maker . '&&name=' . $name . '"> ' . $name . ' </a></td>'
                         . '<td>' . $id . '</td><td>' . $maker . '</td>';
                     } else {
-
                         echo '<tr>'
                         . '<td>' . $name . '</td>'
                         . '<td>' . $id . '</td><td>' . $maker . '</td>';
                     }
-
-
                     if (empty($password)) {
-                        echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
+                        echo '<td><img src="../recources/images/1.png" height = "32" ></td>';
                     } else {
-                        echo '<td><img src="../recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>';
+                        echo '<td><img src="../recources/images/0.png" height = "32" ></td>';
                     }
-                    echo "<td><a onClick=\"\"> $removeIcon  </a></td>";
-
+                    echo "<td class='bt'><a onClick=\"\"> $removeIcon</a></td>";
                     echo '</tr>';
                 }
                 echo '</tbody></table>';
             }
             ?>
         </div>
-
-    
     </body>
-
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-</html>
+</html

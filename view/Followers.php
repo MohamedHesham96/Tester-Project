@@ -7,12 +7,7 @@
   <h1> Your Followers <h1>
                 <div class="container">
 
-                    <table class="table-striped"> 
-                        <tr>	
-                            <th>Student Name</th>
-                        </tr>
-
-
+                    
                         <?php
                         $userid = $_SESSION['userid'];
                         include '../controller/FollowersOperations.php';
@@ -25,6 +20,12 @@
                         } else {
                             
                             while ($row = mysqli_fetch_array($reult, 1)) {
+                               echo' <table class="table-striped"> 
+                                <tr>	
+                                    <th>Student Name</th>
+                                </tr>';
+
+
                                 echo "<tr>";
                                 echo '<td><a href="ProfilePage.php?&&name=' . $row['student_name'] . '">' . $row['student_name'] . '</a></td>';
                                 echo "</tr>";
