@@ -4,9 +4,6 @@ include '../controller/MySubmitOperations.php';
 ?>
 <html>
     <head>
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
-        <meta charset="utf-8"/>
     </head>
     <body >
 
@@ -47,14 +44,14 @@ include '../controller/MySubmitOperations.php';
                 $successCount = 0; // count the number of corect answers 
                 $user = $_SESSION['username'];
 
-                for ($i = 0; $i <= 50; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
+                for ($i = 0; $i <= 10000000; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
+
                     if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
+                        $count++;
 
                         if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
                             MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
                         }
-
-                        $count++;
 
                         if ($_GET['correct_ans' . $i] == $_GET[$i]) {
                             $successCount++;
@@ -64,22 +61,21 @@ include '../controller/MySubmitOperations.php';
                             echo "<tr style='background: #ff0033'>";
                         }
 
-                        echo "<td>" . "Header" . "
-                            /td>";
+                        echo "<td>" . $_GET['header' . $i] . "</td>";
                         echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
                         echo "<td>" . $_GET[$i] . "</td>";
 
                         echo "</tr>";
                     }
                 }
+                echo $count . "     ::  result     " ;
 
-                $result = $successCount * $fullMark / $count;
+                $result = $successCount * ($fullMark / $count);
                 echo $result;
 
                 if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
                     MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
                 }
-                
                 ?>
             </table>
         </div>
