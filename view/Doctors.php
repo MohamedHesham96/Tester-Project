@@ -26,7 +26,7 @@
         <h1> Docotr List </h1>
 
 
-        <div class="containerr">
+        <div class="container">
             <form action="Doctors.php" method="GET">
                 <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="Doctor Name or ID..." class="form-control" name="doctorNameSearch" >
                 <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">
@@ -54,8 +54,8 @@
                      if ($result->num_rows > 0) {
 
                         echo'<h1>Result</h1>
-                            <div class="container">
-                             <table class="table-striped">
+                            <div class="">
+                             <table class="containerr">
                                  <tr>
                                      <td>Image</td>
                                      <td>Id</td>
@@ -106,7 +106,7 @@
     else{  echo '<br>
         <div class="container">
 
-            <table class="table-striped">
+            <table class="containerr">
                 <tr>
                     <td>Image</td>
                     <td>Id</td>

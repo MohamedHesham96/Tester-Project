@@ -54,7 +54,7 @@
   echo'
          <div class="container">
 
-              <table class="table-striped">
+              <table class="containerr">
                   <tr>
                       <td>Image</td>
 
