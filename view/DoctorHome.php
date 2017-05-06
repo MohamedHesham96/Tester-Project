@@ -10,7 +10,7 @@
         <br>
         <br>
 
-        <div class="container">
+        <div class="">
             <?php
             //connect to data base and create table for result
             include '../include/vars.php';
@@ -24,7 +24,7 @@
             //display result in table
             if ($result->num_rows > 0) {
                 echo '<div class="containerr">';
-                echo '<table><thead>'
+                echo '<table class="containerr"><thead>'
                 . '<tr><th>Quiz Code</th>'
                 . '<th>Quiz Name</th>'
                 . '<th>Doctor name</th>'

@@ -7,9 +7,9 @@
         <div >
             <?php
             include '../controller/AdminOperations.php';
-            if (isset($_SESSION['usertype']) && isset($_GET['deletequizid'])) {
+            if (isset($_SESSION['usertype']) == 'admin' && isset($_GET['deletequizid'])) {
                 $quizId = $_GET['deletequizid'];
-                //    AdminOperations::deleteQuiz($quizId);
+                  AdminOperations::deleteQuiz($quizId);
             }
             $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
             $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
@@ -53,7 +53,7 @@
                     } else {
                         echo '<td><img src="../recources/images/0.png" height = "32" ></td>';
                     }
-                    echo "<td class='bt'><a onClick=\"\"> $removeIcon</a></td>";
+                    echo "<td class=''><a href = 'AdminHome.php?deletequizid=$id' onClick=\"javascript:return confirm('Are you Sure you Want to Delete this Quiz?');\"> $removeIcon</a></td>";
                     echo '</tr>';
                 }
                 echo '</tbody></table>';

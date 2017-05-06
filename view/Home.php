@@ -1,4 +1,7 @@
-<?php include './Header.php'; ?>
+<?php
+include './Header.php';
+include '../controller/StudentHomeOperations.php';
+?>
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -11,18 +14,11 @@
 
         <?php
         //connect to data base and create table for result
-        include '../include/vars.php';
-
-        $conn = mysqli_connect($host, $username, $password, $dbname);
-        if ($conn->error)
-            die("connection lost");
-
-        $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password, quizzes.full_mark, users.id from quizzes JOIN users on users.id = quizzes.doctor_id";
-        $result = $conn->query($sql);
+        $studentName = $_SESSION['username'];
+        $result = HomeStudnetOperations::getAllAvailableQuizzes($studentName);
 
         //display result in table
         echo '<div class="container">';
-
         echo '<table class="containerr">'
         . '<tr><th>Test Name</th>'
         . '<th>Test Code</th>'
@@ -30,7 +26,7 @@
         . '<th>Secure</th>'
         . '</tr>';
 
-        while ($row = $result->fetch_assoc()) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $id = $row['quiz_id'];
             $name = $row['quiz_name'];
             $password = $row['password'];

@@ -1,4 +1,5 @@
-<?php include './Header.php'; ?>
+<?php include './Header.php'; 
+include '../controller/AdminOperations.php';?>
 <html>
     <head>
         <meta charset="utf-8"/>
@@ -7,7 +8,6 @@
 
 
         <?php
-        include '../controller/AdminOperations.php';
 
         // to ensure the user is admin only
         // check the name of doctor that we wnat delete it
@@ -26,7 +26,7 @@
         <h1> Docotr List </h1>
 
 
-        <div class="containerr">
+        <div class="container">
             <form action="Doctors.php" method="GET">
                 <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="Doctor Name or ID..." class="form-control" name="doctorNameSearch" >
                 <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">
@@ -37,14 +37,14 @@
                 if (isset($_GET['doctorNameSearch']))
                  {
 
-                      $x=$_GET['doctorNameSearch'];
+                      $doctor = $_GET['doctorNameSearch'];
                       include '../include/vars.php';
                       $conn = mysqli_connect($host, $username, $password, $dbname);
                       if ($conn->error)
                                       die("connection lost");
-                      $sql  = "SELECT image,id, username, email, type, birth_day,country, gender, phone, image, university, faculty "
-                                      . "FROM `users` where type = 'doctor' AND username='$x'";
-                     $result = $conn->query($sql);
+                    
+                     $result = AdminOperations::searchDoctors($doctor);
+                     
                      $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
                      $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
                      if (!$result)
@@ -54,8 +54,8 @@
                      if ($result->num_rows > 0) {
 
                         echo'<h1>Result</h1>
-                            <div class="container">
-                             <table class="table-striped">
+                            <div class="">
+                             <table class="containerr">
                                  <tr>
                                      <td>Image</td>
                                      <td>Id</td>
@@ -106,7 +106,7 @@
     else{  echo '<br>
         <div class="container">
 
-            <table class="table-striped">
+            <table class="containerr">
                 <tr>
                     <td>Image</td>
                     <td>Id</td>
