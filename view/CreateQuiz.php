@@ -73,7 +73,7 @@ include '../controller/CreateQuizOperations.php';
 
         <br>
 
-        <table class=" container table-striped"> 
+        <table class=" containerr table-striped"> 
             <tr>	
                 <th>Qeustion</th>
                 <th>Answer (A)</th>

@@ -27,7 +27,7 @@
                         die($conn->error);
                     if ($result->num_rows > 0) {
                         echo '<style>table{width:100%;border-collapse:collapse;} td,th{height:50px; text-align:left;border-bottom:1px #ddd solid ;padding:15px;}th{background-color:#4CAF50 ;color:white; } tr:hover {background-color: #4CAF50; color:white;} tr:nth-child(even){background-color:#f2f2f2;}tr:nth-child(even):hover{background-color:#4CAF50;} </style>';
-                        echo '<table><thead><tr><th>Student Name<th>Student Mark</th><th>Submit Time</th></tr><thead><tbody>';
+                        echo '<table class="containerr"><thead><tr><th>Student Name<th>Student Mark</th><th>Submit Time</th></tr><thead><tbody>';
 
                         while ($row = $result->fetch_assoc()) {
                             $name = $row['username'];

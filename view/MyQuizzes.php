@@ -19,7 +19,7 @@
 
             <h1> My Quizzes <h1>
 
-                    <table class="table-striped"> 
+                    <table class="containerr"> 
 
                             <th>Quiz Code</th>
                             <th>Quiz Name</th>

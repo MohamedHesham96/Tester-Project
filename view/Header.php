@@ -10,12 +10,9 @@ include '../controller/MyProfileOperations.php';
 ?>
 <html>
     <head>
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-
-        <link href="../recources/css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style_1.css.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/styletable.css" rel="stylesheet" type="text/css"/>
-    </head>
+         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+              <link href="../recources/css/style.css" rel="stylesheet" /> 
+</head>
 
     <body>
         <?php
@@ -58,14 +55,14 @@ include '../controller/MyProfileOperations.php';
                             <li class="menu-item"><a href="<?php echo $thirdTab . '.php' ?>"><?php echo $thirdTab ?></a></li>
 
 
-<?php
-if ($_SESSION['usertype'] == 'doctor') {
-    $fourthPag = $forthTab . '.php';
-    echo "<li class=\"menu-item\">"
-    . "<a href='$fourthPag'>$forthTab</a>"
-    . "</li>";
-}
-?>
+                            <?php
+                            if ($_SESSION['usertype'] == 'doctor') {
+                                $fourthPag = $forthTab . '.php';
+                                echo "<li class=\"menu-item\">"
+                                . "<a href='$fourthPag'>$forthTab</a>"
+                                . "</li>";
+                            }
+                            ?>
 
 
                             <ul class="nav navbar-nav">
@@ -103,30 +100,30 @@ if ($_SESSION['usertype'] == 'doctor') {
 
 
                             <a style="display: inline;margin:0;padding: 0"href="ProfilePage.php?name=<?php echo $_SESSION['username'] ?>">
-<?php
-$user = $_SESSION['username'];
-$result = MyProfileOperations::getMyData($user);
-$row = mysqli_fetch_array($result);
-$profilephoto = $row['image'];
-if (empty($profilephoto)) {
-    echo '<img src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
-} else {
-    echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
-}
-?>
+                                <?php
+                                $user = $_SESSION['username'];
+                                $result = MyProfileOperations::getMyData($user);
+                                $row = mysqli_fetch_array($result);
+                                $profilephoto = $row['image'];
+                                if (empty($profilephoto)) {
+                                    echo '<img src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
+                                } else {
+                                    echo '<img style="border-radius: 60% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
+                                }
+                                ?>
                             </a>
 
                             <a style=" display: inline;margin:0;padding: 0" href="ProfilePage.php"> <?php echo '|'; ?> </a>
 
 
                             <a style=" display: inline;margin:0;padding: 0" href="?page=Logout.php"> Log out </a>
-<?php
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-    $url = "../models/" . $page;
-    include $url;
-}
-?>
+                            <?php
+                            if (isset($_GET['page'])) {
+                                $page = $_GET['page'];
+                                $url = "../models/" . $page;
+                                include $url;
+                            }
+                            ?>
 
                         </li>
 

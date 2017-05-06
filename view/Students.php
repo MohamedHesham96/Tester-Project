@@ -20,7 +20,7 @@
         <br>
         <h1> Studnets List  </h1>
 
-                <div class="container">
+                <div class="containerr">
                     <form action="students.php" method="GET">
                         <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="student Name or ID..." class="form-control" name="studentNameSearch" >
                         <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">

@@ -23,7 +23,7 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<div class="container">';
+                echo '<div class="containerr">';
                 echo '<table><thead>'
                 . '<tr><th>Quiz Code</th>'
                 . '<th>Quiz Name</th>'
