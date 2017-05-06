@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        
     </head>
     <body >
        <?php
@@ -9,11 +10,12 @@
 
             $doctorName = $_GET['name'];
         } else {
-
+            
             $doctorName = $_SESSION['username'];
         }
+        
         ?>
-
+        
         <div class="container">
 
 
@@ -26,6 +28,7 @@
                             <th>Full Mark</t>
                             <th>Quiz Date</th>
                             <th>Password</th>
+                            <th>State</th>
 
 
                         <?php
@@ -51,6 +54,27 @@
                                 } else {
                                     echo "<td>" . 'No Password' . "</td>";
                                 }
+                                //Quiz state if Expired or not
+                                $state = $row['state'];
+                                $quizId = $row['quiz_id'];
+                                if($state == "Expired")
+                                {
+                                    $color = "btn-danger";
+                                    echo '<style>
+                                        .button:hover:before{content:"Un";}
+                                        .button:hover {background-color:#5cb85c }
+                                    </style>';
+                                }
+                                else {
+                                    $state ="Opened" ;
+                                    $color = "btn-success";
+                                    echo '<style>
+                                        .button:hover:before{content:"Un ";}
+                                        .button:hover {background-color:#d9534f !important; }
+                                    </style>';
+                                }
+                                
+                                echo '<td><button value="UpdateQuize.php?state='.$state.'&id='.$quizId.'" onclick="location= this.value" class="button form-control col-sm-9 '.$color.'" ">' . $state. '</button></td>';
                                 echo "</tr>";
                             }
                         }
