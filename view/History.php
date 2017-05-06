@@ -16,9 +16,9 @@
         ?>
         <h1> Your Exams </h1>
 
-        <div class="containerr">
+        <div class="">
 
-            <table class="table-striped"> 
+            <table class="containerr"> 
                 <tr>	
                     <th>Quiz code</th>
                     <th>Quiz Name</th>
@@ -53,15 +53,16 @@
                         echo "<td>" . $row['time'] . "</td>";
 
                         if ($row['password']) {
-                            echo "<td>" . '<img src=" ../recources/images/lock.png"  height="20" width="20">' . " </td>";
+                            echo "<td>" . '<img src=" ../recources/images/0.png"  height="27">' . " </td>";
                         } else {
-                            echo "<td>" . '<img src=" ../recources/images/unlock.png"  height="22" width="22">' . " </td>";
+                            echo "<td>" . '<img src=" ../recources/images/1.png"  height="27">' . " </td>";
                         }
                         echo "</tr>";
                     }
                 }
                 ?>
             </table>
+
         </div>
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>

@@ -47,9 +47,9 @@ include '../controller/StudentHomeOperations.php';
             }
 
             if (empty($password)) {
-                echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
+                echo '<td><img src=" ../recources/images/0.png" style="max-width:27px;"></td>';
             } else {
-                echo '<td><img src="../recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>';
+                echo '<td><img src=" ../recources/images/1.png" style="max-width:27px"></td>';
             }
             echo '</tr>';
         }
