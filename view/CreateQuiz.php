@@ -48,10 +48,12 @@ include '../controller/CreateQuizOperations.php';
         </div>
 
         <button><a href="CreateQuestion.php">Add New Questions</a></button>
+        <?php
+        if (!isset($_GET['deletequiz'])) {
+            echo '<button onClick=\"javascript:return confirm("are you sure you want to delete this?");\" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
+        }
+        ?>
 
-        <br>
-        <br>
-        <br>
         <br>
         <br>
         <br>
@@ -68,22 +70,24 @@ include '../controller/CreateQuizOperations.php';
 
 
 
-        <?php
-        $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
-        $result = CreateQuizOperations::getQuestions($quizID);
+            <?php
+            if (!isset($_GET['deletequiz'])) {
+                $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
+                $result = CreateQuizOperations::getQuestions($quizID);
 
-        while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
 
-            echo "<tr>";
-            echo "<td>" . $row['header'] . "</td>";
-            echo "<td>" . $row['answer_1'] . "</td>";
-            echo "<td>" . $row['answer_2'] . "</td>";
-            echo "<td>" . $row['answer_3'] . "</td>";
-            echo "<td>" . $row['answer_4'] . "</td>";
-            echo "<td>" . $row['correct_answer'] . "</td>";
-            echo '</tr>';
-        }
-        ?>
+                    echo "<tr>";
+                    echo "<td>" . $row['header'] . "</td>";
+                    echo "<td>" . $row['answer_1'] . "</td>";
+                    echo "<td>" . $row['answer_2'] . "</td>";
+                    echo "<td>" . $row['answer_3'] . "</td>";
+                    echo "<td>" . $row['answer_4'] . "</td>";
+                    echo "<td>" . $row['correct_answer'] . "</td>";
+                    echo '</tr>';
+                }
+            }
+            ?>
         </table>
 
     </body>

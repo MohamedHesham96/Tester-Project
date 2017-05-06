@@ -1,6 +1,5 @@
 <?php
 
-
 class CreateQuizOperations {
 
     public static function addQuiz() {
@@ -17,7 +16,7 @@ class CreateQuizOperations {
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
-            echo 'CreateQuizOperations Error !!';
+            echo 'CreateQuizOperations (ADD Quiz) Error !!';
             return NULL;
         } else {
             
@@ -28,8 +27,6 @@ class CreateQuizOperations {
 
         include '../include/vars.php';
         $conn = new mysqli($host, $username, $password, $dbname);
-
-        $user = $_SESSION['username'];
 
         // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
 
@@ -62,14 +59,13 @@ class CreateQuizOperations {
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
-            echo 'CreateQuizOperations Error !!';
+            echo 'CreateQuizOperations (ADD QUESTION) Error !!';
             return NULL;
         } else {
             
         }
     }
 
-    
     public static function getQuestions($quizId) {
 
         include '../include/vars.php';
@@ -82,12 +78,34 @@ class CreateQuizOperations {
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
-            echo 'CreateQuizOperations Error !!';
+            echo 'CreateQuizOperations (GET QUESTION) Error !!';
             return NULL;
         } else {
             return $result;
         }
     }
+
+    public static function deleteQuiz($quizId) {
+
+        include '../include/vars.php';
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
+
+        $query = "DELETE FROM questions WHERE `quiz_id`= '$quizId'";
+        $query2 = "DELETE FROM quizzes WHERE `quiz_id`= '$quizId'";
+
+        $result = mysqli_query($conn, $query);
+        $result2 = mysqli_query($conn, $query2);
+
+        if (mysqli_error($conn)) {
+            echo 'CreateQuizOperations (DELETE QUIZ) Error !!';
+            return NULL;
+        } else {
+            return $result;
+        }
+    }
+
 }
 
 ?>
