@@ -44,8 +44,7 @@ include '../controller/MySubmitOperations.php';
                 $successCount = 0; // count the number of corect answers 
                 $user = $_SESSION['username'];
 
-                for ($i = 0; $i <= 10000000; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
-
+                for ($i = 0; $i <= 1000000; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
                     if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
                         $count++;
 
@@ -68,7 +67,7 @@ include '../controller/MySubmitOperations.php';
                         echo "</tr>";
                     }
                 }
-                echo $count . "     ::  result     " ;
+                echo $count . "     ::  result     ";
 
                 $result = $successCount * ($fullMark / $count);
                 echo $result;

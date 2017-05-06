@@ -25,7 +25,8 @@ include '../controller/StudentHomeOperations.php';
         . '<th>Marker name</th>'
         . '<th>Secure</th>'
         . '</tr>';
-        $trID = 0;
+     
+        $trID = 0; // for TR Tags >>> Href By This
 
         while ($row = mysqli_fetch_assoc($result)) {
             $trID++;

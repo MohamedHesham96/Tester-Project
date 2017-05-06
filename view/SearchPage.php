@@ -1,9 +1,7 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style1.css" rel="stylesheet" type="text/css"/>
-
+  
         <meta charset="utf-8"/>
     </head>
     <body >
@@ -62,9 +60,9 @@
                             echo "<td>" . $doctorName . "</td>";
 
                             if ($row['password']) {
-                                echo "<td>" . '<img src="../recources/images/lock.png"  height="20" width="20">' . "</td>";
+                                echo "<td>" . '<img src="../recources/images/1.png"  height="20" width="20">' . "</td>";
                             } else {
-                                echo "<td>" . '<img src="../recources/images/unlock.png"  height="22" width="22">' . "</td>";
+                                echo "<td>" . '<img src="../recources/images/0.png"  height="22" width="22">' . "</td>";
                             }
                             echo "</tr>";
                             }
