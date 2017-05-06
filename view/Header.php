@@ -122,7 +122,7 @@
                         ?>
                     </a>
                     
-                     <a style=" display: inline;margin:0;padding: 0" href="Header"> <?php echo '|'; ?> </a>
+                     <a style=" display: inline;margin:0;padding: 0" href="ProfilePage.php"> <?php echo '|'; ?> </a>
                   
 
                      <a style=" display: inline;margin:0;padding: 0" href="?page=Logout.php"> Log out </a>
