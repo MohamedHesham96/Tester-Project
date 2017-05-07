@@ -15,7 +15,7 @@
                 </tr>
 
                 <?php
-                include '../controller/viewMyResultOperations.php';
+                include '../controller/ViewMyResultOperations.php';
                 $reult = ViewMyResultOperations::getMyResult($_SESSION['username'], $_GET['quizid']);
 
                 if (!$reult) {
