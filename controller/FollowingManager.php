@@ -47,7 +47,6 @@ class FollowingManager {
         if (mysqli_error($conn)) {
 
             echo 'Following Manager  Error !!';
-            
         } else if ($_GET['outprofile'] == "true") {
 
             $query = "SELECT * FROM `following` WHERE doctor_id = '$doctorId' and student_name = '$studentName'";
@@ -68,7 +67,7 @@ class FollowingManager {
 
                 $result = mysqli_query($conn, $query);
 
-       Header("location: ../view/ProfilePage.php?name=$doctorName&followstate=false");
+                Header("location: ../view/ProfilePage.php?name=$doctorName&followstate=false");
             } else {
                 FollowingManager::insertNewFollow($doctorId, $studentName);
             }
