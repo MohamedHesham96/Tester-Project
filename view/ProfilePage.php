@@ -89,12 +89,12 @@ include '../controller/MyQuizzesOperations.php';
                                             <h4><?php echo ucwords($user) ?></h4>
 
                                             <h4><u><?php
-                                            if ($row['type'] == 'doctor')
-                                                echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
+                                                    if ($row['type'] == 'doctor')
+                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
 
-                                            if ($row['type'] == 'student')
-                                                echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
-                                                ?></u></h4>
+                                                    if ($row['type'] == 'student')
+                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
+                                                    ?></u></h4>
                                         </div>
                                     </div>
                                     <div style="background: #ccc" class="alert col-lg-5 col-sm-offset-1">
@@ -137,7 +137,7 @@ include '../controller/MyQuizzesOperations.php';
 
 
             </div>
-<?php } ?>
+        <?php } ?>
 
 
     </body>

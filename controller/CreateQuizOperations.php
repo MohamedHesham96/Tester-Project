@@ -6,7 +6,7 @@ class CreateQuizOperations {
 
         include '../include/vars.php';
         $conn = new mysqli($host, $username, $password, $dbname);
-        
+
         $user = $_SESSION['username'];
 
         // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
@@ -117,6 +117,25 @@ class CreateQuizOperations {
 
         $result = mysqli_query($conn, $query);
         $result2 = mysqli_query($conn, $query2);
+
+        if (mysqli_error($conn)) {
+            echo 'CreateQuizOperations (DELETE QUIZ) Error !!';
+            return NULL;
+        } else {
+            return $result;
+        }
+    }
+
+    public static function deleteQuestion($quizId, $header) {
+
+        include '../include/vars.php';
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
+
+        $query = "DELETE FROM questions WHERE `quiz_id` = '$quizId' and `header` = '$header'";
+
+        $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
             echo 'CreateQuizOperations (DELETE QUIZ) Error !!';

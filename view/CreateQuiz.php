@@ -8,12 +8,10 @@ include '../controller/CreateQuizOperations.php';
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/style.css" rel="stylesheet" type="text/css"/>
-
     </head>
 
     <body>
 
-       
         <div class="col-lg-12"> 
 
             <div style="background: #EEE" class="col-lg-12 btn-lg">
@@ -51,6 +49,14 @@ include '../controller/CreateQuizOperations.php';
 
 
         <?php
+        if (isset($_GET['qdelete']) and isset($_GET['qheader'])) {
+
+            $quiz_id = $_GET['qdelete'];
+            $header = $_GET['qheader'];
+
+            CreateQuizOperations::deleteQuestion($quiz_id, $header);
+        }
+
         if (isset($_GET['addquiz'])) {
             echo '  <button class = "col-lg-4 btn" ><a href = "CreateQuestion.php?addquiz=true">Add New Questions</a></button>';
         } else {
@@ -88,11 +94,13 @@ include '../controller/CreateQuizOperations.php';
 
             <?php
             if (!isset($_GET['deletequiz']) && !isset($_GET['addquiz'])) {
+
                 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
                 $result = CreateQuizOperations::getQuestions($quizID);
 
                 while ($row = mysqli_fetch_assoc($result)) {
-
+                    $header = $row['header'];
+                    $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
                     echo "<tr>";
                     echo "<td>" . $row['header'] . "</td>";
                     echo "<td>" . $row['answer_1'] . "</td>";
@@ -100,12 +108,12 @@ include '../controller/CreateQuizOperations.php';
                     echo "<td>" . $row['answer_3'] . "</td>";
                     echo "<td>" . $row['answer_4'] . "</td>";
                     echo "<td>" . $row['correct_answer'] . "</td>";
+                    echo "<td><a  onClick=\"javascript:return confirm('Are you Sure you Want to Delete This Question?');\" href = 'CreateQuiz.php?qdelete=$quizID&qheader=$header'>" . $removeIcon . "</a></td>";
                     echo '</tr>';
                 }
             }
             ?>
         </table>
-
     </body>
 
     <!--   Core JS Files   -->
