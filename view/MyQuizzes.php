@@ -53,11 +53,13 @@ include '../controller/AdminOperations.php';
                 if (!$reult) {
                     echo 'error2';
                 } else {
-                    while ($row = mysqli_fetch_array($reult, 1)) {
 
+                    $trID = 0;
+                    while ($row = mysqli_fetch_array($reult, 1)) {
+                        $trID++;
                         $id = $row['quiz_id'];
 
-                        echo "<tr>";
+                        echo "<tr id = '$trID'>";
                         echo "<td>" . $row['quiz_id'] . "</td>";
                         echo "<td>" . $row['quiz_name'] . "</td>";
                         echo "<td>" . $row['full_mark'] . "</td>";
@@ -93,6 +95,28 @@ include '../controller/AdminOperations.php';
                         }
 
                         echo "</tr>";
+                        ?>
+
+                        <script>
+
+                            var quiz_id = <?php echo json_encode($row['quiz_id']); ?>;
+                            var quizName = <?php echo json_encode($row['quiz_name']) ?>;
+                            var quizMaker = <?php echo json_encode($_SESSION['username']) ?>;
+                            var fullMark = <?php echo json_encode($row['full_mark']) ?>;
+                            
+                            var id = <?php echo json_encode($trID) ?>;
+
+                            var link = "Quiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark;
+
+                            $("#" + id).attr('href', link);
+
+                            $("#" + id).on("click", function () {
+                                document.location = $(this).attr('href');
+                            });
+                        </script>
+
+
+                        <?php
                     }
                 }
                 ?>
