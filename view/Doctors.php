@@ -45,8 +45,8 @@ include '../controller/AdminOperations.php';?>
                     
                      $result = AdminOperations::searchDoctors($doctor);
                      
-                     $editIcon = "<img src = '../recources/images/edit_user.png' height = '32'>";
-                     $removeIcon = "<img src = '../recources/images/remove_user.png' height = '32'>";
+                     $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
+                     $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
                      if (!$result)
                          {
                           die($conn->error);

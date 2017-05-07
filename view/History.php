@@ -46,7 +46,7 @@
                         $fullmakr = $row['full_mark'];
 
                         echo "<tr>";
-                        echo "<td><a href = 'viewmyresult.php?quizid=$quizId&maker=$quizMaker&name=$quizname&mark=$mark&fulmark=$fullmakr'>" . $row["quiz_id"] . "</a></td>";
+                        echo "<td><a href = 'ViewMyResult.php?quizid=$quizId&maker=$quizMaker&name=$quizname&mark=$mark&fulmark=$fullmakr'>" . $row["quiz_id"] . "</a></td>";
                         echo "<td>" . $row['quiz_name'] . "</td>";
                         echo "<td>" . $row['username'] . "</td>";
                         echo "<td>" . $row['mark'] . " / " . $row['full_mark'] . "</td>";

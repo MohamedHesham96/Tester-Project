@@ -19,13 +19,13 @@ include '../controller/StudentHomeOperations.php';
 
         //display result in table
         echo '<div class="container">';
-        echo '<table class="containerr">'
+        echo '<table class="containerr" style="cursor:pointer;">'
         . '<tr><th>Test Name</th>'
         . '<th>Test Code</th>'
         . '<th>Marker name</th>'
         . '<th>Secure</th>'
         . '</tr>';
-     
+
         $trID = 0; // for TR Tags >>> Href By This
 
         while ($row = mysqli_fetch_assoc($result)) {
