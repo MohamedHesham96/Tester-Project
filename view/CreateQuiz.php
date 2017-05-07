@@ -54,7 +54,7 @@ include '../controller/CreateQuizOperations.php';
             $quiz_id = $_GET['qdelete'];
             $header = $_GET['qheader'];
 
-            CreateQuizOperations::deleteQuestion($quiz_id, $header);
+            CreateQuizOperations::deleteQuestion($quiz_id , $header);
         }
 
         if (isset($_GET['addquiz'])) {
