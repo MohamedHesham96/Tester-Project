@@ -1,6 +1,7 @@
 <?php
 include './Header.php';
 include '../controller/MyQuizzesOperations.php';
+include '../controller/AdminOperations.php';
 ?>
 <html>
     <head>
@@ -9,6 +10,11 @@ include '../controller/MyQuizzesOperations.php';
     </head>
     <body >
         <?php
+        if (isset($_SESSION['usertype']) == 'doctor' && isset($_GET['deletequizid'])) {
+            $quizId = $_GET['deletequizid'];
+            AdminOperations::deleteQuiz($quizId);
+        }
+
         if (isset($_GET['name'])) {
 
             echo '<h1> Mr. "' . $_GET['name'] . '" Quizzes <h1>';
@@ -49,8 +55,9 @@ include '../controller/MyQuizzesOperations.php';
                 } else {
                     while ($row = mysqli_fetch_array($reult, 1)) {
 
-                        echo "<tr>";
+                        $id = $row['quiz_id'];
 
+                        echo "<tr>";
                         echo "<td>" . $row['quiz_id'] . "</td>";
                         echo "<td>" . $row['quiz_name'] . "</td>";
                         echo "<td>" . $row['full_mark'] . "</td>";
@@ -79,7 +86,10 @@ include '../controller/MyQuizzesOperations.php';
                                         .button:hover {background-color:#d9534f !important; }
                                     </style>';
                             }
+                            $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
+
                             echo '<td><button value="UpdateQuize.php?state=' . $state . '&id=' . $quizId . '" onclick="location= this.value" class="button form-control col-sm-9 ' . $color . '" ">' . $state . '</button></td>';
+                            echo "<td class=''><a href = 'MyQuizzes.php?deletequizid=$id' onClick=\"javascript:return confirm('Are you Sure you Want to Delete this Quiz?');\"> $removeIcon</a></td>";
                         }
 
                         echo "</tr>";

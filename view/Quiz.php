@@ -8,7 +8,6 @@ include '../controller/MyQuizzesOperations.php';
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
     </head>
     <?php
-
     $userType = $_SESSION['usertype'];
     $submitState = "";
     if ($userType != "student")    //بتحدد ظهور زرار السابمت على اساس نوع المستخدم لو ادمن مش هيظهر
@@ -23,9 +22,8 @@ include '../controller/MyQuizzesOperations.php';
 
         $fullMark = $_GET['fullmark'];
         $makerId = $_GET['makerid'];
-
     }
-        $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
+    $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
     echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
@@ -90,7 +88,7 @@ include '../controller/MyQuizzesOperations.php';
                 <br>                <br>
 
                 <div>
-                    <div style="margin-bottom: -34; margin-left: -35">
+                    <div style="margin-bottom: -28; margin-left: -35">
                         <span style="border-radius: 20%; background: #ffffff; color: #00f; padding: 5; height: 50; font-size: 20 ;" > <?php echo "(" . $qnum++ . ")" ?> </span> 
                     </div>
                     <div>
@@ -144,7 +142,7 @@ include '../controller/MyQuizzesOperations.php';
                 <br>
                 <br>
 
-            <?php } ?>
+    <?php } ?>
 
         <?php } ?>
 

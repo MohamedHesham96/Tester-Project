@@ -9,8 +9,9 @@
             include '../controller/AdminOperations.php';
             if (isset($_SESSION['usertype']) == 'admin' && isset($_GET['deletequizid'])) {
                 $quizId = $_GET['deletequizid'];
-                  AdminOperations::deleteQuiz($quizId);
+                AdminOperations::deleteQuiz($quizId);
             }
+            
             $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
             $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
             //connect to data base and create table for result
