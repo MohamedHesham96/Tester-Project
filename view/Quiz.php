@@ -4,11 +4,11 @@ include '../controller/MyQuizzesOperations.php';
 ?>
 <!--make information displayed in center of page -->
 <html>  
-    <head>        <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
-
-
+    <head>
+        <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
     </head>
     <?php
+
     $userType = $_SESSION['usertype'];
     $submitState = "";
     if ($userType != "student")    //بتحدد ظهور زرار السابمت على اساس نوع المستخدم لو ادمن مش هيظهر
@@ -18,21 +18,22 @@ include '../controller/MyQuizzesOperations.php';
     $name = $_GET['name'];
     $quizId = $_GET['id'];
     $maker = $_GET['maker'];
-    $fullMark = $_GET['fullmark'];
-    $makerId = $_GET['makerid'];
-    $fullMark = $_GET['fullmark'];
-    $makerId = $_GET['makerid'];
 
-    $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
+    if ($_SESSION['usertype'] == 'student') {
 
+        $fullMark = $_GET['fullmark'];
+        $makerId = $_GET['makerid'];
+
+    }
+        $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
     echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
     echo "Quiz id    : $quizId <br><br>"; // display quiz id
     echo "Quiz name  : $name <br><br>"; // display quiz name
-    echo "Full Mark  : $fullMark <br><br>"; // display quiz name
-    echo "Maker ID  : $makerId <br><br>"; // display quiz name
-
+    if ($_SESSION['usertype'] == 'student') {
+        echo "Full Mark  : $fullMark <br><br>"; // display quiz name
+    }
     echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
     echo ' </div>';
 
@@ -143,7 +144,7 @@ include '../controller/MyQuizzesOperations.php';
                 <br>
                 <br>
 
-    <?php } ?>
+            <?php } ?>
 
         <?php } ?>
 

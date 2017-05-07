@@ -23,7 +23,7 @@ include '../controller/AdminOperations.php';?>
 
         <br>
 
-        <h1> Docotr List </h1>
+        <h1> Doctors List </h1>
 
 
         <div class="container">

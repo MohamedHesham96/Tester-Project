@@ -29,7 +29,7 @@ include '../controller/MyQuizzesOperations.php';
 
                 <th>Quiz Code</th>
                 <th>Quiz Name</th>
-                <th>Full Mark</t>
+                <th>Full Mark</th>
                 <th>Quiz Date</th>
                 <th>Password</th>
                 <?php
@@ -50,6 +50,7 @@ include '../controller/MyQuizzesOperations.php';
                     while ($row = mysqli_fetch_array($reult, 1)) {
 
                         echo "<tr>";
+
                         echo "<td>" . $row['quiz_id'] . "</td>";
                         echo "<td>" . $row['quiz_name'] . "</td>";
                         echo "<td>" . $row['full_mark'] . "</td>";

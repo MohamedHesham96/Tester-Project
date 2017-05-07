@@ -12,6 +12,7 @@ include '../controller/MyProfileOperations.php';
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/style.css" rel="stylesheet" /> 
+
     </head>
 
     <body>
