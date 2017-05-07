@@ -6,8 +6,6 @@ session_start();
 
 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
 
-
-
 $header = $_GET['question'];
 $ans1 = $_GET['ans1'];
 $ans2 = $_GET['ans2'];

@@ -1,4 +1,7 @@
-<?php // include './header.php';
+<?php
+// include './header.php';
+session_start();
+include '../controller/CreateQuizOperations.php';
 ?>
 
 <html>
@@ -8,6 +11,11 @@
 
     <body>
         <?php
+        if (isset($_GET['addquiz'])) {
+            if ($_GET['addquiz'] == "true") {
+                CreateQuizOperations::addQuiz();
+            }
+        }
         //     session_destroy();
         $massage = ""; // for username hint
         $massage2 = ""; // for emai  hint

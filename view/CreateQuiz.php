@@ -1,24 +1,19 @@
 <?php
-        session_start();
+session_start();
 
 include '../controller/CreateQuizOperations.php';
 ?>
 
 <html>
     <head>
-           <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="../recources/css/style.css" rel="stylesheet" type="text/css"/>
-     
+
     </head>
 
     <body>
 
-        <?php
-        if (isset($_GET['submitstate']) != "true") {
-            CreateQuizOperations::addQuiz();
-        }
-        ?>
-
+       
         <div class="col-lg-12"> 
 
             <div style="background: #EEE" class="col-lg-12 btn-lg">
@@ -54,13 +49,19 @@ include '../controller/CreateQuizOperations.php';
         <br>
         <br>
 
-        <button class="col-lg-4 btn" ><a href="CreateQuestion.php">Add New Questions</a></button>
+
         <?php
+        if (isset($_GET['addquiz'])) {
+            echo '  <button class = "col-lg-4 btn" ><a href = "CreateQuestion.php?addquiz=true">Add New Questions</a></button>';
+        } else {
+            echo '  <button class = "col-lg-4 btn" ><a href = "CreateQuestion.php?">Add New Questions</a></button>';
+        }
+
         if (!isset($_GET['deletequiz'])) {
             $question = "javascript:return confirm('Are you Sure you Want to Delete This Quiz?');";
             echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
         }if (isset($_GET['submitstate']) == "true") {
-            
+
             $question = "javascript:return confirm('Are you Sure you Want to Submit this Quiz?');";
             echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="AddNewQuiz.php?quizname=H&fullmark=30&password=123">Submit This Quiz</a></button>';
         }
@@ -86,10 +87,9 @@ include '../controller/CreateQuizOperations.php';
 
 
             <?php
-            if (!isset($_GET['deletequiz'])) {
+            if (!isset($_GET['deletequiz']) && !isset($_GET['addquiz'])) {
                 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
                 $result = CreateQuizOperations::getQuestions($quizID);
-
 
                 while ($row = mysqli_fetch_assoc($result)) {
 

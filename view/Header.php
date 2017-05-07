@@ -10,9 +10,9 @@ include '../controller/MyProfileOperations.php';
 ?>
 <html>
     <head>
-         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-              <link href="../recources/css/style.css" rel="stylesheet" /> 
-</head>
+        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../recources/css/style.css" rel="stylesheet" /> 
+    </head>
 
     <body>
         <?php
@@ -57,7 +57,7 @@ include '../controller/MyProfileOperations.php';
 
                             <?php
                             if ($_SESSION['usertype'] == 'doctor') {
-                                $fourthPag = $forthTab . '.php';
+                                $fourthPag = $forthTab . '.php?addquiz=true';
                                 echo "<li class=\"menu-item\">"
                                 . "<a href='$fourthPag'>$forthTab</a>"
                                 . "</li>";

@@ -17,7 +17,7 @@
             $conn = mysqli_connect($host, $username, $password, $dbname);
             if ($conn->error)
                 die("connection lost");
-            $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id";
+            $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id where quizzes.state = 'opend'";
             $result = $conn->query($sql);
             if (!$result)
                 die($conn->error);
