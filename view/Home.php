@@ -59,35 +59,24 @@ include '../controller/StudentHomeOperations.php';
             ?>
 
             <script>
-
-
                 var quiz_id = <?php echo json_encode($row['quiz_id']); ?>;
                 var quizName = <?php echo json_encode($row['quiz_name']) ?>;
                 var quizMaker = <?php echo json_encode($row['username']) ?>;
                 var makerID = <?php echo json_encode($row['id']) ?>;
                 var fullMark = <?php echo json_encode($row['full_mark']) ?>;
-
                 var password = <?php echo json_encode($row['password']) ?>;
-
                 var id = <?php echo json_encode($trID) ?>;
-
-
-                var link = "Quiz.php?id=" + quiz_id + "&maker=" + quizMaker + "&name=" + quizName + "&fullmark=" + fullMark + "&makerid=" + makerID;
-                //alert(link);
-
-
+var link = "Quiz.php?id=" + quiz_id + "&maker=" + quizMaker + "&name=" + quizName + "&fullmark=" + fullMark + "&makerid=" + makerID;
+        
                 $("#" + id).attr('href', link);
                 $("#" + id).attr('value', password);
 
                 $("#" + id).on("click", function () {
-
                     quizpass = $(this).attr('value');
 
                     if (quizpass) {
-
                         userpass = prompt("Pleas Enter The Password To Enter This Quiz !");
                         if (!userpass) {
-
                         } else if (userpass == quizpass) {
                             document.location = $(this).attr('href');
                         } else {
@@ -95,16 +84,12 @@ include '../controller/StudentHomeOperations.php';
                         }
                     } else {
                         document.location = $(this).attr('href');
-
                     }
-
                 });
             </script>
 
-
             <?php
         }
-
         echo '</table>';
         echo '</div>';
         ?>

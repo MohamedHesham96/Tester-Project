@@ -25,15 +25,35 @@
 
 // check if the statment is true
 
+                $trID = 0;
+
                 if (!$reult) {
                     echo 'error2';
                 } else {
                     while ($row = mysqli_fetch_array($reult, 2)) {
-                        echo "<tr>";
+                        $trID++;
+                        echo "<tr style='cursor: pointer' id='$trID'>";
                         echo "<td>" . "Photo" . "</td>";
-                        echo '<td><a href="ProfilePage.php?outprofile=true&followstate=true&name=' . $row[1] . '">' . $row[1] . '</a></td>';
+                        echo '<td>' . $row[1] . '</a></td>';
                         echo "<td>" . $row[2] . "</td>";
                         echo "</tr>";
+                        ?>
+
+                        <script>
+                            var quizName = <?php echo json_encode($row[1]) ?>;
+
+                            var id = <?php echo json_encode($trID) ?>;
+                                        var link = "    ProfilePage.php?outprofile=true&followstate=true&name=" + quizName;
+
+                            $("#" + id).attr('href', link);
+
+                            $("#" + id).on("click", function () {
+                                document.location = $(this).attr('href');
+                            });
+                        </script>
+
+
+                        <?php
                     }
                 }
                 ?>
