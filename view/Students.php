@@ -77,10 +77,13 @@
                     while ($row = mysqli_fetch_array($result, 1)) {
 
                         $studentName = $row['username'];
-
+                        $profilephoto = $row['image'];
                         echo "<tr>";
-                        echo " <td><img style=\"border-radius: 30%\" src = '../recources/images/default-avatar.png' height = '40'></td>";
-
+                        if (empty($profilephoto)) {
+                        echo '<td><img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/></td>';
+                         } else {
+                        echo '<td><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></td>';
+                         }
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['username'] . "</td>";
                         echo "<td>" . $row['email'] . "</td>";
