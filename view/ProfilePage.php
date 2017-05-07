@@ -8,7 +8,6 @@ include '../controller/MyQuizzesOperations.php';
 
         <!-- CSS Files -->
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
     </head>
 
