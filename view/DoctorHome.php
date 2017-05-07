@@ -17,7 +17,7 @@
             $conn = mysqli_connect($host, $username, $password, $dbname);
             if ($conn->error)
                 die("connection lost");
-            $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id";
+            $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id where quizzes.state = 'opend'";
             $result = $conn->query($sql);
             if (!$result)
                 die($conn->error);
@@ -48,9 +48,9 @@
                         . '<td>' . $id . '</td><td>' . $maker . '</td>';
                     }
                     if (empty($password)) {
-                        echo '<td><img src="../recources/images/unlock.png" style="max-width:20px; max-hight:20px;"></td>';
+                        echo '<td><img src="../recources/images/1.png" style="max-width:25px; "></td>';
                     } else {
-                        echo '<td><img src="../recources/images/lock.png " style="max-width:20px;max-hight:20px;"></td>';
+                        echo '<td><img src="../recources/images/0.png " style="max-width:25px;"></td>';
                     }
                     echo '</tr>';
                 }
