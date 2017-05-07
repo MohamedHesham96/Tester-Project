@@ -20,12 +20,14 @@
                     } else {
                         echo' <table class="containerr"> 
                                 <tr>	
+                                    <th>Student Photo</th>
                                     <th>Student Name</th>
                                 </tr>';
 
                         while ($row = mysqli_fetch_array($reult, 1)) {
 
                             echo "<tr>";
+                            echo '<td> PHOTO </td>';
                             echo '<td><a href="ProfilePage.php?&&name=' . $row['student_name'] . '">' . $row['student_name'] . '</a></td>';
                             echo "</tr>";
                         }
