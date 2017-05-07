@@ -21,7 +21,7 @@
         <h1> Studnets List  </h1>
 
                 <div class="container">
-                    <form action="students.php" method="GET">
+                    <form action="Students.php" method="GET">
                         <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="Student Name or ID..." class="form-control" name="studentNameSearch" >
                         <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">
                     </form>
@@ -91,8 +91,8 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td><a href = 'profilepage.php?&name=$studentName'\"> $editIcon </a></td>";
-                        echo "<td><a href = 'students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
+                        echo "<td><a href = 'ProfilePage.php?&name=$studentName'\"> $editIcon </a></td>";
+                        echo "<td><a href = 'Students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
 
                         echo "</tr>";
                     }
