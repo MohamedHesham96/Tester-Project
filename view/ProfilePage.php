@@ -76,29 +76,25 @@ include '../controller/MyQuizzesOperations.php';
                                             <br>
                                             <br>
                                             <div class="picture">
-                                            <?php    
+                                                <?php
                                                 $profilephoto = $row['image'];
-                                                    if(empty($profilephoto))
-                                                    {
-                                                        echo '<img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>';
-
-                                                    }
-                                                    else
-                                                    {    
-                                                        echo '<img src="data:image/jpeg;base64,'.base64_encode($profilephoto).'" height="100" width="100" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>'; 
-                                                    }
-                                            ?>
+                                                if (empty($profilephoto)) {
+                                                    echo '<img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>';
+                                                } else {
+                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height="100" width="100" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
+                                                }
+                                                ?>
                                             </div>
-                                            
-                                            <h4><?php echo ucwords($user) ?></h4>
-                                           
-                                            <h4><u><?php
-                                                    if ($row['type'] == 'doctor')
-                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
 
-                                                    if ($row['type'] == 'student')
-                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
-                                                    ?></u></h4>
+                                            <h4><?php echo ucwords($user) ?></h4>
+
+                                            <h4><u><?php
+                                            if ($row['type'] == 'doctor')
+                                                echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
+
+                                            if ($row['type'] == 'student')
+                                                echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
+                                                ?></u></h4>
                                         </div>
                                     </div>
                                     <div style="background: #ccc" class="alert col-lg-5 col-sm-offset-1">
@@ -141,7 +137,7 @@ include '../controller/MyQuizzesOperations.php';
 
 
             </div>
-        <?php } ?>
+<?php } ?>
 
 
     </body>

@@ -2,6 +2,7 @@
 
 include '../include/vars.php';
 $conn = new mysqli($host, $username, $password, $dbname);
+
 //Update Quize state 
 
 if (isset($_GET['state'])) {
