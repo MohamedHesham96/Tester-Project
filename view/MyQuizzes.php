@@ -117,7 +117,7 @@ include '../controller/AdminOperations.php';
                             });
                         </script>
 
-
+                      
                         <?php
                     }
                     echo '</table>';
