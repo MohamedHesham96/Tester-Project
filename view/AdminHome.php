@@ -2,9 +2,32 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="../recources/css/style.css" rel="stylesheet" /> 
+        <style type="text/css">
+            .remove {
+                font-size:1em; 
+                font-weight: bold;
+                font-size: 25;
+                display: block;
+                padding: 0;
+                margin:0;
+                color: #000;
+              }
+              .remove:hover{
+                  color: red;
+              }
+              .atest {
+                display: block;
+                padding-bottom: 0;
+                margin:0; 
+                color: #000;
+              }
+
+
+        </style>
     </head>
     <body>
-        <div >
+        <div class="container">
             <?php
             include '../controller/AdminOperations.php';
             if (isset($_SESSION['usertype']) == 'admin' && isset($_GET['deletequizid'])) {
@@ -12,10 +35,9 @@
                 AdminOperations::deleteQuiz($quizId);
             }
             
-            $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
-            $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
-            //connect to data base and create table for result
+            $removeIcon = '<span class="remove glyphicon glyphicon-remove" aria-hidden="true"></span>';            //connect to data base and create table for result
             include '../include/vars.php';
+            
             $conn = mysqli_connect($host, $username, $password, $dbname);
             if ($conn->error)
                 die("connection lost");
@@ -25,7 +47,7 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<table class="containerr">
+                echo '<table class="containerr table">
                          <thead>
                            <tr>
                               <th>Test Name</th>
