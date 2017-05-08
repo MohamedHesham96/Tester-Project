@@ -11,8 +11,11 @@ include '../controller/MyProfileOperations.php';
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style.css" rel="stylesheet" /> 
-
+         <style type="text/css">
+          .bt-hover{
+            color: #9d9d9d;
+          }
+        </style>
     </head>
 
     <body>
@@ -74,10 +77,17 @@ include '../controller/MyProfileOperations.php';
                                 <ul class="nav navbar-nav navbar-right">
 
                                     <li>
-                                        <form class="navbar-search navbar-form" method="get" action="SearchPage.php">
-                                            <input style="background:#f5f5f5 " class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
-                                            <input style="background:#f5f5f5 " class="form-control" type="submit" value="Search" name="SearchSub">
-                                        </form>
+                                        <form class="navbar-form"  method="get" action="SearchPage.php">
+                                       <div class="input-group">
+                                            <input style="background:#f5f5f5; width: 300" class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
+                                            <div class="input-group-btn">
+
+                                                    <button style="background:#f5f5f5; padding: 9 " class="bt-hover btn btn-default" type="submit" value="Search" name="SearchSub">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>
+                                            </div>
+                                        </div>
+                                    </form>
                                     </li>
 
                                 </ul>
