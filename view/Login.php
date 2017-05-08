@@ -34,8 +34,7 @@
 
     </head>
 
-    <body>
-        <div class="image-container set-full-height" style="background-image: url('../recources/images/wizard.jpg')">
+    <body class="image-container set-full-height" style="background-image: url('../recources/images/wizard.jpg')">
 
             <!-- Top content -->
             <div class="top-content">
