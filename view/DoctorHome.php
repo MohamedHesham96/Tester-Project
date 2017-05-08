@@ -3,14 +3,21 @@
     <head>
 
         <meta charset="utf-8"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
 
+        <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%
+            }
+
+        </style>
     </head>
     <body>
-        <br>
-        <br>
-        <br>
+        
 
-        <div class="">
+        <div class="container">
             <?php
             //connect to data base and create table for result
             include '../include/vars.php';
@@ -23,8 +30,8 @@
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<div class="containerr">';
-                echo '<table class="containerr"><thead>'
+                echo '<div class="container">';
+                echo '<table class="containerr table"><thead>'
                 . '<tr><th>Quiz Code</th>'
                 . '<th>Quiz Name</th>'
                 . '<th>Doctor name</th>'
@@ -58,6 +65,5 @@
             }
             ?>
         </div>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>
