@@ -13,9 +13,28 @@ include '../controller/AdminOperations.php';
                 width: 100%;
                 height: 100%
             }
+            .remove {
+                font-size:1em; 
+                font-weight: bold;
+                font-size: 25;
+                display: block;
+                padding: 0;
+                margin:0;
+                color: #000;
+              }
+              .remove:hover{
+                  color: red;
+              }
+              .atest {
+                display: block;
+                padding-bottom: 0;
+                margin:0; 
+                color: #000;
+              }
+
 
         </style>
-    </head>
+     </head>
     <body >
         <?php
         if (isset($_SESSION['usertype']) == 'doctor' && isset($_GET['deletequizid'])) {
@@ -91,7 +110,7 @@ include '../controller/AdminOperations.php';
                                         .button:hover {background-color:#d9534f !important; }
                                     </style>';
                             }
-                            $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
+                              $removeIcon = '<span class="remove glyphicon glyphicon-remove" aria-hidden="true"></span>';            //connect to data base and create table for result
 
                             echo '<td><button value="UpdateQuize.php?state=' . $state . '&id=' . $quizId . '" onclick="location= this.value" class="button form-control col-sm-9 ' . $color . '" ">' . $state . '</button></td>';
                             echo "<td class=''><a href = 'MyQuizzes.php?deletequizid=$id' onClick=\"javascript:return confirm('Are you Sure you Want to Delete this Quiz?');\"> $removeIcon</a></td>";
