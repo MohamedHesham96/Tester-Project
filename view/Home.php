@@ -66,8 +66,8 @@ include '../controller/StudentHomeOperations.php';
                 var fullMark = <?php echo json_encode($row['full_mark']) ?>;
                 var password = <?php echo json_encode($row['password']) ?>;
                 var id = <?php echo json_encode($trID) ?>;
-var link = "Quiz.php?id=" + quiz_id + "&maker=" + quizMaker + "&name=" + quizName + "&fullmark=" + fullMark + "&makerid=" + makerID;
-        
+                var link = "Quiz.php?id=" + quiz_id + "&maker=" + quizMaker + "&name=" + quizName + "&fullmark=" + fullMark + "&makerid=" + makerID;
+
                 $("#" + id).attr('href', link);
                 $("#" + id).attr('value', password);
 

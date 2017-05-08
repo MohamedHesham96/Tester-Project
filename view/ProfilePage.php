@@ -66,7 +66,7 @@ include '../controller/MyQuizzesOperations.php';
                                         <div class="picture-container  ">
 
                                             <?php
-                                            if (isset($_GET['name']) != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
+                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
                                                 echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$user \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
                                             } else {
                                                 
@@ -137,7 +137,7 @@ include '../controller/MyQuizzesOperations.php';
 
 
             </div>
-        <?php } ?>
+<?php } ?>
 
 
     </body>
