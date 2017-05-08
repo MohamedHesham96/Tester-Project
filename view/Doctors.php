@@ -8,7 +8,7 @@ include '../controller/AdminOperations.php';
 
     </head>
     <body >
-        <div class="container" style="">
+        <div class="container" >
 
 
         <?php
@@ -86,9 +86,9 @@ include '../controller/AdminOperations.php';
                 echo "<tr>";
                 $profilephoto = $row['image'];
                 if (empty($profilephoto)) {
-                    echo '<td><img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/></td>';
+                    echo '<td class="bt" ><img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/></td>';
                 } else {
-                    echo '<td><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></td>';
+                    echo '<td class="bt"><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></td>';
                 }
 
                 echo "<td>" . $row['id'] . "</td>";
@@ -102,13 +102,12 @@ include '../controller/AdminOperations.php';
                 echo "<td>" . $row['faculty'] . "</td>";
 
                 echo "<td><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
-                echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td><tr>";
+                echo "<td><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
 
                 echo "</tr>";
             }
             echo "</table></div>";
         }
         ?>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>
