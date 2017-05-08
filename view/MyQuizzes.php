@@ -80,7 +80,7 @@ include '../controller/AdminOperations.php';
                 if (!isset($_GET['name'])) {
                     if ($state == "Expired") {
 
-                        $stateIcon = "<img src = '../recources/images/closed-icon.png' height = '35'>";
+                        $stateIcon = "<img src = '../recources/images/closed-icon.png' height = '32'>";
 
                         /* $color = "btn-danger";
                           echo '<style>
@@ -89,7 +89,7 @@ include '../controller/AdminOperations.php';
                           </style>'; */
                     } else {
 
-                        $stateIcon = "<img src = '../recources/images/open-icon.png' height = '35'>";
+                        $stateIcon = "<img src = '../recources/images/open-icon.png' height = '33'>";
 
                         /*    $state = "Opened";
                           $color = "btn-success";
@@ -100,7 +100,7 @@ include '../controller/AdminOperations.php';
                          */
                     }
 
-                    $removeIcon = "<img src = '../recources/images/105.png' height = '35'>";
+                    $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
 
                     echo "<td><a href = 'UpdateQuize.php?state=$state&id=$quizId' onClick=\"click(event)\"> $stateIcon </a></td>";
                     echo "<td><a href = 'MyQuizzes.php?deletequizid=$id' onClick=\"click(event)\"> $removeIcon </a></td>";
