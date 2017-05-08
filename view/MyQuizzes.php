@@ -21,28 +21,9 @@ include '../controller/AdminOperations.php';
 
             $doctorName = $_GET['name'];
         } else {
-            echo '<h1> Your Quizzes <h1>';
-
             $doctorName = $_SESSION['username'];
         }
         ?>
-
-        <div class="container">
-
-
-
-            <table class="containerr"> 
-
-                <th>Quiz Code</th>
-                <th>Quiz Name</th>
-                <th>Full Mark</th>
-                <th>Quiz Date</th>
-                <th>Password</th>
-                <?php
-                if (!isset($_GET['name'])) {
-                    echo '<th>State</th>';
-                }
-                ?>
 
                 <?php
                 $reult = MyQuizzesOperations::getMyQuizzes($doctorName);
@@ -53,11 +34,24 @@ include '../controller/AdminOperations.php';
                 if (!$reult) {
                     echo 'error2';
                 } else {
-
-                    $trID = 0;
-                    while ($row = mysqli_fetch_array($reult, 1)) {
-                        $trID++;
-                        $id = $row['quiz_id'];
+                    if($reult->num_rows > 0)
+                    {
+                        echo '<h1> Your Quizzes <h1>';
+                        echo '<div class="container">
+                        <table class="containerr table">
+                        <thead>
+                        <tr><th>Quiz Codew</th>
+                        <th>Quiz Name</th>
+                        <th>Full Mark</th>
+                        <th>Quiz Date</th>
+                        <th>Password</th>
+                        <th>State</th>
+                        <th>Delete</th>
+                        </tr></thead>';
+                        $trID = 0;
+                        while ($row = mysqli_fetch_array($reult, 1)){
+                            $trID++;
+                            $id = $row['quiz_id'];
 
                         echo "<tr id = '$trID'>";
                         echo "<td>" . $row['quiz_id'] . "</td>";
@@ -118,9 +112,14 @@ include '../controller/AdminOperations.php';
 
                         <?php
                     }
+                    echo '</table>';
+                }else{
+                    echo '<h1>You haven\'t any quizzes</h1>';
                 }
-                ?>
-            </table>
+                
+               }
+                
+            ?>
         </div>
 
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
