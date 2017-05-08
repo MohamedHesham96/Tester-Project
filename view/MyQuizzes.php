@@ -118,10 +118,11 @@ include '../controller/AdminOperations.php';
                     var quizName = <?php echo json_encode($row['quiz_name']) ?>;
                     var quizMaker = <?php echo json_encode($_SESSION['username']) ?>;
                     var fullMark = <?php echo json_encode($row['full_mark']) ?>;
+                    var pass = <?php echo json_encode($row['password']) ?>;
 
                     var id = <?php echo json_encode($trID) ?>;
 
-                    var link = "Quiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark;
+                    var link = "ReviewQuiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark + "&pass=" + pass;
 
                     $("#" + id).attr('href', link);
 
