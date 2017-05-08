@@ -76,7 +76,7 @@
                     } else {
                         echo '<td><img src="../recources/images/0.png" height = "32" ></td>';
                     }
-                    echo "<td class=''><a href = 'AdminHome.php?deletequizid=$id' onClick=\"javascript:return confirm('Are you Sure you Want to Delete this Quiz?');\"> $removeIcon</a></td>";
+                    echo "<td class='bt'><a href = 'AdminHome.php?deletequizid=$id' onClick=\"javascript:return confirm('Are you Sure you Want to Delete this Quiz?');\"> $removeIcon</a></td>";
                     echo '</tr>';
                 }
                 echo '</tbody></table>';
