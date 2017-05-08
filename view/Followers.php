@@ -25,7 +25,7 @@
                                     <th>Image</th>
                                     <th>Student Name</th>
                                 </tr>';
-                        }else{ die("NO followes yet"); echo "fdsjkfhdsfkj";}
+                        }else{ die("NO followes yet"); }
                         while ($row = mysqli_fetch_array($reult, 1)) {
 
                             echo "<tr>";

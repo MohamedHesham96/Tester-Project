@@ -57,6 +57,7 @@ include '../controller/AdminOperations.php';
                         <th>Delete</th>
                         </tr></thead>';
                         $trID = 0;
+                    }else{die("<h1>You haven\'t any quizzes</h1>");}
                         while ($row = mysqli_fetch_array($reult, 1)){
                             $trID++;
                             $id = $row['quiz_id'];
@@ -120,11 +121,7 @@ include '../controller/AdminOperations.php';
                       
                         <?php
                     }
-                    echo '</table>';
-                }else{
-                    echo '<h1>You haven\'t any quizzes</h1>';
-                }
-                
+                    echo '</table>';                
                }
                 
             ?>
