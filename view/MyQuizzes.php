@@ -121,11 +121,11 @@ include '../controller/AdminOperations.php';
                       
                         <?php
                     }
-                    echo '</table>';                
+                    echo '</table></div>';                
                }
                 
             ?>
-        </div>
+
 
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
