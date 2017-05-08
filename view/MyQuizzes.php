@@ -6,7 +6,15 @@ include '../controller/AdminOperations.php';
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
+        <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%
+            }
 
+        </style>
     </head>
     <body >
         <?php
@@ -49,6 +57,7 @@ include '../controller/AdminOperations.php';
                         <th>Delete</th>
                         </tr></thead>';
                         $trID = 0;
+                    }else{die("<h1>You haven\'t any quizzes</h1>");}
                         while ($row = mysqli_fetch_array($reult, 1)){
                             $trID++;
                             $id = $row['quiz_id'];
@@ -109,18 +118,14 @@ include '../controller/AdminOperations.php';
                             });
                         </script>
 
-
+                      
                         <?php
                     }
-                    echo '</table>';
-                }else{
-                    echo '<h1>You haven\'t any quizzes</h1>';
-                }
-                
+                    echo '</table></div>';                
                }
                 
             ?>
-        </div>
+
 
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
