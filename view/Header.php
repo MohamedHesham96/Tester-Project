@@ -117,9 +117,9 @@ include '../controller/MyProfileOperations.php';
                                 $row = mysqli_fetch_array($result);
                                 $profilephoto = $row['image'];
                                 if (empty($profilephoto)) {
-                                    echo '<img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
+                                    echo '<img style="border-radius: 50%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
                                 } else {
-                                    echo '<img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
+                                    echo '<img style="border-radius: 50% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
                                 }
                                 ?>
                             </a>

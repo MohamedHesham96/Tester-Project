@@ -31,7 +31,7 @@ class CreateQuizOperations {
         // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
 
         $query = "UPDATE `quizzes` SET `quiz_id` = '$quizID',`quiz_name`= '$QuizName',`doctor_id`= '$doctorID',"
-                . "`password`= '$pass', `full_mark`= '$fullMark',`doctor_name`= '$doctorName',`state`= 'Opend' WHERE `state`= '$doctorName'";
+                . "`password`= '$pass', `full_mark`= '$fullMark',`doctor_name`= '$doctorName',`state`= 'opened' WHERE `state`= '$doctorName'";
 
         $result = mysqli_query($conn, $query);
 
