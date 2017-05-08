@@ -11,7 +11,7 @@ class SearchOperations {
             //here search by code and name 
             $studentName = $_SESSION['username'];
             $query = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes "
-                    . "JOIN users on users.id = quizzes.doctor_id where  quizzes.quiz_id Not IN (SELECT history.quiz_id FROM history WHERE history.student_name = '$studentName') and (quiz_name LIKE '%" . $search . "%' or quiz_id = '" . $search . "') and quizzes.state = 'Opend'";
+                    . "JOIN users on users.id = quizzes.doctor_id where  quizzes.quiz_id Not IN (SELECT history.quiz_id FROM history WHERE history.student_name = '$studentName') and (quiz_name LIKE '%" . $search . "%' or quiz_id = '" . $search . "') and quizzes.state = 'opened'";
         } else {
 
             $studentName = $_SESSION['username'];
