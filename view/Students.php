@@ -1,6 +1,8 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
+        <link href="../recources/css/style.css" rel="stylesheet" /> 
+
     </head>
     <body >
 
@@ -17,17 +19,28 @@
         }
         ?>
 
-        <br>
-        <h1> Studnets List  </h1>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h2 style="display: inline; margin: 0"> Student List</h2>
+                        <div id="custom-search-input" style="display: inline-block; float: right; margin:0  -20; ">
 
-                <div class="container">
-                    <form action="Students.php" method="GET">
-                        <input  style="margin-top: 30;height: 50; width: 500;margin-right: 425;  font-size: 22" class="col-lg-10  btn-lg" placeholder="Student Name or ID..." class="form-control" name="studentNameSearch" >
-                        <input  style="margin-top: 30;height: 49.5 ; width: 75; font-size: 14; margin-left:  -500" class="col-lg-1 btn-success" type="submit" value="Search">
-                    </form>
+                            <form class="input-group col-md-12" style="margin-bottom: 0; " action="students.php" method="GET">
+
+                                <input  type="text" class="form-control input-lg" placeholder="student Name or ID..." class="form-control" name="studentNameSearch" >
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="submit" value="Search">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </form>
+                            
+                        </div>
+                    </div>
                 </div>
-        <br>
-                <?php
+            </div>
+<br>     
+         <?php
                   if (isset($_GET['studentNameSearch']))
                  {
                     $studentname=$_GET['studentNameSearch'];
@@ -49,21 +62,24 @@
 
 
   echo'
-
-              <table class="containerr">
+         <div class="container">
+              <table class="containerr table">
+                  <thead>
                   <tr>
-                      <td>Image</td>
-
-                      <td>Id</td>
-                      <td>Name</td>
-                      <td>Email</td>
-                      <td>Birth_Day</td>
-                      <td>Gender</td>
-                      <td>Country</td>
-                      <td>Phone</td>
-                      <td>University</td>
-                      <td>Faculty</td>
-                  </tr>';
+                      <th>Image</th>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Birth_Day</th>
+                      <th>Gender</th>
+                      <th>Country</th>
+                      <th>Phone</th>
+                      <th>University</th>
+                      <th>Faculty</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                  </tr>
+                  </thead>';
 
                 $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
                 $editIcon = "<img src = '../recources/images/Edit_User.png' height = '32'>";
@@ -94,8 +110,8 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td><a href = 'ProfilePage.php?&name=$studentName'\"> $editIcon </a></td>";
-                        echo "<td><a href = 'Students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
+                        echo "<td class='bt'><a href = 'ProfilePage.php?&name=$studentName'\"> $editIcon </a></td>";
+                        echo "<td class='bt'><a href = 'Students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
 
                         echo "</tr>";
                     }
