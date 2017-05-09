@@ -21,6 +21,7 @@ include '../controller/MyQuizzesOperations.php';
         	.bt{
                 background-color: rgba(0, 0, 0, 0.6 );
                 color:  #f5f5f5;
+                margin-bottom: 3px;
             }
             .bt:hover{
                 background-color: rgba(0, 0, 0, 0.53);
@@ -84,7 +85,7 @@ include '../controller/MyQuizzesOperations.php';
                                              
                                             <?php
                                             if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
-                                                echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$user \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
+                                                echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$user \" onclick=\"location = this.value\" class=\"bt form-control col-sm-9 btn-success  \"> $followstate </button>";
                                             } else {
                                                 
                                             }
@@ -107,7 +108,7 @@ include '../controller/MyQuizzesOperations.php';
                                                         echo " <a class=\"bt form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
 
                                                     if ($row['type'] == 'student')
-                                                        echo "<a   class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
+                                                        echo "<a   class=\"bt  form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
                                                     ?></u></h4>
                                         </div>
                                     </div>
