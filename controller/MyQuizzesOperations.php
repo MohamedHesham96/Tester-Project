@@ -10,7 +10,7 @@ class MyQuizzesOperations {
 
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
-        $query = "SELECT quiz_id, quiz_name, full_mark, date, password ,state from quizzes "
+        $query = "SELECT quiz_id, quiz_name, full_mark, date, `time`, password ,state from quizzes "
                 . "where doctor_name = '" . $doctorName . "'";
 
         $result = mysqli_query($conn, $query);
@@ -42,7 +42,7 @@ class MyQuizzesOperations {
 
         $query = "SELECT `question_id`, `Header`, `correct_answer` FROM `questions` JOIN quizzes on quizzes.quiz_id = questions.quiz_id WHERE questions.quiz_id = '$id'";
 
-        
+
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
@@ -53,9 +53,8 @@ class MyQuizzesOperations {
             return $result;
         }
     }
-    
-    
-      public static function getAnsOnly($Header) {
+
+    public static function getAnsOnly($Header) {
 
 
 
@@ -68,7 +67,7 @@ class MyQuizzesOperations {
         $query = "SELECT `answer_1`, `answer_2`, `answer_3`, `answer_4` FROM `questions`"
                 . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id WHERE questions.Header = '$Header'";
 
-        
+
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
@@ -79,9 +78,8 @@ class MyQuizzesOperations {
             return $result;
         }
     }
-    
-    
-     public static function getHeaderOnly($Header) {
+
+    public static function getHeaderOnly($Header) {
 
         include '../include/vars.php';
 
@@ -91,7 +89,7 @@ class MyQuizzesOperations {
 
         $query = "SELECT `Header` FROM `questions`"
                 . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id ";
- 
+
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
@@ -102,7 +100,6 @@ class MyQuizzesOperations {
             return $result;
         }
     }
-
 
 }
 

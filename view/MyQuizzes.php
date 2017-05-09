@@ -81,6 +81,7 @@ include '../controller/AdminOperations.php';
             while ($row = mysqli_fetch_array($reult, 1)) {
                 $trID++;
                 $id = $row['quiz_id'];
+                $time = $row['time'];
 
                 echo "<tr id = '$trID'>";
                 echo "<td>" . $row['quiz_id'] . "</td>";
@@ -96,19 +97,21 @@ include '../controller/AdminOperations.php';
                 //Quiz state if Expired or not
                 $state = $row['state'];
                 $quizId = $row['quiz_id'];
+
                 if (!isset($_GET['name'])) {
                     if ($state == "Expired") {
 
-                        $stateIcon = "<img src = '../recources/images/closed-icon.png' height = '35'>";
+                        $stateIcon = "<img id = 'close' src = '../recources/images/closed-icon.png' height = '30'>";
 
-                        /* $color = "btn-danger";
-                          echo '<style>
-                          .button:hover:before{content:"Un";}
-                          .button:hover {background-color:#5cb85c }
-                          </style>'; */
+                        echo '<style>
+                          #close:hover{background-color:red;}
+                          </style>';
+
+                        //   .button:hover:before{content:"Un";}                        $color = "btn-danger";
+                        //  .button:hover {background-color:#5cb85c }
                     } else {
 
-                        $stateIcon = "<img src = '../recources/images/open-icon.png' height = '35'>";
+                        $stateIcon = "<img id = 'open' src = '../recources/images/open-icon.png' height = '30'>";
 
                         /*    $state = "Opened";
                           $color = "btn-success";
@@ -119,7 +122,7 @@ include '../controller/AdminOperations.php';
                          */
                     }
 
-                    $removeIcon = "<img src = '../recources/images/105.png' height = '35'>";
+                    $removeIcon = "<img src = '../recources/images/105.png' height = '30'>";
 
                     echo "<td><a href = 'UpdateQuize.php?state=$state&id=$quizId' onClick=\"click(event)\"> $stateIcon </a></td>";
                     echo "<td><a href = 'MyQuizzes.php?deletequizid=$id' onClick=\"click(event)\"> $removeIcon </a></td>";
@@ -137,10 +140,12 @@ include '../controller/AdminOperations.php';
                     var quizName = <?php echo json_encode($row['quiz_name']) ?>;
                     var quizMaker = <?php echo json_encode($_SESSION['username']) ?>;
                     var fullMark = <?php echo json_encode($row['full_mark']) ?>;
+                    var pass = <?php echo json_encode($row['password']) ?>;
+                    var time = <?php echo json_encode($row['time']) ?>;
 
                     var id = <?php echo json_encode($trID) ?>;
 
-                    var link = "Quiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark;
+                    var link = "ReviewQuiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark + "&pass=" + pass + "&time=" + time;
 
                     $("#" + id).attr('href', link);
 
