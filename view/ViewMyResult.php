@@ -2,6 +2,14 @@
 <html>
     <head>
           <link href="../recources/css/style1.css" rel="stylesheet" /> 
+          <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+         </style>
 
     </head>
     
@@ -10,12 +18,13 @@
         <div class="container">
 
             <table class="containerr table"> 
-                <tr>	
-                    <td>Question Header</td>
-                    <td>Correct Answer</td>
-                    <td>Your Answer</td>
-                </tr>
-
+                <thead>
+                    <tr>	
+                        <th>Question Header</th>
+                        <th>Correct Answer</th>
+                        <th>Your Answer</th>
+                    </tr>
+                </thead>
                 <?php
                 include '../controller/ViewMyResultOperations.php';
                 $reult = ViewMyResultOperations::getMyResult($_SESSION['username'], $_GET['quizid']);
