@@ -11,10 +11,10 @@ include '../controller/MyProfileOperations.php';
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-         <style type="text/css">
-          .bt-hover{
-            color: #9d9d9d;
-          }
+        <style type="text/css">
+            .bt-hover{
+                color: #9d9d9d;
+            }
         </style>
     </head>
 
@@ -78,16 +78,16 @@ include '../controller/MyProfileOperations.php';
 
                                     <li>
                                         <form class="navbar-form"  method="get" action="SearchPage.php">
-                                       <div class="input-group">
-                                            <input style="background:#f5f5f5; width: 300" class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
-                                            <div class="input-group-btn">
+                                            <div class="input-group">
+                                                <input style="background:#f5f5f5; width: 300" class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
+                                                <div class="input-group-btn">
 
                                                     <button style="background:#f5f5f5; padding: 9 " class="bt-hover btn btn-default" type="submit" value="Search" name="SearchSub">
                                                         <i class="glyphicon glyphicon-search"></i>
                                                     </button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
                                     </li>
 
                                 </ul>

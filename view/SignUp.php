@@ -50,8 +50,8 @@
                                     <div class="wizard-Header">
                                         <h3>
                                             <center>
-                                            <b>BUILD</b> YOUR PROFILE <br>
-                                            <small>This information will let us know more about you.</small>
+                                                <b>BUILD</b> YOUR PROFILE <br>
+                                                <small>This information will let us know more about you.</small>
                                             </center>
                                         </h3>
                                     </div>
@@ -73,8 +73,8 @@
 
                                                         <br>
                                                         <div class="picture">
-                                                            <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                                            <input type="file" name="image" id="image">
+                                                            <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" hight="30px"/>
+                                                            <input type="file" name="iamage" id="image" onchange="previewFile()">
                                                         </div>
                                                         <h6>Choose Picture</h6>
                                                     </div>
@@ -103,7 +103,8 @@
 
                                                     <br>
                                                     <label>Repeat Password <small>(required)</small>  </label> </b><br>
-                                                    <input id="confirm_password" class="form-control" type="password" placeholder="Repeat Password "  name="repeat_password" required onkeyup="checkPass(); return false;">
+                                                    <input id="confirm_password" class="form-control" type="password" placeholder="Repeat Password "  name="repeat_password" required onkeyup="checkPass();
+                                                            return false;">
                                                     <span id="confirmMessage2" class="confirmMessage"></span>
 
 
@@ -166,35 +167,35 @@
                                             <div class="row">
 
                                                 <div class="col-sm-10 col-sm-offset-1">
-                                                        <div class="col-sm-6">
-                                                            <div class="choice" data-toggle="wizard-checkbox"> 
-                                                               <div class="icon">
-                                                                   <label>  
-                                                                       <input type="radio" name="type" value="doctor" >
-                                                                
+                                                    <div class="col-sm-6">
+                                                        <div class="choice" data-toggle="wizard-checkbox"> 
+                                                            <div class="icon">
+                                                                <label>  
+                                                                    <input type="radio" name="type" value="doctor" >
+
                                                                     <img src="../recources/images/doctor.png" width="110" value="doctor">
-                                                                   </label>
-                                                                    </div>
-                                                                <h6>Maker</h6>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-6 ">
-                                                            <div class="choice" data-toggle="wizard-checkbox">
-                                                                <label required>
-                                                                    <input type="radio" name="type" value="student" required>
-                                                                    <div class="icon">
-                                                                        <img src="../recources/images/student.png" width="111">
-                                                                    </div>
                                                                 </label>
-                                                               <h6>Solver</h6>
                                                             </div>
+                                                            <h6>Maker</h6>
                                                         </div>
-                                                        
+                                                    </div>
+
+                                                    <div class="col-sm-6 ">
+                                                        <div class="choice" data-toggle="wizard-checkbox">
+                                                            <label required>
+                                                                <input type="radio" name="type" value="student" required>
+                                                                <div class="icon">
+                                                                    <img src="../recources/images/student.png" width="111">
+                                                                </div>
+                                                            </label>
+                                                            <h6>Solver</h6>
+                                                        </div>
+                                                    </div>
+
 
                                                 </div>
-                                                </div>
-                                                </div>
+                                            </div>
+                                        </div>
 
 
                                         <div class="tab-pane" id="address">

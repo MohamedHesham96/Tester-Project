@@ -1,10 +1,9 @@
 <?php
-    //check if user is already login or not 
-    session_start();
-    if(isset($_SESSION['username']))
-    {
-        header("Location: Home.php"); // if yes go to home page
-    }  
+//check if user is already login or not 
+session_start();
+if (isset($_SESSION['username'])) {
+    header("Location: Home.php"); // if yes go to home page
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,79 +35,78 @@
 
     <body class="image-container set-full-height" style="background: url('../recources/images/wizard.jpg') no-repeat right " >
 
-            <!-- Top content -->
-            <div class="top-content">
-                <br>
-                <div class="inner-section">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2 text">
-                                <h1><strong>Log in</strong></h1>
+        <!-- Top content -->
+        <div class="top-content">
+            <br>
+            <div class="inner-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>Log in</strong></h1>
 
-                            </div>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-sm-6 col-sm-offset-3 form-box">
-                                <div class="form-top">
-                                    <div class="form-top-left">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
 
-                                        <h3>Login to our site</h3>
-                                        <?php
-                                       
-                                        $massage = "";
+                                    <h3>Login to our site</h3>
+                                    <?php
+                                    $massage = "";
 
-                                        if (isset($_GET['errors'])) {
-                                            $massage = "There is Problem in your username ot password to log on:";
-                                        } else {
-                                            $massage = "Enter your username and password to log on:";
-                                        }
+                                    if (isset($_GET['errors'])) {
+                                        $massage = "There is Problem in your username ot password to log on:";
+                                    } else {
+                                        $massage = "Enter your username and password to log on:";
+                                    }
 
-                                        echo '<p>' . $massage . '</p>';
-                                        ?>
-                                        
-                                    </div>
-                                    <div class="form-top-right">
-                                        <i class="fa fa-lock"></i>
-                                    </div>
+                                    echo '<p>' . $massage . '</p>';
+                                    ?>
+
                                 </div>
-                                <div class="form-bottom">
-                                    <form action="UserTypeDriver.php" method="POST" >
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-username">Username</label>
-                                            <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="sr-only" for="form-password">Password</label>
-                                            <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-                                        </div>
-                                        <button type="submit" class="btn">Sign in!</button>
-                                    </form>
+                                <div class="form-top-right">
+                                    <i class="fa fa-lock"></i>
                                 </div>
                             </div>
+                            <div class="form-bottom">
+                                <form action="UserTypeDriver.php" method="POST" >
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-username">Username</label>
+                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="form-password">Password</label>
+                                        <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                    </div>
+                                    <button type="submit" class="btn">Sign in!</button>
+                                </form>
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-sm-6 col-sm-offset-3 social-login">
-                                <div class="">
-                                    <a class="btn-link-2" href="SignUp.php">
-                                        Creat New Acount
-                                    </a>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                            <div class="">
+                                <a class="btn-link-2" href="SignUp.php">
+                                    Creat New Acount
+                                </a>
 
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
+        </div>
 
-            <!-- Javascript -->
-            <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
-            <script src="../recources/js/bootstrap.min.js"></script>
-            <script src="../recources/js/jquery.backstretch.min.js"></script>
-            <script src="../recources/js/scripts.js"></script>
+
+        <!-- Javascript -->
+        <script src="../recources/js/jquery-2.2.4.min.js" type="text/javascript"></script>
+        <script src="../recources/js/bootstrap.min.js"></script>
+        <script src="../recources/js/jquery.backstretch.min.js"></script>
+        <script src="../recources/js/scripts.js"></script>
 
 
     </body>

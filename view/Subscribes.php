@@ -11,6 +11,7 @@
                 height: 100%;
                     
             }
+            .pic{border-radius: 50%;}
 
         </style>
     </head>
@@ -24,11 +25,7 @@
 
             <table class="containerr table"> 
 
-                <tr>
-                    <th>Doctor Photo</th>
-                    <th>Doctor name</th>
-                    <th>Doctor E-Mail</th>
-                </tr>
+                
 
 
                 <?php
@@ -42,10 +39,25 @@
                 if (!$reult) {
                     echo 'error2';
                 } else {
-                    while ($row = mysqli_fetch_array($reult, 2)) {
+                        if($reult->num_rows > 0)
+                        {   
+                            echo '<tr>
+                                <th>Doctor Photo</th>
+                                <th>Doctor name</th>
+                                <th>Doctor E-Mail</th>
+                                 </tr>';
+                        }  else {
+                            die("<h1><center>No result</center></h1>");
+                        }
+                    while ($row = mysqli_fetch_array($reult)) {
                         $trID++;
+                        $profilephoto = $row['image'];
                         echo "<tr style='cursor: pointer' id='$trID'>";
-                        echo "<td>" . "Photo" . "</td>";
+                        if (empty($profilephoto)) {
+                            echo '<td><img src="../recources/images/default-avatar.png" class="pic" height="40" width="40" id="wizardPicturePreview" title=""/></td>';
+                        } else {
+                            echo '<td><img src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height="40" width="40" class="pic" class="picture-src" id="wizardPicturePreview"/></td>';
+                        }
                         echo '<td>' . $row[1] . '</a></td>';
                         echo "<td>" . $row[2] . "</td>";
                         echo "</tr>";
