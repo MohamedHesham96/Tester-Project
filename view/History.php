@@ -1,7 +1,15 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
-
+       <link href="../recources/css/style1.css" rel="stylesheet" /> 
+       <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+         </style>
     </head>
     <body >
 
@@ -13,11 +21,10 @@
             $studentName = $_SESSION['username'];
         }
         ?>
-        <h1> Your Exams </h1>
+        <h1><center> Your Exams </center></h1>
 
-        <div class="">
-
-            <table class="containerr"> 
+        <div class="container">
+            <table class="containerr table"> 
                 <tr>	
                     <th>Quiz code</th>
                     <th>Quiz Name</th>
