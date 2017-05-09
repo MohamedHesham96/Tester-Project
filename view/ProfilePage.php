@@ -76,7 +76,7 @@ include '../controller/MyQuizzesOperations.php';
                     
 
                            
-                            <div class="card wizard-card col-sm-8 col-sm-offset-2" data-color="orange" id="wizardProfile" style="padding-top: 40px; margin-top: ; background-color: rgba(245, 245, 245, 0.49);height: 720px">
+                            <div class="card wizard-card col-sm-8 col-sm-offset-2" data-color="orange" id="wizardProfile" style="padding-top: 40px; background-color: rgba(245, 245, 245, 0.49);height: 720px">
                                 
                                 <div class="row">
                                     <br>    <div style="background: rgba(238, 238, 238, 0.81)" class=" alert  col-sm-4 col-sm-offset-1">
