@@ -34,8 +34,8 @@
                             $mark = $row['mark'];
                             $fullMark = $row['full_mark'];
                             $time = $row['time'];
-                            echo '<tr><td><a href="ProfilePage.php?&&name='  . $name . '">' . $name . '</a> </td><td>' . $mark . ' / ' . $fullMark . '</td><td>' . $time . '</td>';
-                          
+                            echo '<tr><td><a href="ProfilePage.php?&&name=' . $name . '">' . $name . '</a> </td><td>' . $mark . ' / ' . $fullMark . '</td><td>' . $time . '</td>';
+
                             echo '</tr>';
                         }
 

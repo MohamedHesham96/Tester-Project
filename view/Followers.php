@@ -4,7 +4,7 @@
         <meta charset="utf-8"/>
     </head>
     <body >
-        <h1> Your Followers <h1>
+        
                 <div class="containerr">
 
 
@@ -18,12 +18,14 @@
                     if (!$reult) {
                         echo 'error2';
                     } else {
-                        echo' <table class="containerr"> 
+                        if($reult->num_rows > 0){
+                         
+                         echo'<h1> Your Followers </h1><table class="containerr"> 
                                 <tr>
                                     <th>Image</th>
                                     <th>Student Name</th>
                                 </tr>';
-
+                        }else{ die("<h1><center>NO followes yet</center></h1>"); }
                         while ($row = mysqli_fetch_array($reult, 1)) {
 
                             echo "<tr>";
@@ -38,8 +40,9 @@
                             echo "</tr>";
                         }
                     }
+                    echo '</table>';
                     ?>
-                    </table>
+                   
                 </div>
                 <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
                 </body>

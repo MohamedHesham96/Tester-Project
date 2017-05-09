@@ -18,20 +18,27 @@ include '../controller/MyQuizzesOperations.php';
     $quizId = $_GET['id'];
     $maker = $_GET['maker'];
 
+    if ($_SESSION['usertype'] == 'doctor') {
+
+        $fullMark = $_GET['fullmark'];
+    }
+
     if ($_SESSION['usertype'] == 'student') {
 
         $fullMark = $_GET['fullmark'];
         $makerId = $_GET['makerid'];
     }
+
     $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
 
     echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
     echo "Quiz id    : $quizId <br><br>"; // display quiz id
     echo "Quiz name  : $name <br><br>"; // display quiz name
-    if ($_SESSION['usertype'] == 'student') {
-        echo "Full Mark  : $fullMark <br><br>"; // display quiz name
+    if ($_SESSION['usertype'] == 'student' || $_SESSION['usertype'] == 'doctor') {
+        echo "Full Mark  : $fullMark <br><br>"; // 
     }
+    if ($_SESSION['usertype'] == 'student')
     echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
     echo ' </div>';
 
@@ -93,7 +100,7 @@ include '../controller/MyQuizzesOperations.php';
                     </div>
                     <div>
                         <input  style="margin-top: 2; color: #00f; display: block; font-size: 22; height: 40; margin-bottom: 10" name = "header<?php echo $row['question_id']; ?>" 
-                                class = "form-control btn-block" value = "<?php echo $row['Header']; ?>">  
+                                class = "form-control btn-block" value = "<?php echo $row['Header']; ?>" readonly>  
                     </div>
                 </div>
 
@@ -142,7 +149,7 @@ include '../controller/MyQuizzesOperations.php';
                 <br>
                 <br>
 
-    <?php } ?>
+            <?php } ?>
 
         <?php } ?>
 

@@ -8,7 +8,26 @@ include '../controller/MyQuizzesOperations.php';
 
         <!-- CSS Files -->
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+       <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>       
+        <style type="text/css">
+           *{
+           	box-sizing: border-box;
 
+           }
+        	body{
+        		background-image: url("../recources/images/back3.jpg")  ;
+        		padding-bottom: 0
+        	}
+        	.bt{
+                background-color: rgba(0, 0, 0, 0.6 );
+                color:  #f5f5f5;
+            }
+            .bt:hover{
+                background-color: rgba(0, 0, 0, 0.53);
+                
+            }
+
+        </style>
     </head>
 
     <body>
@@ -52,29 +71,24 @@ include '../controller/MyQuizzesOperations.php';
             $quizState = "hidden";
             ?>
 
-            <div class="container-fluid">
+              <div class="container-fluid" style="height: 100%; margin-top: -20;" >
                 <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2">
+                    
 
-                        <!--      Wizard container        -->
-                        <div class="wizard-container">
-
-                            <div class="card wizard-card " data-color="orange" id="wizardProfile">
-                                <br>
+                           
+                            <div class="card wizard-card col-sm-8 col-sm-offset-2" data-color="orange" id="wizardProfile" style="padding-top: 40px; margin-top: ; background-color: rgba(245, 245, 245, 0.49);height: 720px">
+                                
                                 <div class="row">
-                                    <br>    <div style="background: #eee" class=" alert  col-sm-4 col-sm-offset-1">
+                                    <br>    <div style="background: rgba(238, 238, 238, 0.81)" class=" alert  col-sm-4 col-sm-offset-1">
                                         <div class="picture-container  ">
-
+                                             
                                             <?php
-                                            if (isset($_GET['name']) != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
+                                            if ($_GET['name'] != $_SESSION['username'] && $_SESSION['usertype'] != "doctor" && $row['type'] != "student" && $_SESSION['usertype'] != "admin") {
                                                 echo "  <button value=\"../controller/FollowingManager.php?outprofile=false&followname=$user \" onclick=\"location = this.value\" class=\"form-control col-sm-9 $color \"> $followstate </button>";
                                             } else {
                                                 
                                             }
                                             ?>
-                                            <br>
-                                            <br>
-                                            <br>
                                             <div class="picture">
                                                 <?php
                                                 $profilephoto = $row['image'];
@@ -90,15 +104,14 @@ include '../controller/MyQuizzesOperations.php';
 
                                             <h4><u><?php
                                                     if ($row['type'] == 'doctor')
-                                                        echo " <a style=\"background: #1D62F0\" class=\" form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
+                                                        echo " <a class=\"bt form-control col-sm-9 btn-success\" href= \"MyQuizzes.php?name=" . $user . " \" >" . $quizzesLink . MyQuizzesOperations::getMyQuizzesCount($user) . "</a></u></h4>";
 
                                                     if ($row['type'] == 'student')
-                                                        echo "<a style=\"background: #1D62F0\"  class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
+                                                        echo "<a   class=\" form-control col-sm-9 btn-success\"  href= \"History.php?name=" . $user . " \" >" . $quizzesLink . HistoryOperations::getQuizzesCount($user) . "</a>";
                                                     ?></u></h4>
                                         </div>
                                     </div>
-                                    <div style="background: #ccc" class="alert col-lg-5 col-sm-offset-1">
-
+                                    <div style="background: rgba(238, 238, 238, 0.81)" class="alert col-lg-5 col-sm-offset-1">
 
                                         <label>Email </label>
                                         <input class="form-control" value="<?php echo $row['email']; ?>" class="form-control" name="email" readonly>
@@ -129,15 +142,15 @@ include '../controller/MyQuizzesOperations.php';
                                 </div>
 
                             </div>
-                        </div>
+                        
 
-                    </div>
+                    
                 </div>
 
 
 
             </div>
-        <?php } ?>
+<?php } ?>
 
 
     </body>
