@@ -1,13 +1,15 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
+          <link href="../recources/css/style1.css" rel="stylesheet" /> 
+
     </head>
     
     <body >
     <h1> Your Exams  </h1>
         <div class="container">
 
-            <table class="containerr"> 
+            <table class="containerr table"> 
                 <tr>	
                     <td>Question Header</td>
                     <td>Correct Answer</td>
