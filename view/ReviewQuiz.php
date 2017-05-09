@@ -10,7 +10,6 @@ include './Header.php';
         <?php
         $pass = $_GET['pass'];
         $quizName = $_GET['name'];
-        $maker = $_GET['maker'];
         $fullMark = $_GET['fullmark'];
         $time = $_GET['time'];
         ?>
@@ -20,34 +19,38 @@ include './Header.php';
 
                 <div class="col-lg-3">
                     <label>Quiz Name :<small></small></label>
-                    <input value="<?php echo $quizName; ?>" class="form-control"  type="text" placeholder="Enter Quiz Name"  name="time">
+                    <input value="<?php echo $quizName; ?>" class="form-control"  >
                 </div>
 
                 <div class="col-lg-3">
                     <label>Time :<small></small></label>
-                    <input value="<?php echo $time; ?>" class="form-control" type="text" placeholder="Enter Quiz Time"  name="time">
+                    <input onchange="validateHhMm(this)" value="<?php echo $time; ?>" class="form-control" >
                 </div>
 
 
                 <div class="col-lg-3">
 
                     <label>Full Mark :<small></small></label>
-                    <input value="<?php echo $fullMark; ?>" class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" >
+                    <input value="<?php echo $fullMark; ?>" class="form-control"  >
 
                 </div>
 
                 <div class="col-lg-3">
 
                     <label>Password :<small></small></label>
-                    <input value="<?php echo $pass; ?>" class="form-control" type="text"  placeholder="Enter Quiz Passwrod" name="password" >
+                    <input value="<?php echo $pass; ?>" class="form-control" >
 
                 </div>
             </div>
         </div>
+        <br>        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
         <style type="text/css">
             body{
-                background: url("../recources/images/background.jpg") no-repeat right top;
                 width: 100%;
                 height: 100%
             }
@@ -60,7 +63,7 @@ include './Header.php';
                 <th>Answer (B)</th>
                 <th>Answer (C)</th>
                 <th>Answer (D)</th>
-                <th style="background: #05AE0E">Correct Answer</th>
+                <th>Correct Answer</th>
             </tr>
 
 
@@ -81,11 +84,27 @@ include './Header.php';
                 echo "<td>" . $row['answer_2'] . "</td>";
                 echo "<td>" . $row['answer_3'] . "</td>";
                 echo "<td>" . $row['answer_4'] . "</td>";
-                echo "<td>" . $row['correct_answer'] . "</td>";
+                echo "<td style='background: #05AE0E; color: #fff'>" . $row['correct_answer'] . "</td>";
                 echo '</tr>';
             }
             ?>
+
         </table>
+
+
+        <script TYPE="text/JavaScript">
+            function validateHhMm(inputField) {
+            var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
+
+            if (isValid) {
+            inputField.style.backgroundColor = '#bfa';
+            } else {
+            inputField.style.backgroundColor = '#fba';
+            }
+
+            return isValid;
+            }
+        </SCRIPT>
 
     </body
 
