@@ -13,9 +13,28 @@ include '../controller/AdminOperations.php';
                 width: 100%;
                 height: 100%
             }
+            .remove {
+                font-size:1em; 
+                font-weight: bold;
+                font-size: 25;
+                display: block;
+                padding: 0;
+                margin:0;
+                color: #000;
+              }
+              .remove:hover{
+                  color: red;
+              }
+              .atest {
+                display: block;
+                padding-bottom: 0;
+                margin:0; 
+                color: #000;
+              }
+
 
         </style>
-    </head>
+     </head>
     <body >
         <?php
         if (isset($_SESSION['usertype']) == 'doctor' && isset($_GET['deletequizid'])) {

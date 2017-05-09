@@ -5,21 +5,26 @@ include '../controller/StudentHomeOperations.php';
 <html>
     <head>
         <meta charset="utf-8"/>
+         <link href="../recources/css/style1.css" rel="stylesheet" /> 
+         <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+         </style>
 
     </head>
     <body>
-        <br>
-        <br>
-        <br>
-
         <?php
         //connect to data base and create table for result
         $studentName = $_SESSION['username'];
         $result = HomeStudnetOperations::getAllAvailableQuizzes($studentName);
 
         //display result in table
-        echo '<div class="container">';
-        echo '<table class="containerr" style="cursor:pointer;">'
+        echo '<div class="container ">';
+        echo '<table class="containerr table" style="cursor:pointer;">'
         . '<tr><th>Test Name</th>'
         . '<th>Test Code</th>'
         . '<th>Marker name</th>'
