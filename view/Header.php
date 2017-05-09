@@ -11,8 +11,11 @@ include '../controller/MyProfileOperations.php';
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style.css" rel="stylesheet" /> 
-
+        <style type="text/css">
+            .bt-hover{
+                color: #9d9d9d;
+            }
+        </style>
     </head>
 
     <body>
@@ -74,9 +77,16 @@ include '../controller/MyProfileOperations.php';
                                 <ul class="nav navbar-nav navbar-right">
 
                                     <li>
-                                        <form class="navbar-search navbar-form" method="get" action="SearchPage.php">
-                                            <input style="background:#f5f5f5 " class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
-                                            <input style="background:#f5f5f5 " class="form-control" type="submit" value="Search" name="SearchSub">
+                                        <form class="navbar-form"  method="get" action="SearchPage.php">
+                                            <div class="input-group">
+                                                <input style="background:#f5f5f5; width: 300" class="form-control" placeholder="Quiz Name or Code..." name="Search" type="text" >
+                                                <div class="input-group-btn">
+
+                                                    <button style="background:#f5f5f5; padding: 9 " class="bt-hover btn btn-default" type="submit" value="Search" name="SearchSub">
+                                                        <i class="glyphicon glyphicon-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </li>
 
@@ -107,9 +117,9 @@ include '../controller/MyProfileOperations.php';
                                 $row = mysqli_fetch_array($result);
                                 $profilephoto = $row['image'];
                                 if (empty($profilephoto)) {
-                                    echo '<img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
+                                    echo '<img style="border-radius: 50%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/>';
                                 } else {
-                                    echo '<img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
+                                    echo '<img style="border-radius: 50% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/>';
                                 }
                                 ?>
                             </a>

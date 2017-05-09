@@ -3,28 +3,37 @@
     <head>
 
         <meta charset="utf-8"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
 
+        <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat  top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+
+        </style>
     </head>
     <body>
-        <br>
-        <br>
-        <br>
 
-        <div class="">
+
+        <div style="background-color: rgba(0, 0, 0, 0.37); height:100%;width: 100%; margin-top: -25px ">
+            <br><br>
             <?php
             //connect to data base and create table for result
             include '../include/vars.php';
             $conn = mysqli_connect($host, $username, $password, $dbname);
             if ($conn->error)
                 die("connection lost");
-            $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id where quizzes.state = 'opend'";
+            $sql = "SELECT quizzes.quiz_id, quizzes.quiz_name, users.username, quizzes.password from quizzes JOIN users on users.id = quizzes.doctor_id where quizzes.state = 'opened'";
             $result = $conn->query($sql);
             if (!$result)
                 die($conn->error);
             //display result in table
             if ($result->num_rows > 0) {
-                echo '<div class="containerr">';
-                echo '<table class="containerr"><thead>'
+                echo '<div class="container">';
+                echo '<table class="containerr table"><thead>'
                 . '<tr><th>Quiz Code</th>'
                 . '<th>Quiz Name</th>'
                 . '<th>Doctor name</th>'
@@ -58,6 +67,5 @@
             }
             ?>
         </div>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>

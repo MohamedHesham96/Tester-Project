@@ -11,7 +11,7 @@ if (isset($_GET['state'])) {
     $newState = "";
 
     if ($state == "Expired") {
-        $newState = "Opend";
+        $newState = "opened";
     } else {
         $newState = "Expired";
     }

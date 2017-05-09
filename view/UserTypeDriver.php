@@ -23,14 +23,11 @@ if (isset($_POST['finish'])) {
     $phone = $_POST['phone'];
     $file = $_FILES['image']['tmp_name'];
     //handle if photo is empty or not 
-    if(!empty($file))
-    {    
+    if (!empty($file)) {
         $image = addslashes(file_get_contents($file));
-    }
-    else
-    {
+    } else {
         $image = NULL; //make it NULL 
-    }    
+    }
     $univers = $_POST['university'];
     $faculty = $_POST['faculty'];
     $resultForUsername = RegisterOperations::usernameChecker($user);
@@ -56,17 +53,17 @@ if (isset($_POST['finish'])) {
             $_SESSION['usertype'] = $row3['type'];
             $_SESSION['userimage'] = $row3['image'];
         }
-          switch ($_POST['type']) {
-          case "admin":
-          Header('Location: AdminHome.php');
-          break;
-          case "doctor":
-          Header("Location: DoctorHome.php");
-          break;
-          case "student":
-          Header("Location: Home.php");
-          break;
-          } 
+        switch ($_POST['type']) {
+            case "admin":
+                Header('Location: AdminHome.php');
+                break;
+            case "doctor":
+                Header("Location: DoctorHome.php");
+                break;
+            case "student":
+                Header("Location: Home.php");
+                break;
+        }
     }
 } else {
     $userName = $_POST['username'];
