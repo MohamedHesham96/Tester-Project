@@ -26,11 +26,10 @@
     </head>
     <body >
         
-                <div class="card wizard-card col-sm-6 col-sm-offset-3" data-color="orange" id="wizardProfile" style=" background-color: rgba(245, 245, 245, 0.49); border-radius: 10%;padding-bottom: 30px">
-                    <div class="row">
+                
 
 
-
+        <div style="background-color: rgba(0, 0, 0, 0.37); height:100%;width: 100%; margin-top: -20px ">
                     <?php
                     $userid = $_SESSION['userid'];
                     include '../controller/FollowersOperations.php';
@@ -43,12 +42,12 @@
                     } else {
                         if($reult->num_rows > 0){
                          
-                         echo'<h3><center>Your Followers </center></h3><br>
+                         echo'
+                          <div class="card wizard-card col-sm-6 col-sm-offset-3" data-color="orange" id="wizardProfile" style=" background-color: rgba(245, 245, 245, 0.49); border-radius: 10%;padding-bottom: 30px">
+                           <div class="row">
+                             <h3><center>Your Followers </center></h3><br>
                               <table class="containerr table" style="width: 80%; margin-left:10%">                                 
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Student Name</th>
-                                </tr>';
+                                ';
                         }else{ die("<h1><center>NO followes yet</center></h1>"); }
                         while ($row = mysqli_fetch_array($reult, 1)) {
 
@@ -60,13 +59,14 @@
                             } else {
                                 echo '<th style="width:75%;""><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></th>';                                
                             }
-                            echo '<td><a href="ProfilePage.php?&&name=' . $row['username'] . '">' . $row['username'] . '</a></td>';
+                            echo '<th><a href="ProfilePage.php?&&name=' . $row['username'] . '">' . $row['username'] . '</a></th>';
                             echo "</tr>";
                         }
                     }
                     echo '</table> </div> </div> </div>';
                     ?>
                    
-                </div>
+        </div>
+                
                 </body>
                 </html>
