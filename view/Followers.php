@@ -2,6 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+               <link href="../recources/css/style1.css" rel="stylesheet" /> 
+                 <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat  top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+
+        </style>
+
     </head>
     <body >
         
