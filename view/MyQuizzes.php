@@ -162,6 +162,5 @@ include '../controller/AdminOperations.php';
         ?>
 
 
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>
