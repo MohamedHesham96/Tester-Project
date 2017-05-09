@@ -2,15 +2,27 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
+
+        <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat  top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+
+        </style>
     </head>
     <body >
         <?php
         $studentName = $_SESSION['username'];
         ?>
-        <h1> following </h1>
-        <div class="">
+        <div style="background-color: rgba(0, 0, 0, 0.37); height:100%;width: 100%; margin-top: -25px ">
+        <div class="container">
+            <h1><center>following </center></h1>
 
-            <table class="containerr"> 
+            <table class="containerr table"> 
 
                 <tr>
                     <th>Doctor Photo</th>
