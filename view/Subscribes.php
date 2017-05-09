@@ -39,12 +39,16 @@
                 if (!$reult) {
                     echo 'error2';
                 } else {
-                    echo '<tr>
+                        if($reult->num_rows > 0)
+                        {   
+                            echo '<tr>
                                 <th>Doctor Photo</th>
                                 <th>Doctor name</th>
                                 <th>Doctor E-Mail</th>
-                             </tr>';
-                        
+                                 </tr>';
+                        }  else {
+                            die("<h1><center>No result</center></h1>");
+                        }
                     while ($row = mysqli_fetch_array($reult)) {
                         $trID++;
                         $profilephoto = $row['image'];
