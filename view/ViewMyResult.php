@@ -14,7 +14,7 @@
     </head>
     
     <body >
-    <h1> Your Exams  </h1>
+        <h1><center> Your Exams  </center></h1>
         <div class="container">
 
             <table class="containerr table"> 
