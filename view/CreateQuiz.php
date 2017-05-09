@@ -18,12 +18,12 @@ include '../controller/CreateQuizOperations.php';
 
                 <div class="col-lg-3">
                     <label>Quiz Name :<small></small></label>
-                    <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="time">
+                    <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="name">
                 </div>
 
                 <div class="col-lg-3">
                     <label>Time :<small></small></label>
-                    <input class="form-control" type="time" placeholder="Enter Quiz Time"  name="time">
+                    <input onchange="validateHhMm(this)" value="" class="form-control" placeholder="Enter Quiz Time...       HH:MM:SS"  name="time">
                 </div>
 
 
@@ -42,7 +42,8 @@ include '../controller/CreateQuizOperations.php';
                 </div>
             </div>
         </div>
-        <br>        <br>
+        <br>
+        <br>
         <br>
         <br>
         <br>
@@ -54,7 +55,7 @@ include '../controller/CreateQuizOperations.php';
             $quiz_id = $_GET['qdelete'];
             $header = $_GET['qheader'];
 
-            CreateQuizOperations::deleteQuestion($quiz_id , $header);
+            CreateQuizOperations::deleteQuestion($quiz_id, $header);
         }
 
         if (isset($_GET['addquiz'])) {
@@ -114,6 +115,22 @@ include '../controller/CreateQuizOperations.php';
             }
             ?>
         </table>
+
+
+        <script TYPE="text/JavaScript">
+            function validateHhMm(inputField) {
+            var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
+
+            if (isValid) {
+            inputField.style.backgroundColor = '#bfa';
+            } else {
+            inputField.style.backgroundColor = '#fba';
+            }
+
+            return isValid;
+            }
+        </SCRIPT>
+
     </body>
 
     <!--   Core JS Files   -->
