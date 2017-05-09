@@ -9,7 +9,8 @@
             body{
                 background: url("../recources/images/back2.jpg") no-repeat right top;
                 width: 100%;
-                height: 100%
+                height: 100%;
+                    
             }
 
         </style>
@@ -17,7 +18,8 @@
     <body>
         
 
-        <div class="container">
+        <div style="background-color: #0006; height:100%;width: 100%; margin-top: -25px ">
+            <br><br>
             <?php
             //connect to data base and create table for result
             include '../include/vars.php';
