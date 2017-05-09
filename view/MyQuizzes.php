@@ -80,16 +80,17 @@ include '../controller/AdminOperations.php';
                 if (!isset($_GET['name'])) {
                     if ($state == "Expired") {
 
-                        $stateIcon = "<img src = '../recources/images/closed-icon.png' height = '32'>";
+                        $stateIcon = "<img id = 'close' src = '../recources/images/closed-icon.png' height = '30'>";
 
-                        /* $color = "btn-danger";
-                          echo '<style>
-                          .button:hover:before{content:"Un";}
-                          .button:hover {background-color:#5cb85c }
-                          </style>'; */
+                        echo '<style>
+                          #close:hover{background-color:red;}
+                          </style>';
+
+                        //   .button:hover:before{content:"Un";}                        $color = "btn-danger";
+                        //  .button:hover {background-color:#5cb85c }
                     } else {
 
-                        $stateIcon = "<img src = '../recources/images/open-icon.png' height = '33'>";
+                        $stateIcon = "<img id = 'open' src = '../recources/images/open-icon.png' height = '30'>";
 
                         /*    $state = "Opened";
                           $color = "btn-success";
@@ -100,7 +101,7 @@ include '../controller/AdminOperations.php';
                          */
                     }
 
-                    $removeIcon = "<img src = '../recources/images/105.png' height = '32'>";
+                    $removeIcon = "<img src = '../recources/images/105.png' height = '30'>";
 
                     echo "<td><a href = 'UpdateQuize.php?state=$state&id=$quizId' onClick=\"click(event)\"> $stateIcon </a></td>";
                     echo "<td><a href = 'MyQuizzes.php?deletequizid=$id' onClick=\"click(event)\"> $removeIcon </a></td>";
