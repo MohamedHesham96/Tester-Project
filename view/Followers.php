@@ -58,15 +58,15 @@
                             if (empty($profilephoto)) {
                                echo '<th style="width:15%; padding-left:10%"><img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/></th>';                                                  
                             } else {
-                                echo '<th style="width:75%;""><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></th>';                            }
+                                echo '<th style="width:75%;""><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></th>';                                
+                            }
                             echo '<td><a href="ProfilePage.php?&&name=' . $row['username'] . '">' . $row['username'] . '</a></td>';
                             echo "</tr>";
                         }
                     }
-                    echo '</table>';
+                    echo '</table> </div> </div> </div>';
                     ?>
                    
                 </div>
-                <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
                 </body>
                 </html>
