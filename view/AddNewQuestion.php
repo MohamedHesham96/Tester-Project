@@ -1,7 +1,7 @@
 <?php
 
 include '../controller/CreateQuizOperations.php';
-session_start();
+session_start();//the session
 
 
 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
