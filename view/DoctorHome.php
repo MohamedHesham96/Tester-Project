@@ -7,7 +7,7 @@
 
         <style type="text/css">
             body{
-                background: url("../recources/images/back2.jpg") no-repeat right top;
+                background: url("../recources/images/back2.jpg") no-repeat  top;
                 width: 100%;
                 height: 100%;
                     
@@ -18,7 +18,7 @@
     <body>
         
 
-        <div style="background-color: #0006; height:100%;width: 100%; margin-top: -25px ">
+        <div style="background-color: rgba(0, 0, 0, 0.37); height:100%;width: 100%; margin-top: -25px ">
             <br><br>
             <?php
             //connect to data base and create table for result
