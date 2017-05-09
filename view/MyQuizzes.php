@@ -62,6 +62,7 @@ include '../controller/AdminOperations.php';
             while ($row = mysqli_fetch_array($reult, 1)) {
                 $trID++;
                 $id = $row['quiz_id'];
+                $time = $row['time'];
 
                 echo "<tr id = '$trID'>";
                 echo "<td>" . $row['quiz_id'] . "</td>";
@@ -77,6 +78,7 @@ include '../controller/AdminOperations.php';
                 //Quiz state if Expired or not
                 $state = $row['state'];
                 $quizId = $row['quiz_id'];
+
                 if (!isset($_GET['name'])) {
                     if ($state == "Expired") {
 
@@ -120,10 +122,11 @@ include '../controller/AdminOperations.php';
                     var quizMaker = <?php echo json_encode($_SESSION['username']) ?>;
                     var fullMark = <?php echo json_encode($row['full_mark']) ?>;
                     var pass = <?php echo json_encode($row['password']) ?>;
+                    var time = <?php echo json_encode($row['time']) ?>;
 
                     var id = <?php echo json_encode($trID) ?>;
 
-                    var link = "ReviewQuiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark + "&pass=" + pass;
+                    var link = "ReviewQuiz.php?id=" + quiz_id + "&name=" + quizName + "&maker=" + quizMaker + "&fullmark=" + fullMark + "&pass=" + pass + "&time=" + time;
 
                     $("#" + id).attr('href', link);
 

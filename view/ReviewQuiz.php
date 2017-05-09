@@ -9,11 +9,10 @@ include './Header.php';
 
         <?php
         $pass = $_GET['pass'];
-        $_GET['name'];
-        $_GET['maker'];
-
-        $_GET['fullmark'];
-        $_GET['time'];
+        $quizName = $_GET['name'];
+        $maker = $_GET['maker'];
+        $fullMark = $_GET['fullmark'];
+        $time = $_GET['time'];
         ?>
         <div class="col-lg-12"> 
 
@@ -21,26 +20,26 @@ include './Header.php';
 
                 <div class="col-lg-3">
                     <label>Quiz Name :<small></small></label>
-                    <input value="" class="form-control"  type="text" placeholder="Enter Quiz Name"  name="time">
+                    <input value="<?php echo $quizName; ?>" class="form-control"  type="text" placeholder="Enter Quiz Name"  name="time">
                 </div>
 
                 <div class="col-lg-3">
                     <label>Time :<small></small></label>
-                    <input class="form-control" type="text" placeholder="Enter Quiz Time"  name="time">
+                    <input value="<?php echo $time; ?>" class="form-control" type="text" placeholder="Enter Quiz Time"  name="time">
                 </div>
 
 
                 <div class="col-lg-3">
 
                     <label>Full Mark :<small></small></label>
-                    <input class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" >
+                    <input value="<?php echo $fullMark; ?>" class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" >
 
                 </div>
 
                 <div class="col-lg-3">
 
                     <label>Password :<small></small></label>
-                    <input class="form-control" type="text"  placeholder="Enter Quiz Passwrod" name="password" >
+                    <input value="<?php echo $pass; ?>" class="form-control" type="text"  placeholder="Enter Quiz Passwrod" name="password" >
 
                 </div>
             </div>
@@ -66,26 +65,26 @@ include './Header.php';
 
 
 
-<?php
-$name = $_GET['name'];
-$quizId = $_GET['id'];
-$pass = $_GET['pass'];
-$fullMark = $_GET['fullmark'];
+            <?php
+            $name = $_GET['name'];
+            $quizId = $_GET['id'];
+            $pass = $_GET['pass'];
+            $fullMark = $_GET['fullmark'];
 
 
 
-$result = CreateQuizOperations::getQuestions($quizId);
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    echo "<td>" . $row['header'] . "</td>";
-    echo "<td>" . $row['answer_1'] . "</td>";
-    echo "<td>" . $row['answer_2'] . "</td>";
-    echo "<td>" . $row['answer_3'] . "</td>";
-    echo "<td>" . $row['answer_4'] . "</td>";
-    echo "<td>" . $row['correct_answer'] . "</td>";
-    echo '</tr>';
-}
-?>
+            $result = CreateQuizOperations::getQuestions($quizId);
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row['header'] . "</td>";
+                echo "<td>" . $row['answer_1'] . "</td>";
+                echo "<td>" . $row['answer_2'] . "</td>";
+                echo "<td>" . $row['answer_3'] . "</td>";
+                echo "<td>" . $row['answer_4'] . "</td>";
+                echo "<td>" . $row['correct_answer'] . "</td>";
+                echo '</tr>';
+            }
+            ?>
         </table>
 
     </body
