@@ -10,6 +10,16 @@
                 height: 100%;
                     
             }
+            th a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-size: 20;
+                color: #F5F5F5; 
+
+            }
 
         </style>
 
@@ -31,7 +41,7 @@
                     } else {
                         if($reult->num_rows > 0){
                          
-                         echo'<h1> Your Followers </h1><table class="containerr"> 
+                         echo'<h1> Your Followers </h1><table class="containerr table"> 
                                 <tr>
                                     <th>Image</th>
                                     <th>Student Name</th>
