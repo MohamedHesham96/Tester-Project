@@ -30,6 +30,7 @@
 
 
         <div style="background-color: rgba(0, 0, 0, 0.37); height:100%;width: 100%; margin-top: -20px ">
+            <br> <br>
                     <?php
                     $userid = $_SESSION['userid'];
                     include '../controller/FollowersOperations.php';
