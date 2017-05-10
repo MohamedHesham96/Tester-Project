@@ -17,33 +17,7 @@ include '../controller/CreateQuizOperations.php';
             <div style="background: #EEE" class="col-lg-12 btn-lg">
 
                 <form id="form" action="CreateQuestion.php" method="GET">
-                    <div class="col-lg-3">
-                        <label>Quiz Name :<small></small></label>
-                        <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="name">
-                    </div>
-
-                    <div class="col-lg-3">
-                        <label>Time :<small></small></label>
-                        <input onchange="validateHhMm(this)" value="" class="form-control" placeholder="Enter Quiz Time...       HH:MM:SS"  name="time">
-                    </div>
-
-
-                    <div class="col-lg-3">
-
-                        <label>Full Mark :<small></small></label>
-                        <input class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" >
-
-                    </div>
-
-                    <div class="col-lg-3">
-
-                        <label>Password :<small></small></label>
-                        <input class="form-control" type="text"  placeholder="Enter Quiz Passwrod" name="password" >
-
-                    </div>
-
                     <input id="addquiz" name="addquiz" value="true" hidden>
-
                 </form>
             </div>
         </div>
@@ -127,11 +101,9 @@ include '../controller/CreateQuizOperations.php';
             function submit(id) {
 
                 if (id == 1) {
-                    alert(id)
                     document.getElementById('addquiz').value = "true";
                     $("#form").submit();
                 } else {
-                    alert(id);
                     $("#form").submit();
                 }
             }

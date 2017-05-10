@@ -7,7 +7,6 @@ session_start(); //the session
 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
 
 if (!$quizID) {
-    echo '<br>Add Done ^_^';
     CreateQuizOperations::addQuiz();
     $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
 }
@@ -26,6 +25,5 @@ if (isset($_GET['ans4'])) {
 }
 
 $corectAns = $_GET['correctans'];
-echo '<br> good';
 $quizID = CreateQuizOperations::addQuestion($quizID, $header, $ans1, $ans2, $ans3, $ans4, $corectAns);
 echo '<script>document.location.href="CreateQuestion.php?"</script>';
