@@ -2,7 +2,16 @@
 <html>
     <head>
 
-        <meta charset="utf-8"/>
+               <link href="../recources/css/style1.css" rel="stylesheet" /> 
+               <style>
+             body {
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+         </style>
+
     </head>
     <body >
         <?php
@@ -12,13 +21,14 @@
             die('<h3 style="text-align:center;">No search reuslt found</h2>');
         }
         ?>
-
+        
+        
+        <div  style='background: url("../recources/images/search_icon.png") no-repeat left  bottom; height: 93%; width: 100%'>             
         <div class="container">
 
+            <h1> <center>Results </center></h1>
 
-            <h1> Results </h1>
-
-            <table class="containerr"> 
+            <table class="container containerr table"> 
 
 
 
@@ -34,11 +44,12 @@ if (!$reult) {
     echo 'error2';
 } else {
     if ($reult->num_rows > 0) {
-        echo '  <tr>
-                                    <td>Quiz Code</td>
-                                    <td>Quiz Name</td>
-                                    <td>Doctor Name</td>
-                                    <td>Password</td>
+        echo ' <tr>
+            
+                                    <th>Quiz Code</th>
+                                    <th>Quiz Name</th>
+                                    <th>Doctor Name</th>
+                                    <th>Password</th>
 
                               </tr>';
         while ($row = mysqli_fetch_array($reult, 1)) {
@@ -69,6 +80,7 @@ if (!$reult) {
 ?>
 
             </table>
+           </div>
         </div>
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>

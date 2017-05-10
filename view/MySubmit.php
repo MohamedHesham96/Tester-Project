@@ -11,7 +11,6 @@ include '../controller/MySubmitOperations.php';
         <?php
         $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
 
-        echo 'No thing To do !!';
         $name = $_GET['quizname'];
         $quizId = $_GET['quizid'];
         $maker = $_GET['quizdoctor'];
@@ -68,10 +67,12 @@ include '../controller/MySubmitOperations.php';
                     }
                 }
                 echo $count . "     ::  result     ";
-
-                $result = $successCount * ($fullMark / $count);
+                if($count != 0){
+                    $result = $successCount * ($fullMark / $count);
                 echo $result;
-
+                }  else {
+                    echo "0";
+                    }
                 if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
                     MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
                 }
