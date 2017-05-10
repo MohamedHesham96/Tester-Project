@@ -23,7 +23,7 @@
         ?>
         
         
-        <div  style='background: url("../recources/images/1.jpg") no-repeat right top;'>             
+        <div  style='background: url("../recources/images/search_icon.png") no-repeat left  bottom; height: 93%; width: 100%'>             
         <div class="container">
 
             <h1> <center>Results </center></h1>
