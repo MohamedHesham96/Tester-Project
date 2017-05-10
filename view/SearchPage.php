@@ -21,8 +21,9 @@
             die('<h3 style="text-align:center;">No search reuslt found</h2>');
         }
         ?>
-
-             
+        
+        
+        <div  style='background: url("../recources/images/1.jpg") no-repeat right top;'>             
         <div class="container">
 
             <h1> <center>Results </center></h1>
@@ -79,7 +80,7 @@ if (!$reult) {
 ?>
 
             </table>
-           
+           </div>
         </div>
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
