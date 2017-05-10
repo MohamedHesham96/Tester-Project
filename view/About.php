@@ -1,4 +1,4 @@
-<?php include './Header.php'; ?>
+<?php include './Header.php';//the about page ?>
 <html>
     <head>
         <meta charset="utf-8"/>
