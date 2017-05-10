@@ -4,14 +4,12 @@ include '../controller/CreateQuizOperations.php';
 
 session_start();
 
-
-if (isset($_GET['addquiz'])) {
-    if ($_GET['addquiz'] == "true") {
-        CreateQuizOperations::addQuiz();
-    }
-}
-
 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
+
+if (!$quizID) {
+    CreateQuizOperations::addQuiz();
+    $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
+}
 
 $header = $_GET['question'];
 $ans1 = $_GET['ans1'];

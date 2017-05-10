@@ -43,7 +43,6 @@ include '../controller/CreateQuizOperations.php';
                     </div>
 
                     <input id="addquiz" name="addquiz" value="true" hidden>
-                    <input id="addquiz" name="submitstate" value="true" hidden>
 
                 </form>
             </div>
@@ -64,7 +63,7 @@ include '../controller/CreateQuizOperations.php';
             CreateQuizOperations::deleteQuestion($quiz_id, $header);
         }
 
-        if (isset($_GET['addquiz'])) {
+        if (isset($_GET['submitstate'])) {
             echo '  <button  type="submit" onclick="submit(1)" class = "col-lg-4 btn" >Add New Qestion</button>';
         } else {
             echo '  <button  type="submit" onclick="submit(2)" class = "col-lg-4 btn" >Add New Questions</button>';
@@ -87,7 +86,7 @@ include '../controller/CreateQuizOperations.php';
 
         <br>
 
-        <table class=" containerr"> 
+        <table class="containerr"> 
             <tr>	
                 <th>Qeustion</th>
                 <th>Answer (A)</th>
@@ -128,7 +127,8 @@ include '../controller/CreateQuizOperations.php';
             function submit(id) {
 
                 if (id == 1) {
-                    document.getElementById('addquiz').value = "";
+                    alert(id)
+                    document.getElementById('addquiz').value = "true";
                     $("#form").submit();
                 } else {
                     alert(id);

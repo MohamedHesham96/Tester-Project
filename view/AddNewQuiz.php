@@ -4,8 +4,6 @@ include '../controller/CreateQuizOperations.php';
 session_start();
 
 
-//$doctorID = $_SESSION['userid'];
-//$doctorName = $_SESSION['username'];
 //$quizID = CreateQuizOperations::getQuizID($doctorName);
 //CreateQuizOperations::addQuizFullInfo($quizID, $quizName, $doctorID, $password, $fullMark, $doctorName);
 ?>
@@ -32,7 +30,16 @@ session_start();
 
                     <?php
                 } else {
-                    echo 'ok';
+                    $doctorID = $_SESSION['userid'];
+                    $doctorName = $_SESSION['username'];
+
+                    $quizName = $_GET['name'];
+                    $pass = $_GET['password'];
+                    $fullMark = $_GET['fullmark'];
+
+                    $quizID = CreateQuizOperations::getQuizID($doctorName);
+                    CreateQuizOperations::addQuizFullInfo($quizID, $quizName, $doctorID, $pass, $fullMark, $doctorName);
+                    echo '<script>document.location.href="Myquizzes.php"</script>';
                 }
             }
         }
