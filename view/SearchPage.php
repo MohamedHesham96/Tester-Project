@@ -2,7 +2,16 @@
 <html>
     <head>
 
-        <meta charset="utf-8"/>
+               <link href="../recources/css/style1.css" rel="stylesheet" /> 
+               <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+         </style>
+
     </head>
     <body >
         <?php
@@ -12,8 +21,8 @@
             die('<h3 style="text-align:center;">No search reuslt found</h2>');
         }
         ?>
-
-        <div class="container">
+       <div class="container ">
+        <div class="container table">
 
 
             <h1> Results </h1>
