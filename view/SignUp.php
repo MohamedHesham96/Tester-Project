@@ -16,6 +16,12 @@
 
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href= "../recources/css/demo.css" rel="stylesheet" />
+        <style>
+            .choice{
+                background-color: #CCC;
+            }
+        </style>
+ 
     </head>
 
     <body>
@@ -168,12 +174,12 @@
 
                                                 <div class="col-sm-10 col-sm-offset-1">
                                                     <div class="col-sm-6">
-                                                        <div class="choice" data-toggle="wizard-checkbox"> 
+                                                        <div class="choice" id="select" onclick="myFunction()"> 
                                                             <div class="icon">
-                                                                <label>  
+                                                                <label >  
                                                                     <input type="radio" name="type" value="doctor" >
 
-                                                                    <img src="../recources/images/doctor.png" width="110" value="doctor">
+                                                                    <img id="select" src="../recources/images/doctor.png" width="110" value="doctor">
                                                                 </label>
                                                             </div>
                                                             <h6>Maker</h6>
@@ -181,17 +187,21 @@
                                                     </div>
 
                                                     <div class="col-sm-6 ">
-                                                        <div class="choice" data-toggle="wizard-checkbox">
+                                                        <div class="choice" id="select" onclick="myFunction()">
                                                             <label required>
                                                                 <input type="radio" name="type" value="student" required>
                                                                 <div class="icon">
-                                                                    <img src="../recources/images/student.png" width="111">
+                                                                    <img class="select" src="../recources/images/student.png" width="111">
                                                                 </div>
                                                             </label>
                                                             <h6>Solver</h6>
                                                         </div>
                                                     </div>
 
+                                                    
+                                                    
+                                                    
+                                                    
 
                                                 </div>
                                             </div>

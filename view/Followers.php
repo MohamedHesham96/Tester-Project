@@ -47,7 +47,7 @@
                           <div class="card wizard-card col-sm-6 col-sm-offset-3" data-color="orange" id="wizardProfile" style=" background-color: rgba(245, 245, 245, 0.49); border-radius: 10%;padding-bottom: 30px">
                            <div class="row">
                              <h3><center>Your Followers </center></h3><br>
-                              <table class="containerr table" style="width: 80%; margin-left:10%">                                 
+                              <table class="containerr table" style="width: 80%; margin-left:10%; ">                                 
                                 ';
                         }else{ die("<h1><center>NO followes yet</center></h1>"); }
                         while ($row = mysqli_fetch_array($reult, 1)) {
@@ -56,11 +56,11 @@
                             $profilephoto = $row['image'];
                         
                             if (empty($profilephoto)) {
-                               echo '<th style="width:15%; padding-left:10%"><img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/></th>';                                                  
+                               echo '<th style="text-align:right;  "> <img style="border-radius: 20%" src="../recources/images/default-avatar.png" class="picture-src" height = "44" width="50"id="wizardPicturePreview" title=""/></th>';                                                  
                             } else {
-                                echo '<th style="width:75%;""><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></th>';                                
+                                echo '<th style="width:45%; " ><img style="border-radius: 20% ; display: inline" src="data:image/jpeg;base64,' . base64_encode($profilephoto) . '" height = "44" width="50" class="img-thumnail" class="picture-src" id="wizardPicturePreview"/></th>';                                
                             }
-                            echo '<th><a href="ProfilePage.php?&&name=' . $row['username'] . '">' . $row['username'] . '</a></th>';
+                            echo '<th style=""><a href="ProfilePage.php?&&name=' . $row['username'] . '">' . $row['username'] . '</a></th>';
                             echo "</tr>";
                         }
                     }
