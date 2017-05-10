@@ -4,7 +4,7 @@ include '../controller/MyQuizzesOperations.php';
 $quizId = $_GET['id'];
 $result = MyQuizzesOperations::getQuizById($quizId);
 $row    = mysqli_fetch_array($result);
-$time   = $row['time'] * 1000*60;
+$time = $row['time'] * 1000*60;
 ?>
 <!--make information displayed in center of page -->
 <html>  
@@ -18,8 +18,10 @@ $time   = $row['time'] * 1000*60;
         </script>-->
     </head>
     <body>
+   <?php if($time != 0){ ?>     
     <div id="Mydiv" style="margin-right: 100px;color:#494BCB;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
             <script>
+                
             // Set the date we're counting down to
             var countDownDate = new Date().getTime()+ <?php echo $time?>;
             // Update the count down every 1 second
@@ -54,6 +56,9 @@ $time   = $row['time'] * 1000*60;
        
     </script>
     </div>
+        <?php
+         }
+    ?>
     <?php
     $userType = $_SESSION['usertype'];
     $submitState = "";
