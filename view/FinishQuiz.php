@@ -6,6 +6,11 @@ session_start();
 
 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
 
+if (!$quizID) {
+    CreateQuizOperations::addQuiz();
+    $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
+}
+
 $header = $_GET['question'];
 $ans1 = $_GET['ans1'];
 $ans2 = $_GET['ans2'];
@@ -20,7 +25,6 @@ if (isset($_GET['ans4'])) {
     $ans4 = $_GET['ans4'];
 }
 
-echo $state = $_GET['submitstate'];
 $corectAns = $_GET['correctans'];
 
 $quizID = CreateQuizOperations::addQuestion($quizID, $header, $ans1, $ans2, $ans3, $ans4, $corectAns);

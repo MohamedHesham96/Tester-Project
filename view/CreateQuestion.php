@@ -10,26 +10,6 @@ include '../controller/CreateQuizOperations.php';
     </head>
 
     <body>
-        <?php
-        if (isset($_GET['addquiz'])) {
-            if ($_GET['addquiz'] == "true") {
-                CreateQuizOperations::addQuiz();
-            }
-        }
-        //     session_destroy();
-        $massage = ""; // for username hint
-        $massage2 = ""; // for emai  hint
-
-        if (isset($_GET['errors'])) {
-
-            if ($_GET['errors'] == "usernameerror")
-                $massage = "This Username is Already Exist !";
-
-            else if ($_GET['errors'] == "emailerror") {
-                $massage2 = "This Email is Already Exist !";
-            }
-        }
-        ?>
 
         <br>       
         <br>
@@ -63,11 +43,22 @@ include '../controller/CreateQuizOperations.php';
                             <input  class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans2').value)"  placeholder="" name="ansradio" > 
                             <label>Answer (B)</label>
                             <br>
-                            <input id="ans2" class="form-control" type="text"  placeholder="" name="ans2" value="" required>
+                   
+                            
+                            W<input id="ans2" class="form-control" type="text"  placeholder="" name="ans2" value="" required>
                             <br>
 
-                            <div id="container"></div>
+                            <div id="container" style="display: none"><input type="radio" onclick="getCorrectAnswer(document.getElementById('ans3').value)" name = "ansradio" > <label>Answer (C)
+                                </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans3()"> X </button>
+                                <input id="ans3" class="form-control" name="ans3" required><br></div>
 
+                            <div id="container2" style="display: none">
+
+                                <input id="radio4" type="radio" onclick="getCorrectAnswer(document.getElementById('ans4').value)"  name = "ansradio" > <label>Answer (D)
+                                </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans4()"> X </button>
+                                <input id="ans4" class="form-control" name="ans4" required>
+                            </div>
+                            <br>
                             <label>Correct Answer</label>
                             <input id="correctans" style="color: #fff;background: #05AE0E" class="form-control" type="text"  placeholder="" name="correctans" required readonly>
                             <br>
@@ -78,7 +69,6 @@ include '../controller/CreateQuizOperations.php';
                             <div style="margin-left: 10" class="col-lg-1 col-lg-offset-3">
                                 <button  class="btn btn-fill btn-primary" id="" type="button" onclick="submitForm('AddNewQuestion.php')"> Next </button>
                             </div>
-
                             <div style="margin-left: 35" class="col-lg-offset-1 col-lg-4">
                                 <button  class="btn btn-fill btn-danger" id="" type="button" onclick="submitForm('FinishQuiz.php')"> Finish </button>
                                 <br>
@@ -87,16 +77,7 @@ include '../controller/CreateQuizOperations.php';
 
                         </div>
                     </div>
-
-
-                    <input hidden name="" value="<?php $_GET['quizname'] ?>">
-                    <input hidden name="" value="<?php $_GET['quiztime'] ?>">
-                    <input hidden name="" value="<?php $_GET['quizfullmark'] ?>">
-                    <input hidden name="" value="<?php $_GET['quizpassword'] ?>">
-
                     <input hidden name="submitstate" value="true">
-
-
 
                 </form>
             </div>
@@ -104,101 +85,82 @@ include '../controller/CreateQuizOperations.php';
         <br>
 
         <script type="text/javascript">
+
             function submitForm(action) {
 
-                $value = document.getElementById('correctans').value; // check if the correct asnwer is not empty before submit
-                $value1 = document.getElementById('ans1').value;
-                $value2 = document.getElementById('ans2').value;
-                $value3 = "3";
-                $value4 = "4";
-                if ($("#container").is(":visible")) {
-                    $value3 = document.getElementById('ans3').value;
-                    if ($("#container2").is(":visible")) {
-                        $value4 = document.getElementById('ans4').value;
-                    }
-                }
-
-
-                if (!$value1 || !$value2 || !$value3 || !$value4) {
-                    $("#form").submit();
-                } else if ($value) {
-
-                    document.getElementById('Form').action = action;
-                    document.getElementById('Form').submit();
-
-                } else {
-                    alert("Please Choice Correct Answer !!");
-                }
+            $value = document.getElementById('correctans').value; // check if the correct asnwer is not empty before submit
+            $value1 = document.getElementById('ans1').value;
+            $value2 = document.getElementById('ans2').value;
+            $value3 = "3";
+            $value4 = "4";
+            if ($("#container").is(":visible")) {
+            $value3 = document.getElementById('ans3').value;
+            if ($("#container2").is(":visible")) {
+            $value4 = document.getElementById('ans4').value;
             }
+
+            }
+
+            if (!$value1 || !$value2 || !$value3 || !$value4) {
+            alert("Fill Empty Answers !!");
+            }
+            else if ($value) {
+            document.getElementById('Form').action = action;
+            document.getElementById('Form').submit();
+            } else {
+            alert("Please Choice Correct Answer !!");
+            }
+            } // end of submit function 
 
             $aNum = 2; // form condetion 3 for ans3 and 4 for ans4 بعد كده مش مهم لانه بعد كده هيعتمد على الظهور بتاع كل واحدة 
 
             function Add() {
 
-                $aNum++;
+            $aNum++;
+            if (!$("#container").is(":visible")) { // show answer 3 input
 
-                if ($aNum == 3) { // add answer 3 input
+            $("#container").slideDown(1000);
+            } else if (!$("#container2").is(":visible")) {  // show answer 4 input
 
-                    $("#container").append('<input type="radio" onclick="getCorrectAnswer(document.getElementById(\'ans3\').value)" name = "ansradio" > <label>Answer (C)\n\
-                </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans3()"> X </button>\n\
-                <input id="ans3" class="form-control" name="ans3" required><br></div><div id="container2">');
-
-                } else if ($aNum == 4) { // add answer 4 input 
-
-                    $("#container2").append('<input id="radio4" type="radio" onclick="getCorrectAnswer(document.getElementById(\'ans4\').value)"  name = "ansradio" > <label>Answer (D)\n\
-                    </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans4()"> X </button>\n\
-                    <input id="ans4" class="form-control" name="ans4" required><br>');
-                    $("#newans").attr("disabled", "disabled");
-
-                } else if (!$("#container").is(":visible")) { // show answer 3 input
-
-                    $("#container").slideDown(1000);
-
-                } else if (!$("#container2").is(":visible")) {  // show answer 4 input
-
-                    $("#container2").slideDown(1000);
-                    document.getElementById("newans").disabled = true;
-                }
+            $("#container2").slideDown(1000);
+            document.getElementById("newans").disabled = true;
+            }
 
             }
 
             function removeans3() {
-                document.getElementById("newans").disabled = false;
+            document.getElementById("newans").disabled = false;
+            if (!$("#container2").is(":visible")) { // remove answer 3 input
 
-                if (!$("#container2").is(":visible")) { // remove answer 3 input
-
-                    document.getElementById("ans3").value = "";
-                    $("#container").slideUp(1000);
-
-                } else {        // switch answer4 input value with answer and hide answer4 input 
-                    $value1 = document.getElementById("ans4").value;
-                    document.getElementById("ans3").value = $value1;
-                    document.getElementById("ans4").value = "";
-                    document.getElementById("ans4").value = "";
-                    $("#container2").slideUp(1000);
-                }
+            document.getElementById("ans3").value = "";
+            $("#container").slideUp(1000);
+            } else {        // switch answer4 input value with answer and hide answer4 input 
+            $value1 = document.getElementById("ans4").value;
+            document.getElementById("ans3").value = $value1;
+            document.getElementById("ans4").value = "";
+            document.getElementById("ans4").value = "";
+            $("#container2").slideUp(1000);
+            }
             }
 
             function removeans4() { // hide answer4 
-                document.getElementById("newans").disabled = false;
-
-                document.getElementById("ans4").value = "";
-                $("#container2").slideUp(1000);
+            document.getElementById("newans").disabled = false;
+            document.getElementById("ans4").value = "";
+            $("#container2").slideUp(1000);
             }
 
 
             function getCorrectAnswer($value) { // to set answer as a correct answer
 
-                document.getElementById("correctans").value = $value;
+            document.getElementById("correctans").value = $value;
             }
 
             function AddQuestion() {
 
-                $qNum += 1;
-                $a1q1 = 'a' + $aNum + 'q' + $qNum;
-                $a2q2 = 'a' + $aNum + 'q' + $qNum;
-
-                $("#con").append('<div  style="border-radius: 10%;background: #bbbbbb" class="col-lg-8"><div></div><div class="col-lg-12"><br>\n\
+            $qNum += 1;
+            $a1q1 = 'a' + $aNum + 'q' + $qNum;
+            $a2q2 = 'a' + $aNum + 'q' + $qNum;
+            $("#con").append('<div  style="border-radius: 10%;background: #bbbbbb" class="col-lg-8"><div></div><div class="col-lg-12"><br>\n\
                             <label>Question<small></small></label><input class="form-control" type="text"  placeholder="" name="" required></div>\n\
                         <div class="col-lg-7"><br><input class="" type="radio"  placeholder="" > <label>Answer (A)<small></small></label>\n\
                             <input class="form-control" type="text"  name=' + $a1q1 + ' value=' + $a1q1 + '  placeholder="" name="phone" required>\n\
