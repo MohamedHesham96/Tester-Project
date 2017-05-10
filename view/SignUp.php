@@ -21,7 +21,23 @@
                 background-color: #CCC;
             }
         </style>
- 
+     <script>
+	function previewFile() {
+	var preview = document.querySelector('img');
+	var file = document.querySelector('input[type=file]').files[0];
+	var reader = new FileReader();
+
+	reader.onloadend = function () {
+	preview.src = reader.result;
+	}
+
+	if (file) {
+	reader.readAsDataURL(file);
+	} else {
+	preview.src = "../recources/images/default-avatar.png";
+	}
+	}
+	</script>   
     </head>
 
     <body>
@@ -79,7 +95,7 @@
 
                                                         <br>
                                                         <div class="picture">
-                                                            <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" hight="30px"/>
+                                                            <img src="../recources/images/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" hight="30px" onchange="previewFile()"/>
                                                             <input type="file" name="iamage" id="image" onchange="previewFile()">
                                                         </div>
                                                         <h6>Choose Picture</h6>
