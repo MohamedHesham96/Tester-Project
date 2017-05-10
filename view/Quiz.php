@@ -1,12 +1,64 @@
 <?php
 include './Header.php';
 include '../controller/MyQuizzesOperations.php';
+$quizId = $_GET['id'];
+$result = MyQuizzesOperations::getQuizById($quizId);
+$row    = mysqli_fetch_array($result);
+$time = $row['time'] * 1000*60;
 ?>
 <!--make information displayed in center of page -->
 <html>  
     <head>
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+<!--        <script type="text/javascript" >
+                    $(function () {  // document.ready function...
+                        setTimeout(function () {
+                        }, 10000);
+                    });
+        </script>-->
     </head>
+    <body>
+   <?php if($time != 0){ ?>     
+    <div id="Mydiv" style="margin-right: 100px;color:#494BCB;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
+            <script>
+                
+            // Set the date we're counting down to
+            var countDownDate = new Date().getTime()+ <?php echo $time?>;
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+              // Get todays date and time
+              var now = new Date().getTime();
+              // Find the distance between now an the count down date
+              var distance = countDownDate - now;
+
+              // Time calculations for days, hours, minutes and seconds
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              // Display the result in the element with id="demo"
+              document.getElementById("Mydiv").innerHTML = hours + "h "
+              + minutes + "m " + seconds + "s ";
+              
+              if(minutes < 1)
+              {
+                var x = document.getElementById("Mydiv") ;
+                x.style.color = '#FF0021';
+              }
+              // If the count down is finished, write some text 
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("Mydiv").innerHTML = "EXPIRED";
+                $('form').submit();
+
+            }
+            }, 1000);
+       
+    </script>
+    </div>
+        <?php
+         }
+    ?>
     <?php
     $userType = $_SESSION['usertype'];
     $submitState = "";
@@ -14,19 +66,18 @@ include '../controller/MyQuizzesOperations.php';
         $submitState = "hidden";
 
 
-    $name = $_GET['name'];
-    $quizId = $_GET['id'];
-    $maker = $_GET['maker'];
+    $name = $row['quiz_name'];
+    $maker = $row['doctor_name'];
 
     if ($_SESSION['usertype'] == 'doctor') {
 
-        $fullMark = $_GET['fullmark'];
+        $fullMark = $row['full_mark'];
     }
 
     if ($_SESSION['usertype'] == 'student') {
 
-        $fullMark = $_GET['fullmark'];
-        $makerId = $_GET['makerid'];
+        $fullMark = $row['full_mark'];
+        $makerId = $row['doctor_id'];
     }
 
     $result = MyQuizzesOperations::getQuizQuestionsByID($quizId); // get all data
@@ -91,7 +142,7 @@ include '../controller/MyQuizzesOperations.php';
             }
             ?>
 
-            <form action="MySubmit.php" method="GET">
+    <form action="MySubmit.php" method="GET" id="form">
                 <br>                <br>
 
                 <div>
@@ -156,14 +207,13 @@ include '../controller/MyQuizzesOperations.php';
 
         <input  style="visibility: <?php echo $submitState ?>" class="btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
 
-        <input  name="quizname" type="text" value="<?php echo $_GET['name']; ?>"  readonly="readonly" hidden/> 
-        <input  name="quizid" type="text" value="<?php echo $_GET['id']; ?>"  readonly="readonly" hidden/> 
-        <input  name="quizdoctor" type="text" value="<?php echo $_GET['maker']; ?>"  readonly="readonly" hidden/> 
-        <input  name="quizfullmark" type="text" value="<?php echo $_GET['fullmark']; ?>"  readonly="readonly" hidden/> 
-        <input  name="makerid" type="text" value="<?php echo $_GET['makerid']; ?>"  readonly="readonly" hidden/> 
+        <input  name="quizname" type="text" value="<?php echo $name; ?>"  readonly="readonly" hidden/> 
+        <input  name="quizid" type="text" value="<?php echo $quizId; ?>"  readonly="readonly" hidden/> 
+        <input  name="quizdoctor" type="text" value="<?php echo $maker; ?>"  readonly="readonly" hidden/> 
+        <input  name="quizfullmark" type="text" value="<?php echo $fullMark; ?>"  readonly="readonly" hidden/> 
+        <input  name="makerid" type="text" value="<?php echo $makerId; ?>"  readonly="readonly" hidden/> 
 
     </form>        
-</div></div>
 
 </body>
 
