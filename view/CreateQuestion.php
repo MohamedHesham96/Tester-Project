@@ -2,6 +2,10 @@
 // include './header.php';
 session_start();
 include '../controller/CreateQuizOperations.php';
+$_SESSION['quiztime'] = $_GET['time'];
+$_SESSION['quizname'] = $_GET['name'];
+$_SESSION['quiz'] = $_GET['time'];
+$_SESSION['quiztime'] = $_GET['time'];
 ?>
 
 <html>
@@ -13,20 +17,9 @@ include '../controller/CreateQuizOperations.php';
         <?php
         if (isset($_GET['addquiz'])) {
             if ($_GET['addquiz'] == "true") {
-                CreateQuizOperations::addQuiz();
-            }
-        }
-        //     session_destroy();
-        $massage = ""; // for username hint
-        $massage2 = ""; // for emai  hint
-
-        if (isset($_GET['errors'])) {
-
-            if ($_GET['errors'] == "usernameerror")
-                $massage = "This Username is Already Exist !";
-
-            else if ($_GET['errors'] == "emailerror") {
-                $massage2 = "This Email is Already Exist !";
+                $value = "true";
+            } else {
+                $value = "";
             }
         }
         ?>
@@ -94,7 +87,7 @@ include '../controller/CreateQuizOperations.php';
                     <input hidden name="" value="<?php $_GET['quizfullmark'] ?>">
                     <input hidden name="" value="<?php $_GET['quizpassword'] ?>">
 
-                    <input hidden name="submitstate" value="true">
+                    <input hidden name="addquiz" value="<?php echo $value; ?>">
 
 
 

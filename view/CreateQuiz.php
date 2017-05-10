@@ -16,30 +16,36 @@ include '../controller/CreateQuizOperations.php';
 
             <div style="background: #EEE" class="col-lg-12 btn-lg">
 
-                <div class="col-lg-3">
-                    <label>Quiz Name :<small></small></label>
-                    <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="name">
-                </div>
+                <form id="form" action="CreateQuestion.php" method="GET">
+                    <div class="col-lg-3">
+                        <label>Quiz Name :<small></small></label>
+                        <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="name">
+                    </div>
 
-                <div class="col-lg-3">
-                    <label>Time :<small></small></label>
-                    <input onchange="validateHhMm(this)" value="" class="form-control" placeholder="Enter Quiz Time...       HH:MM:SS"  name="time">
-                </div>
+                    <div class="col-lg-3">
+                        <label>Time :<small></small></label>
+                        <input onchange="validateHhMm(this)" value="" class="form-control" placeholder="Enter Quiz Time...       HH:MM:SS"  name="time">
+                    </div>
 
 
-                <div class="col-lg-3">
+                    <div class="col-lg-3">
 
-                    <label>Full Mark :<small></small></label>
-                    <input class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" >
+                        <label>Full Mark :<small></small></label>
+                        <input class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" >
 
-                </div>
+                    </div>
 
-                <div class="col-lg-3">
+                    <div class="col-lg-3">
 
-                    <label>Password :<small></small></label>
-                    <input class="form-control" type="text"  placeholder="Enter Quiz Passwrod" name="password" >
+                        <label>Password :<small></small></label>
+                        <input class="form-control" type="text"  placeholder="Enter Quiz Passwrod" name="password" >
 
-                </div>
+                    </div>
+
+                    <input id="addquiz" name="addquiz" value="true" hidden>
+                    <input id="addquiz" name="submitstate" value="true" hidden>
+
+                </form>
             </div>
         </div>
         <br>
@@ -59,18 +65,18 @@ include '../controller/CreateQuizOperations.php';
         }
 
         if (isset($_GET['addquiz'])) {
-            echo '  <button class = "col-lg-4 btn" ><a href = "CreateQuestion.php?addquiz=true">Add New Questions</a></button>';
+            echo '  <button  type="submit" onclick="submit(1)" class = "col-lg-4 btn" >Add New Qestion</button>';
         } else {
-            echo '  <button class = "col-lg-4 btn" ><a href = "CreateQuestion.php?">Add New Questions</a></button>';
+            echo '  <button  type="submit" onclick="submit(2)" class = "col-lg-4 btn" >Add New Questions</button>';
         }
 
         if (!isset($_GET['deletequiz'])) {
             $question = "javascript:return confirm('Are you Sure you Want to Delete This Quiz?');";
             echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
-        }if (isset($_GET['submitstate']) == "true") {
-
+        }
+        if (isset($_GET['submitstate']) == "true") {
             $question = "javascript:return confirm('Are you Sure you Want to Submit this Quiz?');";
-            echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="AddNewQuiz.php?quizname=H&fullmark=30&password=123">Submit This Quiz</a></button>';
+            echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="AddNewQuiz.php">Submit This Quiz</a></button>';
         }
         ?>
 
@@ -94,7 +100,7 @@ include '../controller/CreateQuizOperations.php';
 
 
             <?php
-            if (!isset($_GET['deletequiz']) && !isset($_GET['addquiz'])) {
+            if (!isset($_GET['deletequiz']) && isset($_GET['submitstate'])) {
 
                 $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
                 $result = CreateQuizOperations::getQuestions($quizID);
@@ -116,21 +122,31 @@ include '../controller/CreateQuizOperations.php';
             ?>
         </table>
 
+        <script type="text/javascript">
 
-        <script TYPE="text/JavaScript">
+
+            function submit(id) {
+
+                if (id == 1) {
+                    document.getElementById('addquiz').value = "";
+                    $("#form").submit();
+                } else {
+                    alert(id);
+                    $("#form").submit();
+                }
+            }
+
             function validateHhMm(inputField) {
-            var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
+                var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
 
-            if (isValid) {
-            inputField.style.backgroundColor = '#bfa';
-            } else {
-            inputField.style.backgroundColor = '#fba';
-            }
+                if (isValid) {
+                    inputField.style.backgroundColor = '#bfa';
+                } else {
+                    inputField.style.backgroundColor = '#fba';
+                }
 
-            return isValid;
-            }
-        </SCRIPT>
-
+                return isValid;
+            }</script>
     </body>
 
     <!--   Core JS Files   -->
