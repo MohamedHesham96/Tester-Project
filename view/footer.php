@@ -17,7 +17,7 @@
                                          <li><a href="#">Privacy & Terms</a></li>
                                        </ul>
                                    </div>
-                                   <br>
+                                   
                                    <div>
                                        &copy;Copyright - Online Quizer. All Rights Reserved
 
