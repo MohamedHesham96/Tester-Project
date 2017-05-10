@@ -58,7 +58,7 @@
 
                                     <div class="wizard-navigation">
                                         <ul>
-                                            <li><a id="link"  href="#about" data-toggle="tab">About</a></li> 
+                                            <li><a id="link"  href="#about" data-toggle="tab">About</a></li>
                                             <li><a id="link2" href="#account"  data-toggle="tab">Account</a></li>
                                             <li><a id="link3" href="#address" data-toggle="tab">Info</a></li>
                                         </ul>
@@ -121,7 +121,7 @@
                                                             var goodColor = "#66cc66";
                                                             var badColor = "#ff6666";
                                                             var white = "#ffffff";
-                                                            //Compare the values in the password field 
+                                                            //Compare the values in the password field
                                                             //and the confirmation field
                                                             if (pass1.value == "" || pass2.value == "") {
                                                                 message.style.color = white;
@@ -129,9 +129,9 @@
                                                                 message.innerHTML = ""
                                                                 message2.innerHTML = ""
                                                             } else if (pass1.value == pass2.value) {
-                                                                //The passwords match. 
+                                                                //The passwords match.
                                                                 //Set the color to the good color and inform
-                                                                //the user that they have entered the correct password 
+                                                                //the user that they have entered the correct password
                                                                 document.getElementById("next").disabled = false;
                                                                 pass1.style.backgroundColor = goodColor;
                                                                 pass2.style.backgroundColor = goodColor;
@@ -161,16 +161,16 @@
                                                 </div>
 
                                             </div>
-                                        </div> 
+                                        </div>
                                         <div  class="tab-pane" id="account">
                                             <h4 class="info-text"> What are you doing ? </h4>
                                             <div class="row">
 
                                                 <div class="col-sm-10 col-sm-offset-1">
                                                     <div class="col-sm-6">
-                                                        <div class="choice" data-toggle="wizard-checkbox"> 
+                                                        <div class="choice" data-toggle="wizard-checkbox">
                                                             <div class="icon">
-                                                                <label>  
+                                                                <label>
                                                                     <input type="radio" name="type" value="doctor" >
 
                                                                     <img src="../recources/images/doctor.png" width="110" value="doctor">
@@ -406,12 +406,12 @@
                                                             <option value="Romania">Romania</option>
                                                             <option value="Russia">Russian Federation</option>
                                                             <option value="Rwanda">Rwanda</option>
-                                                            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option> 
+                                                            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
                                                             <option value="Saint LUCIA">Saint LUCIA</option>
                                                             <option value="Saint Vincent">Saint Vincent and the Grenadines</option>
                                                             <option value="Samoa">Samoa</option>
                                                             <option value="San Marino">San Marino</option>
-                                                            <option value="Sao Tome and Principe">Sao Tome and Principe</option> 
+                                                            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
                                                             <option value="Saudi Arabia">Saudi Arabia</option>
                                                             <option value="Senegal">Senegal</option>
                                                             <option value="Seychelles">Seychelles</option>
@@ -500,7 +500,8 @@
 
         </div>
     </div>
-
+    <?php include './footer.php';
+    ?>
 </body>
 
 <!--   Core JS Files   -->
