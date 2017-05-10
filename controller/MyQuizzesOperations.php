@@ -100,6 +100,20 @@ class MyQuizzesOperations {
             return $result;
         }
     }
+    public static function getQuizById($quizId){
+        include '../include/vars.php';
+        $conn = new mysqli($host, $username, $password, $dbname);
+        
+        $query="SELECT * FROM quizzes WHERE quiz_id =$quizId";
+        
+        $result = mysqli_query($conn, $query);
+        if (mysqli_error($conn)) {
+            echo mysqli_error($conn);
+            return NULL;
+        } else {
+            return $result;
+        }
+    }
 
 }
 
