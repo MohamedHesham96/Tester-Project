@@ -6,6 +6,13 @@ include '../controller/MyQuizzesOperations.php';
 <html>  
     <head>
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+        <script type="text/javascript" >
+                    $(function () {  // document.ready function...
+                        setTimeout(function () {
+                            $('form').submit();
+                        }, 10000);
+                    });
+        </script>
     </head>
     <?php
     $userType = $_SESSION['usertype'];
@@ -91,7 +98,7 @@ include '../controller/MyQuizzesOperations.php';
             }
             ?>
 
-            <form action="MySubmit.php" method="GET">
+    <form action="MySubmit.php" method="GET" id="form">
                 <br>                <br>
 
                 <div>
