@@ -1,7 +1,7 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
-        <link href="../recources/css/style.css" rel="stylesheet" /> 
+        <link href="../recources/css/style.css" rel="stylesheet" />
 
     </head>
     <body >
@@ -34,12 +34,12 @@
                                     </button>
                                 </span>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-<br>     
+<br>
          <?php
                   if (isset($_GET['studentNameSearch']))
                  {
@@ -118,7 +118,10 @@
                 }
 
                 ?>
+
             </table>
         <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
+        <?php include './footer.php';
+        ?>
     </body>
 </html>
