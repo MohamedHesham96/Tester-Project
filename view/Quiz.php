@@ -18,7 +18,7 @@ $time = $row['time'] * 1000*60;
         </script>-->
     </head>
     <body>
-   <?php if($time != 0){ ?>     
+   <?php if($time != 0 && $_SESSION['usertype'] == 'student'){ ?>     
     <div id="Mydiv" style="margin-right: 100px;color:#494BCB;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
             <script>
                 
