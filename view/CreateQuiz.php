@@ -6,9 +6,9 @@ include '../controller/CreateQuizOperations.php';
 
 <html>
     <head>
-         <link href="../recources/css/style1.css" rel="stylesheet" /> 
-         <style>
-             body{
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
+        <style>
+            body{
                 background: url("../recources/images/1.jpg") no-repeat right top;
                 width: 100%;
                 height: 100%;
@@ -27,55 +27,53 @@ include '../controller/CreateQuizOperations.php';
                 text-decoration: none
             }
             .bt:hover{
-                    color: rgba(51, 51, 51, 0.56);            
+                color: rgba(51, 51, 51, 0.56);            
             }
-              a:hover{
-                                text-decoration: none;
-                                color: rgba(51, 51, 51, 0.56); 
+            a:hover{
+                text-decoration: none;
+                color: rgba(51, 51, 51, 0.56); 
 
             }
-            
-         </style>
+
+        </style>
     </head>
 
     <body>
         <div class="container">
-        <div class=""> 
+            <div class=""> 
 
-            <div style="" class="">
+                <div style="" class="">
 
-                <form id="form" action="CreateQuestion.php" method="GET">
-                    <input id="addquiz" name="addquiz" value="true" hidden>
-                </form>
+                    <form id="form" action="CreateQuestion.php" method="GET">
+                        <input id="addquiz" name="addquiz" value="true" hidden>
+                    </form>
+                </div>
             </div>
-        </div>
-        
 
 
-        <?php
-        if (isset($_GET['qdelete']) and isset($_GET['qheader'])) {
 
-            $quiz_id = $_GET['qdelete'];
-            $header = $_GET['qheader'];
+            <?php
+            if (isset($_GET['qdelete']) and isset($_GET['qheader'])) {
 
-            CreateQuizOperations::deleteQuestion($quiz_id, $header);
-        }
+                $quiz_id = $_GET['qdelete'];
+                $header = $_GET['qheader'];
 
-        if (isset($_GET['submitstate'])) {
-            echo '  <button  type="submit" onclick="submit(1)" class = "bt bheight col-lg-4 btn btn-secondary " >Add New Qestion</button>';
-        } else {
-            echo '  <button  type="submit" onclick="submit(2)" class = "bt bheight col-lg-4 btn btn-secondary " >Add New Questions</button>';
-        }
+                CreateQuizOperations::deleteQuestion($quiz_id, $header);
+            }
 
-        if (!isset($_GET['deletequiz'])) {
-            $question = "javascript:return confirm('Are you Sure you Want to Delete This Quiz?');";
-            echo '<button class="bt bheight col-lg-4 btn btn-secondary btmarg" onClick= "' . $question . '" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
-        }
-        if (isset($_GET['submitstate']) == "true") {
-            $question = "javascript:return confirm('Are you Sure you Want to Submit this Quiz?');";
-            echo '<button class="bt bheight col-lg-4 btn btn-secondary btmarg" onClick= "' . $question . '" ><a href="AddNewQuiz.php">Submit This Quiz</a></button>';
-        }
-        ?>
+            if (isset($_GET['submitstate'])) {
+                echo '  <button  type="submit" onclick="submit(1)" class = "bt bheight col-lg-4 btn btn-secondary " >Add New Qestion</button>';
+            } else {
+                echo '  <button  type="submit" onclick="submit(2)" class = "bt bheight col-lg-4 btn btn-secondary " >Add New Questions</button>';
+            }
+
+            if (isset($_GET['submitstate']) == "true") {
+                $question = "javascript:return confirm('Are you Sure you Want to Submit this Quiz?');";
+                echo '<button class="bt bheight col-lg-4 btn btn-secondary btmarg" onClick= "' . $question . '" ><a href="AddNewQuiz.php">Submit This Quiz</a></button>';
+                $question2 = "javascript:return confirm('Are you Sure you Want to Delete This Quiz?');";
+                echo '<br><br><br><br><br><br><br><button class="bt bheight col-lg-4 btn btn-secondary btmarg" onClick= "' . $question2 . '" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
+            }
+            ?>
 
         </div>
         <br>  
@@ -84,40 +82,40 @@ include '../controller/CreateQuizOperations.php';
 
         <br>
         <div class="container">
-        <table class="containerr table"> 
-            <tr>	
-                <th>Qeustion</th>
-                <th>Answer (A)</th>
-                <th>Answer (B)</th>
-                <th>Answer (C)</th>
-                <th>Answer (D)</th>
-                <th>Correct Answer</th>
-            </tr>
+            <table class="containerr table"> 
+                <tr>	
+                    <th>Qeustion</th>
+                    <th>Answer (A)</th>
+                    <th>Answer (B)</th>
+                    <th>Answer (C)</th>
+                    <th>Answer (D)</th>
+                    <th>Correct Answer</th>
+                </tr>
 
 
 
-            <?php
-            if (!isset($_GET['deletequiz']) && isset($_GET['submitstate'])) {
+                <?php
+                if (!isset($_GET['deletequiz']) && isset($_GET['submitstate'])) {
 
-                $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
-                $result = CreateQuizOperations::getQuestions($quizID);
+                    $quizID = CreateQuizOperations::getQuizID($_SESSION['username']);
+                    $result = CreateQuizOperations::getQuestions($quizID);
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $header = $row['header'];
-                    $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
-                    echo "<tr>";
-                    echo "<td>" . $row['header'] . "</td>";
-                    echo "<td>" . $row['answer_1'] . "</td>";
-                    echo "<td>" . $row['answer_2'] . "</td>";
-                    echo "<td>" . $row['answer_3'] . "</td>";
-                    echo "<td>" . $row['answer_4'] . "</td>";
-                    echo "<td>" . $row['correct_answer'] . "</td>";
-                    echo "<td><a  onClick=\"javascript:return confirm('Are you Sure you Want to Delete This Question?');\" href = 'CreateQuiz.php?qdelete=$quizID&qheader=$header'>" . $removeIcon . "</a></td>";
-                    echo '</tr>';
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $header = $row['header'];
+                        $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
+                        echo "<tr>";
+                        echo "<td>" . $row['header'] . "</td>";
+                        echo "<td>" . $row['answer_1'] . "</td>";
+                        echo "<td>" . $row['answer_2'] . "</td>";
+                        echo "<td>" . $row['answer_3'] . "</td>";
+                        echo "<td>" . $row['answer_4'] . "</td>";
+                        echo "<td>" . $row['correct_answer'] . "</td>";
+                        echo "<td><a  onClick=\"javascript:return confirm('Are you Sure you Want to Delete This Question?');\" href = 'CreateQuiz.php?qdelete=$quizID&qheader=$header'>" . $removeIcon . "</a></td>";
+                        echo '</tr>';
+                    }
                 }
-            }
-            ?>
-        </table>
+                ?>
+            </table>
         </div>
         <script type="text/javascript">
 
