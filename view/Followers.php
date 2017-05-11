@@ -44,7 +44,7 @@
                         if($reult->num_rows > 0){
                          
                          echo'
-                          <div class="card wizard-card col-sm-6 col-sm-offset-3" data-color="orange" id="wizardProfile" style=" background-color: rgba(245, 245, 245, 0.49); border-radius: 10%;padding-bottom: 30px">
+                          <div class="card wizard-card col-sm-6 col-sm-offset-3" data-color="orange" id="wizardProfile" style=" background-color: rgba(245, 245, 245, 0.49); border-radius: 100px;padding-bottom: 30px">
                            <div class="row">
                              <h3><center>Your Followers </center></h3><br>
                               <table class="containerr table" style="width: 80%; margin-left:10%; ">                                 
