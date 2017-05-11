@@ -37,7 +37,7 @@
 	preview.src = "../recources/images/default-avatar.png";
 	}
 	}
-	</script>   
+	</script>
     </head>
 
     <body>
@@ -190,9 +190,9 @@
 
                                                 <div class="col-sm-10 col-sm-offset-1">
                                                     <div class="col-sm-6">
-                                                        <div class="choice" id="select" onclick="myFunction()"> 
+                                                        <div class="choice" id="select" onclick="myFunction()">
                                                             <div class="icon">
-                                                                <label >  
+                                                                <label >
                                                                     <input type="radio" name="type" value="doctor" >
 
                                                                     <img id="select" src="../recources/images/doctor.png" width="110" value="doctor">
@@ -214,10 +214,10 @@
                                                         </div>
                                                     </div>
 
-                                                    
-                                                    
-                                                    
-                                                    
+
+
+
+
 
                                                 </div>
                                             </div>
@@ -526,8 +526,7 @@
 
         </div>
     </div>
-    <?php include './footer.php';
-    ?>
+
 </body>
 
 <!--   Core JS Files   -->
