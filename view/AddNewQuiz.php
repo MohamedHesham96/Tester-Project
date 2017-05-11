@@ -91,7 +91,7 @@ session_start();
                     inputField = document.getElementById("time");
                     inputField2 = document.getElementById("fullmark");
                     if (confirm("Are You Sure You Want submit This Settings ?")) {
-                        if (validateHhMm(inputField) || validateHhMm(inputField2)) {
+                        if (validateHhMm(inputField) || validateHhMm(inputField2lo)) {
                             document.form.submit();
                         } else {
                             alert("Please Enter Correct Inputs !");
