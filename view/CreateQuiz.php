@@ -107,7 +107,8 @@ include '../controller/CreateQuizOperations.php';
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $header = $row['header'];
-                    $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
+                    $removeIcon = '<span class="remove glyphicon glyphicon-remove" aria-hidden="true"></span>';            //connect to data base and create table for result
+
                     echo "<tr>";
                     echo "<td>" . $row['header'] . "</td>";
                     echo "<td>" . $row['answer_1'] . "</td>";
