@@ -14,14 +14,16 @@ include '../controller/CreateQuizOperations.php';
                 height: 100%;
             }
             .bheight{
-                height: 120px
+                height: 90px;
+                border-radius: 15px 70px
             }
             .bt{
                 background-color: rgba(238, 238, 238, 0.66);
                 color:  rgba(51, 51, 51, 0.56);
                 font-size: 19;
                 font-weight: bold;
-                margin-left: 118px;
+                
+                margin-bottom: 20px
             }
             a{
                 text-decoration: none
@@ -30,12 +32,24 @@ include '../controller/CreateQuizOperations.php';
                 color: rgba(51, 51, 51, 0.56);            
             }
             a:hover{
-                text-decoration: none;
-                color: rgba(51, 51, 51, 0.56); 
+                  text-decoration: none;
+                   color: rgba(51, 51, 51, 0.56); 
 
             }
-
-        </style>
+            .remove {
+                font-size:1em; 
+                font-weight: bold;
+                font-size: 25;
+                display: block;
+                padding: 0;
+                margin:0;
+                color: #000;
+              }
+              .remove:hover{
+                  color: red;
+              }
+            
+         </style>
     </head>
 
     <body>
@@ -82,6 +96,7 @@ include '../controller/CreateQuizOperations.php';
 
         <br>
         <div class="container">
+
             <table class="containerr table"> 
                 <tr>	
                     <th>Qeustion</th>
@@ -90,6 +105,7 @@ include '../controller/CreateQuizOperations.php';
                     <th>Answer (C)</th>
                     <th>Answer (D)</th>
                     <th>Correct Answer</th>
+                    <th>Delete Question</th>
                 </tr>
 
 
@@ -102,7 +118,8 @@ include '../controller/CreateQuizOperations.php';
 
                     while ($row = mysqli_fetch_assoc($result)) {
                         $header = $row['header'];
-                        $removeIcon = "<img src = '../recources/images/Remove_User.png' height = '32'>";
+                        $removeIcon = '<span class="remove glyphicon glyphicon-remove" aria-hidden="true"></span>';            //connect to data base and create table for result
+
                         echo "<tr>";
                         echo "<td>" . $row['header'] . "</td>";
                         echo "<td>" . $row['answer_1'] . "</td>";
