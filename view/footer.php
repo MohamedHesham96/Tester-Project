@@ -29,6 +29,7 @@
 
   </body>
 </html>-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -58,9 +59,9 @@
     	background-color:rgba(0, 0, 0, 0.62);
       font-family: 'Open Sans', sans-serif;
     	width:100%;
-    	height:50px;
+    	height:100px;
     	position:absolute;
-    	bottom:0;
+    	bottom:-150;
     	left:0;
     }
 
@@ -127,7 +128,7 @@
     </div>
   </div>
 </div>
-  		</div><!-- #footer -->
+  		</div>
 
   	</div><!-- #wrapper -->
 
