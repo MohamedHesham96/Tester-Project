@@ -28,7 +28,8 @@ include '../controller/MySubmitOperations.php';
         echo ' </div>';
         ?>  
 
-        <h1> Your Result </h1>
+        <h1> The Result </h1>
+        
         <div class="container">
 
             <table class="containerr"> 
@@ -44,37 +45,48 @@ include '../controller/MySubmitOperations.php';
                 $user = $_SESSION['username'];
 
                 for ($i = 0; $i <= 1000000; $i++) { // بيمشي على الاسماء الي جاية من اللينك لحد رقم كبير علشان يضمن انه هيمشي على كله 
-                    if (isset($_GET['correct_ans' . $i]) && isset($_GET[$i])) {
+                    if (isset($_GET['correct_ans' . $i]) && isset($_GET['header' . $i])) {
                         $count++;
 
                         if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
-                            MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
+                            //  MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
                         }
 
-                        if ($_GET['correct_ans' . $i] == $_GET[$i]) {
-                            $successCount++;
-                            echo "<tr style='background: #00ff00'>";
-                        } else if (($_GET['correct_ans' . $i] != $_GET[$i])) {
+                        if ((isset($_GET['header' . $i]) && !isset($_GET[$i]))) {
 
                             echo "<tr style='background: #ff0033'>";
+                        } else if (isset($_GET[$i])) {
+
+                            if ($_GET['correct_ans' . $i] == $_GET[$i]) {
+                                $successCount++;
+                                echo "<tr style='background: #00ff00'>";
+                            } else {
+                                echo "<tr style='background: #ff0033'>";
+                            }
                         }
 
-                        echo "<td>" . $_GET['header' . $i] . "</td>";
-                        echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
-                        echo "<td>" . $_GET[$i] . "</td>";
+                        if (isset($_GET['header' . $i]) && isset($_GET[$i])) {
+                            echo "<td>" . $_GET['header' . $i] . "</td>";
+                            echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+                            echo "<td>" . $_GET[$i] . "</td>";
+                        } else if (isset($_GET['header' . $i]) && !isset($_GET[$i])) {
 
+                            echo "<td>" . $_GET['header' . $i] . "</td>";
+                            echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+                            echo "<td>" . 'No Answer' . "</td>";
+                        }
                         echo "</tr>";
                     }
                 }
                 echo $count . "     ::  result     ";
-                if($count != 0){
+                if ($count != 0) {
                     $result = $successCount * ($fullMark / $count);
-                echo $result;
-                }  else {
+                    echo $result;
+                } else {
                     echo "0";
-                    }
+                }
                 if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
-                    MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
+                    //    MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
                 }
                 ?>
             </table>
