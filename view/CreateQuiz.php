@@ -21,7 +21,7 @@ include '../controller/CreateQuizOperations.php';
                 color:  rgba(51, 51, 51, 0.56);
                 font-size: 19;
                 font-weight: bold;
-                margin-left: 30px;
+                margin-left: 118px;
             }
             a{
                 text-decoration: none
@@ -77,13 +77,13 @@ include '../controller/CreateQuizOperations.php';
         }
         ?>
 
-
+        </div>
         <br>  
         <br>
         <br>
 
         <br>
-        
+        <div class="container">
         <table class="containerr table"> 
             <tr>	
                 <th>Qeustion</th>
