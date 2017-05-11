@@ -51,20 +51,20 @@ session_start();
                 <form name="form" action="AddNewQuiz.php" method="GET">
                     <div class="col-lg-3">
                         <label>Quiz Name :<small></small></label>
-                        <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="name"required>
+                        <input class="form-control" type="text" placeholder="Enter Quiz Name"  name="name" required>
                     </div>
 
 
                     <div class="col-lg-3">
                         <label>Time :<small></small></label>
-                        <input id="time" onkeyup="validateHhMm(this)" value="" class="form-control" placeholder="Enter Quiz Time...       HH:MM:SS"  name="time" >
+                        <input id="time" onkeyup="validateHhMm(this)" value="" class="form-control" placeholder="Enter Quiz Time... (Minutes)"  name="time" >
                     </div>
 
 
                     <div class="col-lg-3">
 
                         <label>Full Mark :<small></small></label>
-                        <input class="form-control" type="text"  placeholder="Enter Quiz Full Mark" name="fullmark" required>
+                        <input id="fullmark" class="form-control" type="text" onkeyup="validateHhMm(this)"  placeholder="Enter Quiz Full Mark" name="fullmark" required>
 
                     </div>
 
@@ -88,18 +88,27 @@ session_start();
 
             function submitss() {
                 {
-                    document.form.submit();
-
+                    inputField = document.getElementById("time");
+                    inputField2 = document.getElementById("fullmark");
+                    if (confirm("Are You Sure You Want submit This Settings ?")) {
+                        if (validateHhMm(inputField) || validateHhMm(inputField2lo)) {
+                            document.form.submit();
+                        } else {
+                            alert("Please Enter Correct Inputs !");
+                        }
+                    }
                 }
             }
 
             function validateHhMm(inputField) {
-                var isValid = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/.test(inputField.value);
+                var isValid = /^([1-9]|[1-9]?[0-9]?[0-9]?[0-9]?[0-9])?$/.test(inputField.value);
 
                 if (isValid) {
                     inputField.style.backgroundColor = '#bfa';
-                } else {
+                } else if (!isValid) {
                     inputField.style.backgroundColor = '#fba';
+                } else {
+                    inputField.style.backgroundColor = '#fff';
                 }
 
                 return isValid;
