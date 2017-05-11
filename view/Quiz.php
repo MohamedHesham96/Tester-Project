@@ -10,6 +10,31 @@ $time = $row['time'] * 1000 * 60;
 <html>  
     <head>
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+       <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>       
+         <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+
+            }
+            h3{
+                color: #FFF
+            }.bt{
+                background-color: rgba(0, 0, 0, 0.62);
+                border: 0;
+                color: rgba(0, 0, 0, 0.73);
+            }
+            .bt:hover{
+                background-color: rgba(0, 0, 0, 0.5);
+                border: 0;
+                color:  #f5f5f5;
+            }
+
+
+        </style>
+         </style>
+
 <!--        <script type="text/javascript" >
                     $(function () {  // document.ready function...
                         setTimeout(function () {
@@ -19,7 +44,7 @@ $time = $row['time'] * 1000 * 60;
     </head>
     <body>
         <?php if ($time != 0 && $_SESSION['usertype'] == 'student') { ?>     
-            <div id="Mydiv" style="margin-right: 100px;color:#494BCB;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
+            <div id="Mydiv" style="margin-right: 100px;color:#F5F5;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
                 <script>
 
                     // Set the date we're counting down to
@@ -84,13 +109,13 @@ $time = $row['time'] * 1000 * 60;
 
         echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
-        echo "Quiz id    : $quizId <br><br>"; // display quiz id
-        echo "Quiz name  : $name <br><br>"; // display quiz name
+        echo "<h3>Quiz id    : $quizId </h3>"; // display quiz id
+        echo "<h3>Quiz name  : $name </h3>"; // display quiz name
         if ($_SESSION['usertype'] == 'student' || $_SESSION['usertype'] == 'doctor') {
-            echo "Full Mark  : $fullMark <br><br>"; // 
+            echo "<h3>Full Mark  : $fullMark </h3>"; // 
         }
         if ($_SESSION['usertype'] == 'student')
-            echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
+            echo "<h3>Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a></h3>"; //may be go to doctor profile
         echo ' </div>';
 
         echo '    <div style="margin-right: 200; padding-left: 200"> 
@@ -207,8 +232,8 @@ $time = $row['time'] * 1000 * 60;
 
             <?php } ?>
 
-
-            <input  style="visibility: <?php echo $submitState ?>" class="btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
+                    <br>
+            <input  style="visibility: <?php echo $submitState ?>" class="bt btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
 
             <input  name="quizname" type="text" value="<?php echo $name; ?>"  readonly="readonly" hidden/> 
             <input  name="quizid" type="text" value="<?php echo $quizId; ?>"  readonly="readonly" hidden/> 

@@ -4,6 +4,27 @@ include '../controller/MySubmitOperations.php';
 ?>
 <html>
     <head>
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
+                 <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat  top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+            th a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-size: 20;
+                color: #F5F5F5; 
+
+            }
+
+        </style>
+
     </head>
     <body >
 
@@ -21,22 +42,21 @@ include '../controller/MySubmitOperations.php';
 
         echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
-        echo "Quiz id    : $quizId <br><br>"; // display quiz id
-        echo "Quiz name  : $name <br><br>"; // display quiz name
-        echo "Full Mark  : $fullMark <br><br>"; // display quiz name
-        echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
+        echo "<h3>Quiz id    : $quizId </h3>"; // display quiz id
+        echo "<h3>Quiz name  : $name </h3>"; // display quiz name
+        echo "<h3>Full Mark  : $fullMark </h3>"; // display quiz name
+        echo "<h3>Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a></h3>"; //may be go to doctor profile
         echo ' </div>';
         ?>  
 
-        <h1> Your Result </h1>
 
         <div class="container">
 
-            <table class="containerr"> 
+            <table class="containerr table"> 
                 <tr>	
-                    <td>Question Header</td>
-                    <td>Correct Answer</td>
-                    <td>Your Answer</td>
+                    <th>Question Header</th>
+                    <th>Correct Answer</th>
+                    <th>Your Answer</th>
                 </tr>
 
                 <?php
@@ -59,9 +79,9 @@ include '../controller/MySubmitOperations.php';
 
                             if ($_GET['correct_ans' . $i] == $_GET[$i]) {
                                 $successCount++;
-                                echo "<tr style='background: #00ff00'>";
+                                echo "<tr>";
                             } else {
-                                echo "<tr style='background: #ff0033'>";
+                                echo "<tr >";
                             }
                         }
 
@@ -92,6 +112,5 @@ include '../controller/MySubmitOperations.php';
                     ?>
             </table>
         </div>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>

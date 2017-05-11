@@ -1,41 +1,60 @@
 <?php
-// include './header.php';
-session_start();
+ include './header.php';
 include '../controller/CreateQuizOperations.php';
 ?>
 
 <html>
     <head>
         <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <style type="text/css">
+                body{
+                    background: url("../recources/images/back2.jpg") no-repeat right bottom;
+                    width: 100%;
+                    height: 100%
+                }
+                .bt{
+                background-color: rgba(0, 0, 0, 0.62);
+                border: 0;
+                color:  #f5f5f5;
+            }
+            .bt:hover{
+                background-color: rgba(0, 0, 0, 0.5);
+                border: 0;
+                color:  #f5f5f5;
+            }
+                input[type="text"]{
+                background-color: #f5f5f5
+            }
+        </style>
+    
     </head>
 
     <body>
-        <br>       
         <br>
-        <div style="background: #109CFF; border-radius: 3%" class="col-sm-8 col-sm-offset-2 ">
-            <br>
+        <br>
+        <div style="background:rgba(204, 204, 204, 0.92); border-radius: 3%;padding-bottom: 35px" class="col-sm-8 col-sm-offset-2 " >            <br>
             <div class="wizard-header">
                 <form  id="Form" method="GET">
                     <!--        You can switch ' data-color="orange" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
-                    <div id="div1q1" style="background: #eee; border-radius: 3%; margin-left: 15"  class="col-lg-8">
+                    <div id="div1q1" style="background: #EEE; border-radius: 3%; margin-left: 15;"  class="">
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-9" >
 
                             <br>
                             <label>Question<small></small></label>
                             <input class="form-control" type="text" value="How Are You ?"  placeholder="" name="question" >
                         </div>
 
-                        <div class="col-lg-8">
+                        <div class="col-lg-9">
 
                             <br>
-                            <input class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans1').value)"  placeholder="" name="ansradio" > 
+                            <input class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans1').value)"  placeholder="" name="ansradio" >
                             <label>Answer (A)</label>
                             <br>
-                            <input id="ans1" class="form-control"  type="text"  placeholder="" name="ans1" value="" required> 
+                            <input id="ans1" class="form-control"  type="text"  placeholder="" name="ans1" value="" required>
 
                             <br>
-                            <input  class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans2').value)"  placeholder="" name="ansradio" > 
+                            <input  class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans2').value)"  placeholder="" name="ansradio" >
                             <label>Answer (B)</label>
                             <br>
 
@@ -44,27 +63,27 @@ include '../controller/CreateQuizOperations.php';
 
                             <div id="container" style="display: none"><input type="radio" onclick="getCorrectAnswer(document.getElementById('ans3').value)" name = "ansradio" > <label>Answer (C)
                                 </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans3()"> X </button>
-                                <input id="ans3" class="form-control" name="ans3" required><br></div>
+                                <input id="ans3" class="bt form-control" name="ans3" required><br></div>
 
                             <div id="container2" style="display: none">
 
                                 <input id="radio4" type="radio" onclick="getCorrectAnswer(document.getElementById('ans4').value)"  name = "ansradio" > <label>Answer (D)
-                                </label><button class="btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans4()"> X </button>
+                                </label><button class="bt btn-fill btn-danger pull-right" id="remove" type="button" onclick="removeans4()"> X </button>
                                 <input id="ans4" class="form-control" name="ans4" required>
                             </div>
                             <br>
                             <label>Correct Answer</label>
                             <input id="correctans" style="color: #fff;background: #05AE0E" class="form-control" type="text"  placeholder="" name="correctans" required readonly>
                             <br>
-
+                             
                             <div style="margin-left: 13" class="col-lg-4 col-lg-pull-1">
-                                <button  class="btn btn-fill btn-info" id="newans" type="button" onclick="Add()">Add New Answer</button>
+                                <button  class="bt btn btn-fill btn-info" id="newans" type="button" onclick="Add()">Add New Answer</button>
                             </div>
                             <div style="margin-left: 10" class="col-lg-1 col-lg-offset-3">
-                                <button  class="btn btn-fill btn-primary" id="" type="button" onclick="submitForm('AddNewQuestion.php')"> Next </button>
+                                <button  class="bt btn btn-fill btn-primary" id="" type="button" onclick="submitForm('AddNewQuestion.php')"> Next </button>
                             </div>
                             <div style="margin-left: 35" class="col-lg-offset-1 col-lg-4">
-                                <button  class="btn btn-fill btn-danger" id="" type="button" onclick="submitForm('FinishQuiz.php')"> Finish </button>
+                                <button  class="bt btn btn-fill btn-danger" id="" type="button" onclick="submitForm('FinishQuiz.php')"> Finish </button>
                                 <br>
                                 <br>
                             </div>
@@ -74,7 +93,9 @@ include '../controller/CreateQuizOperations.php';
                     <input hidden name="submitstate" value="true">
 
                 </form>
+                 <br> <br> <br> <br>
             </div>
+             
         </div>
         <br>
 
@@ -103,9 +124,9 @@ include '../controller/CreateQuizOperations.php';
                 } else {
                     alert("Please Choice Correct Answer !!");
                 }
-            } // end of submit function 
+            } // end of submit function
 
-            $aNum = 2; // form condetion 3 for ans3 and 4 for ans4 بعد كده مش مهم لانه بعد كده هيعتمد على الظهور بتاع كل واحدة 
+            $aNum = 2; // form condetion 3 for ans3 and 4 for ans4 بعد كده مش مهم لانه بعد كده هيعتمد على الظهور بتاع كل واحدة
 
             function Add() {
 
@@ -127,7 +148,7 @@ include '../controller/CreateQuizOperations.php';
 
                     document.getElementById("ans3").value = "";
                     $("#container").slideUp(1000);
-                } else {        // switch answer4 input value with answer and hide answer4 input 
+                } else {        // switch answer4 input value with answer and hide answer4 input
                     $value1 = document.getElementById("ans4").value;
                     document.getElementById("ans3").value = $value1;
                     document.getElementById("ans4").value = "";
@@ -136,7 +157,7 @@ include '../controller/CreateQuizOperations.php';
                 }
             }
 
-            function removeans4() { // hide answer4 
+            function removeans4() { // hide answer4
                 document.getElementById("newans").disabled = false;
                 document.getElementById("ans4").value = "";
                 $("#container2").slideUp(1000);
@@ -167,7 +188,8 @@ include '../controller/CreateQuizOperations.php';
 
         </script>
 
-
+        <?php include './footer.php';
+        ?>
     </body>
 
     <!--   Core JS Files   -->
