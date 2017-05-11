@@ -64,7 +64,7 @@ session_start();
                     <div class="col-lg-3">
 
                         <label>Full Mark :<small></small></label>
-                        <input class="form-control" type="text" onkeyup="validateHhMm(this)"  placeholder="Enter Quiz Full Mark" name="fullmark" required>
+                        <input id="fullmark" class="form-control" type="text" onkeyup="validateHhMm(this)"  placeholder="Enter Quiz Full Mark" name="fullmark" required>
 
                     </div>
 
@@ -90,19 +90,11 @@ session_start();
                 {
                     inputField = document.getElementById("time");
                     inputField2 = document.getElementById("fullmark");
-
                     if (confirm("Are You Sure You Want submit This Settings ?")) {
-                        if (validateHhMm(inputField)) {
-                            //       document.form.submit();
-                            alert("Er: Please Enter Correct Format To Time !");
-                            if (validateHhMm(inputField2)) {
-                                //       document.form.submit();
-                                alert("Er: Please Enter Correct Format To Time !");
-                            } else {
-                                alert("Please Enter Correct Format To Time !");
-                            }
+                        if (validateHhMm(inputField) || validateHhMm(inputField2)) {
+                            document.form.submit();
                         } else {
-                            alert("Please Enter Correct Format To Time !");
+                            alert("Please Enter Correct Inputs !");
                         }
                     }
                 }
