@@ -1,6 +1,6 @@
 <?php
-session_start();
-
+//session_start();
+include './Header.php';
 include '../controller/CreateQuizOperations.php';
 ?>
 
