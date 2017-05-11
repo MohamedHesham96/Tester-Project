@@ -44,7 +44,7 @@ session_start();
             }
         }
         ?>
-        <div class="col-lg-12"> 
+        <div class="col-lg-12">
 
             <div style="background: #EEE" class="col-lg-12 btn-lg">
 
@@ -115,6 +115,6 @@ session_start();
 
         <!--  More information about jquery.validate here: http://jqueryvalidation.org/  -->
         <script src="../recources/js/jquery.validate.min.js"></script>
-
+        <?php include './footer.php';
+        ?>
     </body></html>
-
