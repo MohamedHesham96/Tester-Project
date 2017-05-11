@@ -10,6 +10,18 @@ $time = $row['time'] * 1000 * 60;
 <html>  
     <head>
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+         <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+
+            }
+            h2{
+                color: #FFF
+            }
+         </style>
+
 <!--        <script type="text/javascript" >
                     $(function () {  // document.ready function...
                         setTimeout(function () {
@@ -19,7 +31,7 @@ $time = $row['time'] * 1000 * 60;
     </head>
     <body>
         <?php if ($time != 0 && $_SESSION['usertype'] == 'student') { ?>     
-            <div id="Mydiv" style="margin-right: 100px;color:#494BCB;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
+            <div id="Mydiv" style="margin-right: 100px;color:#F5F5;font-family: cursive; font-size: 26px;border-radius: 5px ;border: 1px #FFED00 solid;max-width:120px ; max-height: 100px;float: right; position: fixed;">       
                 <script>
 
                     // Set the date we're counting down to
@@ -84,13 +96,13 @@ $time = $row['time'] * 1000 * 60;
 
         echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
-        echo "Quiz id    : $quizId <br><br>"; // display quiz id
-        echo "Quiz name  : $name <br><br>"; // display quiz name
+        echo "<h2>Quiz id    : $quizId </h2>"; // display quiz id
+        echo "<h2>Quiz name  : $name </h2>"; // display quiz name
         if ($_SESSION['usertype'] == 'student' || $_SESSION['usertype'] == 'doctor') {
-            echo "Full Mark  : $fullMark <br><br>"; // 
+            echo "<h2>Full Mark  : $fullMark </h2>"; // 
         }
         if ($_SESSION['usertype'] == 'student')
-            echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
+            echo "<h2>Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a></h2>"; //may be go to doctor profile
         echo ' </div>';
 
         echo '    <div style="margin-right: 200; padding-left: 200"> 
