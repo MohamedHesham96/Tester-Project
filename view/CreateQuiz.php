@@ -36,6 +36,18 @@ include '../controller/CreateQuizOperations.php';
                    color: rgba(51, 51, 51, 0.56); 
 
             }
+            .remove {
+                font-size:1em; 
+                font-weight: bold;
+                font-size: 25;
+                display: block;
+                padding: 0;
+                margin:0;
+                color: #000;
+              }
+              .remove:hover{
+                  color: red;
+              }
             
          </style>
     </head>
