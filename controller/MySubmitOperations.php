@@ -29,6 +29,27 @@ class MySubmitOperations {
         $result = mysqli_query($conn, $query);
     }
 
+    public static function getAllHeader($quizID) {
+
+        include '../include/vars.php';
+
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
+
+        $query = "SELECT `Header` FROM `questions` where quiz_id = $quizID";
+
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_error($conn)) {
+            echo 'My Quizzes get all headers OperationsError !!';
+
+            return NULL;
+        } else {
+            return $result;
+        }
+    }
+
 }
 
 ?>  

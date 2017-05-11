@@ -54,7 +54,7 @@ class MyQuizzesOperations {
         }
     }
 
-    public static function getAnsOnly($Header) {
+    public static function getAnsOnly($Header, $quizID) {
 
 
 
@@ -65,7 +65,8 @@ class MyQuizzesOperations {
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
         $query = "SELECT `answer_1`, `answer_2`, `answer_3`, `answer_4` FROM `questions`"
-                . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id WHERE questions.Header = '$Header'";
+                . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id WHERE "
+                . "questions.Header = '$Header' and questions.quiz_id = $quizID";
 
 
         $result = mysqli_query($conn, $query);
@@ -85,7 +86,6 @@ class MyQuizzesOperations {
 
         $conn = new mysqli($host, $username, $password, $dbname);
 
-        //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
         $query = "SELECT `Header` FROM `questions`"
                 . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id ";
@@ -93,19 +93,20 @@ class MyQuizzesOperations {
         $result = mysqli_query($conn, $query);
 
         if (mysqli_error($conn)) {
-            echo 'My Quizzes OperationsError !!';
+            echo 'My Quizzes Get Header Only OperationsError !!';
 
             return NULL;
         } else {
             return $result;
         }
     }
-    public static function getQuizById($quizId){
+
+    public static function getQuizById($quizId) {
         include '../include/vars.php';
         $conn = new mysqli($host, $username, $password, $dbname);
-        
-        $query="SELECT * FROM quizzes WHERE quiz_id =$quizId";
-        
+
+        $query = "SELECT * FROM quizzes WHERE quiz_id =$quizId";
+
         $result = mysqli_query($conn, $query);
         if (mysqli_error($conn)) {
             echo mysqli_error($conn);

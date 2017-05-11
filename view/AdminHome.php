@@ -2,10 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <link href="../recources/css/style.css" rel="stylesheet" /> 
+        <link href="../recources/css/style.css" rel="stylesheet" />
         <style type="text/css">
             .remove {
-                font-size:1em; 
+                font-size:1em;
                 font-weight: bold;
                 font-size: 25;
                 display: block;
@@ -19,7 +19,7 @@
               .atest {
                 display: block;
                 padding-bottom: 0;
-                margin:0; 
+                margin:0;
                 color: #000;
               }
 
@@ -34,10 +34,10 @@
                 $quizId = $_GET['deletequizid'];
                 AdminOperations::deleteQuiz($quizId);
             }
-            
+
             $removeIcon = '<span class="remove glyphicon glyphicon-remove" aria-hidden="true"></span>';            //connect to data base and create table for result
             include '../include/vars.php';
-            
+
             $conn = mysqli_connect($host, $username, $password, $dbname);
             if ($conn->error)
                 die("connection lost");
@@ -81,6 +81,8 @@
                 }
                 echo '</tbody></table>';
             }
+            ?>
+            <?php include './footer.php';
             ?>
         </div>
     </body>
