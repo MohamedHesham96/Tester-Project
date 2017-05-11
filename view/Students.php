@@ -76,7 +76,6 @@
                       <th>Phone</th>
                       <th>University</th>
                       <th>Faculty</th>
-                      <th>Edit</th>
                       <th>Delete</th>
                   </tr>
                   </thead>';
@@ -110,7 +109,6 @@
                         echo "<td>" . $row['university'] . "</td>";
                         echo "<td>" . $row['faculty'] . "</td>";
 
-                        echo "<td class='bt'><a href = 'ProfilePage.php?&name=$studentName'\"> $editIcon </a></td>";
                         echo "<td class='bt'><a href = 'Students.php?&deleteuser=$studentName' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
 
                         echo "</tr>";

@@ -30,7 +30,8 @@ include '../controller/MySubmitOperations.php';
 
 
         <?php
-      
+        $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+
         $name = $_GET['quizname'];
         $quizId = $_GET['quizid'];
         $maker = $_GET['quizdoctor'];
@@ -48,7 +49,7 @@ include '../controller/MySubmitOperations.php';
         echo ' </div>';
         ?>  
 
-        
+
         <div class="container">
 
             <table class="containerr table"> 
@@ -67,8 +68,8 @@ include '../controller/MySubmitOperations.php';
                     if (isset($_GET['correct_ans' . $i]) && isset($_GET['header' . $i])) {
                         $count++;
 
-                        if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
-                            //  MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
+                        if (!$pageWasRefreshed && isset($_GET[$i])) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                            MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
                         }
 
                         if ((isset($_GET['header' . $i]) && !isset($_GET[$i]))) {
@@ -89,25 +90,26 @@ include '../controller/MySubmitOperations.php';
                             echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
                             echo "<td>" . $_GET[$i] . "</td>";
                         } else if (isset($_GET['header' . $i]) && !isset($_GET[$i])) {
-
-                            echo "<td>" . $_GET['header' . $i] . "</td>";
-                            echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
-                            echo "<td>" . 'No Answer' . "</td>";
+                            if (!$pageWasRefreshed)    // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                                MySubmitOperations::insertResult($user, $quizId, "", $_GET['header' . $i]);
+                                echo "<td>" . $_GET['header' . $i] . "</td>";
+                                echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+                                echo "<td>" . 'No Answer' . "</td>";
+                            }
+                            echo "</tr>";
                         }
-                        echo "</tr>";
                     }
-                }
-                echo $count . "     ::  result     ";
-                if ($count != 0) {
-                    $result = $successCount * ($fullMark / $count);
-                    echo $result;
-                } else {
-                    echo "0";
-                }
-                if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
-                    //    MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
-                }
-                ?>
+                    echo $count . "     ::  result     ";
+                    if ($count != 0) {
+                        $result = $successCount * ($fullMark / $count);
+                        echo $result;
+                    } else {
+                        echo "0";
+                    }
+                    if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                        MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
+                    }
+                    ?>
             </table>
         </div>
     </body>
