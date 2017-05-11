@@ -6,7 +6,7 @@ include '../controller/CreateQuizOperations.php';
 
 <html>
     <head>
-        <link href="../recources/css/style1.css" rel="stylesheet" /> 
+        <link href="../recources/css/style1.css" rel="stylesheet" />
         <style>
             body{
                 background: url("../recources/images/1.jpg") no-repeat right top;
@@ -22,22 +22,22 @@ include '../controller/CreateQuizOperations.php';
                 color:  rgba(51, 51, 51, 0.56);
                 font-size: 19;
                 font-weight: bold;
-                
+
                 margin-bottom: 20px
             }
             a{
                 text-decoration: none
             }
             .bt:hover{
-                color: rgba(51, 51, 51, 0.56);            
+                color: rgba(51, 51, 51, 0.56);
             }
             a:hover{
                   text-decoration: none;
-                   color: rgba(51, 51, 51, 0.56); 
+                   color: rgba(51, 51, 51, 0.56);
 
             }
             .remove {
-                font-size:1em; 
+                font-size:1em;
                 font-weight: bold;
                 font-size: 25;
                 display: block;
@@ -48,13 +48,13 @@ include '../controller/CreateQuizOperations.php';
               .remove:hover{
                   color: red;
               }
-            
+
          </style>
     </head>
 
     <body>
         <div class="container">
-            <div class=""> 
+            <div class="">
 
                 <div style="" class="">
 
@@ -90,15 +90,15 @@ include '../controller/CreateQuizOperations.php';
             ?>
 
         </div>
-        <br>  
+        <br>
         <br>
         <br>
 
         <br>
         <div class="container">
 
-            <table class="containerr table"> 
-                <tr>	
+            <table class="containerr table">
+                <tr>
                     <th>Qeustion</th>
                     <th>Answer (A)</th>
                     <th>Answer (B)</th>
@@ -158,6 +158,8 @@ include '../controller/CreateQuizOperations.php';
 
                 return isValid;
             }</script>
+            <?php include './footer.php';
+            ?>
     </body>
 
     <!--   Core JS Files   -->
@@ -172,4 +174,3 @@ include '../controller/CreateQuizOperations.php';
     <script src="../recources/js/jquery.validate.min.js"></script>
 
 </html>
-

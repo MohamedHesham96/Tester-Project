@@ -30,7 +30,7 @@ include '../controller/CreateQuizOperations.php';
     </head>
 
     <body>
-        <br>       
+        <br>
         <br>
         <div style="background:rgba(204, 204, 204, 0.92); border-radius: 3%;padding-bottom: 35px" class="col-sm-8 col-sm-offset-2 " >            <br>
             <div class="wizard-header">
@@ -48,13 +48,13 @@ include '../controller/CreateQuizOperations.php';
                         <div class="col-lg-9">
 
                             <br>
-                            <input class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans1').value)"  placeholder="" name="ansradio" > 
+                            <input class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans1').value)"  placeholder="" name="ansradio" >
                             <label>Answer (A)</label>
                             <br>
-                            <input id="ans1" class="form-control"  type="text"  placeholder="" name="ans1" value="" required> 
+                            <input id="ans1" class="form-control"  type="text"  placeholder="" name="ans1" value="" required>
 
                             <br>
-                            <input  class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans2').value)"  placeholder="" name="ansradio" > 
+                            <input  class="" type="radio" onclick="getCorrectAnswer(document.getElementById('ans2').value)"  placeholder="" name="ansradio" >
                             <label>Answer (B)</label>
                             <br>
 
@@ -124,9 +124,9 @@ include '../controller/CreateQuizOperations.php';
                 } else {
                     alert("Please Choice Correct Answer !!");
                 }
-            } // end of submit function 
+            } // end of submit function
 
-            $aNum = 2; // form condetion 3 for ans3 and 4 for ans4 بعد كده مش مهم لانه بعد كده هيعتمد على الظهور بتاع كل واحدة 
+            $aNum = 2; // form condetion 3 for ans3 and 4 for ans4 بعد كده مش مهم لانه بعد كده هيعتمد على الظهور بتاع كل واحدة
 
             function Add() {
 
@@ -148,7 +148,7 @@ include '../controller/CreateQuizOperations.php';
 
                     document.getElementById("ans3").value = "";
                     $("#container").slideUp(1000);
-                } else {        // switch answer4 input value with answer and hide answer4 input 
+                } else {        // switch answer4 input value with answer and hide answer4 input
                     $value1 = document.getElementById("ans4").value;
                     document.getElementById("ans3").value = $value1;
                     document.getElementById("ans4").value = "";
@@ -157,7 +157,7 @@ include '../controller/CreateQuizOperations.php';
                 }
             }
 
-            function removeans4() { // hide answer4 
+            function removeans4() { // hide answer4
                 document.getElementById("newans").disabled = false;
                 document.getElementById("ans4").value = "";
                 $("#container2").slideUp(1000);
@@ -188,7 +188,8 @@ include '../controller/CreateQuizOperations.php';
 
         </script>
 
-
+        <?php include './footer.php';
+        ?>
     </body>
 
     <!--   Core JS Files   -->

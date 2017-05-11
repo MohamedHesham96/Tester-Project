@@ -1,13 +1,13 @@
 <?php include './Header.php'; ?>
 <html>
     <head>
-       <link href="../recources/css/style1.css" rel="stylesheet" /> 
+       <link href="../recources/css/style1.css" rel="stylesheet" />
        <style>
              body{
                 background: url("../recources/images/1.jpg") no-repeat right top;
                 width: 100%;
                 height: 100%;
-                    
+
             }
          </style>
     </head>
@@ -24,8 +24,8 @@
         <h1><center> Your Exams </center></h1>
 
         <div class="container">
-            <table class="containerr table"> 
-                <tr>	
+            <table class="containerr table">
+                <tr>
                     <th>Quiz code</th>
                     <th>Quiz Name</th>
                     <th>Maker name</th>
@@ -77,7 +77,7 @@
                             var id = <?php echo json_encode($trID) ?>;
 
                             var link = "ViewMyResult.php?quizid=" + quiz_id + "&maker=" + quizMaker + "&name=" + quizName + "&fullmark=" + fullMark;
-                            
+
                             $("#" + id).attr('href', link);
 
                             $("#" + id).on("click", function () {
@@ -93,5 +93,7 @@
             </table>
 
         </div>
+        <?php include './footer.php';
+        ?>   
     </body>
 </html>

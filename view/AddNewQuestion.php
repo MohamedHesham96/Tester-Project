@@ -1,3 +1,14 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>add new QUESTION</title>
+  </head>
+  <body>
+
+  </body>
+</html>
 <?php
 
 include '../controller/CreateQuizOperations.php';
@@ -27,3 +38,17 @@ if (isset($_GET['ans4'])) {
 $corectAns = $_GET['correctans'];
 $quizID = CreateQuizOperations::addQuestion($quizID, $header, $ans1, $ans2, $ans3, $ans4, $corectAns);
 echo '<script>document.location.href="CreateQuestion.php?"</script>';
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <?php include './footer.php';
+    ?>
+    <?php include './footer.php';
+    ?>
+  </body>
+</html>

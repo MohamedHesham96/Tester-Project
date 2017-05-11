@@ -1,7 +1,6 @@
 <?php
-//check if user is already login or not 
-
-//session_start();
+//check if user is already login or not
+session_start();
 if (isset($_SESSION['username'])) {
     header("Location: Home.php"); // if yes go to home page
 }
@@ -109,6 +108,8 @@ if (isset($_SESSION['username'])) {
         <script src="../recources/js/jquery.backstretch.min.js"></script>
         <script src="../recources/js/scripts.js"></script>
 
+        <?php include './footer.php';
+        ?>
 
     </body>
 
