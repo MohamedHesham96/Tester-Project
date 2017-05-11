@@ -5,13 +5,13 @@ include '../controller/StudentHomeOperations.php';
 <html>
     <head>
         <meta charset="utf-8"/>
-         <link href="../recources/css/style1.css" rel="stylesheet" /> 
+         <link href="../recources/css/style1.css" rel="stylesheet" />
          <style>
              body{
                 background: url("../recources/images/1.jpg") no-repeat right top;
                 width: 100%;
                 height: 100%;
-                    
+
             }
          </style>
 
@@ -97,6 +97,8 @@ include '../controller/StudentHomeOperations.php';
         }
         echo '</table>';
         echo '</div>';
+        ?>
+        <?php include './footer.php';
         ?>
     </body>
 </html>

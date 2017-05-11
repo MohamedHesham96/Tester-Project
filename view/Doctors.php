@@ -4,7 +4,7 @@ include '../controller/AdminOperations.php';
 <html>
     <head>
         <meta charset="utf-8"/>
-        <link href="../recources/css/style.css" rel="stylesheet" /> 
+        <link href="../recources/css/style.css" rel="stylesheet" />
 
     </head>
     <body >
@@ -108,6 +108,8 @@ include '../controller/AdminOperations.php';
             }
             echo "</table></div>";
         }
+        ?>
+        <?php include './footer.php';
         ?>
     </body>
 </html>
