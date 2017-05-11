@@ -4,12 +4,34 @@ include '../controller/MySubmitOperations.php';
 ?>
 <html>
     <head>
+        <link href="../recources/css/style1.css" rel="stylesheet" /> 
+                 <style type="text/css">
+            body{
+                background: url("../recources/images/back2.jpg") no-repeat  top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+            th a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-size: 20;
+                color: #F5F5F5; 
+
+            }
+
+        </style>
+
     </head>
     <body >
 
 
         <?php
-      
+        $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+
         $name = $_GET['quizname'];
         $quizId = $_GET['quizid'];
         $maker = $_GET['quizdoctor'];
@@ -20,22 +42,21 @@ include '../controller/MySubmitOperations.php';
 
         echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
-        echo "Quiz id    : $quizId <br><br>"; // display quiz id
-        echo "Quiz name  : $name <br><br>"; // display quiz name
-        echo "Full Mark  : $fullMark <br><br>"; // display quiz name
-        echo "Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a><br><br>"; //may be go to doctor profile
+        echo "<h3>Quiz id    : $quizId </h3>"; // display quiz id
+        echo "<h3>Quiz name  : $name </h3>"; // display quiz name
+        echo "<h3>Full Mark  : $fullMark </h3>"; // display quiz name
+        echo "<h3>Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a></h3>"; //may be go to doctor profile
         echo ' </div>';
         ?>  
 
-        <h1> The Result </h1>
-        
+
         <div class="container">
 
-            <table class="containerr"> 
+            <table class="containerr table"> 
                 <tr>	
-                    <td>Question Header</td>
-                    <td>Correct Answer</td>
-                    <td>Your Answer</td>
+                    <th>Question Header</th>
+                    <th>Correct Answer</th>
+                    <th>Your Answer</th>
                 </tr>
 
                 <?php
@@ -47,8 +68,8 @@ include '../controller/MySubmitOperations.php';
                     if (isset($_GET['correct_ans' . $i]) && isset($_GET['header' . $i])) {
                         $count++;
 
-                        if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
-                            //  MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
+                        if (!$pageWasRefreshed && isset($_GET[$i])) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                            MySubmitOperations::insertResult($user, $quizId, $_GET[$i], $_GET['header' . $i]);
                         }
 
                         if ((isset($_GET['header' . $i]) && !isset($_GET[$i]))) {
@@ -58,9 +79,9 @@ include '../controller/MySubmitOperations.php';
 
                             if ($_GET['correct_ans' . $i] == $_GET[$i]) {
                                 $successCount++;
-                                echo "<tr style='background: #00ff00'>";
+                                echo "<tr>";
                             } else {
-                                echo "<tr style='background: #ff0033'>";
+                                echo "<tr >";
                             }
                         }
 
@@ -69,27 +90,27 @@ include '../controller/MySubmitOperations.php';
                             echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
                             echo "<td>" . $_GET[$i] . "</td>";
                         } else if (isset($_GET['header' . $i]) && !isset($_GET[$i])) {
-
-                            echo "<td>" . $_GET['header' . $i] . "</td>";
-                            echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
-                            echo "<td>" . 'No Answer' . "</td>";
+                            if (!$pageWasRefreshed)    // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                                MySubmitOperations::insertResult($user, $quizId, "", $_GET['header' . $i]);
+                                echo "<td>" . $_GET['header' . $i] . "</td>";
+                                echo "<td>" . $_GET['correct_ans' . $i] . "</td>";
+                                echo "<td>" . 'No Answer' . "</td>";
+                            }
+                            echo "</tr>";
                         }
-                        echo "</tr>";
                     }
-                }
-                echo $count . "     ::  result     ";
-                if ($count != 0) {
-                    $result = $successCount * ($fullMark / $count);
-                    echo $result;
-                } else {
-                    echo "0";
-                }
-                if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
-                    //    MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
-                }
-                ?>
+                    echo $count . "     ::  result     ";
+                    if ($count != 0) {
+                        $result = $successCount * ($fullMark / $count);
+                        echo $result;
+                    } else {
+                        echo "0";
+                    }
+                    if (!$pageWasRefreshed) {   // بيشوف لو الفحة اتحدثت علشان مش يكرر نفس الكلام في الداتا بايز
+                        MySubmitOperations::submit($_SESSION['userid'], $quizId, $result, $makerid);
+                    }
+                    ?>
             </table>
         </div>
-        <link href="../recources/js/bootstrap.min.js" rel="stylesheet" type="text/javascript"/>
     </body>
 </html>

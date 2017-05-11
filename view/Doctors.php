@@ -72,7 +72,6 @@ include '../controller/AdminOperations.php';
                     <th>Phone</th>
                     <th>University</th>
                     <th>Faculty</th>
-                    <th>Edit</th>
                     <th>Delete</th>
                 </tr>
                </thead>';
@@ -101,7 +100,6 @@ include '../controller/AdminOperations.php';
                 echo "<td>" . $row['university'] . "</td>";
                 echo "<td>" . $row['faculty'] . "</td>";
 
-                echo "<td class='bt'><a href = 'profilepage.php?&name=$doctorname'>" . $editIcon . "</a></td>";
                 echo "<td class='bt'><a href = 'Doctors.php?&deleteuser=$doctorname' onClick=\"javascript:return confirm('are you sure you want to delete this?');\"> $removeIcon  </a></td>";
 
                 echo "</tr>";

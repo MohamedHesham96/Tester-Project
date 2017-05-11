@@ -19,26 +19,26 @@ include './Header.php';
 
                 <div class="col-lg-3">
                     <label>Quiz Name :<small></small></label>
-                    <input value="<?php echo $quizName; ?>" class="form-control"  >
+                    <input value="<?php echo $quizName; ?>" class="form-control"  readonly>
                 </div>
 
                 <div class="col-lg-3">
                     <label>Time :<small></small></label>
-                    <input onchange="validateHhMm(this)" value="<?php echo $time; ?>" class="form-control" >
+                    <input onchange="validateHhMm(this)" value="<?php echo $time; ?>" class="form-control" readonly>
                 </div>
 
 
                 <div class="col-lg-3">
 
                     <label>Full Mark :<small></small></label>
-                    <input value="<?php echo $fullMark; ?>" class="form-control"  >
+                    <input value="<?php echo $fullMark; ?>" class="form-control" readonly >
 
                 </div>
 
                 <div class="col-lg-3">
 
                     <label>Password :<small></small></label>
-                    <input value="<?php echo $pass; ?>" class="form-control" >
+                    <input value="<?php echo $pass; ?>" class="form-control" readonly>
 
                 </div>
             </div>

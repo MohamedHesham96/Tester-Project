@@ -28,7 +28,7 @@
                 <tr>
                     <th>Quiz code</th>
                     <th>Quiz Name</th>
-                    <th>Doctor name</th>
+                    <th>Maker name</th>
                     <th>Mark</th>
                     <th>Time</th>
                     <th >Password</th>
