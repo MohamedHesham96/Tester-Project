@@ -17,9 +17,21 @@ $time = $row['time'] * 1000 * 60;
                 height: 100%;
 
             }
-            h2{
+            h3{
                 color: #FFF
+            }.bt{
+                background-color: rgba(0, 0, 0, 0.62);
+                border: 0;
+                color: rgba(0, 0, 0, 0.73);
             }
+            .bt:hover{
+                background-color: rgba(0, 0, 0, 0.5);
+                border: 0;
+                color:  #f5f5f5;
+            }
+
+
+        </style>
          </style>
 
 <!--        <script type="text/javascript" >
@@ -96,13 +108,13 @@ $time = $row['time'] * 1000 * 60;
 
         echo ' <div class="" id=" Quiz-details" style="text-align: center"> <br><br>';
 
-        echo "<h2>Quiz id    : $quizId </h2>"; // display quiz id
-        echo "<h2>Quiz name  : $name </h2>"; // display quiz name
+        echo "<h3>Quiz id    : $quizId </h3>"; // display quiz id
+        echo "<h3>Quiz name  : $name </h3>"; // display quiz name
         if ($_SESSION['usertype'] == 'student' || $_SESSION['usertype'] == 'doctor') {
-            echo "<h2>Full Mark  : $fullMark </h2>"; // 
+            echo "<h3>Full Mark  : $fullMark </h3>"; // 
         }
         if ($_SESSION['usertype'] == 'student')
-            echo "<h2>Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a></h2>"; //may be go to doctor profile
+            echo "<h3>Quiz maker : <a href='../controller/FollowingManager.php?outprofile=true&followname=$maker'>$maker</a></h3>"; //may be go to doctor profile
         echo ' </div>';
 
         echo '    <div style="margin-right: 200; padding-left: 200"> 
@@ -219,8 +231,8 @@ $time = $row['time'] * 1000 * 60;
 
             <?php } ?>
 
-
-            <input  style="visibility: <?php echo $submitState ?>" class="btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
+                    <br>
+            <input  style="visibility: <?php echo $submitState ?>" class="bt btn-success btn col-lg-2" type="submit" value="SUBMIT" > 
 
             <input  name="quizname" type="text" value="<?php echo $name; ?>"  readonly="readonly" hidden/> 
             <input  name="quizid" type="text" value="<?php echo $quizId; ?>"  readonly="readonly" hidden/> 
