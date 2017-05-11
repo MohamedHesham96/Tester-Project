@@ -9,8 +9,7 @@ include '../controller/MySubmitOperations.php';
 
 
         <?php
-        $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
-
+      
         $name = $_GET['quizname'];
         $quizId = $_GET['quizid'];
         $maker = $_GET['quizdoctor'];
