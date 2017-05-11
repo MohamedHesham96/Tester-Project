@@ -19,9 +19,9 @@ include '../controller/CreateQuizOperations.php';
 
     <body>
         <div class="container">
-        <div class="col-lg-6"> 
+        <div class=""> 
 
-            <div style="background: #EEE" class="col-lg-12 btn-lg">
+            <div style="" class="">
 
                 <form id="form" action="CreateQuestion.php" method="GET">
                     <input id="addquiz" name="addquiz" value="true" hidden>
@@ -41,18 +41,18 @@ include '../controller/CreateQuizOperations.php';
         }
 
         if (isset($_GET['submitstate'])) {
-            echo '  <button  type="submit" onclick="submit(1)" class = "col-lg-4 btn" >Add New Qestion</button>';
+            echo '  <button  type="submit" onclick="submit(1)" class = "col-lg-4 btn btn-success" >Add New Qestion</button>';
         } else {
-            echo '  <button  type="submit" onclick="submit(2)" class = "col-lg-4 btn" >Add New Questions</button>';
+            echo '  <button  type="submit" onclick="submit(2)" class = "col-lg-4 btn btn-success" >Add New Questions</button>';
         }
 
         if (!isset($_GET['deletequiz'])) {
             $question = "javascript:return confirm('Are you Sure you Want to Delete This Quiz?');";
-            echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
+            echo '<button class="col-lg-4 btn btn-success" onClick= "' . $question . '" ><a href="DeleteQuizNotDone.php">Remove This Quiz</a></button>';
         }
         if (isset($_GET['submitstate']) == "true") {
             $question = "javascript:return confirm('Are you Sure you Want to Submit this Quiz?');";
-            echo '<button class="col-lg-4 btn" onClick= "' . $question . '" ><a href="AddNewQuiz.php">Submit This Quiz</a></button>';
+            echo '<button class="col-lg-4 btn btn-success" onClick= "' . $question . '" ><a href="AddNewQuiz.php">Submit This Quiz</a></button>';
         }
         ?>
 
