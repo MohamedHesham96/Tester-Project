@@ -14,14 +14,16 @@ include '../controller/CreateQuizOperations.php';
                 height: 100%;
             }
             .bheight{
-                height: 120px
+                height: 90px;
+                border-radius: 15px 70px
             }
             .bt{
                 background-color: rgba(238, 238, 238, 0.66);
                 color:  rgba(51, 51, 51, 0.56);
                 font-size: 19;
                 font-weight: bold;
-                margin-left: 118px;
+                
+                margin-bottom: 20px
             }
             a{
                 text-decoration: none
@@ -29,9 +31,9 @@ include '../controller/CreateQuizOperations.php';
             .bt:hover{
                     color: rgba(51, 51, 51, 0.56);            
             }
-              a:hover{
-                                text-decoration: none;
-                                color: rgba(51, 51, 51, 0.56); 
+            a:hover{
+                  text-decoration: none;
+                   color: rgba(51, 51, 51, 0.56); 
 
             }
             
@@ -86,12 +88,13 @@ include '../controller/CreateQuizOperations.php';
         <div class="container">
         <table class="containerr table"> 
             <tr>	
-                <th>Qeustion</th>
+                <th>Question</th>
                 <th>Answer (A)</th>
                 <th>Answer (B)</th>
                 <th>Answer (C)</th>
                 <th>Answer (D)</th>
                 <th>Correct Answer</th>
+                <th>Delete Question</th>
             </tr>
 
 
