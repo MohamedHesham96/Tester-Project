@@ -124,7 +124,7 @@ include '../controller/MyProfileOperations.php';
                                 ?>
                             </a>
 
-                            <a style=" display: inline;margin:0;padding: 0" href="ProfilePage.php"> <?php echo '|'; ?> </a>
+                             <?php echo ' <span style="color:#9d9d9d">|</span> '; ?> 
 
 
                             <a style=" display: inline;margin:0;padding: 0" href="?page=Logout.php"> Log out </a>

@@ -64,6 +64,24 @@ class CreateQuizOperations {
         }
     }
 
+    public static function getQuizByName($quizName) {
+
+        include '../include/vars.php';
+        $conn = new mysqli($host, $username, $password, $dbname);
+
+        // قيمة معينة في الداتا بايز علشان تعرف بعد كده تضيف الاسئلة فين
+
+        $query = "SELECT `quiz_id` FROM `quizzes` WHERE `quiz_name` = '$quizName'";
+
+        $result = mysqli_query($conn, $query);
+
+        if ($row = mysqli_fetch_assoc($result)) {
+            return $result;
+        } else {
+            return NULL;
+        }
+    }
+
     public static function addQuestion($quizID, $header, $ans1, $ans2, $ans3, $ans4, $corectAns) {
 
         include '../include/vars.php';
