@@ -10,6 +10,7 @@ $time = $row['time'] * 1000 * 60;
 <html>  
     <head>
         <link href="../recources/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
+       <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>       
          <style>
              body{
                 background: url("../recources/images/1.jpg") no-repeat right top;
