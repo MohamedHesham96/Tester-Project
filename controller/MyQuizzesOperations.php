@@ -65,7 +65,8 @@ class MyQuizzesOperations {
         //Get all Quizzes for doctor that has doctor_name = 'dr.ahmed'
 
         $query = "SELECT `answer_1`, `answer_2`, `answer_3`, `answer_4` FROM `questions`"
-                . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id WHERE questions.Header = '$Header' and questions.quiz_id = $quizID";
+                . "JOIN quizzes on quizzes.quiz_id = questions.quiz_id WHERE "
+                . "questions.Header = '$Header' and questions.quiz_id = $quizID";
 
 
         $result = mysqli_query($conn, $query);

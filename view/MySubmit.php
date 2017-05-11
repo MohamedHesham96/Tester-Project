@@ -28,7 +28,8 @@ include '../controller/MySubmitOperations.php';
         echo ' </div>';
         ?>  
 
-        <h1> Your Result </h1>
+        <h1> The Result </h1>
+        
         <div class="container">
 
             <table class="containerr"> 
