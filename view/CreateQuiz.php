@@ -6,13 +6,20 @@ include '../controller/CreateQuizOperations.php';
 
 <html>
     <head>
-        <link href="../recources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../recources/css/style.css" rel="stylesheet" type="text/css"/>
+         <link href="../recources/css/style1.css" rel="stylesheet" /> 
+         <style>
+             body{
+                background: url("../recources/images/1.jpg") no-repeat right top;
+                width: 100%;
+                height: 100%;
+                    
+            }
+         </style>
     </head>
 
     <body>
-
-        <div class="col-lg-12"> 
+        <div class="container">
+        <div class="col-lg-6"> 
 
             <div style="background: #EEE" class="col-lg-12 btn-lg">
 
@@ -21,11 +28,7 @@ include '../controller/CreateQuizOperations.php';
                 </form>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        
 
 
         <?php
@@ -59,8 +62,8 @@ include '../controller/CreateQuizOperations.php';
         <br>
 
         <br>
-
-        <table class="containerr"> 
+        
+        <table class="containerr table"> 
             <tr>	
                 <th>Qeustion</th>
                 <th>Answer (A)</th>
@@ -94,7 +97,7 @@ include '../controller/CreateQuizOperations.php';
             }
             ?>
         </table>
-
+        </div>
         <script type="text/javascript">
 
 
